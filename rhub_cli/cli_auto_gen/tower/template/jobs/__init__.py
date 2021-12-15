@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def jobs():
     pass
@@ -10,5 +9,3 @@ def jobs():
 @jobs.command()
 def get_list():
     pass
-
-

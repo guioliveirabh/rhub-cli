@@ -1,18 +1,11 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from typing import Optional
-from ...types import UNSET, Unset
+from ...client import AuthenticatedClient
 from ...models.rhubapitowerlist_template_jobs_filter import RhubapitowerlistTemplateJobsFilter
 from ...models.rhubapitowerlist_template_jobs_response_200 import RhubapitowerlistTemplateJobsResponse200
-from typing import Dict
-from typing import cast
-from typing import Union
-
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -22,17 +15,11 @@ def _get_kwargs(
     filter_: Union[Unset, None, RhubapitowerlistTemplateJobsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Dict[str, Any]:
-    url = "{}/tower/template/{template_id}/jobs".format(
-        client.base_url,template_id=template_id)
+    url = "{}/tower/template/{template_id}/jobs".format(client.base_url, template_id=template_id)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
-
-    
-
-    
 
     json_filter_: Union[Unset, None, Dict[str, Any]] = UNSET
     if not isinstance(filter_, Unset):
@@ -46,11 +33,6 @@ def _get_kwargs(
         params.update(json_filter_)
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
-
-    
-
-    
-
     return {
         "url": url,
         "headers": headers,
@@ -63,8 +45,6 @@ def _get_kwargs(
 def _parse_response(*, response: httpx.Response) -> Optional[RhubapitowerlistTemplateJobsResponse200]:
     if response.status_code == 200:
         response_200 = RhubapitowerlistTemplateJobsResponse200.from_dict(response.json())
-
-
 
         return response_200
     return None
@@ -86,15 +66,13 @@ def sync_detailed(
     filter_: Union[Unset, None, RhubapitowerlistTemplateJobsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Response[RhubapitowerlistTemplateJobsResponse200]:
     kwargs = _get_kwargs(
         template_id=template_id,
-client=client,
-filter_=filter_,
-page=page,
-limit=limit,
-
+        client=client,
+        filter_=filter_,
+        page=page,
+        limit=limit,
     )
 
     response = httpx.get(
@@ -104,6 +82,7 @@ limit=limit,
 
     return _build_response(response=response)
 
+
 def sync(
     template_id: int,
     *,
@@ -111,18 +90,17 @@ def sync(
     filter_: Union[Unset, None, RhubapitowerlistTemplateJobsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Optional[RhubapitowerlistTemplateJobsResponse200]:
-    """  """
+    """ """
 
     return sync_detailed(
         template_id=template_id,
-client=client,
-filter_=filter_,
-page=page,
-limit=limit,
-
+        client=client,
+        filter_=filter_,
+        page=page,
+        limit=limit,
     ).parsed
+
 
 async def asyncio_detailed(
     template_id: int,
@@ -131,23 +109,20 @@ async def asyncio_detailed(
     filter_: Union[Unset, None, RhubapitowerlistTemplateJobsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Response[RhubapitowerlistTemplateJobsResponse200]:
     kwargs = _get_kwargs(
         template_id=template_id,
-client=client,
-filter_=filter_,
-page=page,
-limit=limit,
-
+        client=client,
+        filter_=filter_,
+        page=page,
+        limit=limit,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.get(
-            **kwargs
-        )
+        response = await _client.get(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     template_id: int,
@@ -156,15 +131,15 @@ async def asyncio(
     filter_: Union[Unset, None, RhubapitowerlistTemplateJobsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Optional[RhubapitowerlistTemplateJobsResponse200]:
-    """  """
+    """ """
 
-    return (await asyncio_detailed(
-        template_id=template_id,
-client=client,
-filter_=filter_,
-page=page,
-limit=limit,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            template_id=template_id,
+            client=client,
+            filter_=filter_,
+            page=page,
+            limit=limit,
+        )
+    ).parsed

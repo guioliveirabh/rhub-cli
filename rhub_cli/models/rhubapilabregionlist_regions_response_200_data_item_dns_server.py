@@ -1,32 +1,23 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
+from ..models.rhubapilabregionlist_regions_response_200_data_item_dns_server_key_type_0 import (
+    RhubapilabregionlistRegionsResponse200DataItemDnsServerKeyType0,
+)
 from ..types import UNSET, Unset
-
-from ..models.rhubapilabregionlist_regions_response_200_data_item_dns_server_key_type_0 import RhubapilabregionlistRegionsResponse200DataItemDnsServerKeyType0
-from typing import Dict
-from ..types import UNSET, Unset
-from typing import cast
-from typing import cast, Union
-from typing import Union
-
-
-
 
 T = TypeVar("T", bound="RhubapilabregionlistRegionsResponse200DataItemDnsServer")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabregionlistRegionsResponse200DataItemDnsServer:
-    """  """
+    """ """
+
     hostname: Union[Unset, str] = UNSET
     key: Union[RhubapilabregionlistRegionsResponse200DataItemDnsServerKeyType0, Unset, str] = UNSET
     zone: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         hostname = self.hostname
@@ -41,13 +32,11 @@ class RhubapilabregionlistRegionsResponse200DataItemDnsServer:
         else:
             key = self.key
 
-
         zone = self.zone
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if hostname is not UNSET:
             field_dict["hostname"] = hostname
         if key is not UNSET:
@@ -57,14 +46,14 @@ class RhubapilabregionlistRegionsResponse200DataItemDnsServer:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         hostname = d.pop("hostname", UNSET)
 
-        def _parse_key(data: object) -> Union[RhubapilabregionlistRegionsResponse200DataItemDnsServerKeyType0, Unset, str]:
+        def _parse_key(
+            data: object,
+        ) -> Union[RhubapilabregionlistRegionsResponse200DataItemDnsServerKeyType0, Unset, str]:
             if isinstance(data, Unset):
                 return data
             try:
@@ -72,20 +61,17 @@ class RhubapilabregionlistRegionsResponse200DataItemDnsServer:
                     raise TypeError()
                 _key_type_0 = data
                 key_type_0: Union[Unset, RhubapilabregionlistRegionsResponse200DataItemDnsServerKeyType0]
-                if isinstance(_key_type_0,  Unset):
+                if isinstance(_key_type_0, Unset):
                     key_type_0 = UNSET
                 else:
                     key_type_0 = RhubapilabregionlistRegionsResponse200DataItemDnsServerKeyType0.from_dict(_key_type_0)
 
-
-
                 return key_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
             return cast(Union[RhubapilabregionlistRegionsResponse200DataItemDnsServerKeyType0, Unset, str], data)
 
         key = _parse_key(d.pop("key", UNSET))
-
 
         zone = d.pop("zone", UNSET)
 

@@ -1,36 +1,20 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, List, Optional
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from typing import cast, Union
-from typing import cast, List
-
+from ...client import AuthenticatedClient
+from ...types import Response
 
 
 def _get_kwargs(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Dict[str, Any]:
-    url = "{}/lab/cluster/{cluster_id}/events".format(
-        client.base_url,cluster_id=cluster_id)
+    url = "{}/lab/cluster/{cluster_id}/events".format(client.base_url, cluster_id=cluster_id)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
-
-    
-
-    
-
-    
-
-    
-
-    
 
     return {
         "url": url,
@@ -44,7 +28,8 @@ def _parse_response(*, response: httpx.Response) -> Optional[List[Any]]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
-        for response_200_item_data in (_response_200):
+        for response_200_item_data in _response_200:
+
             def _parse_response_200_item(data: object) -> Any:
                 response_200_item_type_0 = data
 
@@ -74,12 +59,10 @@ def sync_detailed(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[List[Any]]:
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
-client=client,
-
+        client=client,
     )
 
     response = httpx.get(
@@ -89,49 +72,46 @@ client=client,
 
     return _build_response(response=response)
 
+
 def sync(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Optional[List[Any]]:
-    """  """
+    """ """
 
     return sync_detailed(
         cluster_id=cluster_id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[List[Any]]:
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
-client=client,
-
+        client=client,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.get(
-            **kwargs
-        )
+        response = await _client.get(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Optional[List[Any]]:
-    """  """
+    """ """
 
-    return (await asyncio_detailed(
-        cluster_id=cluster_id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            cluster_id=cluster_id,
+            client=client,
+        )
+    ).parsed

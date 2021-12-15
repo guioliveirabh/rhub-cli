@@ -1,51 +1,40 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import cast
-from ..models.rhubapitowerwebhook_notification_json_body_hosts_additional_property import RhubapitowerwebhookNotificationJsonBodyHostsAdditionalProperty
-from typing import Dict
-
-
-
+from ..models.rhubapitowerwebhook_notification_json_body_hosts_additional_property import (
+    RhubapitowerwebhookNotificationJsonBodyHostsAdditionalProperty,
+)
 
 T = TypeVar("T", bound="RhubapitowerwebhookNotificationJsonBodyHosts")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowerwebhookNotificationJsonBodyHosts:
-    """  """
-    additional_properties: Dict[str, RhubapitowerwebhookNotificationJsonBodyHostsAdditionalProperty] = attr.ib(init=False, factory=dict)
+    """ """
 
+    additional_properties: Dict[str, RhubapitowerwebhookNotificationJsonBodyHostsAdditionalProperty] = attr.ib(
+        init=False, factory=dict
+    )
 
     def to_dict(self) -> Dict[str, Any]:
-        
+
         field_dict: Dict[str, Any] = {}
         for prop_name, prop in self.additional_properties.items():
             field_dict[prop_name] = prop.to_dict()
 
-        field_dict.update({
-        })
+        field_dict.update({})
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        rhubapitowerwebhook_notification_json_body_hosts = cls(
-        )
+        rhubapitowerwebhook_notification_json_body_hosts = cls()
 
         additional_properties = {}
         for prop_name, prop_dict in d.items():
             additional_property = RhubapitowerwebhookNotificationJsonBodyHostsAdditionalProperty.from_dict(prop_dict)
-
-
 
             additional_properties[prop_name] = additional_property
 

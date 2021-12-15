@@ -1,38 +1,23 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, Optional
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
+from ...client import Client
 from ...models.rhubapiauthtokenrefresh_token_response_200 import RhubapiauthtokenrefreshTokenResponse200
-from typing import cast
-from typing import Dict
-
+from ...types import Response
 
 
 def _get_kwargs(
     *,
     client: Client,
     authorization: str,
-
 ) -> Dict[str, Any]:
-    url = "{}/auth/token/refresh".format(
-        client.base_url)
+    url = "{}/auth/token/refresh".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
 
     headers["authorization"] = authorization
-
-
-    
-
-    
-
-    
-
-    
 
     return {
         "url": url,
@@ -45,8 +30,6 @@ def _get_kwargs(
 def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthtokenrefreshTokenResponse200]:
     if response.status_code == 200:
         response_200 = RhubapiauthtokenrefreshTokenResponse200.from_dict(response.json())
-
-
 
         return response_200
     return None
@@ -65,12 +48,10 @@ def sync_detailed(
     *,
     client: Client,
     authorization: str,
-
 ) -> Response[RhubapiauthtokenrefreshTokenResponse200]:
     kwargs = _get_kwargs(
         client=client,
-authorization=authorization,
-
+        authorization=authorization,
     )
 
     response = httpx.post(
@@ -80,57 +61,54 @@ authorization=authorization,
 
     return _build_response(response=response)
 
+
 def sync(
     *,
     client: Client,
     authorization: str,
-
 ) -> Optional[RhubapiauthtokenrefreshTokenResponse200]:
-    """ This endpoint requires HTTP bearer authentication. The bearer token in
-'Authorization' header is not access token but refresh token. If refresh
-was successful return new oauth2 token info. Response is the same as
-from token create endpoint.
- """
+    """This endpoint requires HTTP bearer authentication. The bearer token in
+    'Authorization' header is not access token but refresh token. If refresh
+    was successful return new oauth2 token info. Response is the same as
+    from token create endpoint.
+    """
 
     return sync_detailed(
         client=client,
-authorization=authorization,
-
+        authorization=authorization,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
     client: Client,
     authorization: str,
-
 ) -> Response[RhubapiauthtokenrefreshTokenResponse200]:
     kwargs = _get_kwargs(
         client=client,
-authorization=authorization,
-
+        authorization=authorization,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.post(
-            **kwargs
-        )
+        response = await _client.post(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     *,
     client: Client,
     authorization: str,
-
 ) -> Optional[RhubapiauthtokenrefreshTokenResponse200]:
-    """ This endpoint requires HTTP bearer authentication. The bearer token in
-'Authorization' header is not access token but refresh token. If refresh
-was successful return new oauth2 token info. Response is the same as
-from token create endpoint.
- """
+    """This endpoint requires HTTP bearer authentication. The bearer token in
+    'Authorization' header is not access token but refresh token. If refresh
+    was successful return new oauth2 token info. Response is the same as
+    from token create endpoint.
+    """
 
-    return (await asyncio_detailed(
-        client=client,
-authorization=authorization,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            authorization=authorization,
+        )
+    ).parsed

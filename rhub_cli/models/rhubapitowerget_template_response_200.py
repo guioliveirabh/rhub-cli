@@ -1,27 +1,18 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
 from ..models.rhubapitowerget_template_response_200_id import RhubapitowergetTemplateResponse200Id
-from typing import Dict
-from ..types import UNSET, Unset
 from ..models.rhubapitowerget_template_response_200_tower_survey import RhubapitowergetTemplateResponse200TowerSurvey
-from typing import cast
-from typing import Union
-
-
-
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapitowergetTemplateResponse200")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowergetTemplateResponse200:
-    """  """
+    """ """
+
     description: Union[Unset, str] = UNSET
     id: Union[Unset, RhubapitowergetTemplateResponse200Id] = UNSET
     name: Union[Unset, str] = UNSET
@@ -30,7 +21,6 @@ class RhubapitowergetTemplateResponse200:
     tower_template_is_workflow: Union[Unset, bool] = UNSET
     tower_survey: Union[Unset, RhubapitowergetTemplateResponse200TowerSurvey] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
@@ -46,11 +36,9 @@ class RhubapitowergetTemplateResponse200:
         if not isinstance(self.tower_survey, Unset):
             tower_survey = self.tower_survey.to_dict()
 
-
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
         if id is not UNSET:
@@ -68,8 +56,6 @@ class RhubapitowergetTemplateResponse200:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -77,13 +63,10 @@ class RhubapitowergetTemplateResponse200:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapitowergetTemplateResponse200Id]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapitowergetTemplateResponse200Id.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 
@@ -95,13 +78,10 @@ class RhubapitowergetTemplateResponse200:
 
         _tower_survey = d.pop("tower_survey", UNSET)
         tower_survey: Union[Unset, RhubapitowergetTemplateResponse200TowerSurvey]
-        if isinstance(_tower_survey,  Unset):
+        if isinstance(_tower_survey, Unset):
             tower_survey = UNSET
         else:
             tower_survey = RhubapitowergetTemplateResponse200TowerSurvey.from_dict(_tower_survey)
-
-
-
 
         rhubapitowerget_template_response_200 = cls(
             description=description,

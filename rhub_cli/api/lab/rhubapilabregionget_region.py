@@ -1,37 +1,21 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from typing import cast
+from ...client import AuthenticatedClient
 from ...models.rhubapilabregionget_region_response_200 import RhubapilabregiongetRegionResponse200
-from typing import Dict
-
+from ...types import Response
 
 
 def _get_kwargs(
     region_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Dict[str, Any]:
-    url = "{}/lab/region/{region_id}".format(
-        client.base_url,region_id=region_id)
+    url = "{}/lab/region/{region_id}".format(client.base_url, region_id=region_id)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
-
-    
-
-    
-
-    
-
-    
-
-    
 
     return {
         "url": url,
@@ -44,8 +28,6 @@ def _get_kwargs(
 def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, RhubapilabregiongetRegionResponse200]]:
     if response.status_code == 200:
         response_200 = RhubapilabregiongetRegionResponse200.from_dict(response.json())
-
-
 
         return response_200
     if response.status_code == 404:
@@ -68,12 +50,10 @@ def sync_detailed(
     region_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Union[Any, RhubapilabregiongetRegionResponse200]]:
     kwargs = _get_kwargs(
         region_id=region_id,
-client=client,
-
+        client=client,
     )
 
     response = httpx.get(
@@ -83,49 +63,46 @@ client=client,
 
     return _build_response(response=response)
 
+
 def sync(
     region_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Optional[Union[Any, RhubapilabregiongetRegionResponse200]]:
-    """  """
+    """ """
 
     return sync_detailed(
         region_id=region_id,
-client=client,
-
+        client=client,
     ).parsed
+
 
 async def asyncio_detailed(
     region_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Union[Any, RhubapilabregiongetRegionResponse200]]:
     kwargs = _get_kwargs(
         region_id=region_id,
-client=client,
-
+        client=client,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.get(
-            **kwargs
-        )
+        response = await _client.get(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     region_id: int,
     *,
     client: AuthenticatedClient,
-
 ) -> Optional[Union[Any, RhubapilabregiongetRegionResponse200]]:
-    """  """
+    """ """
 
-    return (await asyncio_detailed(
-        region_id=region_id,
-client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            region_id=region_id,
+            client=client,
+        )
+    ).parsed

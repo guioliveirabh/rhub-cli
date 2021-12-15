@@ -1,29 +1,21 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
 from ..types import UNSET, Unset
 
-from typing import Union
-from ..types import UNSET, Unset
-
-
-
-
 T = TypeVar("T", bound="RhubapilabproductlistProductRegionsFilter")
+
 
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsFilter:
-    """  """
+    """ """
+
     enabled: Union[Unset, bool] = UNSET
     location: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET
     reservations_enabled: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         enabled = self.enabled
@@ -33,8 +25,7 @@ class RhubapilabproductlistProductRegionsFilter:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
         if location is not UNSET:
@@ -45,8 +36,6 @@ class RhubapilabproductlistProductRegionsFilter:
             field_dict["reservations_enabled"] = reservations_enabled
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:

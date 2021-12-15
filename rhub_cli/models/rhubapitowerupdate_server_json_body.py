@@ -1,26 +1,17 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import cast
 from ..models.rhubapitowerupdate_server_json_body_id import RhubapitowerupdateServerJsonBodyId
-from typing import Union
 from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapitowerupdateServerJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowerupdateServerJsonBody:
-    """  """
+    """ """
+
     credentials: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
@@ -29,7 +20,6 @@ class RhubapitowerupdateServerJsonBody:
     url: Union[Unset, str] = UNSET
     verify_ssl: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         credentials = self.credentials
@@ -45,8 +35,7 @@ class RhubapitowerupdateServerJsonBody:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if credentials is not UNSET:
             field_dict["credentials"] = credentials
         if description is not UNSET:
@@ -64,8 +53,6 @@ class RhubapitowerupdateServerJsonBody:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -77,13 +64,10 @@ class RhubapitowerupdateServerJsonBody:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapitowerupdateServerJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapitowerupdateServerJsonBodyId.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 

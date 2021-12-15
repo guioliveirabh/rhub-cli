@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def users():
     pass
@@ -10,5 +9,3 @@ def users():
 @users.command()
 def get_list():
     pass
-
-

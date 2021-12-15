@@ -1,33 +1,23 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
 from ..models.rhubapipoliciesupdate_policy_json_body_constraint import RhubapipoliciesupdatePolicyJsonBodyConstraint
-from typing import Dict
-from ..types import UNSET, Unset
-from typing import cast
 from ..models.rhubapipoliciesupdate_policy_json_body_id import RhubapipoliciesupdatePolicyJsonBodyId
-from typing import Union
-
-
-
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapipoliciesupdatePolicyJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapipoliciesupdatePolicyJsonBody:
-    """  """
+    """ """
+
     constraint: Union[Unset, RhubapipoliciesupdatePolicyJsonBodyConstraint] = UNSET
     department: Union[Unset, str] = UNSET
     id: Union[Unset, RhubapipoliciesupdatePolicyJsonBodyId] = UNSET
     name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         constraint: Union[Unset, Dict[str, Any]] = UNSET
@@ -43,8 +33,7 @@ class RhubapipoliciesupdatePolicyJsonBody:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if constraint is not UNSET:
             field_dict["constraint"] = constraint
         if department is not UNSET:
@@ -56,32 +45,24 @@ class RhubapipoliciesupdatePolicyJsonBody:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         _constraint = d.pop("constraint", UNSET)
         constraint: Union[Unset, RhubapipoliciesupdatePolicyJsonBodyConstraint]
-        if isinstance(_constraint,  Unset):
+        if isinstance(_constraint, Unset):
             constraint = UNSET
         else:
             constraint = RhubapipoliciesupdatePolicyJsonBodyConstraint.from_dict(_constraint)
-
-
-
 
         department = d.pop("department", UNSET)
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapipoliciesupdatePolicyJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapipoliciesupdatePolicyJsonBodyId.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 

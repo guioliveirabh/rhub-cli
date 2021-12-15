@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def cowsay():
     pass
@@ -10,5 +9,3 @@ def cowsay():
 @cowsay.command()
 def get():
     pass
-
-

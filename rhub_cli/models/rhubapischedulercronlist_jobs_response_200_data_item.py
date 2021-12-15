@@ -1,31 +1,27 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+import datetime
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
-
-from ..types import UNSET, Unset
-
-from ..models.rhubapischedulercronlist_jobs_response_200_data_item_job_name import RhubapischedulercronlistJobsResponse200DataItemJobName
-from typing import Optional
-from ..models.rhubapischedulercronlist_jobs_response_200_data_item_job_params import RhubapischedulercronlistJobsResponse200DataItemJobParams
-from ..models.rhubapischedulercronlist_jobs_response_200_data_item_id import RhubapischedulercronlistJobsResponse200DataItemId
-from typing import Dict
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-import datetime
-from typing import cast
-from typing import Union
 
-
-
+from ..models.rhubapischedulercronlist_jobs_response_200_data_item_id import (
+    RhubapischedulercronlistJobsResponse200DataItemId,
+)
+from ..models.rhubapischedulercronlist_jobs_response_200_data_item_job_name import (
+    RhubapischedulercronlistJobsResponse200DataItemJobName,
+)
+from ..models.rhubapischedulercronlist_jobs_response_200_data_item_job_params import (
+    RhubapischedulercronlistJobsResponse200DataItemJobParams,
+)
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapischedulercronlistJobsResponse200DataItem")
 
+
 @attr.s(auto_attribs=True)
 class RhubapischedulercronlistJobsResponse200DataItem:
-    """  """
+    """ """
+
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     id: Union[Unset, RhubapischedulercronlistJobsResponse200DataItemId] = UNSET
@@ -35,7 +31,6 @@ class RhubapischedulercronlistJobsResponse200DataItem:
     name: Union[Unset, str] = UNSET
     time_expr: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
@@ -61,8 +56,7 @@ class RhubapischedulercronlistJobsResponse200DataItem:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -82,8 +76,6 @@ class RhubapischedulercronlistJobsResponse200DataItem:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -93,47 +85,35 @@ class RhubapischedulercronlistJobsResponse200DataItem:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapischedulercronlistJobsResponse200DataItemId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapischedulercronlistJobsResponse200DataItemId.from_dict(_id)
 
-
-
-
         _job_name = d.pop("job_name", UNSET)
         job_name: Union[Unset, RhubapischedulercronlistJobsResponse200DataItemJobName]
-        if isinstance(_job_name,  Unset):
+        if isinstance(_job_name, Unset):
             job_name = UNSET
         else:
             job_name = RhubapischedulercronlistJobsResponse200DataItemJobName(_job_name)
-
-
-
 
         _job_params = d.pop("job_params", UNSET)
         job_params: Union[Unset, None, RhubapischedulercronlistJobsResponse200DataItemJobParams]
         if _job_params is None:
             job_params = None
-        elif isinstance(_job_params,  Unset):
+        elif isinstance(_job_params, Unset):
             job_params = UNSET
         else:
             job_params = RhubapischedulercronlistJobsResponse200DataItemJobParams.from_dict(_job_params)
-
-
-
 
         _last_run = d.pop("last_run", UNSET)
         last_run: Union[Unset, None, datetime.datetime]
         if _last_run is None:
             last_run = None
-        elif isinstance(_last_run,  Unset):
+        elif isinstance(_last_run, Unset):
             last_run = UNSET
         else:
             last_run = isoparse(_last_run)
-
-
-
 
         name = d.pop("name", UNSET)
 

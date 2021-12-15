@@ -1,33 +1,25 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import Dict
-from ..types import UNSET, Unset
+from ..models.rhubapipoliciesupdate_policy_response_200_constraint import (
+    RhubapipoliciesupdatePolicyResponse200Constraint,
+)
 from ..models.rhubapipoliciesupdate_policy_response_200_id import RhubapipoliciesupdatePolicyResponse200Id
-from ..models.rhubapipoliciesupdate_policy_response_200_constraint import RhubapipoliciesupdatePolicyResponse200Constraint
-from typing import cast
-from typing import Union
-
-
-
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapipoliciesupdatePolicyResponse200")
 
+
 @attr.s(auto_attribs=True)
 class RhubapipoliciesupdatePolicyResponse200:
-    """  """
+    """ """
+
     constraint: Union[Unset, RhubapipoliciesupdatePolicyResponse200Constraint] = UNSET
     department: Union[Unset, str] = UNSET
     id: Union[Unset, RhubapipoliciesupdatePolicyResponse200Id] = UNSET
     name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         constraint: Union[Unset, Dict[str, Any]] = UNSET
@@ -43,8 +35,7 @@ class RhubapipoliciesupdatePolicyResponse200:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if constraint is not UNSET:
             field_dict["constraint"] = constraint
         if department is not UNSET:
@@ -56,32 +47,24 @@ class RhubapipoliciesupdatePolicyResponse200:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         _constraint = d.pop("constraint", UNSET)
         constraint: Union[Unset, RhubapipoliciesupdatePolicyResponse200Constraint]
-        if isinstance(_constraint,  Unset):
+        if isinstance(_constraint, Unset):
             constraint = UNSET
         else:
             constraint = RhubapipoliciesupdatePolicyResponse200Constraint.from_dict(_constraint)
-
-
-
 
         department = d.pop("department", UNSET)
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapipoliciesupdatePolicyResponse200Id]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapipoliciesupdatePolicyResponse200Id.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 

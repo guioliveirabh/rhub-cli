@@ -1,30 +1,21 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
 from ..types import UNSET, Unset
 
-from typing import Optional
-from typing import Union
-from ..types import UNSET, Unset
-
-
-
-
 T = TypeVar("T", bound="RhubapilabregionupdateRegionJsonBodyQuotaType0")
+
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionupdateRegionJsonBodyQuotaType0:
-    """  """
+    """ """
+
     num_vcpus: Union[Unset, None, int] = UNSET
     num_volumes: Union[Unset, None, int] = UNSET
     ram_mb: Union[Unset, None, int] = UNSET
     volumes_gb: Union[Unset, None, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         num_vcpus = self.num_vcpus
@@ -34,8 +25,7 @@ class RhubapilabregionupdateRegionJsonBodyQuotaType0:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if num_vcpus is not UNSET:
             field_dict["num_vcpus"] = num_vcpus
         if num_volumes is not UNSET:
@@ -46,8 +36,6 @@ class RhubapilabregionupdateRegionJsonBodyQuotaType0:
             field_dict["volumes_gb"] = volumes_gb
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:

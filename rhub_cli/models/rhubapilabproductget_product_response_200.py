@@ -1,28 +1,17 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import cast, List
-from typing import Dict
-from ..types import UNSET, Unset
 from ..models.rhubapilabproductget_product_response_200_id import RhubapilabproductgetProductResponse200Id
-from typing import cast
-from typing import cast, Union
-from typing import Union
-
-
-
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapilabproductgetProductResponse200")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabproductgetProductResponse200:
-    """  """
+    """ """
+
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     id: Union[Unset, RhubapilabproductgetProductResponse200Id] = UNSET
@@ -31,7 +20,6 @@ class RhubapilabproductgetProductResponse200:
     tower_template_name_create: Union[Unset, str] = UNSET
     tower_template_name_delete: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
@@ -54,20 +42,14 @@ class RhubapilabproductgetProductResponse200:
                 else:
                     parameters_item = parameters_item_data
 
-
-
                 parameters.append(parameters_item)
-
-
-
 
         tower_template_name_create = self.tower_template_name_create
         tower_template_name_delete = self.tower_template_name_delete
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -85,8 +67,6 @@ class RhubapilabproductgetProductResponse200:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -96,19 +76,17 @@ class RhubapilabproductgetProductResponse200:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabproductgetProductResponse200Id]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapilabproductgetProductResponse200Id.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 
         parameters = []
         _parameters = d.pop("parameters", UNSET)
-        for parameters_item_data in (_parameters or []):
+        for parameters_item_data in _parameters or []:
+
             def _parse_parameters_item(data: object) -> Any:
                 parameters_item_type_0 = data
 
@@ -123,7 +101,6 @@ class RhubapilabproductgetProductResponse200:
             parameters_item = _parse_parameters_item(parameters_item_data)
 
             parameters.append(parameters_item)
-
 
         tower_template_name_create = d.pop("tower_template_name_create", UNSET)
 

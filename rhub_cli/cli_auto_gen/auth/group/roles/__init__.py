@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def roles():
     pass
@@ -20,5 +19,3 @@ def create():
 @roles.command()
 def remove():
     pass
-
-

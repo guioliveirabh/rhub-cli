@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def webhook_notification():
     pass
@@ -10,5 +9,3 @@ def webhook_notification():
 @webhook_notification.command()
 def create():
     pass
-
-

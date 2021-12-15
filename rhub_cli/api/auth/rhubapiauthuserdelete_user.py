@@ -1,34 +1,20 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-
+from ...client import AuthenticatedClient
+from ...types import Response
 
 
 def _get_kwargs(
     user_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Dict[str, Any]:
-    url = "{}/auth/user/{user_id}".format(
-        client.base_url,user_id=user_id)
+    url = "{}/auth/user/{user_id}".format(client.base_url, user_id=user_id)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
-
-    
-
-    
-
-    
-
-    
-
-    
 
     return {
         "url": url,
@@ -36,8 +22,6 @@ def _get_kwargs(
         "cookies": cookies,
         "timeout": client.get_timeout(),
     }
-
-
 
 
 def _build_response(*, response: httpx.Response) -> Response[Any]:
@@ -53,12 +37,10 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any]:
     kwargs = _get_kwargs(
         user_id=user_id,
-client=client,
-
+        client=client,
     )
 
     response = httpx.delete(
@@ -73,18 +55,13 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-
 ) -> Response[Any]:
     kwargs = _get_kwargs(
         user_id=user_id,
-client=client,
-
+        client=client,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.delete(
-            **kwargs
-        )
+        response = await _client.delete(**kwargs)
 
     return _build_response(response=response)
-

@@ -1,26 +1,17 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
 from ..models.rhubapitowercreate_server_json_body_id import RhubapitowercreateServerJsonBodyId
-from typing import cast
-from typing import Union
 from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapitowercreateServerJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowercreateServerJsonBody:
-    """  """
+    """ """
+
     credentials: str
     name: str
     url: str
@@ -29,7 +20,6 @@ class RhubapitowercreateServerJsonBody:
     id: Union[Unset, RhubapitowercreateServerJsonBodyId] = UNSET
     verify_ssl: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         credentials = self.credentials
@@ -45,11 +35,13 @@ class RhubapitowercreateServerJsonBody:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-            "credentials": credentials,
-            "name": name,
-            "url": url,
-        })
+        field_dict.update(
+            {
+                "credentials": credentials,
+                "name": name,
+                "url": url,
+            }
+        )
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -60,8 +52,6 @@ class RhubapitowercreateServerJsonBody:
             field_dict["verify_ssl"] = verify_ssl
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
@@ -78,13 +68,10 @@ class RhubapitowercreateServerJsonBody:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapitowercreateServerJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapitowercreateServerJsonBodyId.from_dict(_id)
-
-
-
 
         verify_ssl = d.pop("verify_ssl", UNSET)
 

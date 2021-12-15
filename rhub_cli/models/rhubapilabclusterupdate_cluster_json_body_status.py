@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class RhubapilabclusterupdateClusterJsonBodyStatus(str, Enum):
     ACTIVE = "Active"
     DELETED = "Deleted"

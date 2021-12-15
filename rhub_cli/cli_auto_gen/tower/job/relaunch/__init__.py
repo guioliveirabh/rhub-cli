@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def relaunch():
     pass
@@ -10,5 +9,3 @@ def relaunch():
 @relaunch.command()
 def create():
     pass
-
-

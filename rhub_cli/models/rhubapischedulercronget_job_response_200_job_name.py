@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class RhubapischedulercrongetJobResponse200JobName(str, Enum):
     EXAMPLE = "example"
     TOWER_LAUNCH = "tower_launch"

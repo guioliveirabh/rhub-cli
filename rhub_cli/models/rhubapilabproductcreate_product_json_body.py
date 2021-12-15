@@ -1,28 +1,17 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import cast, List
 from ..models.rhubapilabproductcreate_product_json_body_id import RhubapilabproductcreateProductJsonBodyId
-from typing import cast
-from typing import cast, Union
-from typing import Union
 from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapilabproductcreateProductJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabproductcreateProductJsonBody:
-    """  """
+    """ """
+
     name: str
     parameters: List[Any]
     tower_template_name_create: str
@@ -31,7 +20,6 @@ class RhubapilabproductcreateProductJsonBody:
     enabled: Union[Unset, bool] = UNSET
     id: Union[Unset, RhubapilabproductcreateProductJsonBodyId] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         name = self.name
@@ -46,12 +34,7 @@ class RhubapilabproductcreateProductJsonBody:
             else:
                 parameters_item = parameters_item_data
 
-
-
             parameters.append(parameters_item)
-
-
-
 
         tower_template_name_create = self.tower_template_name_create
         tower_template_name_delete = self.tower_template_name_delete
@@ -61,15 +44,16 @@ class RhubapilabproductcreateProductJsonBody:
         if not isinstance(self.id, Unset):
             id = self.id.to_dict()
 
-
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-            "name": name,
-            "parameters": parameters,
-            "tower_template_name_create": tower_template_name_create,
-            "tower_template_name_delete": tower_template_name_delete,
-        })
+        field_dict.update(
+            {
+                "name": name,
+                "parameters": parameters,
+                "tower_template_name_create": tower_template_name_create,
+                "tower_template_name_delete": tower_template_name_delete,
+            }
+        )
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -79,8 +63,6 @@ class RhubapilabproductcreateProductJsonBody:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -88,7 +70,8 @@ class RhubapilabproductcreateProductJsonBody:
 
         parameters = []
         _parameters = d.pop("parameters")
-        for parameters_item_data in (_parameters):
+        for parameters_item_data in _parameters:
+
             def _parse_parameters_item(data: object) -> Any:
                 parameters_item_type_0 = data
 
@@ -104,7 +87,6 @@ class RhubapilabproductcreateProductJsonBody:
 
             parameters.append(parameters_item)
 
-
         tower_template_name_create = d.pop("tower_template_name_create")
 
         tower_template_name_delete = d.pop("tower_template_name_delete")
@@ -115,13 +97,10 @@ class RhubapilabproductcreateProductJsonBody:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabproductcreateProductJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapilabproductcreateProductJsonBodyId.from_dict(_id)
-
-
-
 
         rhubapilabproductcreate_product_json_body = cls(
             name=name,

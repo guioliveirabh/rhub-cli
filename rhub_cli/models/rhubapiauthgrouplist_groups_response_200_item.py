@@ -1,34 +1,26 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import Dict
-from ..types import UNSET, Unset
-from ..models.rhubapiauthgrouplist_groups_response_200_item_attributes import RhubapiauthgrouplistGroupsResponse200ItemAttributes
-from typing import cast
-from typing import Union
+from ..models.rhubapiauthgrouplist_groups_response_200_item_attributes import (
+    RhubapiauthgrouplistGroupsResponse200ItemAttributes,
+)
 from ..models.rhubapiauthgrouplist_groups_response_200_item_id import RhubapiauthgrouplistGroupsResponse200ItemId
-
-
-
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapiauthgrouplistGroupsResponse200Item")
 
+
 @attr.s(auto_attribs=True)
 class RhubapiauthgrouplistGroupsResponse200Item:
-    """ See [Keycloak API: GroupRepresentation](
-https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
- """
+    """See [Keycloak API: GroupRepresentation](
+    https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+    """
+
     attributes: Union[Unset, RhubapiauthgrouplistGroupsResponse200ItemAttributes] = UNSET
     id: Union[Unset, RhubapiauthgrouplistGroupsResponse200ItemId] = UNSET
     name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         attributes: Union[Unset, Dict[str, Any]] = UNSET
@@ -43,8 +35,7 @@ https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if attributes is not UNSET:
             field_dict["attributes"] = attributes
         if id is not UNSET:
@@ -54,30 +45,22 @@ https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, RhubapiauthgrouplistGroupsResponse200ItemAttributes]
-        if isinstance(_attributes,  Unset):
+        if isinstance(_attributes, Unset):
             attributes = UNSET
         else:
             attributes = RhubapiauthgrouplistGroupsResponse200ItemAttributes.from_dict(_attributes)
 
-
-
-
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapiauthgrouplistGroupsResponse200ItemId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapiauthgrouplistGroupsResponse200ItemId.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 

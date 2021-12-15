@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def server():
     pass
@@ -30,5 +29,3 @@ def remove():
 @server.command()
 def update():
     pass
-
-

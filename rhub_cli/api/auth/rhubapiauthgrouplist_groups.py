@@ -1,37 +1,20 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, List, Optional
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from typing import cast
-from typing import cast, List
-from typing import Dict
+from ...client import AuthenticatedClient
 from ...models.rhubapiauthgrouplist_groups_response_200_item import RhubapiauthgrouplistGroupsResponse200Item
-
+from ...types import Response
 
 
 def _get_kwargs(
     *,
     client: AuthenticatedClient,
-
 ) -> Dict[str, Any]:
-    url = "{}/auth/group".format(
-        client.base_url)
+    url = "{}/auth/group".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
-
-    
-
-    
-
-    
-
-    
-
-    
 
     return {
         "url": url,
@@ -45,10 +28,8 @@ def _parse_response(*, response: httpx.Response) -> Optional[List[Rhubapiauthgro
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
-        for response_200_item_data in (_response_200):
+        for response_200_item_data in _response_200:
             response_200_item = RhubapiauthgrouplistGroupsResponse200Item.from_dict(response_200_item_data)
-
-
 
             response_200.append(response_200_item)
 
@@ -68,11 +49,9 @@ def _build_response(*, response: httpx.Response) -> Response[List[Rhubapiauthgro
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-
 ) -> Response[List[RhubapiauthgrouplistGroupsResponse200Item]]:
     kwargs = _get_kwargs(
         client=client,
-
     )
 
     response = httpx.get(
@@ -82,47 +61,44 @@ def sync_detailed(
 
     return _build_response(response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
-
 ) -> Optional[List[RhubapiauthgrouplistGroupsResponse200Item]]:
-    """ See also [Keycloak API: GroupRepresentation](
-  https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
- """
+    """See also [Keycloak API: GroupRepresentation](
+    https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+    """
 
     return sync_detailed(
         client=client,
-
     ).parsed
+
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-
 ) -> Response[List[RhubapiauthgrouplistGroupsResponse200Item]]:
     kwargs = _get_kwargs(
         client=client,
-
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.get(
-            **kwargs
-        )
+        response = await _client.get(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     *,
     client: AuthenticatedClient,
-
 ) -> Optional[List[RhubapiauthgrouplistGroupsResponse200Item]]:
-    """ See also [Keycloak API: GroupRepresentation](
-  https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
- """
+    """See also [Keycloak API: GroupRepresentation](
+    https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+    """
 
-    return (await asyncio_detailed(
-        client=client,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+        )
+    ).parsed

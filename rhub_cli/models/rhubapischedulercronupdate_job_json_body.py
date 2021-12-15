@@ -1,31 +1,21 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+import datetime
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
-
-from ..types import UNSET, Unset
+from dateutil.parser import isoparse
 
 from ..models.rhubapischedulercronupdate_job_json_body_id import RhubapischedulercronupdateJobJsonBodyId
-from typing import Optional
-from ..models.rhubapischedulercronupdate_job_json_body_job_params import RhubapischedulercronupdateJobJsonBodyJobParams
-from typing import Dict
-from ..types import UNSET, Unset
-from dateutil.parser import isoparse
-import datetime
-from typing import cast
-from typing import Union
 from ..models.rhubapischedulercronupdate_job_json_body_job_name import RhubapischedulercronupdateJobJsonBodyJobName
-
-
-
+from ..models.rhubapischedulercronupdate_job_json_body_job_params import RhubapischedulercronupdateJobJsonBodyJobParams
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapischedulercronupdateJobJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapischedulercronupdateJobJsonBody:
-    """  """
+    """ """
+
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     id: Union[Unset, RhubapischedulercronupdateJobJsonBodyId] = UNSET
@@ -35,7 +25,6 @@ class RhubapischedulercronupdateJobJsonBody:
     name: Union[Unset, str] = UNSET
     time_expr: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
@@ -61,8 +50,7 @@ class RhubapischedulercronupdateJobJsonBody:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
         if enabled is not UNSET:
@@ -82,8 +70,6 @@ class RhubapischedulercronupdateJobJsonBody:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -93,47 +79,35 @@ class RhubapischedulercronupdateJobJsonBody:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapischedulercronupdateJobJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapischedulercronupdateJobJsonBodyId.from_dict(_id)
 
-
-
-
         _job_name = d.pop("job_name", UNSET)
         job_name: Union[Unset, RhubapischedulercronupdateJobJsonBodyJobName]
-        if isinstance(_job_name,  Unset):
+        if isinstance(_job_name, Unset):
             job_name = UNSET
         else:
             job_name = RhubapischedulercronupdateJobJsonBodyJobName(_job_name)
-
-
-
 
         _job_params = d.pop("job_params", UNSET)
         job_params: Union[Unset, None, RhubapischedulercronupdateJobJsonBodyJobParams]
         if _job_params is None:
             job_params = None
-        elif isinstance(_job_params,  Unset):
+        elif isinstance(_job_params, Unset):
             job_params = UNSET
         else:
             job_params = RhubapischedulercronupdateJobJsonBodyJobParams.from_dict(_job_params)
-
-
-
 
         _last_run = d.pop("last_run", UNSET)
         last_run: Union[Unset, None, datetime.datetime]
         if _last_run is None:
             last_run = None
-        elif isinstance(_last_run,  Unset):
+        elif isinstance(_last_run, Unset):
             last_run = UNSET
         else:
             last_run = isoparse(_last_run)
-
-
-
 
         name = d.pop("name", UNSET)
 

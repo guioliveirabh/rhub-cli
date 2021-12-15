@@ -1,31 +1,23 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.rhubapilabproductlist_product_regions_response_200_item_region import (
+    RhubapilabproductlistProductRegionsResponse200ItemRegion,
+)
 from ..types import UNSET, Unset
-
-from ..models.rhubapilabproductlist_product_regions_response_200_item_region import RhubapilabproductlistProductRegionsResponse200ItemRegion
-from typing import cast
-from typing import Union
-from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapilabproductlistProductRegionsResponse200Item")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsResponse200Item:
-    """  """
+    """ """
+
     enabled: Union[Unset, bool] = UNSET
     id: Union[Unset, int] = UNSET
     region: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegion] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         enabled = self.enabled
@@ -34,11 +26,9 @@ class RhubapilabproductlistProductRegionsResponse200Item:
         if not isinstance(self.region, Unset):
             region = self.region.to_dict()
 
-
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
         if id is not UNSET:
@@ -47,8 +37,6 @@ class RhubapilabproductlistProductRegionsResponse200Item:
             field_dict["region"] = region
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
@@ -59,13 +47,10 @@ class RhubapilabproductlistProductRegionsResponse200Item:
 
         _region = d.pop("region", UNSET)
         region: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegion]
-        if isinstance(_region,  Unset):
+        if isinstance(_region, Unset):
             region = UNSET
         else:
             region = RhubapilabproductlistProductRegionsResponse200ItemRegion.from_dict(_region)
-
-
-
 
         rhubapilabproductlist_product_regions_response_200_item = cls(
             enabled=enabled,

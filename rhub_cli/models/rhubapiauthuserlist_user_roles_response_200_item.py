@@ -1,34 +1,26 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from ..models.rhubapiauthuserlist_user_roles_response_200_item_attributes import RhubapiauthuserlistUserRolesResponse200ItemAttributes
+from ..models.rhubapiauthuserlist_user_roles_response_200_item_attributes import (
+    RhubapiauthuserlistUserRolesResponse200ItemAttributes,
+)
 from ..models.rhubapiauthuserlist_user_roles_response_200_item_id import RhubapiauthuserlistUserRolesResponse200ItemId
-from typing import Dict
 from ..types import UNSET, Unset
-from typing import cast
-from typing import Union
-
-
-
 
 T = TypeVar("T", bound="RhubapiauthuserlistUserRolesResponse200Item")
 
+
 @attr.s(auto_attribs=True)
 class RhubapiauthuserlistUserRolesResponse200Item:
-    """ See [Keycloak API: RoleRepresentation](
-https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
- """
+    """See [Keycloak API: RoleRepresentation](
+    https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+    """
+
     attributes: Union[Unset, RhubapiauthuserlistUserRolesResponse200ItemAttributes] = UNSET
     id: Union[Unset, RhubapiauthuserlistUserRolesResponse200ItemId] = UNSET
     name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         attributes: Union[Unset, Dict[str, Any]] = UNSET
@@ -43,8 +35,7 @@ https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if attributes is not UNSET:
             field_dict["attributes"] = attributes
         if id is not UNSET:
@@ -54,30 +45,22 @@ https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, RhubapiauthuserlistUserRolesResponse200ItemAttributes]
-        if isinstance(_attributes,  Unset):
+        if isinstance(_attributes, Unset):
             attributes = UNSET
         else:
             attributes = RhubapiauthuserlistUserRolesResponse200ItemAttributes.from_dict(_attributes)
 
-
-
-
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapiauthuserlistUserRolesResponse200ItemId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapiauthuserlistUserRolesResponse200ItemId.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 

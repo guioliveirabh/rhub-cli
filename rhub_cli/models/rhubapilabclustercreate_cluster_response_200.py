@@ -1,35 +1,29 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+import datetime
+from typing import Any, Dict, List, Optional, Type, TypeVar, Union
 
 import attr
-
-from ..types import UNSET, Unset
-
-from typing import cast, List
-from typing import Optional
-from ..models.rhubapilabclustercreate_cluster_response_200_status import RhubapilabclustercreateClusterResponse200Status
-from ..models.rhubapilabclustercreate_cluster_response_200_quota_type_0 import RhubapilabclustercreateClusterResponse200QuotaType0
-from ..models.rhubapilabclustercreate_cluster_response_200_hosts_item import RhubapilabclustercreateClusterResponse200HostsItem
-from ..models.rhubapilabclustercreate_cluster_response_200_product_params import RhubapilabclustercreateClusterResponse200ProductParams
-from typing import Dict
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-import datetime
+
+from ..models.rhubapilabclustercreate_cluster_response_200_hosts_item import (
+    RhubapilabclustercreateClusterResponse200HostsItem,
+)
 from ..models.rhubapilabclustercreate_cluster_response_200_id import RhubapilabclustercreateClusterResponse200Id
-from typing import cast
-from typing import cast, Union
-from typing import Union
-
-
-
+from ..models.rhubapilabclustercreate_cluster_response_200_product_params import (
+    RhubapilabclustercreateClusterResponse200ProductParams,
+)
+from ..models.rhubapilabclustercreate_cluster_response_200_quota_type_0 import (
+    RhubapilabclustercreateClusterResponse200QuotaType0,
+)
+from ..models.rhubapilabclustercreate_cluster_response_200_status import RhubapilabclustercreateClusterResponse200Status
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapilabclustercreateClusterResponse200")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabclustercreateClusterResponse200:
-    """  """
+    """ """
+
     name: str
     product_id: int
     product_params: RhubapilabclustercreateClusterResponse200ProductParams
@@ -49,7 +43,6 @@ class RhubapilabclustercreateClusterResponse200:
     user_id: Union[Unset, str] = UNSET
     user_name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         name = self.name
@@ -72,9 +65,6 @@ class RhubapilabclustercreateClusterResponse200:
 
                 hosts.append(hosts_item)
 
-
-
-
         id: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.id, Unset):
             id = self.id.to_dict()
@@ -95,8 +85,6 @@ class RhubapilabclustercreateClusterResponse200:
         else:
             quota = self.quota
 
-
-
         region_name = self.region_name
         reservation_expiration = self.reservation_expiration.isoformat() if self.reservation_expiration else None
 
@@ -109,13 +97,15 @@ class RhubapilabclustercreateClusterResponse200:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-            "name": name,
-            "product_id": product_id,
-            "product_params": product_params,
-            "region_id": region_id,
-            "reservation_expiration": reservation_expiration,
-        })
+        field_dict.update(
+            {
+                "name": name,
+                "product_id": product_id,
+                "product_params": product_params,
+                "region_id": region_id,
+                "reservation_expiration": reservation_expiration,
+            }
+        )
         if created is not UNSET:
             field_dict["created"] = created
         if description is not UNSET:
@@ -145,8 +135,6 @@ class RhubapilabclustercreateClusterResponse200:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -156,20 +144,14 @@ class RhubapilabclustercreateClusterResponse200:
 
         product_params = RhubapilabclustercreateClusterResponse200ProductParams.from_dict(d.pop("product_params"))
 
-
-
-
         region_id = d.pop("region_id")
 
         _created = d.pop("created", UNSET)
         created: Union[Unset, datetime.datetime]
-        if isinstance(_created,  Unset):
+        if isinstance(_created, Unset):
             created = UNSET
         else:
             created = isoparse(_created)
-
-
-
 
         description = d.pop("description", UNSET)
 
@@ -179,35 +161,26 @@ class RhubapilabclustercreateClusterResponse200:
 
         hosts = []
         _hosts = d.pop("hosts", UNSET)
-        for hosts_item_data in (_hosts or []):
+        for hosts_item_data in _hosts or []:
             hosts_item = RhubapilabclustercreateClusterResponse200HostsItem.from_dict(hosts_item_data)
-
-
 
             hosts.append(hosts_item)
 
-
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabclustercreateClusterResponse200Id]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapilabclustercreateClusterResponse200Id.from_dict(_id)
-
-
-
 
         _lifespan_expiration = d.pop("lifespan_expiration", UNSET)
         lifespan_expiration: Union[Unset, None, datetime.datetime]
         if _lifespan_expiration is None:
             lifespan_expiration = None
-        elif isinstance(_lifespan_expiration,  Unset):
+        elif isinstance(_lifespan_expiration, Unset):
             lifespan_expiration = UNSET
         else:
             lifespan_expiration = isoparse(_lifespan_expiration)
-
-
-
 
         product_name = d.pop("product_name", UNSET)
 
@@ -219,22 +192,19 @@ class RhubapilabclustercreateClusterResponse200:
                     raise TypeError()
                 _quota_type_0 = data
                 quota_type_0: Union[Unset, RhubapilabclustercreateClusterResponse200QuotaType0]
-                if isinstance(_quota_type_0,  Unset):
+                if isinstance(_quota_type_0, Unset):
                     quota_type_0 = UNSET
                 else:
                     quota_type_0 = RhubapilabclustercreateClusterResponse200QuotaType0.from_dict(_quota_type_0)
 
-
-
                 return quota_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
             quota_type_1 = data
 
             return quota_type_1
 
         quota = _parse_quota(d.pop("quota", UNSET))
-
 
         region_name = d.pop("region_name", UNSET)
 
@@ -245,20 +215,14 @@ class RhubapilabclustercreateClusterResponse200:
         else:
             reservation_expiration = isoparse(_reservation_expiration)
 
-
-
-
         _status = d.pop("status", UNSET)
         status: Union[Unset, None, RhubapilabclustercreateClusterResponse200Status]
         if _status is None:
             status = None
-        elif isinstance(_status,  Unset):
+        elif isinstance(_status, Unset):
             status = UNSET
         else:
             status = RhubapilabclustercreateClusterResponse200Status(_status)
-
-
-
 
         user_id = d.pop("user_id", UNSET)
 

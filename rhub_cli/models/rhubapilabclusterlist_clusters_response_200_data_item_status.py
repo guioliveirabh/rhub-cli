@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class RhubapilabclusterlistClustersResponse200DataItemStatus(str, Enum):
     ACTIVE = "Active"
     DELETED = "Deleted"

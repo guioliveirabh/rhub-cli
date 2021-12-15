@@ -1,32 +1,21 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from ..models.rhubapilabregionupdate_region_json_body_openstack import RhubapilabregionupdateRegionJsonBodyOpenstack
-from typing import Optional
-from typing import cast
-from ..models.rhubapilabregionupdate_region_json_body_satellite import RhubapilabregionupdateRegionJsonBodySatellite
-from typing import Dict
-from ..types import UNSET, Unset
-from ..models.rhubapilabregionupdate_region_json_body_id import RhubapilabregionupdateRegionJsonBodyId
-from ..models.rhubapilabregionupdate_region_json_body_quota_type_0 import RhubapilabregionupdateRegionJsonBodyQuotaType0
 from ..models.rhubapilabregionupdate_region_json_body_dns_server import RhubapilabregionupdateRegionJsonBodyDnsServer
-from typing import cast, Union
-from typing import Union
-
-
-
+from ..models.rhubapilabregionupdate_region_json_body_id import RhubapilabregionupdateRegionJsonBodyId
+from ..models.rhubapilabregionupdate_region_json_body_openstack import RhubapilabregionupdateRegionJsonBodyOpenstack
+from ..models.rhubapilabregionupdate_region_json_body_quota_type_0 import RhubapilabregionupdateRegionJsonBodyQuotaType0
+from ..models.rhubapilabregionupdate_region_json_body_satellite import RhubapilabregionupdateRegionJsonBodySatellite
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapilabregionupdateRegionJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabregionupdateRegionJsonBody:
-    """  """
+    """ """
+
     banner: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     dns_server: Union[Unset, RhubapilabregionupdateRegionJsonBodyDnsServer] = UNSET
@@ -46,7 +35,6 @@ class RhubapilabregionupdateRegionJsonBody:
     users_group: Union[Unset, None, str] = UNSET
     vault_server: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         banner = self.banner
@@ -80,8 +68,6 @@ class RhubapilabregionupdateRegionJsonBody:
         else:
             quota = self.quota
 
-
-
         reservation_expiration_max = self.reservation_expiration_max
         reservations_enabled = self.reservations_enabled
         satellite: Union[Unset, Dict[str, Any]] = UNSET
@@ -94,8 +80,7 @@ class RhubapilabregionupdateRegionJsonBody:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if banner is not UNSET:
             field_dict["banner"] = banner
         if description is not UNSET:
@@ -135,8 +120,6 @@ class RhubapilabregionupdateRegionJsonBody:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -146,13 +129,10 @@ class RhubapilabregionupdateRegionJsonBody:
 
         _dns_server = d.pop("dns_server", UNSET)
         dns_server: Union[Unset, RhubapilabregionupdateRegionJsonBodyDnsServer]
-        if isinstance(_dns_server,  Unset):
+        if isinstance(_dns_server, Unset):
             dns_server = UNSET
         else:
             dns_server = RhubapilabregionupdateRegionJsonBodyDnsServer.from_dict(_dns_server)
-
-
-
 
         download_server = d.pop("download_server", UNSET)
 
@@ -160,13 +140,10 @@ class RhubapilabregionupdateRegionJsonBody:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabregionupdateRegionJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapilabregionupdateRegionJsonBodyId.from_dict(_id)
-
-
-
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 
@@ -176,13 +153,10 @@ class RhubapilabregionupdateRegionJsonBody:
 
         _openstack = d.pop("openstack", UNSET)
         openstack: Union[Unset, RhubapilabregionupdateRegionJsonBodyOpenstack]
-        if isinstance(_openstack,  Unset):
+        if isinstance(_openstack, Unset):
             openstack = UNSET
         else:
             openstack = RhubapilabregionupdateRegionJsonBodyOpenstack.from_dict(_openstack)
-
-
-
 
         owner_group = d.pop("owner_group", UNSET)
 
@@ -194,15 +168,13 @@ class RhubapilabregionupdateRegionJsonBody:
                     raise TypeError()
                 _quota_type_0 = data
                 quota_type_0: Union[Unset, RhubapilabregionupdateRegionJsonBodyQuotaType0]
-                if isinstance(_quota_type_0,  Unset):
+                if isinstance(_quota_type_0, Unset):
                     quota_type_0 = UNSET
                 else:
                     quota_type_0 = RhubapilabregionupdateRegionJsonBodyQuotaType0.from_dict(_quota_type_0)
 
-
-
                 return quota_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
             quota_type_1 = data
 
@@ -210,20 +182,16 @@ class RhubapilabregionupdateRegionJsonBody:
 
         quota = _parse_quota(d.pop("quota", UNSET))
 
-
         reservation_expiration_max = d.pop("reservation_expiration_max", UNSET)
 
         reservations_enabled = d.pop("reservations_enabled", UNSET)
 
         _satellite = d.pop("satellite", UNSET)
         satellite: Union[Unset, RhubapilabregionupdateRegionJsonBodySatellite]
-        if isinstance(_satellite,  Unset):
+        if isinstance(_satellite, Unset):
             satellite = UNSET
         else:
             satellite = RhubapilabregionupdateRegionJsonBodySatellite.from_dict(_satellite)
-
-
-
 
         tower_id = d.pop("tower_id", UNSET)
 

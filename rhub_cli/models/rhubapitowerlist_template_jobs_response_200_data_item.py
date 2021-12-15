@@ -1,29 +1,21 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+import datetime
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
-
-from ..types import UNSET, Unset
-
-from typing import Optional
-from typing import Dict
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-import datetime
-from typing import cast
-from ..models.rhubapitowerlist_template_jobs_response_200_data_item_id import RhubapitowerlistTemplateJobsResponse200DataItemId
-from typing import Union
 
-
-
+from ..models.rhubapitowerlist_template_jobs_response_200_data_item_id import (
+    RhubapitowerlistTemplateJobsResponse200DataItemId,
+)
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapitowerlistTemplateJobsResponse200DataItem")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowerlistTemplateJobsResponse200DataItem:
-    """  """
+    """ """
+
     created_at: Union[Unset, datetime.datetime] = UNSET
     failed: Union[Unset, bool] = UNSET
     finished: Union[Unset, bool] = UNSET
@@ -36,7 +28,6 @@ class RhubapitowerlistTemplateJobsResponse200DataItem:
     template_id: Union[Unset, int] = UNSET
     tower_job_id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         created_at: Union[Unset, str] = UNSET
@@ -65,8 +56,7 @@ class RhubapitowerlistTemplateJobsResponse200DataItem:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if created_at is not UNSET:
             field_dict["created_at"] = created_at
         if failed is not UNSET:
@@ -92,20 +82,15 @@ class RhubapitowerlistTemplateJobsResponse200DataItem:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         _created_at = d.pop("created_at", UNSET)
         created_at: Union[Unset, datetime.datetime]
-        if isinstance(_created_at,  Unset):
+        if isinstance(_created_at, Unset):
             created_at = UNSET
         else:
             created_at = isoparse(_created_at)
-
-
-
 
         failed = d.pop("failed", UNSET)
 
@@ -115,23 +100,17 @@ class RhubapitowerlistTemplateJobsResponse200DataItem:
         finished_at: Union[Unset, None, datetime.datetime]
         if _finished_at is None:
             finished_at = None
-        elif isinstance(_finished_at,  Unset):
+        elif isinstance(_finished_at, Unset):
             finished_at = UNSET
         else:
             finished_at = isoparse(_finished_at)
 
-
-
-
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapitowerlistTemplateJobsResponse200DataItemId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapitowerlistTemplateJobsResponse200DataItemId.from_dict(_id)
-
-
-
 
         launched_by = d.pop("launched_by", UNSET)
 
@@ -141,13 +120,10 @@ class RhubapitowerlistTemplateJobsResponse200DataItem:
         started_at: Union[Unset, None, datetime.datetime]
         if _started_at is None:
             started_at = None
-        elif isinstance(_started_at,  Unset):
+        elif isinstance(_started_at, Unset):
             started_at = UNSET
         else:
             started_at = isoparse(_started_at)
-
-
-
 
         status = d.pop("status", UNSET)
 

@@ -1,18 +1,11 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from typing import Optional
-from typing import Union
-from ...types import UNSET, Unset
-from typing import Dict
-from typing import cast
-from ...models.rhubapipolicieslist_policies_response_200 import RhubapipolicieslistPoliciesResponse200
+from ...client import AuthenticatedClient
 from ...models.rhubapipolicieslist_policies_filter import RhubapipolicieslistPoliciesFilter
-
+from ...models.rhubapipolicieslist_policies_response_200 import RhubapipolicieslistPoliciesResponse200
+from ...types import UNSET, Response, Unset
 
 
 def _get_kwargs(
@@ -21,17 +14,11 @@ def _get_kwargs(
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Dict[str, Any]:
-    url = "{}/policies".format(
-        client.base_url)
+    url = "{}/policies".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
-
-    
-
-    
 
     json_filter_: Union[Unset, None, Dict[str, Any]] = UNSET
     if not isinstance(filter_, Unset):
@@ -45,11 +32,6 @@ def _get_kwargs(
         params.update(json_filter_)
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
-
-    
-
-    
-
     return {
         "url": url,
         "headers": headers,
@@ -62,8 +44,6 @@ def _get_kwargs(
 def _parse_response(*, response: httpx.Response) -> Optional[RhubapipolicieslistPoliciesResponse200]:
     if response.status_code == 200:
         response_200 = RhubapipolicieslistPoliciesResponse200.from_dict(response.json())
-
-
 
         return response_200
     return None
@@ -84,14 +64,12 @@ def sync_detailed(
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Response[RhubapipolicieslistPoliciesResponse200]:
     kwargs = _get_kwargs(
         client=client,
-filter_=filter_,
-page=page,
-limit=limit,
-
+        filter_=filter_,
+        page=page,
+        limit=limit,
     )
 
     response = httpx.get(
@@ -101,23 +79,23 @@ limit=limit,
 
     return _build_response(response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Optional[RhubapipolicieslistPoliciesResponse200]:
-    """  """
+    """ """
 
     return sync_detailed(
         client=client,
-filter_=filter_,
-page=page,
-limit=limit,
-
+        filter_=filter_,
+        page=page,
+        limit=limit,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
@@ -125,22 +103,19 @@ async def asyncio_detailed(
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Response[RhubapipolicieslistPoliciesResponse200]:
     kwargs = _get_kwargs(
         client=client,
-filter_=filter_,
-page=page,
-limit=limit,
-
+        filter_=filter_,
+        page=page,
+        limit=limit,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.get(
-            **kwargs
-        )
+        response = await _client.get(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     *,
@@ -148,14 +123,14 @@ async def asyncio(
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-
 ) -> Optional[RhubapipolicieslistPoliciesResponse200]:
-    """  """
+    """ """
 
-    return (await asyncio_detailed(
-        client=client,
-filter_=filter_,
-page=page,
-limit=limit,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            filter_=filter_,
+            page=page,
+            limit=limit,
+        )
+    ).parsed

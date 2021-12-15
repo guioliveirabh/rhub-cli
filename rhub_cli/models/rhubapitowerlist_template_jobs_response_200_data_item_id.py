@@ -1,40 +1,28 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..types import UNSET, Unset
-
-
-
-
-
 T = TypeVar("T", bound="RhubapitowerlistTemplateJobsResponse200DataItemId")
+
 
 @attr.s(auto_attribs=True)
 class RhubapitowerlistTemplateJobsResponse200DataItemId:
-    """ Internal ID """
+    """Internal ID"""
+
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
-
     def to_dict(self) -> Dict[str, Any]:
-        
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        rhubapitowerlist_template_jobs_response_200_data_item_id = cls(
-        )
+        rhubapitowerlist_template_jobs_response_200_data_item_id = cls()
 
         rhubapitowerlist_template_jobs_response_200_data_item_id.additional_properties = d
         return rhubapitowerlist_template_jobs_response_200_data_item_id

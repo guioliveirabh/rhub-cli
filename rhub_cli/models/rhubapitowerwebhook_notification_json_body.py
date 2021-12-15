@@ -1,29 +1,19 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+import datetime
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
-
-from ..types import UNSET, Unset
-
-from typing import Optional
-from typing import Dict
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-import datetime
-from typing import cast
+
 from ..models.rhubapitowerwebhook_notification_json_body_hosts import RhubapitowerwebhookNotificationJsonBodyHosts
-from typing import Union
-
-
-
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapitowerwebhookNotificationJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowerwebhookNotificationJsonBody:
-    """  """
+    """ """
+
     body: Union[Unset, None, str] = UNSET
     created_by: Union[Unset, str] = UNSET
     credential: Union[Unset, None, str] = UNSET
@@ -41,7 +31,6 @@ class RhubapitowerwebhookNotificationJsonBody:
     traceback: Union[Unset, None, str] = UNSET
     url: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         body = self.body
@@ -72,8 +61,7 @@ class RhubapitowerwebhookNotificationJsonBody:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if body is not UNSET:
             field_dict["body"] = body
         if created_by is not UNSET:
@@ -109,8 +97,6 @@ class RhubapitowerwebhookNotificationJsonBody:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -126,25 +112,19 @@ class RhubapitowerwebhookNotificationJsonBody:
         finished: Union[Unset, None, datetime.datetime]
         if _finished is None:
             finished = None
-        elif isinstance(_finished,  Unset):
+        elif isinstance(_finished, Unset):
             finished = UNSET
         else:
             finished = isoparse(_finished)
-
-
-
 
         _hosts = d.pop("hosts", UNSET)
         hosts: Union[Unset, None, RhubapitowerwebhookNotificationJsonBodyHosts]
         if _hosts is None:
             hosts = None
-        elif isinstance(_hosts,  Unset):
+        elif isinstance(_hosts, Unset):
             hosts = UNSET
         else:
             hosts = RhubapitowerwebhookNotificationJsonBodyHosts.from_dict(_hosts)
-
-
-
 
         id = d.pop("id", UNSET)
 
@@ -162,13 +142,10 @@ class RhubapitowerwebhookNotificationJsonBody:
         started: Union[Unset, None, datetime.datetime]
         if _started is None:
             started = None
-        elif isinstance(_started,  Unset):
+        elif isinstance(_started, Unset):
             started = UNSET
         else:
             started = isoparse(_started)
-
-
-
 
         status = d.pop("status", UNSET)
 

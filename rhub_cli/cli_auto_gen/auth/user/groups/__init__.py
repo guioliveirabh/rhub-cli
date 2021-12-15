@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def groups():
     pass
@@ -20,5 +19,3 @@ def create():
 @groups.command()
 def remove():
     pass
-
-

@@ -1,31 +1,22 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
 from ..types import UNSET, Unset
 
-from typing import Optional
-from typing import Union
-from ..types import UNSET, Unset
-
-
-
-
 T = TypeVar("T", bound="RhubapilabclusterlistClustersFilter")
+
 
 @attr.s(auto_attribs=True)
 class RhubapilabclusterlistClustersFilter:
-    """  """
+    """ """
+
     group_id: Union[Unset, None, str] = UNSET
     name: Union[Unset, str] = UNSET
     region_id: Union[Unset, int] = UNSET
     shared: Union[Unset, bool] = UNSET
     user_id: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         group_id = self.group_id
@@ -36,8 +27,7 @@ class RhubapilabclusterlistClustersFilter:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if group_id is not UNSET:
             field_dict["group_id"] = group_id
         if name is not UNSET:
@@ -50,8 +40,6 @@ class RhubapilabclusterlistClustersFilter:
             field_dict["user_id"] = user_id
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:

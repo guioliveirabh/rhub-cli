@@ -1,26 +1,17 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import cast
 from ..models.rhubapitowerlist_templates_response_200_data_item_id import RhubapitowerlistTemplatesResponse200DataItemId
-from typing import Union
 from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapitowerlistTemplatesResponse200DataItem")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowerlistTemplatesResponse200DataItem:
-    """  """
+    """ """
+
     description: Union[Unset, str] = UNSET
     id: Union[Unset, RhubapitowerlistTemplatesResponse200DataItemId] = UNSET
     name: Union[Unset, str] = UNSET
@@ -28,7 +19,6 @@ class RhubapitowerlistTemplatesResponse200DataItem:
     tower_template_id: Union[Unset, int] = UNSET
     tower_template_is_workflow: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
@@ -43,8 +33,7 @@ class RhubapitowerlistTemplatesResponse200DataItem:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
         if id is not UNSET:
@@ -60,8 +49,6 @@ class RhubapitowerlistTemplatesResponse200DataItem:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -69,13 +56,10 @@ class RhubapitowerlistTemplatesResponse200DataItem:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapitowerlistTemplatesResponse200DataItemId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapitowerlistTemplatesResponse200DataItemId.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 

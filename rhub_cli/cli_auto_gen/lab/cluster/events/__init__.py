@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def events():
     pass
@@ -10,5 +9,3 @@ def events():
 @events.command()
 def get_list():
     pass
-
-

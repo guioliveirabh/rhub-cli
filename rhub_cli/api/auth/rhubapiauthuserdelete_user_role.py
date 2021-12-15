@@ -1,14 +1,10 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from typing import cast
-from typing import Dict
+from ...client import AuthenticatedClient
 from ...models.rhubapiauthuserdelete_user_role_json_body import RhubapiauthuserdeleteUserRoleJsonBody
-
+from ...types import Response
 
 
 def _get_kwargs(
@@ -16,25 +12,13 @@ def _get_kwargs(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserRoleJsonBody,
-
 ) -> Dict[str, Any]:
-    url = "{}/auth/user/{user_id}/roles".format(
-        client.base_url,user_id=user_id)
+    url = "{}/auth/user/{user_id}/roles".format(client.base_url, user_id=user_id)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
 
-    
-
-    
-
-    
-
     json_json_body = json_body.to_dict()
-
-
-
-    
 
     return {
         "url": url,
@@ -43,8 +27,6 @@ def _get_kwargs(
         "timeout": client.get_timeout(),
         "json": json_json_body,
     }
-
-
 
 
 def _build_response(*, response: httpx.Response) -> Response[Any]:
@@ -61,13 +43,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserRoleJsonBody,
-
 ) -> Response[Any]:
     kwargs = _get_kwargs(
         user_id=user_id,
-client=client,
-json_body=json_body,
-
+        client=client,
+        json_body=json_body,
     )
 
     response = httpx.delete(
@@ -83,19 +63,14 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserRoleJsonBody,
-
 ) -> Response[Any]:
     kwargs = _get_kwargs(
         user_id=user_id,
-client=client,
-json_body=json_body,
-
+        client=client,
+        json_body=json_body,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.delete(
-            **kwargs
-        )
+        response = await _client.delete(**kwargs)
 
     return _build_response(response=response)
-

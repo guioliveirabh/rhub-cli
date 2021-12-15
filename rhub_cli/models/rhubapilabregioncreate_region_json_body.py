@@ -1,29 +1,18 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import Optional
-from typing import Dict
-from ..types import UNSET, Unset
-from ..models.rhubapilabregioncreate_region_json_body_quota_type_0 import RhubapilabregioncreateRegionJsonBodyQuotaType0
-from typing import cast
 from ..models.rhubapilabregioncreate_region_json_body_id import RhubapilabregioncreateRegionJsonBodyId
-from typing import cast, Union
-from typing import Union
-
-
-
+from ..models.rhubapilabregioncreate_region_json_body_quota_type_0 import RhubapilabregioncreateRegionJsonBodyQuotaType0
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapilabregioncreateRegionJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabregioncreateRegionJsonBody:
-    """  """
+    """ """
+
     dns_server: Any
     download_server: str
     name: str
@@ -43,7 +32,6 @@ class RhubapilabregioncreateRegionJsonBody:
     reservations_enabled: Union[Unset, bool] = UNSET
     users_group: Union[Unset, None, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         dns_server = self.dns_server
@@ -77,23 +65,23 @@ class RhubapilabregioncreateRegionJsonBody:
         else:
             quota = self.quota
 
-
-
         reservation_expiration_max = self.reservation_expiration_max
         reservations_enabled = self.reservations_enabled
         users_group = self.users_group
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-            "dns_server": dns_server,
-            "download_server": download_server,
-            "name": name,
-            "openstack": openstack,
-            "satellite": satellite,
-            "tower_id": tower_id,
-            "vault_server": vault_server,
-        })
+        field_dict.update(
+            {
+                "dns_server": dns_server,
+                "download_server": download_server,
+                "name": name,
+                "openstack": openstack,
+                "satellite": satellite,
+                "tower_id": tower_id,
+                "vault_server": vault_server,
+            }
+        )
         if banner is not UNSET:
             field_dict["banner"] = banner
         if description is not UNSET:
@@ -119,13 +107,10 @@ class RhubapilabregioncreateRegionJsonBody:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         dns_server = d.pop("dns_server")
-
 
         download_server = d.pop("download_server")
 
@@ -133,9 +118,7 @@ class RhubapilabregioncreateRegionJsonBody:
 
         openstack = d.pop("openstack")
 
-
         satellite = d.pop("satellite")
-
 
         tower_id = d.pop("tower_id")
 
@@ -149,13 +132,10 @@ class RhubapilabregioncreateRegionJsonBody:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabregioncreateRegionJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapilabregioncreateRegionJsonBodyId.from_dict(_id)
-
-
-
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 
@@ -171,22 +151,19 @@ class RhubapilabregioncreateRegionJsonBody:
                     raise TypeError()
                 _quota_type_0 = data
                 quota_type_0: Union[Unset, RhubapilabregioncreateRegionJsonBodyQuotaType0]
-                if isinstance(_quota_type_0,  Unset):
+                if isinstance(_quota_type_0, Unset):
                     quota_type_0 = UNSET
                 else:
                     quota_type_0 = RhubapilabregioncreateRegionJsonBodyQuotaType0.from_dict(_quota_type_0)
 
-
-
                 return quota_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
             quota_type_1 = data
 
             return quota_type_1
 
         quota = _parse_quota(d.pop("quota", UNSET))
-
 
         reservation_expiration_max = d.pop("reservation_expiration_max", UNSET)
 

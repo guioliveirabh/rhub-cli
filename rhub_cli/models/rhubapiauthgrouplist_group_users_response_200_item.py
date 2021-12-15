@@ -1,28 +1,21 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.rhubapiauthgrouplist_group_users_response_200_item_id import (
+    RhubapiauthgrouplistGroupUsersResponse200ItemId,
+)
 from ..types import UNSET, Unset
-
-from typing import cast
-from ..models.rhubapiauthgrouplist_group_users_response_200_item_id import RhubapiauthgrouplistGroupUsersResponse200ItemId
-from typing import Union
-from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapiauthgrouplistGroupUsersResponse200Item")
 
+
 @attr.s(auto_attribs=True)
 class RhubapiauthgrouplistGroupUsersResponse200Item:
-    """ See [Keycloak API: UserRepresentation](
-  https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
- """
+    """See [Keycloak API: UserRepresentation](
+    https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+    """
+
     email: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     first_name: Union[Unset, str] = UNSET
@@ -31,7 +24,6 @@ class RhubapiauthgrouplistGroupUsersResponse200Item:
     password: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         email = self.email
@@ -47,8 +39,7 @@ class RhubapiauthgrouplistGroupUsersResponse200Item:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if email is not UNSET:
             field_dict["email"] = email
         if enabled is not UNSET:
@@ -66,8 +57,6 @@ class RhubapiauthgrouplistGroupUsersResponse200Item:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -79,13 +68,10 @@ class RhubapiauthgrouplistGroupUsersResponse200Item:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapiauthgrouplistGroupUsersResponse200ItemId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapiauthgrouplistGroupUsersResponse200ItemId.from_dict(_id)
-
-
-
 
         last_name = d.pop("lastName", UNSET)
 

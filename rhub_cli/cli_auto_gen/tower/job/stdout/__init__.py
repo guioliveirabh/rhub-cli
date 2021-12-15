@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def stdout():
     pass
@@ -10,5 +9,3 @@ def stdout():
 @stdout.command()
 def get():
     pass
-
-

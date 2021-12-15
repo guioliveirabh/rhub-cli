@@ -1,30 +1,22 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
+from ..models.rhubapilabclustercreate_cluster_hosts_json_body_item_cluster_id import (
+    RhubapilabclustercreateClusterHostsJsonBodyItemClusterId,
+)
+from ..models.rhubapilabclustercreate_cluster_hosts_json_body_item_id import (
+    RhubapilabclustercreateClusterHostsJsonBodyItemId,
+)
 from ..types import UNSET, Unset
-
-from typing import cast, List
-from typing import Optional
-from ..models.rhubapilabclustercreate_cluster_hosts_json_body_item_cluster_id import RhubapilabclustercreateClusterHostsJsonBodyItemClusterId
-from typing import Dict
-from ..types import UNSET, Unset
-from ..models.rhubapilabclustercreate_cluster_hosts_json_body_item_id import RhubapilabclustercreateClusterHostsJsonBodyItemId
-from typing import cast
-from typing import cast, Union
-from typing import Union
-
-
-
 
 T = TypeVar("T", bound="RhubapilabclustercreateClusterHostsJsonBodyItem")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabclustercreateClusterHostsJsonBodyItem:
-    """  """
+    """ """
+
     fqdn: str
     ipaddr: List[str]
     cluster_id: Union[Unset, RhubapilabclustercreateClusterHostsJsonBodyItemClusterId] = UNSET
@@ -35,18 +27,13 @@ class RhubapilabclustercreateClusterHostsJsonBodyItem:
     volumes_gb: Union[Unset, None, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
-
     def to_dict(self) -> Dict[str, Any]:
         fqdn = self.fqdn
         ipaddr = []
         for ipaddr_item_data in self.ipaddr:
             ipaddr_item = ipaddr_item_data
 
-
             ipaddr.append(ipaddr_item)
-
-
-
 
         cluster_id: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.cluster_id, Unset):
@@ -63,10 +50,12 @@ class RhubapilabclustercreateClusterHostsJsonBodyItem:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-            "fqdn": fqdn,
-            "ipaddr": ipaddr,
-        })
+        field_dict.update(
+            {
+                "fqdn": fqdn,
+                "ipaddr": ipaddr,
+            }
+        )
         if cluster_id is not UNSET:
             field_dict["cluster_id"] = cluster_id
         if id is not UNSET:
@@ -82,8 +71,6 @@ class RhubapilabclustercreateClusterHostsJsonBodyItem:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -91,7 +78,8 @@ class RhubapilabclustercreateClusterHostsJsonBodyItem:
 
         ipaddr = []
         _ipaddr = d.pop("ipaddr")
-        for ipaddr_item_data in (_ipaddr):
+        for ipaddr_item_data in _ipaddr:
+
             def _parse_ipaddr_item(data: object) -> str:
                 return cast(str, data)
 
@@ -99,26 +87,19 @@ class RhubapilabclustercreateClusterHostsJsonBodyItem:
 
             ipaddr.append(ipaddr_item)
 
-
         _cluster_id = d.pop("cluster_id", UNSET)
         cluster_id: Union[Unset, RhubapilabclustercreateClusterHostsJsonBodyItemClusterId]
-        if isinstance(_cluster_id,  Unset):
+        if isinstance(_cluster_id, Unset):
             cluster_id = UNSET
         else:
             cluster_id = RhubapilabclustercreateClusterHostsJsonBodyItemClusterId.from_dict(_cluster_id)
 
-
-
-
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabclustercreateClusterHostsJsonBodyItemId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapilabclustercreateClusterHostsJsonBodyItemId.from_dict(_id)
-
-
-
 
         num_vcpus = d.pop("num_vcpus", UNSET)
 

@@ -1,15 +1,11 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, Optional
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from ...models.rhubapischedulercronupdate_job_response_200 import RhubapischedulercronupdateJobResponse200
-from typing import cast
+from ...client import AuthenticatedClient
 from ...models.rhubapischedulercronupdate_job_json_body import RhubapischedulercronupdateJobJsonBody
-from typing import Dict
-
+from ...models.rhubapischedulercronupdate_job_response_200 import RhubapischedulercronupdateJobResponse200
+from ...types import Response
 
 
 def _get_kwargs(
@@ -17,25 +13,13 @@ def _get_kwargs(
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-
 ) -> Dict[str, Any]:
-    url = "{}/scheduler/cron/{cron_job_id}".format(
-        client.base_url,cron_job_id=cron_job_id)
+    url = "{}/scheduler/cron/{cron_job_id}".format(client.base_url, cron_job_id=cron_job_id)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
 
-    
-
-    
-
-    
-
     json_json_body = json_body.to_dict()
-
-
-
-    
 
     return {
         "url": url,
@@ -49,8 +33,6 @@ def _get_kwargs(
 def _parse_response(*, response: httpx.Response) -> Optional[RhubapischedulercronupdateJobResponse200]:
     if response.status_code == 200:
         response_200 = RhubapischedulercronupdateJobResponse200.from_dict(response.json())
-
-
 
         return response_200
     return None
@@ -70,13 +52,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-
 ) -> Response[RhubapischedulercronupdateJobResponse200]:
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
-client=client,
-json_body=json_body,
-
+        client=client,
+        json_body=json_body,
     )
 
     response = httpx.patch(
@@ -86,55 +66,52 @@ json_body=json_body,
 
     return _build_response(response=response)
 
+
 def sync(
     cron_job_id: int,
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-
 ) -> Optional[RhubapischedulercronupdateJobResponse200]:
-    """  """
+    """ """
 
     return sync_detailed(
         cron_job_id=cron_job_id,
-client=client,
-json_body=json_body,
-
+        client=client,
+        json_body=json_body,
     ).parsed
+
 
 async def asyncio_detailed(
     cron_job_id: int,
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-
 ) -> Response[RhubapischedulercronupdateJobResponse200]:
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
-client=client,
-json_body=json_body,
-
+        client=client,
+        json_body=json_body,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.patch(
-            **kwargs
-        )
+        response = await _client.patch(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     cron_job_id: int,
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-
 ) -> Optional[RhubapischedulercronupdateJobResponse200]:
-    """  """
+    """ """
 
-    return (await asyncio_detailed(
-        cron_job_id=cron_job_id,
-client=client,
-json_body=json_body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            cron_job_id=cron_job_id,
+            client=client,
+            json_body=json_body,
+        )
+    ).parsed

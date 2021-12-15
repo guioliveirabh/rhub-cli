@@ -1,15 +1,11 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, Optional
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from typing import cast
+from ...client import AuthenticatedClient
 from ...models.rhubapitowerlaunch_template_json_body import RhubapitowerlaunchTemplateJsonBody
 from ...models.rhubapitowerlaunch_template_response_200 import RhubapitowerlaunchTemplateResponse200
-from typing import Dict
-
+from ...types import Response
 
 
 def _get_kwargs(
@@ -17,25 +13,13 @@ def _get_kwargs(
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
-
 ) -> Dict[str, Any]:
-    url = "{}/tower/template/{template_id}/launch".format(
-        client.base_url,template_id=template_id)
+    url = "{}/tower/template/{template_id}/launch".format(client.base_url, template_id=template_id)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
 
-    
-
-    
-
-    
-
     json_json_body = json_body.to_dict()
-
-
-
-    
 
     return {
         "url": url,
@@ -49,8 +33,6 @@ def _get_kwargs(
 def _parse_response(*, response: httpx.Response) -> Optional[RhubapitowerlaunchTemplateResponse200]:
     if response.status_code == 200:
         response_200 = RhubapitowerlaunchTemplateResponse200.from_dict(response.json())
-
-
 
         return response_200
     return None
@@ -70,13 +52,11 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
-
 ) -> Response[RhubapitowerlaunchTemplateResponse200]:
     kwargs = _get_kwargs(
         template_id=template_id,
-client=client,
-json_body=json_body,
-
+        client=client,
+        json_body=json_body,
     )
 
     response = httpx.post(
@@ -86,55 +66,52 @@ json_body=json_body,
 
     return _build_response(response=response)
 
+
 def sync(
     template_id: int,
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
-
 ) -> Optional[RhubapitowerlaunchTemplateResponse200]:
-    """  """
+    """ """
 
     return sync_detailed(
         template_id=template_id,
-client=client,
-json_body=json_body,
-
+        client=client,
+        json_body=json_body,
     ).parsed
+
 
 async def asyncio_detailed(
     template_id: int,
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
-
 ) -> Response[RhubapitowerlaunchTemplateResponse200]:
     kwargs = _get_kwargs(
         template_id=template_id,
-client=client,
-json_body=json_body,
-
+        client=client,
+        json_body=json_body,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.post(
-            **kwargs
-        )
+        response = await _client.post(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     template_id: int,
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
-
 ) -> Optional[RhubapitowerlaunchTemplateResponse200]:
-    """  """
+    """ """
 
-    return (await asyncio_detailed(
-        template_id=template_id,
-client=client,
-json_body=json_body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            template_id=template_id,
+            client=client,
+            json_body=json_body,
+        )
+    ).parsed

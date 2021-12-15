@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def regions():
     pass
@@ -10,5 +9,3 @@ def regions():
 @regions.command()
 def get_list():
     pass
-
-

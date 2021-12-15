@@ -1,28 +1,19 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
+from ..models.rhubapilabregionget_region_response_200_openstack_credentials_type_0 import (
+    RhubapilabregiongetRegionResponse200OpenstackCredentialsType0,
+)
 from ..types import UNSET, Unset
-
-from typing import cast, List
-from typing import Union
-from typing import Dict
-from ..types import UNSET, Unset
-from ..models.rhubapilabregionget_region_response_200_openstack_credentials_type_0 import RhubapilabregiongetRegionResponse200OpenstackCredentialsType0
-from typing import cast
-from typing import cast, Union
-
-
-
 
 T = TypeVar("T", bound="RhubapilabregiongetRegionResponse200Openstack")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabregiongetRegionResponse200Openstack:
-    """  """
+    """ """
+
     credentials: Union[RhubapilabregiongetRegionResponse200OpenstackCredentialsType0, Unset, str] = UNSET
     domain_id: Union[Unset, str] = UNSET
     domain_name: Union[Unset, str] = UNSET
@@ -31,7 +22,6 @@ class RhubapilabregiongetRegionResponse200Openstack:
     project: Union[Unset, str] = UNSET
     url: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         credentials: Union[Dict[str, Any], Unset, str]
@@ -45,7 +35,6 @@ class RhubapilabregiongetRegionResponse200Openstack:
         else:
             credentials = self.credentials
 
-
         domain_id = self.domain_id
         domain_name = self.domain_name
         keyname = self.keyname
@@ -53,16 +42,12 @@ class RhubapilabregiongetRegionResponse200Openstack:
         if not isinstance(self.networks, Unset):
             networks = self.networks
 
-
-
-
         project = self.project
         url = self.url
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if credentials is not UNSET:
             field_dict["credentials"] = credentials
         if domain_id is not UNSET:
@@ -80,12 +65,13 @@ class RhubapilabregiongetRegionResponse200Openstack:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        def _parse_credentials(data: object) -> Union[RhubapilabregiongetRegionResponse200OpenstackCredentialsType0, Unset, str]:
+
+        def _parse_credentials(
+            data: object,
+        ) -> Union[RhubapilabregiongetRegionResponse200OpenstackCredentialsType0, Unset, str]:
             if isinstance(data, Unset):
                 return data
             try:
@@ -93,20 +79,19 @@ class RhubapilabregiongetRegionResponse200Openstack:
                     raise TypeError()
                 _credentials_type_0 = data
                 credentials_type_0: Union[Unset, RhubapilabregiongetRegionResponse200OpenstackCredentialsType0]
-                if isinstance(_credentials_type_0,  Unset):
+                if isinstance(_credentials_type_0, Unset):
                     credentials_type_0 = UNSET
                 else:
-                    credentials_type_0 = RhubapilabregiongetRegionResponse200OpenstackCredentialsType0.from_dict(_credentials_type_0)
-
-
+                    credentials_type_0 = RhubapilabregiongetRegionResponse200OpenstackCredentialsType0.from_dict(
+                        _credentials_type_0
+                    )
 
                 return credentials_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
             return cast(Union[RhubapilabregiongetRegionResponse200OpenstackCredentialsType0, Unset, str], data)
 
         credentials = _parse_credentials(d.pop("credentials", UNSET))
-
 
         domain_id = d.pop("domain_id", UNSET)
 
@@ -115,7 +100,6 @@ class RhubapilabregiongetRegionResponse200Openstack:
         keyname = d.pop("keyname", UNSET)
 
         networks = cast(List[str], d.pop("networks", UNSET))
-
 
         project = d.pop("project", UNSET)
 

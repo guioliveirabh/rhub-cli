@@ -1,26 +1,17 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
 from ..models.rhubapiauthusercreate_user_json_body_id import RhubapiauthusercreateUserJsonBodyId
-from typing import cast
-from typing import Union
 from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapiauthusercreateUserJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapiauthusercreateUserJsonBody:
-    """  """
+    """ """
+
     email: str
     username: str
     enabled: Union[Unset, bool] = UNSET
@@ -29,7 +20,6 @@ class RhubapiauthusercreateUserJsonBody:
     last_name: Union[Unset, str] = UNSET
     password: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         email = self.email
@@ -45,10 +35,12 @@ class RhubapiauthusercreateUserJsonBody:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-            "email": email,
-            "username": username,
-        })
+        field_dict.update(
+            {
+                "email": email,
+                "username": username,
+            }
+        )
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
         if first_name is not UNSET:
@@ -61,8 +53,6 @@ class RhubapiauthusercreateUserJsonBody:
             field_dict["password"] = password
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
@@ -77,13 +67,10 @@ class RhubapiauthusercreateUserJsonBody:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapiauthusercreateUserJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapiauthusercreateUserJsonBodyId.from_dict(_id)
-
-
-
 
         last_name = d.pop("lastName", UNSET)
 

@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def me():
     pass
@@ -10,5 +9,3 @@ def me():
 @me.command()
 def get():
     pass
-
-

@@ -1,32 +1,23 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
+from ..models.rhubapilabregionget_region_response_200_dns_server_key_type_0 import (
+    RhubapilabregiongetRegionResponse200DnsServerKeyType0,
+)
 from ..types import UNSET, Unset
-
-from ..models.rhubapilabregionget_region_response_200_dns_server_key_type_0 import RhubapilabregiongetRegionResponse200DnsServerKeyType0
-from typing import Dict
-from ..types import UNSET, Unset
-from typing import cast
-from typing import cast, Union
-from typing import Union
-
-
-
 
 T = TypeVar("T", bound="RhubapilabregiongetRegionResponse200DnsServer")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabregiongetRegionResponse200DnsServer:
-    """  """
+    """ """
+
     hostname: Union[Unset, str] = UNSET
     key: Union[RhubapilabregiongetRegionResponse200DnsServerKeyType0, Unset, str] = UNSET
     zone: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         hostname = self.hostname
@@ -41,13 +32,11 @@ class RhubapilabregiongetRegionResponse200DnsServer:
         else:
             key = self.key
 
-
         zone = self.zone
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if hostname is not UNSET:
             field_dict["hostname"] = hostname
         if key is not UNSET:
@@ -56,8 +45,6 @@ class RhubapilabregiongetRegionResponse200DnsServer:
             field_dict["zone"] = zone
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
@@ -72,20 +59,17 @@ class RhubapilabregiongetRegionResponse200DnsServer:
                     raise TypeError()
                 _key_type_0 = data
                 key_type_0: Union[Unset, RhubapilabregiongetRegionResponse200DnsServerKeyType0]
-                if isinstance(_key_type_0,  Unset):
+                if isinstance(_key_type_0, Unset):
                     key_type_0 = UNSET
                 else:
                     key_type_0 = RhubapilabregiongetRegionResponse200DnsServerKeyType0.from_dict(_key_type_0)
 
-
-
                 return key_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
             return cast(Union[RhubapilabregiongetRegionResponse200DnsServerKeyType0, Unset, str], data)
 
         key = _parse_key(d.pop("key", UNSET))
-
 
         zone = d.pop("zone", UNSET)
 

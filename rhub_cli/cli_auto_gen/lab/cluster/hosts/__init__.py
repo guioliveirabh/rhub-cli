@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def hosts():
     pass
@@ -20,5 +19,3 @@ def create():
 @hosts.command()
 def remove():
     pass
-
-

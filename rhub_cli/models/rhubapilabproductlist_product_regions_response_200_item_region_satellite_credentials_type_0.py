@@ -1,27 +1,19 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
 from ..types import UNSET, Unset
 
-from typing import Union
-from ..types import UNSET, Unset
-
-
-
-
 T = TypeVar("T", bound="RhubapilabproductlistProductRegionsResponse200ItemRegionSatelliteCredentialsType0")
+
 
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsResponse200ItemRegionSatelliteCredentialsType0:
-    """ Credentials to store in Vault """
+    """Credentials to store in Vault"""
+
     password: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         password = self.password
@@ -29,16 +21,13 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegionSatelliteCredentia
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if password is not UNSET:
             field_dict["password"] = password
         if username is not UNSET:
             field_dict["username"] = username
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
@@ -52,7 +41,9 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegionSatelliteCredentia
             username=username,
         )
 
-        rhubapilabproductlist_product_regions_response_200_item_region_satellite_credentials_type_0.additional_properties = d
+        rhubapilabproductlist_product_regions_response_200_item_region_satellite_credentials_type_0.additional_properties = (
+            d
+        )
         return rhubapilabproductlist_product_regions_response_200_item_region_satellite_credentials_type_0
 
     @property

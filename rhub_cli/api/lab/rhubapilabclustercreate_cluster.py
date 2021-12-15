@@ -1,40 +1,24 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict, Optional
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-from ...models.rhubapilabclustercreate_cluster_response_200 import RhubapilabclustercreateClusterResponse200
-from typing import cast
+from ...client import AuthenticatedClient
 from ...models.rhubapilabclustercreate_cluster_json_body import RhubapilabclustercreateClusterJsonBody
-from typing import Dict
-
+from ...models.rhubapilabclustercreate_cluster_response_200 import RhubapilabclustercreateClusterResponse200
+from ...types import Response
 
 
 def _get_kwargs(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-
 ) -> Dict[str, Any]:
-    url = "{}/lab/cluster".format(
-        client.base_url)
+    url = "{}/lab/cluster".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
 
-    
-
-    
-
-    
-
     json_json_body = json_body.to_dict()
-
-
-
-    
 
     return {
         "url": url,
@@ -48,8 +32,6 @@ def _get_kwargs(
 def _parse_response(*, response: httpx.Response) -> Optional[RhubapilabclustercreateClusterResponse200]:
     if response.status_code == 200:
         response_200 = RhubapilabclustercreateClusterResponse200.from_dict(response.json())
-
-
 
         return response_200
     return None
@@ -68,12 +50,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-
 ) -> Response[RhubapilabclustercreateClusterResponse200]:
     kwargs = _get_kwargs(
         client=client,
-json_body=json_body,
-
+        json_body=json_body,
     )
 
     response = httpx.post(
@@ -83,105 +63,102 @@ json_body=json_body,
 
     return _build_response(response=response)
 
+
 def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-
 ) -> Optional[RhubapilabclustercreateClusterResponse200]:
-    """ Create a new cluster and install selected product. If cluster provisioning
-and product installation is successfully queued in region Tower, cluster
-creation is considered as successful by this endpoint. Provisioning or
-installation takes some time and can fail. Use _GET_ endpoint to get the
-current status of cluster.
+    """Create a new cluster and install selected product. If cluster provisioning
+    and product installation is successfully queued in region Tower, cluster
+    creation is considered as successful by this endpoint. Provisioning or
+    installation takes some time and can fail. Use _GET_ endpoint to get the
+    current status of cluster.
 
-## Reservation system
+    ## Reservation system
 
-When the Reservation System is enabled in a region, a new cluster in
-that region will be required to select the length of the reservation in
-`reservation_expiration` field. Reservation sets soft-limit on cluster,
-when reservation expires cluster will be scheduled for deletion. Maximal
-`reservation_expiration` date is determined from the date of creation (or
-current expiration date when extending expiration) and
-`reservation_expiration_max` attribute on the region.
+    When the Reservation System is enabled in a region, a new cluster in
+    that region will be required to select the length of the reservation in
+    `reservation_expiration` field. Reservation sets soft-limit on cluster,
+    when reservation expires cluster will be scheduled for deletion. Maximal
+    `reservation_expiration` date is determined from the date of creation (or
+    current expiration date when extending expiration) and
+    `reservation_expiration_max` attribute on the region.
 
-When the Lifespan System is enabled in a region, `lifespan_expiration`
-date will automatically be applied to the cluster by backend at time of
-creation. The date is configured on region. Unlike the reservation
-expiration, lifespan is hard-limit and this date can not be set nor
-modified once cluster is created. When lifespan expires cluster will be
-unconditionally scheduled for deletion.
+    When the Lifespan System is enabled in a region, `lifespan_expiration`
+    date will automatically be applied to the cluster by backend at time of
+    creation. The date is configured on region. Unlike the reservation
+    expiration, lifespan is hard-limit and this date can not be set nor
+    modified once cluster is created. When lifespan expires cluster will be
+    unconditionally scheduled for deletion.
 
-## Product
+    ## Product
 
-If product parameters are invalid, problem response may have extra field
-`invalid_product_params` with a short description why parameters are not
-valid (eg. `{\"example_param\": \"is required\"}`).
- """
+    If product parameters are invalid, problem response may have extra field
+    `invalid_product_params` with a short description why parameters are not
+    valid (eg. `{\"example_param\": \"is required\"}`).
+    """
 
     return sync_detailed(
         client=client,
-json_body=json_body,
-
+        json_body=json_body,
     ).parsed
+
 
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-
 ) -> Response[RhubapilabclustercreateClusterResponse200]:
     kwargs = _get_kwargs(
         client=client,
-json_body=json_body,
-
+        json_body=json_body,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.post(
-            **kwargs
-        )
+        response = await _client.post(**kwargs)
 
     return _build_response(response=response)
+
 
 async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-
 ) -> Optional[RhubapilabclustercreateClusterResponse200]:
-    """ Create a new cluster and install selected product. If cluster provisioning
-and product installation is successfully queued in region Tower, cluster
-creation is considered as successful by this endpoint. Provisioning or
-installation takes some time and can fail. Use _GET_ endpoint to get the
-current status of cluster.
+    """Create a new cluster and install selected product. If cluster provisioning
+    and product installation is successfully queued in region Tower, cluster
+    creation is considered as successful by this endpoint. Provisioning or
+    installation takes some time and can fail. Use _GET_ endpoint to get the
+    current status of cluster.
 
-## Reservation system
+    ## Reservation system
 
-When the Reservation System is enabled in a region, a new cluster in
-that region will be required to select the length of the reservation in
-`reservation_expiration` field. Reservation sets soft-limit on cluster,
-when reservation expires cluster will be scheduled for deletion. Maximal
-`reservation_expiration` date is determined from the date of creation (or
-current expiration date when extending expiration) and
-`reservation_expiration_max` attribute on the region.
+    When the Reservation System is enabled in a region, a new cluster in
+    that region will be required to select the length of the reservation in
+    `reservation_expiration` field. Reservation sets soft-limit on cluster,
+    when reservation expires cluster will be scheduled for deletion. Maximal
+    `reservation_expiration` date is determined from the date of creation (or
+    current expiration date when extending expiration) and
+    `reservation_expiration_max` attribute on the region.
 
-When the Lifespan System is enabled in a region, `lifespan_expiration`
-date will automatically be applied to the cluster by backend at time of
-creation. The date is configured on region. Unlike the reservation
-expiration, lifespan is hard-limit and this date can not be set nor
-modified once cluster is created. When lifespan expires cluster will be
-unconditionally scheduled for deletion.
+    When the Lifespan System is enabled in a region, `lifespan_expiration`
+    date will automatically be applied to the cluster by backend at time of
+    creation. The date is configured on region. Unlike the reservation
+    expiration, lifespan is hard-limit and this date can not be set nor
+    modified once cluster is created. When lifespan expires cluster will be
+    unconditionally scheduled for deletion.
 
-## Product
+    ## Product
 
-If product parameters are invalid, problem response may have extra field
-`invalid_product_params` with a short description why parameters are not
-valid (eg. `{\"example_param\": \"is required\"}`).
- """
+    If product parameters are invalid, problem response may have extra field
+    `invalid_product_params` with a short description why parameters are not
+    valid (eg. `{\"example_param\": \"is required\"}`).
+    """
 
-    return (await asyncio_detailed(
-        client=client,
-json_body=json_body,
-
-    )).parsed
+    return (
+        await asyncio_detailed(
+            client=client,
+            json_body=json_body,
+        )
+    ).parsed

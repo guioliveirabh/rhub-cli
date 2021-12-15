@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def refresh():
     pass
@@ -10,5 +9,3 @@ def refresh():
 @refresh.command()
 def create():
     pass
-
-

@@ -1,39 +1,23 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
+from ...client import AuthenticatedClient
 from ...models.rhubapilabproductcreate_product_json_body import RhubapilabproductcreateProductJsonBody
-from typing import cast
-from typing import Dict
-
+from ...types import Response
 
 
 def _get_kwargs(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabproductcreateProductJsonBody,
-
 ) -> Dict[str, Any]:
-    url = "{}/lab/product".format(
-        client.base_url)
+    url = "{}/lab/product".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
 
-    
-
-    
-
-    
-
     json_json_body = json_body.to_dict()
-
-
-
-    
 
     return {
         "url": url,
@@ -42,8 +26,6 @@ def _get_kwargs(
         "timeout": client.get_timeout(),
         "json": json_json_body,
     }
-
-
 
 
 def _build_response(*, response: httpx.Response) -> Response[Any]:
@@ -59,12 +41,10 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabproductcreateProductJsonBody,
-
 ) -> Response[Any]:
     kwargs = _get_kwargs(
         client=client,
-json_body=json_body,
-
+        json_body=json_body,
     )
 
     response = httpx.post(
@@ -79,18 +59,13 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabproductcreateProductJsonBody,
-
 ) -> Response[Any]:
     kwargs = _get_kwargs(
         client=client,
-json_body=json_body,
-
+        json_body=json_body,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.post(
-            **kwargs
-        )
+        response = await _client.post(**kwargs)
 
     return _build_response(response=response)
-

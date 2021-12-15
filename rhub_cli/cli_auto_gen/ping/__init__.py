@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def ping():
     pass
@@ -10,5 +9,3 @@ def ping():
 @ping.command()
 def get():
     pass
-
-

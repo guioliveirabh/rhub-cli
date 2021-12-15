@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def cron():
     pass
@@ -30,5 +29,3 @@ def remove():
 @cron.command()
 def update():
     pass
-
-

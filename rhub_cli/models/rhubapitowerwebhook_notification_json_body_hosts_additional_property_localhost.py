@@ -1,23 +1,16 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
 from ..types import UNSET, Unset
 
-from typing import Union
-from ..types import UNSET, Unset
-
-
-
-
 T = TypeVar("T", bound="RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost")
+
 
 @attr.s(auto_attribs=True)
 class RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost:
-    """  """
+    """ """
+
     changed: Union[Unset, int] = UNSET
     dark: Union[Unset, int] = UNSET
     failed: Union[Unset, bool] = UNSET
@@ -28,7 +21,6 @@ class RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost:
     rescued: Union[Unset, int] = UNSET
     skipped: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         changed = self.changed
@@ -43,8 +35,7 @@ class RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if changed is not UNSET:
             field_dict["changed"] = changed
         if dark is not UNSET:
@@ -65,8 +56,6 @@ class RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost:
             field_dict["skipped"] = skipped
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:

@@ -1,46 +1,30 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, cast
 
 import attr
 
-from ..types import UNSET, Unset
-
-from typing import cast, List
-
-
-
-
 T = TypeVar("T", bound="RhubapiauthrolecreateRoleResponse200Attributes")
+
 
 @attr.s(auto_attribs=True)
 class RhubapiauthrolecreateRoleResponse200Attributes:
-    """ Role attributes """
+    """Role attributes"""
+
     additional_properties: Dict[str, List[str]] = attr.ib(init=False, factory=dict)
 
-
     def to_dict(self) -> Dict[str, Any]:
-        
+
         field_dict: Dict[str, Any] = {}
         for prop_name, prop in self.additional_properties.items():
             field_dict[prop_name] = prop
 
-
-
-
-        field_dict.update({
-        })
+        field_dict.update({})
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        rhubapiauthrolecreate_role_response_200_attributes = cls(
-        )
+        rhubapiauthrolecreate_role_response_200_attributes = cls()
 
         additional_properties = {}
         for prop_name, prop_dict in d.items():

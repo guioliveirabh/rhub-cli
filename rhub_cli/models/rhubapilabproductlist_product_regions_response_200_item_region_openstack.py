@@ -1,29 +1,22 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
+from ..models.rhubapilabproductlist_product_regions_response_200_item_region_openstack_credentials_type_0 import (
+    RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0,
+)
 from ..types import UNSET, Unset
-
-from typing import cast, List
-from typing import Union
-from ..models.rhubapilabproductlist_product_regions_response_200_item_region_openstack_credentials_type_0 import RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0
-from typing import Dict
-from ..types import UNSET, Unset
-from typing import cast
-from typing import cast, Union
-
-
-
 
 T = TypeVar("T", bound="RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack:
-    """  """
-    credentials: Union[RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0, Unset, str] = UNSET
+    """ """
+
+    credentials: Union[
+        RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0, Unset, str
+    ] = UNSET
     domain_id: Union[Unset, str] = UNSET
     domain_name: Union[Unset, str] = UNSET
     keyname: Union[Unset, str] = UNSET
@@ -32,19 +25,19 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack:
     url: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
-
     def to_dict(self) -> Dict[str, Any]:
         credentials: Union[Dict[str, Any], Unset, str]
         if isinstance(self.credentials, Unset):
             credentials = UNSET
-        elif isinstance(self.credentials, RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0):
+        elif isinstance(
+            self.credentials, RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0
+        ):
             credentials = UNSET
             if not isinstance(self.credentials, Unset):
                 credentials = self.credentials.to_dict()
 
         else:
             credentials = self.credentials
-
 
         domain_id = self.domain_id
         domain_name = self.domain_name
@@ -53,16 +46,12 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack:
         if not isinstance(self.networks, Unset):
             networks = self.networks
 
-
-
-
         project = self.project
         url = self.url
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if credentials is not UNSET:
             field_dict["credentials"] = credentials
         if domain_id is not UNSET:
@@ -80,33 +69,40 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        def _parse_credentials(data: object) -> Union[RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0, Unset, str]:
+
+        def _parse_credentials(
+            data: object,
+        ) -> Union[RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0, Unset, str]:
             if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
                 _credentials_type_0 = data
-                credentials_type_0: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0]
-                if isinstance(_credentials_type_0,  Unset):
+                credentials_type_0: Union[
+                    Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0
+                ]
+                if isinstance(_credentials_type_0, Unset):
                     credentials_type_0 = UNSET
                 else:
-                    credentials_type_0 = RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0.from_dict(_credentials_type_0)
-
-
+                    credentials_type_0 = (
+                        RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0.from_dict(
+                            _credentials_type_0
+                        )
+                    )
 
                 return credentials_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
-            return cast(Union[RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0, Unset, str], data)
+            return cast(
+                Union[RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0, Unset, str],
+                data,
+            )
 
         credentials = _parse_credentials(d.pop("credentials", UNSET))
-
 
         domain_id = d.pop("domain_id", UNSET)
 
@@ -115,7 +111,6 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack:
         keyname = d.pop("keyname", UNSET)
 
         networks = cast(List[str], d.pop("networks", UNSET))
-
 
         project = d.pop("project", UNSET)
 

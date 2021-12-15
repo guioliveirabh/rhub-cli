@@ -1,26 +1,17 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
 from ..models.rhubapitowerlist_servers_response_200_data_item_id import RhubapitowerlistServersResponse200DataItemId
-from typing import cast
-from typing import Union
 from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapitowerlistServersResponse200DataItem")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowerlistServersResponse200DataItem:
-    """  """
+    """ """
+
     credentials: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
@@ -29,7 +20,6 @@ class RhubapitowerlistServersResponse200DataItem:
     url: Union[Unset, str] = UNSET
     verify_ssl: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         credentials = self.credentials
@@ -45,8 +35,7 @@ class RhubapitowerlistServersResponse200DataItem:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if credentials is not UNSET:
             field_dict["credentials"] = credentials
         if description is not UNSET:
@@ -64,8 +53,6 @@ class RhubapitowerlistServersResponse200DataItem:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -77,13 +64,10 @@ class RhubapitowerlistServersResponse200DataItem:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapitowerlistServersResponse200DataItemId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapitowerlistServersResponse200DataItemId.from_dict(_id)
-
-
-
 
         name = d.pop("name", UNSET)
 

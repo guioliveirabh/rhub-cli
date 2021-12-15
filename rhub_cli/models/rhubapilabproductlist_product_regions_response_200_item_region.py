@@ -1,32 +1,31 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.rhubapilabproductlist_product_regions_response_200_item_region_dns_server import (
+    RhubapilabproductlistProductRegionsResponse200ItemRegionDnsServer,
+)
+from ..models.rhubapilabproductlist_product_regions_response_200_item_region_id import (
+    RhubapilabproductlistProductRegionsResponse200ItemRegionId,
+)
+from ..models.rhubapilabproductlist_product_regions_response_200_item_region_openstack import (
+    RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack,
+)
+from ..models.rhubapilabproductlist_product_regions_response_200_item_region_quota_type_0 import (
+    RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0,
+)
+from ..models.rhubapilabproductlist_product_regions_response_200_item_region_satellite import (
+    RhubapilabproductlistProductRegionsResponse200ItemRegionSatellite,
+)
 from ..types import UNSET, Unset
-
-from typing import Optional
-from ..models.rhubapilabproductlist_product_regions_response_200_item_region_id import RhubapilabproductlistProductRegionsResponse200ItemRegionId
-from ..models.rhubapilabproductlist_product_regions_response_200_item_region_satellite import RhubapilabproductlistProductRegionsResponse200ItemRegionSatellite
-from ..models.rhubapilabproductlist_product_regions_response_200_item_region_openstack import RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack
-from typing import Dict
-from ..types import UNSET, Unset
-from ..models.rhubapilabproductlist_product_regions_response_200_item_region_quota_type_0 import RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0
-from ..models.rhubapilabproductlist_product_regions_response_200_item_region_dns_server import RhubapilabproductlistProductRegionsResponse200ItemRegionDnsServer
-from typing import cast
-from typing import cast, Union
-from typing import Union
-
-
-
 
 T = TypeVar("T", bound="RhubapilabproductlistProductRegionsResponse200ItemRegion")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsResponse200ItemRegion:
-    """  """
+    """ """
+
     banner: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     dns_server: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionDnsServer] = UNSET
@@ -46,7 +45,6 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
     users_group: Union[Unset, None, str] = UNSET
     vault_server: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         banner = self.banner
@@ -80,8 +78,6 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
         else:
             quota = self.quota
 
-
-
         reservation_expiration_max = self.reservation_expiration_max
         reservations_enabled = self.reservations_enabled
         satellite: Union[Unset, Dict[str, Any]] = UNSET
@@ -94,8 +90,7 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if banner is not UNSET:
             field_dict["banner"] = banner
         if description is not UNSET:
@@ -135,8 +130,6 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -146,13 +139,10 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
 
         _dns_server = d.pop("dns_server", UNSET)
         dns_server: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionDnsServer]
-        if isinstance(_dns_server,  Unset):
+        if isinstance(_dns_server, Unset):
             dns_server = UNSET
         else:
             dns_server = RhubapilabproductlistProductRegionsResponse200ItemRegionDnsServer.from_dict(_dns_server)
-
-
-
 
         download_server = d.pop("download_server", UNSET)
 
@@ -160,13 +150,10 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapilabproductlistProductRegionsResponse200ItemRegionId.from_dict(_id)
-
-
-
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 
@@ -176,17 +163,16 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
 
         _openstack = d.pop("openstack", UNSET)
         openstack: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack]
-        if isinstance(_openstack,  Unset):
+        if isinstance(_openstack, Unset):
             openstack = UNSET
         else:
             openstack = RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack.from_dict(_openstack)
 
-
-
-
         owner_group = d.pop("owner_group", UNSET)
 
-        def _parse_quota(data: object) -> Union[Any, RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0, Unset]:
+        def _parse_quota(
+            data: object,
+        ) -> Union[Any, RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0, Unset]:
             if isinstance(data, Unset):
                 return data
             try:
@@ -194,15 +180,15 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
                     raise TypeError()
                 _quota_type_0 = data
                 quota_type_0: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0]
-                if isinstance(_quota_type_0,  Unset):
+                if isinstance(_quota_type_0, Unset):
                     quota_type_0 = UNSET
                 else:
-                    quota_type_0 = RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0.from_dict(_quota_type_0)
-
-
+                    quota_type_0 = RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0.from_dict(
+                        _quota_type_0
+                    )
 
                 return quota_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
             quota_type_1 = data
 
@@ -210,20 +196,16 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegion:
 
         quota = _parse_quota(d.pop("quota", UNSET))
 
-
         reservation_expiration_max = d.pop("reservation_expiration_max", UNSET)
 
         reservations_enabled = d.pop("reservations_enabled", UNSET)
 
         _satellite = d.pop("satellite", UNSET)
         satellite: Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionSatellite]
-        if isinstance(_satellite,  Unset):
+        if isinstance(_satellite, Unset):
             satellite = UNSET
         else:
             satellite = RhubapilabproductlistProductRegionsResponse200ItemRegionSatellite.from_dict(_satellite)
-
-
-
 
         tower_id = d.pop("tower_id", UNSET)
 

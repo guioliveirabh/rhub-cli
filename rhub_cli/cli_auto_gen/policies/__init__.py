@@ -1,7 +1,6 @@
 import click
 
 
-
 @click.group()
 def policies():
     pass
@@ -30,5 +29,3 @@ def remove():
 @policies.command()
 def update():
     pass
-
-

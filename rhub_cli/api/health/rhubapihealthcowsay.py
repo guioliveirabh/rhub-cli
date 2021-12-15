@@ -1,33 +1,19 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from typing import Any, Dict
 
 import httpx
 
-from ...client import AuthenticatedClient, Client
-from ...types import Response, UNSET
-
-
+from ...client import Client
+from ...types import Response
 
 
 def _get_kwargs(
     *,
     client: Client,
-
 ) -> Dict[str, Any]:
-    url = "{}/cowsay".format(
-        client.base_url)
+    url = "{}/cowsay".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
     cookies: Dict[str, Any] = client.get_cookies()
-
-    
-
-    
-
-    
-
-    
-
-    
 
     return {
         "url": url,
@@ -35,8 +21,6 @@ def _get_kwargs(
         "cookies": cookies,
         "timeout": client.get_timeout(),
     }
-
-
 
 
 def _build_response(*, response: httpx.Response) -> Response[Any]:
@@ -51,11 +35,9 @@ def _build_response(*, response: httpx.Response) -> Response[Any]:
 def sync_detailed(
     *,
     client: Client,
-
 ) -> Response[Any]:
     kwargs = _get_kwargs(
         client=client,
-
     )
 
     response = httpx.get(
@@ -69,17 +51,12 @@ def sync_detailed(
 async def asyncio_detailed(
     *,
     client: Client,
-
 ) -> Response[Any]:
     kwargs = _get_kwargs(
         client=client,
-
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
-        response = await _client.get(
-            **kwargs
-        )
+        response = await _client.get(**kwargs)
 
     return _build_response(response=response)
-

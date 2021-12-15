@@ -1,30 +1,21 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+import datetime
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
-
-from ..types import UNSET, Unset
-
-from typing import cast, List
-from typing import Optional
-from typing import Dict
-from ..types import UNSET, Unset
 from dateutil.parser import isoparse
-import datetime
-from ..models.rhubapipoliciesupdate_policy_json_body_constraint_limit import RhubapipoliciesupdatePolicyJsonBodyConstraintLimit
-from typing import cast
-from typing import Union
 
-
-
+from ..models.rhubapipoliciesupdate_policy_json_body_constraint_limit import (
+    RhubapipoliciesupdatePolicyJsonBodyConstraintLimit,
+)
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapipoliciesupdatePolicyJsonBodyConstraint")
 
+
 @attr.s(auto_attribs=True)
 class RhubapipoliciesupdatePolicyJsonBodyConstraint:
-    """  """
+    """ """
+
     cost: Union[Unset, None, float] = UNSET
     density: Union[Unset, None, str] = UNSET
     limit: Union[Unset, None, RhubapipoliciesupdatePolicyJsonBodyConstraintLimit] = UNSET
@@ -33,7 +24,6 @@ class RhubapipoliciesupdatePolicyJsonBodyConstraint:
     serv_avail: Union[Unset, None, float] = UNSET
     tag: Union[Unset, None, List[str]] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         cost = self.cost
@@ -54,9 +44,6 @@ class RhubapipoliciesupdatePolicyJsonBodyConstraint:
 
                     sched_avail.append(sched_avail_item)
 
-
-
-
         serv_avail = self.serv_avail
         tag: Union[Unset, None, List[str]] = UNSET
         if not isinstance(self.tag, Unset):
@@ -65,14 +52,9 @@ class RhubapipoliciesupdatePolicyJsonBodyConstraint:
             else:
                 tag = self.tag
 
-
-
-
-
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if cost is not UNSET:
             field_dict["cost"] = cost
         if density is not UNSET:
@@ -90,8 +72,6 @@ class RhubapipoliciesupdatePolicyJsonBodyConstraint:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -103,30 +83,23 @@ class RhubapipoliciesupdatePolicyJsonBodyConstraint:
         limit: Union[Unset, None, RhubapipoliciesupdatePolicyJsonBodyConstraintLimit]
         if _limit is None:
             limit = None
-        elif isinstance(_limit,  Unset):
+        elif isinstance(_limit, Unset):
             limit = UNSET
         else:
             limit = RhubapipoliciesupdatePolicyJsonBodyConstraintLimit.from_dict(_limit)
-
-
-
 
         location = d.pop("location", UNSET)
 
         sched_avail = []
         _sched_avail = d.pop("sched_avail", UNSET)
-        for sched_avail_item_data in (_sched_avail or []):
+        for sched_avail_item_data in _sched_avail or []:
             sched_avail_item = isoparse(sched_avail_item_data)
 
-
-
             sched_avail.append(sched_avail_item)
-
 
         serv_avail = d.pop("serv_avail", UNSET)
 
         tag = cast(List[str], d.pop("tag", UNSET))
-
 
         rhubapipoliciesupdate_policy_json_body_constraint = cls(
             cost=cost,

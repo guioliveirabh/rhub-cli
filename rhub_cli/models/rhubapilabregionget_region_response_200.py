@@ -1,32 +1,21 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
 from ..models.rhubapilabregionget_region_response_200_dns_server import RhubapilabregiongetRegionResponse200DnsServer
-from typing import Optional
 from ..models.rhubapilabregionget_region_response_200_id import RhubapilabregiongetRegionResponse200Id
 from ..models.rhubapilabregionget_region_response_200_openstack import RhubapilabregiongetRegionResponse200Openstack
-from ..models.rhubapilabregionget_region_response_200_satellite import RhubapilabregiongetRegionResponse200Satellite
-from typing import Dict
-from ..types import UNSET, Unset
 from ..models.rhubapilabregionget_region_response_200_quota_type_0 import RhubapilabregiongetRegionResponse200QuotaType0
-from typing import cast
-from typing import cast, Union
-from typing import Union
-
-
-
+from ..models.rhubapilabregionget_region_response_200_satellite import RhubapilabregiongetRegionResponse200Satellite
+from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapilabregiongetRegionResponse200")
 
+
 @attr.s(auto_attribs=True)
 class RhubapilabregiongetRegionResponse200:
-    """  """
+    """ """
+
     banner: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     dns_server: Union[Unset, RhubapilabregiongetRegionResponse200DnsServer] = UNSET
@@ -46,7 +35,6 @@ class RhubapilabregiongetRegionResponse200:
     users_group: Union[Unset, None, str] = UNSET
     vault_server: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         banner = self.banner
@@ -80,8 +68,6 @@ class RhubapilabregiongetRegionResponse200:
         else:
             quota = self.quota
 
-
-
         reservation_expiration_max = self.reservation_expiration_max
         reservations_enabled = self.reservations_enabled
         satellite: Union[Unset, Dict[str, Any]] = UNSET
@@ -94,8 +80,7 @@ class RhubapilabregiongetRegionResponse200:
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if banner is not UNSET:
             field_dict["banner"] = banner
         if description is not UNSET:
@@ -135,8 +120,6 @@ class RhubapilabregiongetRegionResponse200:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
@@ -146,13 +129,10 @@ class RhubapilabregiongetRegionResponse200:
 
         _dns_server = d.pop("dns_server", UNSET)
         dns_server: Union[Unset, RhubapilabregiongetRegionResponse200DnsServer]
-        if isinstance(_dns_server,  Unset):
+        if isinstance(_dns_server, Unset):
             dns_server = UNSET
         else:
             dns_server = RhubapilabregiongetRegionResponse200DnsServer.from_dict(_dns_server)
-
-
-
 
         download_server = d.pop("download_server", UNSET)
 
@@ -160,13 +140,10 @@ class RhubapilabregiongetRegionResponse200:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabregiongetRegionResponse200Id]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapilabregiongetRegionResponse200Id.from_dict(_id)
-
-
-
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 
@@ -176,13 +153,10 @@ class RhubapilabregiongetRegionResponse200:
 
         _openstack = d.pop("openstack", UNSET)
         openstack: Union[Unset, RhubapilabregiongetRegionResponse200Openstack]
-        if isinstance(_openstack,  Unset):
+        if isinstance(_openstack, Unset):
             openstack = UNSET
         else:
             openstack = RhubapilabregiongetRegionResponse200Openstack.from_dict(_openstack)
-
-
-
 
         owner_group = d.pop("owner_group", UNSET)
 
@@ -194,15 +168,13 @@ class RhubapilabregiongetRegionResponse200:
                     raise TypeError()
                 _quota_type_0 = data
                 quota_type_0: Union[Unset, RhubapilabregiongetRegionResponse200QuotaType0]
-                if isinstance(_quota_type_0,  Unset):
+                if isinstance(_quota_type_0, Unset):
                     quota_type_0 = UNSET
                 else:
                     quota_type_0 = RhubapilabregiongetRegionResponse200QuotaType0.from_dict(_quota_type_0)
 
-
-
                 return quota_type_0
-            except: # noqa: E722
+            except:  # noqa: E722
                 pass
             quota_type_1 = data
 
@@ -210,20 +182,16 @@ class RhubapilabregiongetRegionResponse200:
 
         quota = _parse_quota(d.pop("quota", UNSET))
 
-
         reservation_expiration_max = d.pop("reservation_expiration_max", UNSET)
 
         reservations_enabled = d.pop("reservations_enabled", UNSET)
 
         _satellite = d.pop("satellite", UNSET)
         satellite: Union[Unset, RhubapilabregiongetRegionResponse200Satellite]
-        if isinstance(_satellite,  Unset):
+        if isinstance(_satellite, Unset):
             satellite = UNSET
         else:
             satellite = RhubapilabregiongetRegionResponse200Satellite.from_dict(_satellite)
-
-
-
 
         tower_id = d.pop("tower_id", UNSET)
 

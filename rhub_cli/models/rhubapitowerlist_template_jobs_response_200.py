@@ -1,31 +1,22 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.rhubapitowerlist_template_jobs_response_200_data_item import (
+    RhubapitowerlistTemplateJobsResponse200DataItem,
+)
 from ..types import UNSET, Unset
-
-from typing import cast, List
-from typing import cast
-from ..models.rhubapitowerlist_template_jobs_response_200_data_item import RhubapitowerlistTemplateJobsResponse200DataItem
-from typing import Union
-from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapitowerlistTemplateJobsResponse200")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowerlistTemplateJobsResponse200:
-    """  """
+    """ """
+
     data: Union[Unset, List[RhubapitowerlistTemplateJobsResponse200DataItem]] = UNSET
     total: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         data: Union[Unset, List[Dict[str, Any]]] = UNSET
@@ -36,15 +27,11 @@ class RhubapitowerlistTemplateJobsResponse200:
 
                 data.append(data_item)
 
-
-
-
         total = self.total
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
         if data is not UNSET:
             field_dict["data"] = data
         if total is not UNSET:
@@ -52,20 +39,15 @@ class RhubapitowerlistTemplateJobsResponse200:
 
         return field_dict
 
-
-
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
         data = []
         _data = d.pop("data", UNSET)
-        for data_item_data in (_data or []):
+        for data_item_data in _data or []:
             data_item = RhubapitowerlistTemplateJobsResponse200DataItem.from_dict(data_item_data)
 
-
-
             data.append(data_item)
-
 
         total = d.pop("total", UNSET)
 

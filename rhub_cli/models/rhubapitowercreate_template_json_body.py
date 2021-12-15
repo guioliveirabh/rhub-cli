@@ -1,26 +1,17 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..types import UNSET, Unset
-
 from ..models.rhubapitowercreate_template_json_body_id import RhubapitowercreateTemplateJsonBodyId
-from typing import cast
-from typing import Union
 from ..types import UNSET, Unset
-from typing import Dict
-
-
-
 
 T = TypeVar("T", bound="RhubapitowercreateTemplateJsonBody")
 
+
 @attr.s(auto_attribs=True)
 class RhubapitowercreateTemplateJsonBody:
-    """  """
+    """ """
+
     name: str
     server_id: int
     tower_template_id: int
@@ -28,7 +19,6 @@ class RhubapitowercreateTemplateJsonBody:
     description: Union[Unset, str] = UNSET
     id: Union[Unset, RhubapitowercreateTemplateJsonBodyId] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
-
 
     def to_dict(self) -> Dict[str, Any]:
         name = self.name
@@ -40,23 +30,22 @@ class RhubapitowercreateTemplateJsonBody:
         if not isinstance(self.id, Unset):
             id = self.id.to_dict()
 
-
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-            "name": name,
-            "server_id": server_id,
-            "tower_template_id": tower_template_id,
-            "tower_template_is_workflow": tower_template_is_workflow,
-        })
+        field_dict.update(
+            {
+                "name": name,
+                "server_id": server_id,
+                "tower_template_id": tower_template_id,
+                "tower_template_is_workflow": tower_template_is_workflow,
+            }
+        )
         if description is not UNSET:
             field_dict["description"] = description
         if id is not UNSET:
             field_dict["id"] = id
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
@@ -73,13 +62,10 @@ class RhubapitowercreateTemplateJsonBody:
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapitowercreateTemplateJsonBodyId]
-        if isinstance(_id,  Unset):
+        if isinstance(_id, Unset):
             id = UNSET
         else:
             id = RhubapitowercreateTemplateJsonBodyId.from_dict(_id)
-
-
-
 
         rhubapitowercreate_template_json_body = cls(
             name=name,

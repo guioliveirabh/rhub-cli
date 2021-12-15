@@ -1,40 +1,28 @@
-from typing import Any, Dict, Type, TypeVar, Tuple, Optional, BinaryIO, TextIO
-
-from typing import List
-
+from typing import Any, Dict, List, Type, TypeVar
 
 import attr
 
-from ..types import UNSET, Unset
-
-
-
-
-
 T = TypeVar("T", bound="RhubapischedulercronupdateJobJsonBodyJobParams")
+
 
 @attr.s(auto_attribs=True)
 class RhubapischedulercronupdateJobJsonBodyJobParams:
-    """  """
+    """ """
+
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
-
     def to_dict(self) -> Dict[str, Any]:
-        
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({
-        })
+        field_dict.update({})
 
         return field_dict
-
-
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        rhubapischedulercronupdate_job_json_body_job_params = cls(
-        )
+        rhubapischedulercronupdate_job_json_body_job_params = cls()
 
         rhubapischedulercronupdate_job_json_body_job_params.additional_properties = d
         return rhubapischedulercronupdate_job_json_body_job_params
