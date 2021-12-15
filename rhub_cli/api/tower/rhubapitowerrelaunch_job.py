@@ -1,9 +1,10 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapitowerrelaunch_job_response_200 import RhubapitowerrelaunchJobResponse200
+from ...models.rhubapitowerrelaunch_job_response_default import RhubapitowerrelaunchJobResponseDefault
 from ...types import Response
 
 
@@ -25,15 +26,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapitowerrelaunchJobResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapitowerrelaunchJobResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapitowerrelaunchJobResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapitowerrelaunchJobResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -46,7 +57,7 @@ def sync_detailed(
     job_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapitowerrelaunchJobResponse200]:
+) -> Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
     kwargs = _get_kwargs(
         job_id=job_id,
         client=client,
@@ -64,7 +75,7 @@ def sync(
     job_id: int,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapitowerrelaunchJobResponse200]:
+) -> Optional[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -77,7 +88,7 @@ async def asyncio_detailed(
     job_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapitowerrelaunchJobResponse200]:
+) -> Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
     kwargs = _get_kwargs(
         job_id=job_id,
         client=client,
@@ -93,7 +104,7 @@ async def asyncio(
     job_id: int,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapitowerrelaunchJobResponse200]:
+) -> Optional[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
     """ """
 
     return (

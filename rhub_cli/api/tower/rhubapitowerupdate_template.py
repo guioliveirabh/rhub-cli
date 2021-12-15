@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapitowerupdate_template_json_body import RhubapitowerupdateTemplateJsonBody
 from ...models.rhubapitowerupdate_template_response_200 import RhubapitowerupdateTemplateResponse200
+from ...models.rhubapitowerupdate_template_response_default import RhubapitowerupdateTemplateResponseDefault
 from ...types import Response
 
 
@@ -30,15 +31,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapitowerupdateTemplateResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapitowerupdateTemplateResponse200, RhubapitowerupdateTemplateResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapitowerupdateTemplateResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapitowerupdateTemplateResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapitowerupdateTemplateResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapitowerupdateTemplateResponse200, RhubapitowerupdateTemplateResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -52,7 +63,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerupdateTemplateJsonBody,
-) -> Response[RhubapitowerupdateTemplateResponse200]:
+) -> Response[Union[RhubapitowerupdateTemplateResponse200, RhubapitowerupdateTemplateResponseDefault]]:
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -72,7 +83,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerupdateTemplateJsonBody,
-) -> Optional[RhubapitowerupdateTemplateResponse200]:
+) -> Optional[Union[RhubapitowerupdateTemplateResponse200, RhubapitowerupdateTemplateResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -87,7 +98,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerupdateTemplateJsonBody,
-) -> Response[RhubapitowerupdateTemplateResponse200]:
+) -> Response[Union[RhubapitowerupdateTemplateResponse200, RhubapitowerupdateTemplateResponseDefault]]:
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -105,7 +116,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapitowerupdateTemplateJsonBody,
-) -> Optional[RhubapitowerupdateTemplateResponse200]:
+) -> Optional[Union[RhubapitowerupdateTemplateResponse200, RhubapitowerupdateTemplateResponseDefault]]:
     """ """
 
     return (

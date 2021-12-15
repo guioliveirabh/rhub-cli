@@ -1,10 +1,6 @@
 import click
 
-from rhub_cli import Client
-
-# import pkg_resources
-
-# from rhub_cli.click.api_request import APIRequest
+from .client import Client
 
 CONTEXT_SETTINGS = dict(
     help_option_names=["-h", "--help"],

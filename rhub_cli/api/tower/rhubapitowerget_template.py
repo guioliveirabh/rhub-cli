@@ -1,9 +1,10 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapitowerget_template_response_200 import RhubapitowergetTemplateResponse200
+from ...models.rhubapitowerget_template_response_default import RhubapitowergetTemplateResponseDefault
 from ...types import Response
 
 
@@ -25,15 +26,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapitowergetTemplateResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapitowergetTemplateResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapitowergetTemplateResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapitowergetTemplateResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -46,7 +57,7 @@ def sync_detailed(
     template_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapitowergetTemplateResponse200]:
+) -> Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -64,7 +75,7 @@ def sync(
     template_id: int,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapitowergetTemplateResponse200]:
+) -> Optional[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -77,7 +88,7 @@ async def asyncio_detailed(
     template_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapitowergetTemplateResponse200]:
+) -> Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -93,7 +104,7 @@ async def asyncio(
     template_id: int,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapitowergetTemplateResponse200]:
+) -> Optional[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
     """ """
 
     return (

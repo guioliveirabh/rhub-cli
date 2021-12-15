@@ -1,9 +1,10 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthuserget_current_user_response_200 import RhubapiauthusergetCurrentUserResponse200
+from ...models.rhubapiauthuserget_current_user_response_default import RhubapiauthusergetCurrentUserResponseDefault
 from ...types import Response
 
 
@@ -24,15 +25,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthusergetCurrentUserResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthusergetCurrentUserResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthusergetCurrentUserResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthusergetCurrentUserResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -44,7 +55,7 @@ def _build_response(*, response: httpx.Response) -> Response[RhubapiauthusergetC
 def sync_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapiauthusergetCurrentUserResponse200]:
+) -> Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
     )
@@ -60,7 +71,7 @@ def sync_detailed(
 def sync(
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapiauthusergetCurrentUserResponse200]:
+) -> Optional[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -71,7 +82,7 @@ def sync(
 async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapiauthusergetCurrentUserResponse200]:
+) -> Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
     )
@@ -85,7 +96,7 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapiauthusergetCurrentUserResponse200]:
+) -> Optional[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
     """ """
 
     return (

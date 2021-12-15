@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthgroupcreate_group_json_body import RhubapiauthgroupcreateGroupJsonBody
 from ...models.rhubapiauthgroupcreate_group_response_200 import RhubapiauthgroupcreateGroupResponse200
+from ...models.rhubapiauthgroupcreate_group_response_default import RhubapiauthgroupcreateGroupResponseDefault
 from ...types import Response
 
 
@@ -29,15 +30,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthgroupcreateGroupResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthgroupcreateGroupResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthgroupcreateGroupResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthgroupcreateGroupResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -50,7 +61,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupcreateGroupJsonBody,
-) -> Response[RhubapiauthgroupcreateGroupResponse200]:
+) -> Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -68,7 +79,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupcreateGroupJsonBody,
-) -> Optional[RhubapiauthgroupcreateGroupResponse200]:
+) -> Optional[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
     """Create a group in the database. Returns created group data with extra
     fields added by auth database (UUID and other fields).
 
@@ -86,7 +97,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupcreateGroupJsonBody,
-) -> Response[RhubapiauthgroupcreateGroupResponse200]:
+) -> Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -102,7 +113,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupcreateGroupJsonBody,
-) -> Optional[RhubapiauthgroupcreateGroupResponse200]:
+) -> Optional[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
     """Create a group in the database. Returns created group data with extra
     fields added by auth database (UUID and other fields).
 

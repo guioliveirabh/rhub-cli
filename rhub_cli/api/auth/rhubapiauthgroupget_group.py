@@ -1,9 +1,10 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthgroupget_group_response_200 import RhubapiauthgroupgetGroupResponse200
+from ...models.rhubapiauthgroupget_group_response_default import RhubapiauthgroupgetGroupResponseDefault
 from ...types import Response
 
 
@@ -25,15 +26,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthgroupgetGroupResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthgroupgetGroupResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthgroupgetGroupResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthgroupgetGroupResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -46,7 +57,7 @@ def sync_detailed(
     group_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapiauthgroupgetGroupResponse200]:
+) -> Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -64,7 +75,7 @@ def sync(
     group_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapiauthgroupgetGroupResponse200]:
+) -> Optional[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
     """Returns group data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `subGroups` and others.
@@ -83,7 +94,7 @@ async def asyncio_detailed(
     group_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapiauthgroupgetGroupResponse200]:
+) -> Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -99,7 +110,7 @@ async def asyncio(
     group_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapiauthgroupgetGroupResponse200]:
+) -> Optional[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
     """Returns group data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `subGroups` and others.

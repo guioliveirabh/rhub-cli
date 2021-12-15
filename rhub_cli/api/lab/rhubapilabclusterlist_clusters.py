@@ -5,6 +5,7 @@ import httpx
 from ...client import AuthenticatedClient
 from ...models.rhubapilabclusterlist_clusters_filter import RhubapilabclusterlistClustersFilter
 from ...models.rhubapilabclusterlist_clusters_response_200 import RhubapilabclusterlistClustersResponse200
+from ...models.rhubapilabclusterlist_clusters_response_default import RhubapilabclusterlistClustersResponseDefault
 from ...types import UNSET, Response, Unset
 
 
@@ -41,15 +42,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapilabclusterlistClustersResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapilabclusterlistClustersResponse200, RhubapilabclusterlistClustersResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapilabclusterlistClustersResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapilabclusterlistClustersResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapilabclusterlistClustersResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapilabclusterlistClustersResponse200, RhubapilabclusterlistClustersResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -64,7 +75,7 @@ def sync_detailed(
     filter_: Union[Unset, None, RhubapilabclusterlistClustersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[RhubapilabclusterlistClustersResponse200]:
+) -> Response[Union[RhubapilabclusterlistClustersResponse200, RhubapilabclusterlistClustersResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -86,7 +97,7 @@ def sync(
     filter_: Union[Unset, None, RhubapilabclusterlistClustersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[RhubapilabclusterlistClustersResponse200]:
+) -> Optional[Union[RhubapilabclusterlistClustersResponse200, RhubapilabclusterlistClustersResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -103,7 +114,7 @@ async def asyncio_detailed(
     filter_: Union[Unset, None, RhubapilabclusterlistClustersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[RhubapilabclusterlistClustersResponse200]:
+) -> Response[Union[RhubapilabclusterlistClustersResponse200, RhubapilabclusterlistClustersResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -123,7 +134,7 @@ async def asyncio(
     filter_: Union[Unset, None, RhubapilabclusterlistClustersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[RhubapilabclusterlistClustersResponse200]:
+) -> Optional[Union[RhubapilabclusterlistClustersResponse200, RhubapilabclusterlistClustersResponseDefault]]:
     """ """
 
     return (

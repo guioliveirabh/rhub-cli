@@ -1,9 +1,10 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthuserget_user_response_200 import RhubapiauthusergetUserResponse200
+from ...models.rhubapiauthuserget_user_response_default import RhubapiauthusergetUserResponseDefault
 from ...types import Response
 
 
@@ -25,15 +26,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthusergetUserResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthusergetUserResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthusergetUserResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthusergetUserResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -46,7 +57,7 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapiauthusergetUserResponse200]:
+) -> Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -64,7 +75,7 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapiauthusergetUserResponse200]:
+) -> Optional[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
     """Returns user data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `createdTimestamp` and others.
@@ -83,7 +94,7 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapiauthusergetUserResponse200]:
+) -> Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -99,7 +110,7 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapiauthusergetUserResponse200]:
+) -> Optional[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
     """Returns user data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `createdTimestamp` and others.

@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapilabclustercreate_cluster_json_body import RhubapilabclustercreateClusterJsonBody
 from ...models.rhubapilabclustercreate_cluster_response_200 import RhubapilabclustercreateClusterResponse200
+from ...models.rhubapilabclustercreate_cluster_response_default import RhubapilabclustercreateClusterResponseDefault
 from ...types import Response
 
 
@@ -29,15 +30,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapilabclustercreateClusterResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapilabclustercreateClusterResponse200, RhubapilabclustercreateClusterResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapilabclustercreateClusterResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapilabclustercreateClusterResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapilabclustercreateClusterResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapilabclustercreateClusterResponse200, RhubapilabclustercreateClusterResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -50,7 +61,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-) -> Response[RhubapilabclustercreateClusterResponse200]:
+) -> Response[Union[RhubapilabclustercreateClusterResponse200, RhubapilabclustercreateClusterResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -68,7 +79,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-) -> Optional[RhubapilabclustercreateClusterResponse200]:
+) -> Optional[Union[RhubapilabclustercreateClusterResponse200, RhubapilabclustercreateClusterResponseDefault]]:
     """Create a new cluster and install selected product. If cluster provisioning
     and product installation is successfully queued in region Tower, cluster
     creation is considered as successful by this endpoint. Provisioning or
@@ -109,7 +120,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-) -> Response[RhubapilabclustercreateClusterResponse200]:
+) -> Response[Union[RhubapilabclustercreateClusterResponse200, RhubapilabclustercreateClusterResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -125,7 +136,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabclustercreateClusterJsonBody,
-) -> Optional[RhubapilabclustercreateClusterResponse200]:
+) -> Optional[Union[RhubapilabclustercreateClusterResponse200, RhubapilabclustercreateClusterResponseDefault]]:
     """Create a new cluster and install selected product. If cluster provisioning
     and product installation is successfully queued in region Tower, cluster
     creation is considered as successful by this endpoint. Provisioning or

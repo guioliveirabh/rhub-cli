@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthroleupdate_role_json_body import RhubapiauthroleupdateRoleJsonBody
 from ...models.rhubapiauthroleupdate_role_response_200 import RhubapiauthroleupdateRoleResponse200
+from ...models.rhubapiauthroleupdate_role_response_default import RhubapiauthroleupdateRoleResponseDefault
 from ...types import Response
 
 
@@ -30,15 +31,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthroleupdateRoleResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthroleupdateRoleResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthroleupdateRoleResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthroleupdateRoleResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -52,7 +63,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthroleupdateRoleJsonBody,
-) -> Response[RhubapiauthroleupdateRoleResponse200]:
+) -> Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -72,7 +83,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthroleupdateRoleJsonBody,
-) -> Optional[RhubapiauthroleupdateRoleResponse200]:
+) -> Optional[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
     """Update role in the database. Returns updated role data including extra
     fields added by auth database.
 
@@ -92,7 +103,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthroleupdateRoleJsonBody,
-) -> Response[RhubapiauthroleupdateRoleResponse200]:
+) -> Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -110,7 +121,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthroleupdateRoleJsonBody,
-) -> Optional[RhubapiauthroleupdateRoleResponse200]:
+) -> Optional[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
     """Update role in the database. Returns updated role data including extra
     fields added by auth database.
 

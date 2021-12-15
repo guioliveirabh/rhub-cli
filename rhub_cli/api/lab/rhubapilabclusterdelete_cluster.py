@@ -1,8 +1,9 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
+from ...models.rhubapilabclusterdelete_cluster_response_default import RhubapilabclusterdeleteClusterResponseDefault
 from ...types import Response
 
 
@@ -24,12 +25,26 @@ def _get_kwargs(
     }
 
 
-def _build_response(*, response: httpx.Response) -> Response[Any]:
+def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, RhubapilabclusterdeleteClusterResponseDefault]]:
+    if response.status_code == 204:
+        response_204 = None
+
+        return response_204
+
+    else:
+        response_default = RhubapilabclusterdeleteClusterResponseDefault.from_dict(response.json())
+
+        return response_default
+
+    return None
+
+
+def _build_response(*, response: httpx.Response) -> Response[Union[Any, RhubapilabclusterdeleteClusterResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
         headers=response.headers,
-        parsed=None,
+        parsed=_parse_response(response=response),
     )
 
 
@@ -37,7 +52,7 @@ def sync_detailed(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapilabclusterdeleteClusterResponseDefault]]:
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -51,11 +66,24 @@ def sync_detailed(
     return _build_response(response=response)
 
 
+def sync(
+    cluster_id: int,
+    *,
+    client: AuthenticatedClient,
+) -> Optional[Union[Any, RhubapilabclusterdeleteClusterResponseDefault]]:
+    """ """
+
+    return sync_detailed(
+        cluster_id=cluster_id,
+        client=client,
+    ).parsed
+
+
 async def asyncio_detailed(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapilabclusterdeleteClusterResponseDefault]]:
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -65,3 +93,18 @@ async def asyncio_detailed(
         response = await _client.delete(**kwargs)
 
     return _build_response(response=response)
+
+
+async def asyncio(
+    cluster_id: int,
+    *,
+    client: AuthenticatedClient,
+) -> Optional[Union[Any, RhubapilabclusterdeleteClusterResponseDefault]]:
+    """ """
+
+    return (
+        await asyncio_detailed(
+            cluster_id=cluster_id,
+            client=client,
+        )
+    ).parsed

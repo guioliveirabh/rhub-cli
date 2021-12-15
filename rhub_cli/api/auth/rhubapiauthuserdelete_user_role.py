@@ -1,9 +1,10 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthuserdelete_user_role_json_body import RhubapiauthuserdeleteUserRoleJsonBody
+from ...models.rhubapiauthuserdelete_user_role_response_default import RhubapiauthuserdeleteUserRoleResponseDefault
 from ...types import Response
 
 
@@ -29,12 +30,26 @@ def _get_kwargs(
     }
 
 
-def _build_response(*, response: httpx.Response) -> Response[Any]:
+def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, RhubapiauthuserdeleteUserRoleResponseDefault]]:
+    if response.status_code == 200:
+        response_200 = None
+
+        return response_200
+
+    else:
+        response_default = RhubapiauthuserdeleteUserRoleResponseDefault.from_dict(response.json())
+
+        return response_default
+
+    return None
+
+
+def _build_response(*, response: httpx.Response) -> Response[Union[Any, RhubapiauthuserdeleteUserRoleResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
         headers=response.headers,
-        parsed=None,
+        parsed=_parse_response(response=response),
     )
 
 
@@ -43,7 +58,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserRoleJsonBody,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapiauthuserdeleteUserRoleResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -58,12 +73,27 @@ def sync_detailed(
     return _build_response(response=response)
 
 
+def sync(
+    user_id: str,
+    *,
+    client: AuthenticatedClient,
+    json_body: RhubapiauthuserdeleteUserRoleJsonBody,
+) -> Optional[Union[Any, RhubapiauthuserdeleteUserRoleResponseDefault]]:
+    """ """
+
+    return sync_detailed(
+        user_id=user_id,
+        client=client,
+        json_body=json_body,
+    ).parsed
+
+
 async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserRoleJsonBody,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapiauthuserdeleteUserRoleResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -74,3 +104,20 @@ async def asyncio_detailed(
         response = await _client.delete(**kwargs)
 
     return _build_response(response=response)
+
+
+async def asyncio(
+    user_id: str,
+    *,
+    client: AuthenticatedClient,
+    json_body: RhubapiauthuserdeleteUserRoleJsonBody,
+) -> Optional[Union[Any, RhubapiauthuserdeleteUserRoleResponseDefault]]:
+    """ """
+
+    return (
+        await asyncio_detailed(
+            user_id=user_id,
+            client=client,
+            json_body=json_body,
+        )
+    ).parsed

@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapischedulercronupdate_job_json_body import RhubapischedulercronupdateJobJsonBody
 from ...models.rhubapischedulercronupdate_job_response_200 import RhubapischedulercronupdateJobResponse200
+from ...models.rhubapischedulercronupdate_job_response_default import RhubapischedulercronupdateJobResponseDefault
 from ...types import Response
 
 
@@ -30,15 +31,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapischedulercronupdateJobResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapischedulercronupdateJobResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapischedulercronupdateJobResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapischedulercronupdateJobResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -52,7 +63,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-) -> Response[RhubapischedulercronupdateJobResponse200]:
+) -> Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
         client=client,
@@ -72,7 +83,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-) -> Optional[RhubapischedulercronupdateJobResponse200]:
+) -> Optional[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -87,7 +98,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-) -> Response[RhubapischedulercronupdateJobResponse200]:
+) -> Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
         client=client,
@@ -105,7 +116,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
-) -> Optional[RhubapischedulercronupdateJobResponse200]:
+) -> Optional[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
     """ """
 
     return (

@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthusercreate_user_json_body import RhubapiauthusercreateUserJsonBody
 from ...models.rhubapiauthusercreate_user_response_200 import RhubapiauthusercreateUserResponse200
+from ...models.rhubapiauthusercreate_user_response_default import RhubapiauthusercreateUserResponseDefault
 from ...types import Response
 
 
@@ -29,15 +30,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthusercreateUserResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthusercreateUserResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthusercreateUserResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthusercreateUserResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -50,7 +61,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthusercreateUserJsonBody,
-) -> Response[RhubapiauthusercreateUserResponse200]:
+) -> Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -68,7 +79,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthusercreateUserJsonBody,
-) -> Optional[RhubapiauthusercreateUserResponse200]:
+) -> Optional[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
     """Create a user in the database. Returns created user data with extra
     fields added by auth database (UUID and other fields).
 
@@ -86,7 +97,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthusercreateUserJsonBody,
-) -> Response[RhubapiauthusercreateUserResponse200]:
+) -> Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -102,7 +113,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthusercreateUserJsonBody,
-) -> Optional[RhubapiauthusercreateUserResponse200]:
+) -> Optional[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
     """Create a user in the database. Returns created user data with extra
     fields added by auth database (UUID and other fields).
 

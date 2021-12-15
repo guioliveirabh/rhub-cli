@@ -1,8 +1,9 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
+from ...models.rhubapiauthgroupdelete_group_response_default import RhubapiauthgroupdeleteGroupResponseDefault
 from ...types import Response
 
 
@@ -24,12 +25,26 @@ def _get_kwargs(
     }
 
 
-def _build_response(*, response: httpx.Response) -> Response[Any]:
+def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, RhubapiauthgroupdeleteGroupResponseDefault]]:
+    if response.status_code == 200:
+        response_200 = None
+
+        return response_200
+
+    else:
+        response_default = RhubapiauthgroupdeleteGroupResponseDefault.from_dict(response.json())
+
+        return response_default
+
+    return None
+
+
+def _build_response(*, response: httpx.Response) -> Response[Union[Any, RhubapiauthgroupdeleteGroupResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
         headers=response.headers,
-        parsed=None,
+        parsed=_parse_response(response=response),
     )
 
 
@@ -37,7 +52,7 @@ def sync_detailed(
     group_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapiauthgroupdeleteGroupResponseDefault]]:
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -51,11 +66,24 @@ def sync_detailed(
     return _build_response(response=response)
 
 
+def sync(
+    group_id: str,
+    *,
+    client: AuthenticatedClient,
+) -> Optional[Union[Any, RhubapiauthgroupdeleteGroupResponseDefault]]:
+    """ """
+
+    return sync_detailed(
+        group_id=group_id,
+        client=client,
+    ).parsed
+
+
 async def asyncio_detailed(
     group_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapiauthgroupdeleteGroupResponseDefault]]:
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -65,3 +93,18 @@ async def asyncio_detailed(
         response = await _client.delete(**kwargs)
 
     return _build_response(response=response)
+
+
+async def asyncio(
+    group_id: str,
+    *,
+    client: AuthenticatedClient,
+) -> Optional[Union[Any, RhubapiauthgroupdeleteGroupResponseDefault]]:
+    """ """
+
+    return (
+        await asyncio_detailed(
+            group_id=group_id,
+            client=client,
+        )
+    ).parsed

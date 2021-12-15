@@ -1,9 +1,10 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapilabregionupdate_region_json_body import RhubapilabregionupdateRegionJsonBody
+from ...models.rhubapilabregionupdate_region_response_default import RhubapilabregionupdateRegionResponseDefault
 from ...types import Response
 
 
@@ -29,12 +30,26 @@ def _get_kwargs(
     }
 
 
-def _build_response(*, response: httpx.Response) -> Response[Any]:
+def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, RhubapilabregionupdateRegionResponseDefault]]:
+    if response.status_code == 200:
+        response_200 = None
+
+        return response_200
+
+    else:
+        response_default = RhubapilabregionupdateRegionResponseDefault.from_dict(response.json())
+
+        return response_default
+
+    return None
+
+
+def _build_response(*, response: httpx.Response) -> Response[Union[Any, RhubapilabregionupdateRegionResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
         headers=response.headers,
-        parsed=None,
+        parsed=_parse_response(response=response),
     )
 
 
@@ -43,7 +58,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabregionupdateRegionJsonBody,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapilabregionupdateRegionResponseDefault]]:
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -58,12 +73,27 @@ def sync_detailed(
     return _build_response(response=response)
 
 
+def sync(
+    region_id: int,
+    *,
+    client: AuthenticatedClient,
+    json_body: RhubapilabregionupdateRegionJsonBody,
+) -> Optional[Union[Any, RhubapilabregionupdateRegionResponseDefault]]:
+    """ """
+
+    return sync_detailed(
+        region_id=region_id,
+        client=client,
+        json_body=json_body,
+    ).parsed
+
+
 async def asyncio_detailed(
     region_id: int,
     *,
     client: AuthenticatedClient,
     json_body: RhubapilabregionupdateRegionJsonBody,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapilabregionupdateRegionResponseDefault]]:
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -74,3 +104,20 @@ async def asyncio_detailed(
         response = await _client.patch(**kwargs)
 
     return _build_response(response=response)
+
+
+async def asyncio(
+    region_id: int,
+    *,
+    client: AuthenticatedClient,
+    json_body: RhubapilabregionupdateRegionJsonBody,
+) -> Optional[Union[Any, RhubapilabregionupdateRegionResponseDefault]]:
+    """ """
+
+    return (
+        await asyncio_detailed(
+            region_id=region_id,
+            client=client,
+            json_body=json_body,
+        )
+    ).parsed

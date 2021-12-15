@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapipoliciesupdate_policy_json_body import RhubapipoliciesupdatePolicyJsonBody
 from ...models.rhubapipoliciesupdate_policy_response_200 import RhubapipoliciesupdatePolicyResponse200
+from ...models.rhubapipoliciesupdate_policy_response_default import RhubapipoliciesupdatePolicyResponseDefault
 from ...types import Response
 
 
@@ -30,15 +31,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapipoliciesupdatePolicyResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapipoliciesupdatePolicyResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapipoliciesupdatePolicyResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapipoliciesupdatePolicyResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -52,7 +63,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapipoliciesupdatePolicyJsonBody,
-) -> Response[RhubapipoliciesupdatePolicyResponse200]:
+) -> Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
     kwargs = _get_kwargs(
         policy_id=policy_id,
         client=client,
@@ -72,7 +83,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapipoliciesupdatePolicyJsonBody,
-) -> Optional[RhubapipoliciesupdatePolicyResponse200]:
+) -> Optional[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -87,7 +98,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapipoliciesupdatePolicyJsonBody,
-) -> Response[RhubapipoliciesupdatePolicyResponse200]:
+) -> Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
     kwargs = _get_kwargs(
         policy_id=policy_id,
         client=client,
@@ -105,7 +116,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapipoliciesupdatePolicyJsonBody,
-) -> Optional[RhubapipoliciesupdatePolicyResponse200]:
+) -> Optional[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
     """ """
 
     return (

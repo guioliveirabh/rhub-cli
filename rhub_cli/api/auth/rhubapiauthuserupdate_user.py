@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthuserupdate_user_json_body import RhubapiauthuserupdateUserJsonBody
 from ...models.rhubapiauthuserupdate_user_response_200 import RhubapiauthuserupdateUserResponse200
+from ...models.rhubapiauthuserupdate_user_response_default import RhubapiauthuserupdateUserResponseDefault
 from ...types import Response
 
 
@@ -30,15 +31,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthuserupdateUserResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthuserupdateUserResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthuserupdateUserResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthuserupdateUserResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -52,7 +63,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserupdateUserJsonBody,
-) -> Response[RhubapiauthuserupdateUserResponse200]:
+) -> Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -72,7 +83,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserupdateUserJsonBody,
-) -> Optional[RhubapiauthuserupdateUserResponse200]:
+) -> Optional[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
     """Update user in the database. Returns updated user data including extra
     fields added by auth database.
 
@@ -92,7 +103,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserupdateUserJsonBody,
-) -> Response[RhubapiauthuserupdateUserResponse200]:
+) -> Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -110,7 +121,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuserupdateUserJsonBody,
-) -> Optional[RhubapiauthuserupdateUserResponse200]:
+) -> Optional[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
     """Update user in the database. Returns updated user data including extra
     fields added by auth database.
 

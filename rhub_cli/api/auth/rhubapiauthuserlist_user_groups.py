@@ -1,9 +1,10 @@
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthuserlist_user_groups_response_200_item import RhubapiauthuserlistUserGroupsResponse200Item
+from ...models.rhubapiauthuserlist_user_groups_response_default import RhubapiauthuserlistUserGroupsResponseDefault
 from ...types import Response
 
 
@@ -25,7 +26,9 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[List[RhubapiauthuserlistUserGroupsResponse200Item]]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[List[RhubapiauthuserlistUserGroupsResponse200Item], RhubapiauthuserlistUserGroupsResponseDefault]]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -35,10 +38,18 @@ def _parse_response(*, response: httpx.Response) -> Optional[List[Rhubapiauthuse
             response_200.append(response_200_item)
 
         return response_200
+
+    else:
+        response_default = RhubapiauthuserlistUserGroupsResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[List[RhubapiauthuserlistUserGroupsResponse200Item]]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[List[RhubapiauthuserlistUserGroupsResponse200Item], RhubapiauthuserlistUserGroupsResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -51,7 +62,7 @@ def sync_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[List[RhubapiauthuserlistUserGroupsResponse200Item]]:
+) -> Response[Union[List[RhubapiauthuserlistUserGroupsResponse200Item], RhubapiauthuserlistUserGroupsResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -69,7 +80,7 @@ def sync(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[List[RhubapiauthuserlistUserGroupsResponse200Item]]:
+) -> Optional[Union[List[RhubapiauthuserlistUserGroupsResponse200Item], RhubapiauthuserlistUserGroupsResponseDefault]]:
     """See also [Keycloak API: GroupRepresentation](
     https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
     """
@@ -84,7 +95,7 @@ async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[List[RhubapiauthuserlistUserGroupsResponse200Item]]:
+) -> Response[Union[List[RhubapiauthuserlistUserGroupsResponse200Item], RhubapiauthuserlistUserGroupsResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -100,7 +111,7 @@ async def asyncio(
     user_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[List[RhubapiauthuserlistUserGroupsResponse200Item]]:
+) -> Optional[Union[List[RhubapiauthuserlistUserGroupsResponse200Item], RhubapiauthuserlistUserGroupsResponseDefault]]:
     """See also [Keycloak API: GroupRepresentation](
     https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
     """

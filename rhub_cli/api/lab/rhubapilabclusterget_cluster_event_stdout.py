@@ -1,8 +1,11 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
+from ...models.rhubapilabclusterget_cluster_event_stdout_response_default import (
+    RhubapilabclustergetClusterEventStdoutResponseDefault,
+)
 from ...types import Response
 
 
@@ -24,12 +27,29 @@ def _get_kwargs(
     }
 
 
-def _build_response(*, response: httpx.Response) -> Response[Any]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
+    if response.status_code == 200:
+        response_200 = response.text
+        return response_200
+
+    else:
+        response_default = RhubapilabclustergetClusterEventStdoutResponseDefault.from_dict(response.json())
+
+        return response_default
+
+    return None
+
+
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
         headers=response.headers,
-        parsed=None,
+        parsed=_parse_response(response=response),
     )
 
 
@@ -37,7 +57,7 @@ def sync_detailed(
     event_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
     kwargs = _get_kwargs(
         event_id=event_id,
         client=client,
@@ -51,11 +71,24 @@ def sync_detailed(
     return _build_response(response=response)
 
 
+def sync(
+    event_id: int,
+    *,
+    client: AuthenticatedClient,
+) -> Optional[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
+    """ """
+
+    return sync_detailed(
+        event_id=event_id,
+        client=client,
+    ).parsed
+
+
 async def asyncio_detailed(
     event_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[Any]:
+) -> Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
     kwargs = _get_kwargs(
         event_id=event_id,
         client=client,
@@ -65,3 +98,18 @@ async def asyncio_detailed(
         response = await _client.get(**kwargs)
 
     return _build_response(response=response)
+
+
+async def asyncio(
+    event_id: int,
+    *,
+    client: AuthenticatedClient,
+) -> Optional[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
+    """ """
+
+    return (
+        await asyncio_detailed(
+            event_id=event_id,
+            client=client,
+        )
+    ).parsed

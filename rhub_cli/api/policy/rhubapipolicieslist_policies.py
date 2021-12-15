@@ -5,6 +5,7 @@ import httpx
 from ...client import AuthenticatedClient
 from ...models.rhubapipolicieslist_policies_filter import RhubapipolicieslistPoliciesFilter
 from ...models.rhubapipolicieslist_policies_response_200 import RhubapipolicieslistPoliciesResponse200
+from ...models.rhubapipolicieslist_policies_response_default import RhubapipolicieslistPoliciesResponseDefault
 from ...types import UNSET, Response, Unset
 
 
@@ -41,15 +42,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapipolicieslistPoliciesResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapipolicieslistPoliciesResponse200, RhubapipolicieslistPoliciesResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapipolicieslistPoliciesResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapipolicieslistPoliciesResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapipolicieslistPoliciesResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapipolicieslistPoliciesResponse200, RhubapipolicieslistPoliciesResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -64,7 +75,7 @@ def sync_detailed(
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[RhubapipolicieslistPoliciesResponse200]:
+) -> Response[Union[RhubapipolicieslistPoliciesResponse200, RhubapipolicieslistPoliciesResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -86,7 +97,7 @@ def sync(
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[RhubapipolicieslistPoliciesResponse200]:
+) -> Optional[Union[RhubapipolicieslistPoliciesResponse200, RhubapipolicieslistPoliciesResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -103,7 +114,7 @@ async def asyncio_detailed(
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[RhubapipolicieslistPoliciesResponse200]:
+) -> Response[Union[RhubapipolicieslistPoliciesResponse200, RhubapipolicieslistPoliciesResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -123,7 +134,7 @@ async def asyncio(
     filter_: Union[Unset, None, RhubapipolicieslistPoliciesFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[RhubapipolicieslistPoliciesResponse200]:
+) -> Optional[Union[RhubapipolicieslistPoliciesResponse200, RhubapipolicieslistPoliciesResponseDefault]]:
     """ """
 
     return (

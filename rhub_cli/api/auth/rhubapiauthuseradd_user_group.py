@@ -1,9 +1,10 @@
-from typing import Any, Dict
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthuseradd_user_group_json_body import RhubapiauthuseraddUserGroupJsonBody
+from ...models.rhubapiauthuseradd_user_group_response_default import RhubapiauthuseraddUserGroupResponseDefault
 from ...types import Response
 
 
@@ -29,12 +30,26 @@ def _get_kwargs(
     }
 
 
-def _build_response(*, response: httpx.Response) -> Response[Any]:
+def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, RhubapiauthuseraddUserGroupResponseDefault]]:
+    if response.status_code == 200:
+        response_200 = None
+
+        return response_200
+
+    else:
+        response_default = RhubapiauthuseraddUserGroupResponseDefault.from_dict(response.json())
+
+        return response_default
+
+    return None
+
+
+def _build_response(*, response: httpx.Response) -> Response[Union[Any, RhubapiauthuseraddUserGroupResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
         headers=response.headers,
-        parsed=None,
+        parsed=_parse_response(response=response),
     )
 
 
@@ -43,7 +58,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuseraddUserGroupJsonBody,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapiauthuseraddUserGroupResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -58,12 +73,27 @@ def sync_detailed(
     return _build_response(response=response)
 
 
+def sync(
+    user_id: str,
+    *,
+    client: AuthenticatedClient,
+    json_body: RhubapiauthuseraddUserGroupJsonBody,
+) -> Optional[Union[Any, RhubapiauthuseraddUserGroupResponseDefault]]:
+    """ """
+
+    return sync_detailed(
+        user_id=user_id,
+        client=client,
+        json_body=json_body,
+    ).parsed
+
+
 async def asyncio_detailed(
     user_id: str,
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthuseraddUserGroupJsonBody,
-) -> Response[Any]:
+) -> Response[Union[Any, RhubapiauthuseraddUserGroupResponseDefault]]:
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -74,3 +104,20 @@ async def asyncio_detailed(
         response = await _client.post(**kwargs)
 
     return _build_response(response=response)
+
+
+async def asyncio(
+    user_id: str,
+    *,
+    client: AuthenticatedClient,
+    json_body: RhubapiauthuseraddUserGroupJsonBody,
+) -> Optional[Union[Any, RhubapiauthuseraddUserGroupResponseDefault]]:
+    """ """
+
+    return (
+        await asyncio_detailed(
+            user_id=user_id,
+            client=client,
+            json_body=json_body,
+        )
+    ).parsed

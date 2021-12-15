@@ -7,6 +7,9 @@ from ...models.rhubapilabproductlist_product_regions_filter import Rhubapilabpro
 from ...models.rhubapilabproductlist_product_regions_response_200_item import (
     RhubapilabproductlistProductRegionsResponse200Item,
 )
+from ...models.rhubapilabproductlist_product_regions_response_default import (
+    RhubapilabproductlistProductRegionsResponseDefault,
+)
 from ...types import UNSET, Response, Unset
 
 
@@ -44,7 +47,11 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[List[RhubapilabproductlistProductRegionsResponse200Item]]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[
+    Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
+]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -54,10 +61,20 @@ def _parse_response(*, response: httpx.Response) -> Optional[List[Rhubapilabprod
             response_200.append(response_200_item)
 
         return response_200
+
+    else:
+        response_default = RhubapilabproductlistProductRegionsResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[List[RhubapilabproductlistProductRegionsResponse200Item]]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[
+    Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
+]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -73,7 +90,9 @@ def sync_detailed(
     filter_: Union[Unset, None, RhubapilabproductlistProductRegionsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[List[RhubapilabproductlistProductRegionsResponse200Item]]:
+) -> Response[
+    Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
+]:
     kwargs = _get_kwargs(
         product_id=product_id,
         client=client,
@@ -97,7 +116,9 @@ def sync(
     filter_: Union[Unset, None, RhubapilabproductlistProductRegionsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[List[RhubapilabproductlistProductRegionsResponse200Item]]:
+) -> Optional[
+    Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
+]:
     """ """
 
     return sync_detailed(
@@ -116,7 +137,9 @@ async def asyncio_detailed(
     filter_: Union[Unset, None, RhubapilabproductlistProductRegionsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[List[RhubapilabproductlistProductRegionsResponse200Item]]:
+) -> Response[
+    Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
+]:
     kwargs = _get_kwargs(
         product_id=product_id,
         client=client,
@@ -138,7 +161,9 @@ async def asyncio(
     filter_: Union[Unset, None, RhubapilabproductlistProductRegionsFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[List[RhubapilabproductlistProductRegionsResponse200Item]]:
+) -> Optional[
+    Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
+]:
     """ """
 
     return (

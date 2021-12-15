@@ -1,8 +1,11 @@
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
+from ...models.rhubapilabclusterlist_cluster_events_response_default import (
+    RhubapilabclusterlistClusterEventsResponseDefault,
+)
 from ...types import Response
 
 
@@ -24,7 +27,9 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[List[Any]]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[List[Any], RhubapilabclusterlistClusterEventsResponseDefault]]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -43,10 +48,18 @@ def _parse_response(*, response: httpx.Response) -> Optional[List[Any]]:
             response_200.append(response_200_item)
 
         return response_200
+
+    else:
+        response_default = RhubapilabclusterlistClusterEventsResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[List[Any]]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[List[Any], RhubapilabclusterlistClusterEventsResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -59,7 +72,7 @@ def sync_detailed(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[List[Any]]:
+) -> Response[Union[List[Any], RhubapilabclusterlistClusterEventsResponseDefault]]:
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -77,7 +90,7 @@ def sync(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-) -> Optional[List[Any]]:
+) -> Optional[Union[List[Any], RhubapilabclusterlistClusterEventsResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -90,7 +103,7 @@ async def asyncio_detailed(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-) -> Response[List[Any]]:
+) -> Response[Union[List[Any], RhubapilabclusterlistClusterEventsResponseDefault]]:
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -106,7 +119,7 @@ async def asyncio(
     cluster_id: int,
     *,
     client: AuthenticatedClient,
-) -> Optional[List[Any]]:
+) -> Optional[Union[List[Any], RhubapilabclusterlistClusterEventsResponseDefault]]:
     """ """
 
     return (

@@ -1,9 +1,10 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthroleget_role_response_200 import RhubapiauthrolegetRoleResponse200
+from ...models.rhubapiauthroleget_role_response_default import RhubapiauthrolegetRoleResponseDefault
 from ...types import Response
 
 
@@ -25,15 +26,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthrolegetRoleResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthrolegetRoleResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthrolegetRoleResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthrolegetRoleResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -46,7 +57,7 @@ def sync_detailed(
     role_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapiauthrolegetRoleResponse200]:
+) -> Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -64,7 +75,7 @@ def sync(
     role_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapiauthrolegetRoleResponse200]:
+) -> Optional[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
     """Returns role data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `description` and others.
@@ -83,7 +94,7 @@ async def asyncio_detailed(
     role_id: str,
     *,
     client: AuthenticatedClient,
-) -> Response[RhubapiauthrolegetRoleResponse200]:
+) -> Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -99,7 +110,7 @@ async def asyncio(
     role_id: str,
     *,
     client: AuthenticatedClient,
-) -> Optional[RhubapiauthrolegetRoleResponse200]:
+) -> Optional[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
     """Returns role data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `description` and others.

@@ -1,9 +1,10 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import Client
 from ...models.rhubapiauthtokenrefresh_token_response_200 import RhubapiauthtokenrefreshTokenResponse200
+from ...models.rhubapiauthtokenrefresh_token_response_default import RhubapiauthtokenrefreshTokenResponseDefault
 from ...types import Response
 
 
@@ -27,15 +28,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthtokenrefreshTokenResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthtokenrefreshTokenResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthtokenrefreshTokenResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthtokenrefreshTokenResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -48,7 +59,7 @@ def sync_detailed(
     *,
     client: Client,
     authorization: str,
-) -> Response[RhubapiauthtokenrefreshTokenResponse200]:
+) -> Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         authorization=authorization,
@@ -66,7 +77,7 @@ def sync(
     *,
     client: Client,
     authorization: str,
-) -> Optional[RhubapiauthtokenrefreshTokenResponse200]:
+) -> Optional[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
     """This endpoint requires HTTP bearer authentication. The bearer token in
     'Authorization' header is not access token but refresh token. If refresh
     was successful return new oauth2 token info. Response is the same as
@@ -83,7 +94,7 @@ async def asyncio_detailed(
     *,
     client: Client,
     authorization: str,
-) -> Response[RhubapiauthtokenrefreshTokenResponse200]:
+) -> Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         authorization=authorization,
@@ -99,7 +110,7 @@ async def asyncio(
     *,
     client: Client,
     authorization: str,
-) -> Optional[RhubapiauthtokenrefreshTokenResponse200]:
+) -> Optional[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
     """This endpoint requires HTTP bearer authentication. The bearer token in
     'Authorization' header is not access token but refresh token. If refresh
     was successful return new oauth2 token info. Response is the same as

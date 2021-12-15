@@ -5,6 +5,7 @@ import httpx
 from ...client import AuthenticatedClient
 from ...models.rhubapitowerlist_servers_filter import RhubapitowerlistServersFilter
 from ...models.rhubapitowerlist_servers_response_200 import RhubapitowerlistServersResponse200
+from ...models.rhubapitowerlist_servers_response_default import RhubapitowerlistServersResponseDefault
 from ...types import UNSET, Response, Unset
 
 
@@ -41,15 +42,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapitowerlistServersResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapitowerlistServersResponse200, RhubapitowerlistServersResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapitowerlistServersResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapitowerlistServersResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapitowerlistServersResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapitowerlistServersResponse200, RhubapitowerlistServersResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -64,7 +75,7 @@ def sync_detailed(
     filter_: Union[Unset, None, RhubapitowerlistServersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[RhubapitowerlistServersResponse200]:
+) -> Response[Union[RhubapitowerlistServersResponse200, RhubapitowerlistServersResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -86,7 +97,7 @@ def sync(
     filter_: Union[Unset, None, RhubapitowerlistServersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[RhubapitowerlistServersResponse200]:
+) -> Optional[Union[RhubapitowerlistServersResponse200, RhubapitowerlistServersResponseDefault]]:
     """ """
 
     return sync_detailed(
@@ -103,7 +114,7 @@ async def asyncio_detailed(
     filter_: Union[Unset, None, RhubapitowerlistServersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[RhubapitowerlistServersResponse200]:
+) -> Response[Union[RhubapitowerlistServersResponse200, RhubapitowerlistServersResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -123,7 +134,7 @@ async def asyncio(
     filter_: Union[Unset, None, RhubapitowerlistServersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[RhubapitowerlistServersResponse200]:
+) -> Optional[Union[RhubapitowerlistServersResponse200, RhubapitowerlistServersResponseDefault]]:
     """ """
 
     return (

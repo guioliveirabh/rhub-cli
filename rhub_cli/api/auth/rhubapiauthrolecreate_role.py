@@ -1,10 +1,11 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 import httpx
 
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthrolecreate_role_json_body import RhubapiauthrolecreateRoleJsonBody
 from ...models.rhubapiauthrolecreate_role_response_200 import RhubapiauthrolecreateRoleResponse200
+from ...models.rhubapiauthrolecreate_role_response_default import RhubapiauthrolecreateRoleResponseDefault
 from ...types import Response
 
 
@@ -29,15 +30,25 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[RhubapiauthrolecreateRoleResponse200]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
     if response.status_code == 200:
         response_200 = RhubapiauthrolecreateRoleResponse200.from_dict(response.json())
 
         return response_200
+
+    else:
+        response_default = RhubapiauthrolecreateRoleResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[RhubapiauthrolecreateRoleResponse200]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -50,7 +61,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthrolecreateRoleJsonBody,
-) -> Response[RhubapiauthrolecreateRoleResponse200]:
+) -> Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -68,7 +79,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthrolecreateRoleJsonBody,
-) -> Optional[RhubapiauthrolecreateRoleResponse200]:
+) -> Optional[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
     """Create a role in the database. Returns created role data with extra
     fields added by auth database (UUID and other fields).
 
@@ -86,7 +97,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthrolecreateRoleJsonBody,
-) -> Response[RhubapiauthrolecreateRoleResponse200]:
+) -> Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -102,7 +113,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     json_body: RhubapiauthrolecreateRoleJsonBody,
-) -> Optional[RhubapiauthrolecreateRoleResponse200]:
+) -> Optional[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
     """Create a role in the database. Returns created role data with extra
     fields added by auth database (UUID and other fields).
 

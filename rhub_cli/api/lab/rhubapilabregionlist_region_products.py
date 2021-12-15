@@ -7,6 +7,9 @@ from ...models.rhubapilabregionlist_region_products_filter import Rhubapilabregi
 from ...models.rhubapilabregionlist_region_products_response_200_item import (
     RhubapilabregionlistRegionProductsResponse200Item,
 )
+from ...models.rhubapilabregionlist_region_products_response_default import (
+    RhubapilabregionlistRegionProductsResponseDefault,
+)
 from ...types import UNSET, Response, Unset
 
 
@@ -39,7 +42,11 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[List[RhubapilabregionlistRegionProductsResponse200Item]]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[
+    Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
+]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -49,10 +56,20 @@ def _parse_response(*, response: httpx.Response) -> Optional[List[Rhubapilabregi
             response_200.append(response_200_item)
 
         return response_200
+
+    else:
+        response_default = RhubapilabregionlistRegionProductsResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[List[RhubapilabregionlistRegionProductsResponse200Item]]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[
+    Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
+]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -66,7 +83,9 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubapilabregionlistRegionProductsFilter] = UNSET,
-) -> Response[List[RhubapilabregionlistRegionProductsResponse200Item]]:
+) -> Response[
+    Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
+]:
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -86,7 +105,9 @@ def sync(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubapilabregionlistRegionProductsFilter] = UNSET,
-) -> Optional[List[RhubapilabregionlistRegionProductsResponse200Item]]:
+) -> Optional[
+    Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
+]:
     """ """
 
     return sync_detailed(
@@ -101,7 +122,9 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubapilabregionlistRegionProductsFilter] = UNSET,
-) -> Response[List[RhubapilabregionlistRegionProductsResponse200Item]]:
+) -> Response[
+    Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
+]:
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -119,7 +142,9 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubapilabregionlistRegionProductsFilter] = UNSET,
-) -> Optional[List[RhubapilabregionlistRegionProductsResponse200Item]]:
+) -> Optional[
+    Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
+]:
     """ """
 
     return (

@@ -5,6 +5,7 @@ import httpx
 from ...client import AuthenticatedClient
 from ...models.rhubapiauthuserlist_users_filter import RhubapiauthuserlistUsersFilter
 from ...models.rhubapiauthuserlist_users_response_200_item import RhubapiauthuserlistUsersResponse200Item
+from ...models.rhubapiauthuserlist_users_response_default import RhubapiauthuserlistUsersResponseDefault
 from ...types import UNSET, Response, Unset
 
 
@@ -41,7 +42,9 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[List[RhubapiauthuserlistUsersResponse200Item]]:
+def _parse_response(
+    *, response: httpx.Response
+) -> Optional[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
     if response.status_code == 200:
         response_200 = []
         _response_200 = response.json()
@@ -51,10 +54,18 @@ def _parse_response(*, response: httpx.Response) -> Optional[List[Rhubapiauthuse
             response_200.append(response_200_item)
 
         return response_200
+
+    else:
+        response_default = RhubapiauthuserlistUsersResponseDefault.from_dict(response.json())
+
+        return response_default
+
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[List[RhubapiauthuserlistUsersResponse200Item]]:
+def _build_response(
+    *, response: httpx.Response
+) -> Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -69,7 +80,7 @@ def sync_detailed(
     filter_: Union[Unset, None, RhubapiauthuserlistUsersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[List[RhubapiauthuserlistUsersResponse200Item]]:
+) -> Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -91,7 +102,7 @@ def sync(
     filter_: Union[Unset, None, RhubapiauthuserlistUsersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[List[RhubapiauthuserlistUsersResponse200Item]]:
+) -> Optional[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
     """See also [Keycloak API: UserRepresentation](
     https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
     """
@@ -110,7 +121,7 @@ async def asyncio_detailed(
     filter_: Union[Unset, None, RhubapiauthuserlistUsersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Response[List[RhubapiauthuserlistUsersResponse200Item]]:
+) -> Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -130,7 +141,7 @@ async def asyncio(
     filter_: Union[Unset, None, RhubapiauthuserlistUsersFilter] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
-) -> Optional[List[RhubapiauthuserlistUsersResponse200Item]]:
+) -> Optional[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
     """See also [Keycloak API: UserRepresentation](
     https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
     """
