@@ -8,24 +8,33 @@ def policies():
 
 @policies.command()
 def get_list():
-    pass
+    """Get policy list"""
 
 
 @policies.command()
 def create():
-    pass
+    """Create policy"""
 
 
 @policies.command()
-def get():
-    pass
+@click.argument("policy_id", type=int)
+def get(
+    policy_id,
+):
+    """Get policy"""
 
 
 @policies.command()
-def remove():
-    pass
+@click.argument("policy_id", type=int)
+def remove(
+    policy_id,
+):
+    """Delete policy"""
 
 
 @policies.command()
-def update():
-    pass
+@click.argument("policy_id", type=int)
+def update(
+    policy_id,
+):
+    """Update policy"""

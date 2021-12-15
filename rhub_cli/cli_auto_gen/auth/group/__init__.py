@@ -11,27 +11,36 @@ def group():
 
 @group.command()
 def get_list():
-    pass
+    """Get group list"""
 
 
 @group.command()
 def create():
-    pass
+    """Create group"""
 
 
 @group.command()
-def get():
-    pass
+@click.argument("group_id", type=str)
+def get(
+    group_id,
+):
+    """Get group"""
 
 
 @group.command()
-def remove():
-    pass
+@click.argument("group_id", type=str)
+def remove(
+    group_id,
+):
+    """Delete group"""
 
 
 @group.command()
-def update():
-    pass
+@click.argument("group_id", type=str)
+def update(
+    group_id,
+):
+    """Update group"""
 
 
 group.add_command(roles)

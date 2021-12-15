@@ -7,5 +7,8 @@ def relaunch():
 
 
 @relaunch.command()
-def create():
-    pass
+@click.argument("job_id", type=int)
+def create(
+    job_id,
+):
+    """Re-launch Tower job"""

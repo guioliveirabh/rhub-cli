@@ -7,5 +7,8 @@ def stdout():
 
 
 @stdout.command()
-def get():
-    pass
+@click.argument("job_id", type=int)
+def get(
+    job_id,
+):
+    """Get stdout of Tower job"""

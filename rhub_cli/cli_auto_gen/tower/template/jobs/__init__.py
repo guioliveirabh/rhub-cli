@@ -7,5 +7,8 @@ def jobs():
 
 
 @jobs.command()
-def get_list():
-    pass
+@click.argument("template_id", type=int)
+def get_list(
+    template_id,
+):
+    """List Tower template jobs"""

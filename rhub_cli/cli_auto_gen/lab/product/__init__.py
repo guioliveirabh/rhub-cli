@@ -10,27 +10,36 @@ def product():
 
 @product.command()
 def get_list():
-    pass
+    """Get product list"""
 
 
 @product.command()
 def create():
-    pass
+    """Create product"""
 
 
 @product.command()
-def get():
-    pass
+@click.argument("product_id", type=int)
+def get(
+    product_id,
+):
+    """Get product"""
 
 
 @product.command()
-def remove():
-    pass
+@click.argument("product_id", type=int)
+def remove(
+    product_id,
+):
+    """Delete product"""
 
 
 @product.command()
-def update():
-    pass
+@click.argument("product_id", type=int)
+def update(
+    product_id,
+):
+    """Update product"""
 
 
 product.add_command(regions)

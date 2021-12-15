@@ -7,5 +7,8 @@ def stdout():
 
 
 @stdout.command()
-def get():
-    pass
+@click.argument("event_id", type=int)
+def get(
+    event_id,
+):
+    """Get cluster event output"""

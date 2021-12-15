@@ -7,5 +7,8 @@ def users():
 
 
 @users.command()
-def get_list():
-    pass
+@click.argument("group_id", type=str)
+def get_list(
+    group_id,
+):
+    """Get users in group"""

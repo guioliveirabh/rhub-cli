@@ -8,24 +8,33 @@ def server():
 
 @server.command()
 def get_list():
-    pass
+    """Get list of Tower servers"""
 
 
 @server.command()
 def create():
-    pass
+    """Create Tower server"""
 
 
 @server.command()
-def get():
-    pass
+@click.argument("server_id", type=int)
+def get(
+    server_id,
+):
+    """Get Tower server"""
 
 
 @server.command()
-def remove():
-    pass
+@click.argument("server_id", type=int)
+def remove(
+    server_id,
+):
+    """"""
 
 
 @server.command()
-def update():
-    pass
+@click.argument("server_id", type=int)
+def update(
+    server_id,
+):
+    """Change Tower server"""

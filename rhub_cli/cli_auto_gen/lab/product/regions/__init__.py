@@ -7,5 +7,8 @@ def regions():
 
 
 @regions.command()
-def get_list():
-    pass
+@click.argument("product_id", type=int)
+def get_list(
+    product_id,
+):
+    """Get list of regions where product can be installed."""

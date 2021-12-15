@@ -8,4 +8,4 @@ def webhook_notification():
 
 @webhook_notification.command()
 def create():
-    pass
+    """Incoming webhook notification from Tower"""

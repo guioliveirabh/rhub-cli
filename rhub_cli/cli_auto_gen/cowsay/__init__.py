@@ -8,4 +8,4 @@ def cowsay():
 
 @cowsay.command()
 def get():
-    pass
+    """Most important endpoint!"""

@@ -10,27 +10,36 @@ def region():
 
 @region.command()
 def get_list():
-    pass
+    """Get region list"""
 
 
 @region.command()
 def create():
-    pass
+    """Create region"""
 
 
 @region.command()
-def get():
-    pass
+@click.argument("region_id", type=int)
+def get(
+    region_id,
+):
+    """Get region"""
 
 
 @region.command()
-def remove():
-    pass
+@click.argument("region_id", type=int)
+def remove(
+    region_id,
+):
+    """Delete region"""
 
 
 @region.command()
-def update():
-    pass
+@click.argument("region_id", type=int)
+def update(
+    region_id,
+):
+    """Update region"""
 
 
 region.add_command(products)

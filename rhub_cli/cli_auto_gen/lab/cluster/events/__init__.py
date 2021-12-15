@@ -7,5 +7,8 @@ def events():
 
 
 @events.command()
-def get_list():
-    pass
+@click.argument("cluster_id", type=int)
+def get_list(
+    cluster_id,
+):
+    """Get cluster events list"""

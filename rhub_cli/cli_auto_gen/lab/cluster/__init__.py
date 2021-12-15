@@ -11,27 +11,36 @@ def cluster():
 
 @cluster.command()
 def get_list():
-    pass
+    """Get cluster list"""
 
 
 @cluster.command()
 def create():
-    pass
+    """Create cluster"""
 
 
 @cluster.command()
-def get():
-    pass
+@click.argument("cluster_id", type=int)
+def get(
+    cluster_id,
+):
+    """Get cluster"""
 
 
 @cluster.command()
-def remove():
-    pass
+@click.argument("cluster_id", type=int)
+def remove(
+    cluster_id,
+):
+    """Delete cluster"""
 
 
 @cluster.command()
-def update():
-    pass
+@click.argument("cluster_id", type=int)
+def update(
+    cluster_id,
+):
+    """Update cluster"""
 
 
 cluster.add_command(events)

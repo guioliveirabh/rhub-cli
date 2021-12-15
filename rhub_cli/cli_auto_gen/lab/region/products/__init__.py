@@ -7,15 +7,24 @@ def products():
 
 
 @products.command()
-def get_list():
-    pass
+@click.argument("region_id", type=int)
+def get_list(
+    region_id,
+):
+    """Get list of products that can be installed in the selected region."""
 
 
 @products.command()
-def create():
-    pass
+@click.argument("region_id", type=int)
+def create(
+    region_id,
+):
+    """Add product to region or disable/enable product in region"""
 
 
 @products.command()
-def remove():
-    pass
+@click.argument("region_id", type=int)
+def remove(
+    region_id,
+):
+    """Remove product from region"""

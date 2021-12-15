@@ -8,4 +8,4 @@ def create():
 
 @create.command()
 def create():
-    pass
+    """Login and get access token"""

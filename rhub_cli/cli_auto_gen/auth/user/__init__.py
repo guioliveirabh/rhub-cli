@@ -11,27 +11,36 @@ def user():
 
 @user.command()
 def get_list():
-    pass
+    """Get user list"""
 
 
 @user.command()
 def create():
-    pass
+    """Create user"""
 
 
 @user.command()
-def get():
-    pass
+@click.argument("user_id", type=str)
+def get(
+    user_id,
+):
+    """Get user"""
 
 
 @user.command()
-def remove():
-    pass
+@click.argument("user_id", type=str)
+def remove(
+    user_id,
+):
+    """Delete user"""
 
 
 @user.command()
-def update():
-    pass
+@click.argument("user_id", type=str)
+def update(
+    user_id,
+):
+    """Update user"""
 
 
 user.add_command(groups)

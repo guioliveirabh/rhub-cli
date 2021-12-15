@@ -8,4 +8,4 @@ def ping():
 
 @ping.command()
 def get():
-    pass
+    """Basic availablity endpoint"""

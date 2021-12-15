@@ -7,15 +7,24 @@ def roles():
 
 
 @roles.command()
-def get_list():
-    pass
+@click.argument("group_id", type=str)
+def get_list(
+    group_id,
+):
+    """Get group roles"""
 
 
 @roles.command()
-def create():
-    pass
+@click.argument("group_id", type=str)
+def create(
+    group_id,
+):
+    """Add group to role"""
 
 
 @roles.command()
-def remove():
-    pass
+@click.argument("group_id", type=str)
+def remove(
+    group_id,
+):
+    """Remove group from role"""

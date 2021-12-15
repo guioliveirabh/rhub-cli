@@ -8,4 +8,4 @@ def me():
 
 @me.command()
 def get():
-    pass
+    """Get info about logged in user"""

@@ -11,12 +11,15 @@ def job():
 
 @job.command()
 def get_list():
-    pass
+    """List Tower jobs"""
 
 
 @job.command()
-def get():
-    pass
+@click.argument("job_id", type=int)
+def get(
+    job_id,
+):
+    """Get Tower job"""
 
 
 job.add_command(relaunch)

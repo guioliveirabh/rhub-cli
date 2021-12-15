@@ -8,4 +8,4 @@ def refresh():
 
 @refresh.command()
 def create():
-    pass
+    """Refresh token"""

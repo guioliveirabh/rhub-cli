@@ -11,7 +11,7 @@ def token():
 
 @token.command()
 def get():
-    pass
+    """Get auth token info"""
 
 
 token.add_command(create)

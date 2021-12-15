@@ -7,5 +7,8 @@ def launch():
 
 
 @launch.command()
-def create():
-    pass
+@click.argument("template_id", type=int)
+def create(
+    template_id,
+):
+    """Launch Tower template"""
