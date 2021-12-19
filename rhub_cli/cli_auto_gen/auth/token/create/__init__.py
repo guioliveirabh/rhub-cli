@@ -1,5 +1,8 @@
 import click
 
+from rhub_cli.api.auth.rhubapiauthtokencreate_token import sync_detailed as create_create
+from rhub_cli.api_request import APIRequest, pass_api
+
 
 @click.group()
 def create():
@@ -7,5 +10,14 @@ def create():
 
 
 @create.command()
-def create():
+@pass_api
+def create(
+    api: APIRequest,
+):
     """Login and get access token"""
+    # TODO: header_parameters
+
+    response = create_create(
+        client=api.client,
+    )
+    api.handle_response(response)

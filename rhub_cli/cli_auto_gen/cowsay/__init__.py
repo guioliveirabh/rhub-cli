@@ -1,5 +1,8 @@
 import click
 
+from rhub_cli.api.health.rhubapihealthcowsay import sync_detailed as cowsay_get
+from rhub_cli.api_request import APIRequest, pass_api
+
 
 @click.group()
 def cowsay():
@@ -7,5 +10,13 @@ def cowsay():
 
 
 @cowsay.command()
-def get():
+@pass_api
+def get(
+    api: APIRequest,
+):
     """Most important endpoint!"""
+
+    response = cowsay_get(
+        client=api.client,
+    )
+    api.handle_response(response)

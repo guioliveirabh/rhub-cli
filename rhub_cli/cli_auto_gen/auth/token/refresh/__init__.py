@@ -1,5 +1,8 @@
 import click
 
+from rhub_cli.api.auth.rhubapiauthtokenrefresh_token import sync_detailed as refresh_create
+from rhub_cli.api_request import APIRequest, pass_api
+
 
 @click.group()
 def refresh():
@@ -7,5 +10,14 @@ def refresh():
 
 
 @refresh.command()
-def create():
+@pass_api
+def create(
+    api: APIRequest,
+):
     """Refresh token"""
+    # TODO: header_parameters
+
+    response = refresh_create(
+        client=api.client,
+    )
+    api.handle_response(response)
