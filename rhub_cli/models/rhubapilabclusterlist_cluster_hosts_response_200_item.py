@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
@@ -74,7 +75,7 @@ class RhubapilabclusterlistClusterHostsResponse200Item:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         _cluster_id = d.pop("cluster_id", UNSET)
         cluster_id: Union[Unset, RhubapilabclusterlistClusterHostsResponse200ItemClusterId]
         if isinstance(_cluster_id, Unset):

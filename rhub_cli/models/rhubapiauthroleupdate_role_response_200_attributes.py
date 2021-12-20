@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, cast
 
 import attr
@@ -23,7 +24,7 @@ class RhubapiauthroleupdateRoleResponse200Attributes:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         rhubapiauthroleupdate_role_response_200_attributes = cls()
 
         additional_properties = {}

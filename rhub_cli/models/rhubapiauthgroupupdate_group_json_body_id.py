@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar
 
 import attr
@@ -21,7 +22,7 @@ class RhubapiauthgroupupdateGroupJsonBodyId:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         rhubapiauthgroupupdate_group_json_body_id = cls()
 
         rhubapiauthgroupupdate_group_json_body_id.additional_properties = d

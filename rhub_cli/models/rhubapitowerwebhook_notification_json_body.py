@@ -1,4 +1,5 @@
 import datetime
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
@@ -99,7 +100,7 @@ class RhubapitowerwebhookNotificationJsonBody:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         body = d.pop("body", UNSET)
 
         created_by = d.pop("created_by", UNSET)

@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar
 
 import attr
@@ -27,7 +28,7 @@ class RhubapiauthuseraddUserRoleJsonBody:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         id = d.pop("id")
 
         rhubapiauthuseradd_user_role_json_body = cls(

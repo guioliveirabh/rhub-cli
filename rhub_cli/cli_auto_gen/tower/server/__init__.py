@@ -6,6 +6,8 @@ from rhub_cli.api.tower.rhubapitowerget_server import sync_detailed as server_ge
 from rhub_cli.api.tower.rhubapitowerlist_servers import sync_detailed as server_get_list
 from rhub_cli.api.tower.rhubapitowerupdate_server import sync_detailed as server_update
 from rhub_cli.api_request import APIRequest, pass_api
+from rhub_cli.models.rhubapitowercreate_server_json_body import RhubapitowercreateServerJsonBody
+from rhub_cli.models.rhubapitowerupdate_server_json_body import RhubapitowerupdateServerJsonBody
 
 
 @click.group()
@@ -28,14 +30,34 @@ def get_list(
 
 
 @server.command()
+@click.option("--credentials", required=True, type=str)
+@click.option("--name", required=True, type=str)
+@click.option("--url", required=True, type=str)
+@click.option("--description", type=str)
+@click.option("--enabled", type=bool)
+@click.option("--verify-ssl", type=bool)
 @pass_api
 def create(
     api: APIRequest,
+    credentials,
+    name,
+    url,
+    description,
+    enabled,
+    verify_ssl,
 ):
     """Create Tower server"""
-    # TODO: json_body
+    json_body = RhubapitowercreateServerJsonBody(
+        credentials=credentials,
+        name=name,
+        url=url,
+        description=description,
+        enabled=enabled,
+        verify_ssl=verify_ssl,
+    )
 
     response = server_create(
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)
@@ -75,16 +97,36 @@ def remove(
 
 @server.command()
 @click.argument("server_id", type=int)
+@click.option("--credentials", type=str)
+@click.option("--description", type=str)
+@click.option("--enabled", type=bool)
+@click.option("--name", type=str)
+@click.option("--url", type=str)
+@click.option("--verify-ssl", type=bool)
 @pass_api
 def update(
     api: APIRequest,
     server_id,
+    credentials,
+    description,
+    enabled,
+    name,
+    url,
+    verify_ssl,
 ):
     """Change Tower server"""
-    # TODO: json_body
+    json_body = RhubapitowerupdateServerJsonBody(
+        credentials=credentials,
+        description=description,
+        enabled=enabled,
+        name=name,
+        url=url,
+        verify_ssl=verify_ssl,
+    )
 
     response = server_update(
         server_id=server_id,
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)

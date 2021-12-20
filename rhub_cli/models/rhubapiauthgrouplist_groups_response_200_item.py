@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
@@ -47,7 +48,7 @@ class RhubapiauthgrouplistGroupsResponse200Item:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, RhubapiauthgrouplistGroupsResponse200ItemAttributes]
         if isinstance(_attributes, Unset):

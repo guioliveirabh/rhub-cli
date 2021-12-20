@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
@@ -41,7 +42,7 @@ class RhubapilabclusterlistClustersResponse200:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         data = []
         _data = d.pop("data", UNSET)
         for data_item_data in _data or []:

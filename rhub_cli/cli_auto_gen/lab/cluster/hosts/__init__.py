@@ -1,3 +1,5 @@
+from typing import List
+
 import click
 
 from rhub_cli.api.lab.rhubapilabclustercreate_cluster_hosts import sync_detailed as hosts_create
@@ -29,13 +31,26 @@ def get_list(
 
 @hosts.command()
 @click.argument("cluster_id", type=int)
+@click.option("--fqdn", required=True, type=str)
+@click.option("--ipaddr", required=True, type=List[str])
+@click.option("--num-vcpus", type=int)
+@click.option("--num-volumes", type=int)
+@click.option("--ram-mb", type=int)
+@click.option("--volumes-gb", type=int)
 @pass_api
 def create(
     api: APIRequest,
     cluster_id,
+    fqdn,
+    ipaddr,
+    num_vcpus,
+    num_volumes,
+    ram_mb,
+    volumes_gb,
 ):
     """Create or update cluster hosts"""
     # TODO: json_body
+    # TODO: required
 
     response = hosts_create(
         cluster_id=cluster_id,

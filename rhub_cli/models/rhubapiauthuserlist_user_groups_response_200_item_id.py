@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar
 
 import attr
@@ -21,7 +22,7 @@ class RhubapiauthuserlistUserGroupsResponse200ItemId:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         rhubapiauthuserlist_user_groups_response_200_item_id = cls()
 
         rhubapiauthuserlist_user_groups_response_200_item_id.additional_properties = d

@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar
 
 import attr
@@ -23,7 +24,7 @@ class RhubapiauthtokengetTokenInfoResponse200:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         rhubapiauthtokenget_token_info_response_200 = cls()
 
         rhubapiauthtokenget_token_info_response_200.additional_properties = d

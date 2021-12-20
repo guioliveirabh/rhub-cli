@@ -6,6 +6,8 @@ from rhub_cli.api.auth.rhubapiauthgroupget_group import sync_detailed as group_g
 from rhub_cli.api.auth.rhubapiauthgrouplist_groups import sync_detailed as group_get_list
 from rhub_cli.api.auth.rhubapiauthgroupupdate_group import sync_detailed as group_update
 from rhub_cli.api_request import APIRequest, pass_api
+from rhub_cli.models.rhubapiauthgroupcreate_group_json_body import RhubapiauthgroupcreateGroupJsonBody
+from rhub_cli.models.rhubapiauthgroupupdate_group_json_body import RhubapiauthgroupupdateGroupJsonBody
 
 from .roles import roles
 from .users import users
@@ -30,14 +32,19 @@ def get_list(
 
 
 @group.command()
+@click.option("--name", required=True, type=str)
 @pass_api
 def create(
     api: APIRequest,
+    name,
 ):
     """Create group"""
-    # TODO: json_body
+    json_body = RhubapiauthgroupcreateGroupJsonBody(
+        name=name,
+    )
 
     response = group_create(
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)
@@ -77,16 +84,21 @@ def remove(
 
 @group.command()
 @click.argument("group_id", type=str)
+@click.option("--name", type=str)
 @pass_api
 def update(
     api: APIRequest,
     group_id,
+    name,
 ):
     """Update group"""
-    # TODO: json_body
+    json_body = RhubapiauthgroupupdateGroupJsonBody(
+        name=name,
+    )
 
     response = group_update(
         group_id=group_id,
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)

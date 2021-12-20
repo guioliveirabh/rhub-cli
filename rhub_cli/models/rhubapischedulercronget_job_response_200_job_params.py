@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar
 
 import attr
@@ -21,7 +22,7 @@ class RhubapischedulercrongetJobResponse200JobParams:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         rhubapischedulercronget_job_response_200_job_params = cls()
 
         rhubapischedulercronget_job_response_200_job_params.additional_properties = d

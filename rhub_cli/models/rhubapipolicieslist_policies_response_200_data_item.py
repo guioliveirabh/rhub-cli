@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
@@ -41,7 +42,7 @@ class RhubapipolicieslistPoliciesResponse200DataItem:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         department = d.pop("department", UNSET)
 
         _id = d.pop("id", UNSET)

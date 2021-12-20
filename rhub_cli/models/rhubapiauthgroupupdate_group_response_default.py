@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
@@ -39,7 +40,7 @@ class RhubapiauthgroupupdateGroupResponseDefault:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         detail = d.pop("detail", UNSET)
 
         status = d.pop("status", UNSET)

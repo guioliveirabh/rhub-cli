@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar
 
 import attr
@@ -21,7 +22,7 @@ class RhubapitowerlaunchTemplateJsonBodyExtraVars:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         rhubapitowerlaunch_template_json_body_extra_vars = cls()
 
         rhubapitowerlaunch_template_json_body_extra_vars.additional_properties = d

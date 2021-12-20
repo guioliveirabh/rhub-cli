@@ -6,6 +6,8 @@ from rhub_cli.api.tower.rhubapitowerget_template import sync_detailed as templat
 from rhub_cli.api.tower.rhubapitowerlist_templates import sync_detailed as template_get_list
 from rhub_cli.api.tower.rhubapitowerupdate_template import sync_detailed as template_update
 from rhub_cli.api_request import APIRequest, pass_api
+from rhub_cli.models.rhubapitowercreate_template_json_body import RhubapitowercreateTemplateJsonBody
+from rhub_cli.models.rhubapitowerupdate_template_json_body import RhubapitowerupdateTemplateJsonBody
 
 from .jobs import jobs
 from .launch import launch
@@ -31,14 +33,31 @@ def get_list(
 
 
 @template.command()
+@click.option("--name", required=True, type=str)
+@click.option("--server-id", required=True, type=int)
+@click.option("--tower-template-id", required=True, type=int)
+@click.option("--tower-template-is-workflow", required=True, type=bool)
+@click.option("--description", type=str)
 @pass_api
 def create(
     api: APIRequest,
+    name,
+    server_id,
+    tower_template_id,
+    tower_template_is_workflow,
+    description,
 ):
     """Create Tower template"""
-    # TODO: json_body
+    json_body = RhubapitowercreateTemplateJsonBody(
+        name=name,
+        server_id=server_id,
+        tower_template_id=tower_template_id,
+        tower_template_is_workflow=tower_template_is_workflow,
+        description=description,
+    )
 
     response = template_create(
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)
@@ -78,16 +97,36 @@ def remove(
 
 @template.command()
 @click.argument("template_id", type=int)
+@click.option("--credentials", type=str)
+@click.option("--description", type=str)
+@click.option("--enabled", type=bool)
+@click.option("--name", type=str)
+@click.option("--url", type=str)
+@click.option("--verify-ssl", type=bool)
 @pass_api
 def update(
     api: APIRequest,
     template_id,
+    credentials,
+    description,
+    enabled,
+    name,
+    url,
+    verify_ssl,
 ):
     """Change Tower template"""
-    # TODO: json_body
+    json_body = RhubapitowerupdateTemplateJsonBody(
+        credentials=credentials,
+        description=description,
+        enabled=enabled,
+        name=name,
+        url=url,
+        verify_ssl=verify_ssl,
+    )
 
     response = template_update(
         template_id=template_id,
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)

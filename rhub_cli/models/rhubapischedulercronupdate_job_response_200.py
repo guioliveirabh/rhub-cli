@@ -1,4 +1,5 @@
 import datetime
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
@@ -76,7 +77,7 @@ class RhubapischedulercronupdateJobResponse200:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         description = d.pop("description", UNSET)
 
         enabled = d.pop("enabled", UNSET)

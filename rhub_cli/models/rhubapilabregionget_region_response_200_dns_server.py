@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
@@ -48,7 +49,7 @@ class RhubapilabregiongetRegionResponse200DnsServer:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         hostname = d.pop("hostname", UNSET)
 
         def _parse_key(data: object) -> Union[RhubapilabregiongetRegionResponse200DnsServerKeyType0, Unset, str]:

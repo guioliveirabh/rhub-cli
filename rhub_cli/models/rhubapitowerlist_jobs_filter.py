@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
@@ -27,7 +28,7 @@ class RhubapitowerlistJobsFilter:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         launched_by = d.pop("launched_by", UNSET)
 
         rhubapitowerlist_jobs_filter = cls(

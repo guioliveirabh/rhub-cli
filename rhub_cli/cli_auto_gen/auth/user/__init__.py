@@ -6,6 +6,8 @@ from rhub_cli.api.auth.rhubapiauthuserget_user import sync_detailed as user_get
 from rhub_cli.api.auth.rhubapiauthuserlist_users import sync_detailed as user_get_list
 from rhub_cli.api.auth.rhubapiauthuserupdate_user import sync_detailed as user_update
 from rhub_cli.api_request import APIRequest, pass_api
+from rhub_cli.models.rhubapiauthusercreate_user_json_body import RhubapiauthusercreateUserJsonBody
+from rhub_cli.models.rhubapiauthuserupdate_user_json_body import RhubapiauthuserupdateUserJsonBody
 
 from .groups import groups
 from .roles import roles
@@ -31,14 +33,34 @@ def get_list(
 
 
 @user.command()
+@click.option("--email", required=True, type=str)
+@click.option("--username", required=True, type=str)
+@click.option("--enabled", type=bool)
+@click.option("--firstName", type=str)
+@click.option("--lastName", type=str)
+@click.option("--password", type=str)
 @pass_api
 def create(
     api: APIRequest,
+    email,
+    username,
+    enabled,
+    firstName,
+    lastName,
+    password,
 ):
     """Create user"""
-    # TODO: json_body
+    json_body = RhubapiauthusercreateUserJsonBody(
+        email=email,
+        username=username,
+        enabled=enabled,
+        firstName=firstName,
+        lastName=lastName,
+        password=password,
+    )
 
     response = user_create(
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)
@@ -78,16 +100,36 @@ def remove(
 
 @user.command()
 @click.argument("user_id", type=str)
+@click.option("--email", type=str)
+@click.option("--enabled", type=bool)
+@click.option("--firstName", type=str)
+@click.option("--lastName", type=str)
+@click.option("--password", type=str)
+@click.option("--username", type=str)
 @pass_api
 def update(
     api: APIRequest,
     user_id,
+    email,
+    enabled,
+    firstName,
+    lastName,
+    password,
+    username,
 ):
     """Update user"""
-    # TODO: json_body
+    json_body = RhubapiauthuserupdateUserJsonBody(
+        email=email,
+        enabled=enabled,
+        firstName=firstName,
+        lastName=lastName,
+        password=password,
+        username=username,
+    )
 
     response = user_update(
         user_id=user_id,
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)

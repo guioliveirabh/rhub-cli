@@ -1,3 +1,4 @@
+from copy import copy
 from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
@@ -39,7 +40,7 @@ class RhubapilabclusterlistClustersResponse200DataItemQuotaType0:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = copy(src_dict)  # TODO: find the bug
         num_vcpus = d.pop("num_vcpus", UNSET)
 
         num_volumes = d.pop("num_volumes", UNSET)
