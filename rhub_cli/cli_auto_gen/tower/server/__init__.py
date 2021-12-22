@@ -21,6 +21,7 @@ def get_list(
     api: APIRequest,
 ):
     """Get list of Tower servers"""
+
     # TODO: query_parameters
 
     response = server_get_list(
@@ -30,12 +31,12 @@ def get_list(
 
 
 @server.command()
-@click.option("--credentials", required=True, type=str)
-@click.option("--name", required=True, type=str)
-@click.option("--url", required=True, type=str)
+@click.option("--credentials", type=str)
+@click.option("--name", type=str)
+@click.option("--url", type=str)
 @click.option("--description", type=str)
-@click.option("--enabled", type=bool)
-@click.option("--verify-ssl", type=bool)
+@click.option("--enabled", is_flag=True)
+@click.option("--verify-ssl", is_flag=True)
 @pass_api
 def create(
     api: APIRequest,
@@ -47,6 +48,7 @@ def create(
     verify_ssl,
 ):
     """Create Tower server"""
+
     json_body = RhubapitowercreateServerJsonBody(
         credentials=credentials,
         name=name,
@@ -99,10 +101,10 @@ def remove(
 @click.argument("server_id", type=int)
 @click.option("--credentials", type=str)
 @click.option("--description", type=str)
-@click.option("--enabled", type=bool)
+@click.option("--enabled", is_flag=True)
 @click.option("--name", type=str)
 @click.option("--url", type=str)
-@click.option("--verify-ssl", type=bool)
+@click.option("--verify-ssl", is_flag=True)
 @pass_api
 def update(
     api: APIRequest,
@@ -115,6 +117,7 @@ def update(
     verify_ssl,
 ):
     """Change Tower server"""
+
     json_body = RhubapitowerupdateServerJsonBody(
         credentials=credentials,
         description=description,

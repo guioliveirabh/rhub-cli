@@ -24,6 +24,7 @@ def get_list(
     api: APIRequest,
 ):
     """Get user list"""
+
     # TODO: query_parameters
 
     response = user_get_list(
@@ -33,11 +34,11 @@ def get_list(
 
 
 @user.command()
-@click.option("--email", required=True, type=str)
-@click.option("--username", required=True, type=str)
-@click.option("--enabled", type=bool)
-@click.option("--firstName", type=str)
-@click.option("--lastName", type=str)
+@click.option("--email", type=str)
+@click.option("--username", type=str)
+@click.option("--enabled", is_flag=True)
+@click.option("--first-name", type=str)
+@click.option("--last-name", type=str)
 @click.option("--password", type=str)
 @pass_api
 def create(
@@ -45,17 +46,18 @@ def create(
     email,
     username,
     enabled,
-    firstName,
-    lastName,
+    first_name,
+    last_name,
     password,
 ):
     """Create user"""
+
     json_body = RhubapiauthusercreateUserJsonBody(
         email=email,
         username=username,
         enabled=enabled,
-        firstName=firstName,
-        lastName=lastName,
+        first_name=first_name,
+        last_name=last_name,
         password=password,
     )
 
@@ -101,9 +103,9 @@ def remove(
 @user.command()
 @click.argument("user_id", type=str)
 @click.option("--email", type=str)
-@click.option("--enabled", type=bool)
-@click.option("--firstName", type=str)
-@click.option("--lastName", type=str)
+@click.option("--enabled", is_flag=True)
+@click.option("--first-name", type=str)
+@click.option("--last-name", type=str)
 @click.option("--password", type=str)
 @click.option("--username", type=str)
 @pass_api
@@ -112,17 +114,18 @@ def update(
     user_id,
     email,
     enabled,
-    firstName,
-    lastName,
+    first_name,
+    last_name,
     password,
     username,
 ):
     """Update user"""
+
     json_body = RhubapiauthuserupdateUserJsonBody(
         email=email,
         enabled=enabled,
-        firstName=firstName,
-        lastName=lastName,
+        first_name=first_name,
+        last_name=last_name,
         password=password,
         username=username,
     )

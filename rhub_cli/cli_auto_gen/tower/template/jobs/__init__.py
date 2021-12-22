@@ -17,6 +17,7 @@ def get_list(
     template_id,
 ):
     """List Tower template jobs"""
+
     # TODO: query_parameters
 
     response = jobs_get_list(

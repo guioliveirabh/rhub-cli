@@ -1,6 +1,5 @@
-from typing import Any, Dict, List, Optional, Union, cast
+from rhub_cli.cli_main import cli
 
-from ..cli_main import cli
 from .auth import auth
 from .cowsay import cowsay
 from .lab import lab

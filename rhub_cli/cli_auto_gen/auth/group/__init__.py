@@ -32,13 +32,14 @@ def get_list(
 
 
 @group.command()
-@click.option("--name", required=True, type=str)
+@click.option("--name", type=str)
 @pass_api
 def create(
     api: APIRequest,
     name,
 ):
     """Create group"""
+
     json_body = RhubapiauthgroupcreateGroupJsonBody(
         name=name,
     )
@@ -92,6 +93,7 @@ def update(
     name,
 ):
     """Update group"""
+
     json_body = RhubapiauthgroupupdateGroupJsonBody(
         name=name,
     )

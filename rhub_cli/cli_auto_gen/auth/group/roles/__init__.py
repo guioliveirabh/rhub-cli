@@ -31,7 +31,7 @@ def get_list(
 
 @roles.command()
 @click.argument("group_id", type=str)
-@click.option("--id", required=True, type=str)
+@click.option("--id", type=str)
 @pass_api
 def create(
     api: APIRequest,
@@ -39,6 +39,7 @@ def create(
     id,
 ):
     """Add group to role"""
+
     json_body = RhubapiauthgroupaddGroupRoleJsonBody(
         id=id,
     )
@@ -53,7 +54,7 @@ def create(
 
 @roles.command()
 @click.argument("group_id", type=str)
-@click.option("--id", required=True, type=str)
+@click.option("--id", type=str)
 @pass_api
 def remove(
     api: APIRequest,
@@ -61,6 +62,7 @@ def remove(
     id,
 ):
     """Remove group from role"""
+
     json_body = RhubapiauthgroupdeleteGroupRoleJsonBody(
         id=id,
     )

@@ -15,6 +15,7 @@ def create(
     api: APIRequest,
 ):
     """Refresh token"""
+
     # TODO: header_parameters
 
     response = refresh_create(

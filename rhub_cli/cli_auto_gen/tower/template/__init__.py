@@ -24,6 +24,7 @@ def get_list(
     api: APIRequest,
 ):
     """Get list of Tower templates"""
+
     # TODO: query_parameters
 
     response = template_get_list(
@@ -33,10 +34,10 @@ def get_list(
 
 
 @template.command()
-@click.option("--name", required=True, type=str)
-@click.option("--server-id", required=True, type=int)
-@click.option("--tower-template-id", required=True, type=int)
-@click.option("--tower-template-is-workflow", required=True, type=bool)
+@click.option("--name", type=str)
+@click.option("--server-id", type=int)
+@click.option("--tower-template-id", type=int)
+@click.option("--tower-template-is-workflow", is_flag=True)
 @click.option("--description", type=str)
 @pass_api
 def create(
@@ -48,6 +49,7 @@ def create(
     description,
 ):
     """Create Tower template"""
+
     json_body = RhubapitowercreateTemplateJsonBody(
         name=name,
         server_id=server_id,
@@ -99,10 +101,10 @@ def remove(
 @click.argument("template_id", type=int)
 @click.option("--credentials", type=str)
 @click.option("--description", type=str)
-@click.option("--enabled", type=bool)
+@click.option("--enabled", is_flag=True)
 @click.option("--name", type=str)
 @click.option("--url", type=str)
-@click.option("--verify-ssl", type=bool)
+@click.option("--verify-ssl", is_flag=True)
 @pass_api
 def update(
     api: APIRequest,
@@ -115,6 +117,7 @@ def update(
     verify_ssl,
 ):
     """Change Tower template"""
+
     json_body = RhubapitowerupdateTemplateJsonBody(
         credentials=credentials,
         description=description,

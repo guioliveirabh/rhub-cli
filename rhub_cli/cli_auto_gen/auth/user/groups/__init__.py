@@ -31,7 +31,7 @@ def get_list(
 
 @groups.command()
 @click.argument("user_id", type=str)
-@click.option("--id", required=True, type=str)
+@click.option("--id", type=str)
 @pass_api
 def create(
     api: APIRequest,
@@ -39,6 +39,7 @@ def create(
     id,
 ):
     """Add user to group"""
+
     json_body = RhubapiauthuseraddUserGroupJsonBody(
         id=id,
     )
@@ -53,7 +54,7 @@ def create(
 
 @groups.command()
 @click.argument("user_id", type=str)
-@click.option("--id", required=True, type=str)
+@click.option("--id", type=str)
 @pass_api
 def remove(
     api: APIRequest,
@@ -61,6 +62,7 @@ def remove(
     id,
 ):
     """Remove user from group"""
+
     json_body = RhubapiauthuserdeleteUserGroupJsonBody(
         id=id,
     )

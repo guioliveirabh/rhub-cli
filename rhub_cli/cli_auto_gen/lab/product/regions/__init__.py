@@ -17,6 +17,7 @@ def get_list(
     product_id,
 ):
     """Get list of regions where product can be installed."""
+
     # TODO: query_parameters
 
     response = regions_get_list(

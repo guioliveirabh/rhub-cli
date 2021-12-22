@@ -31,7 +31,7 @@ def get_list(
 
 @roles.command()
 @click.argument("user_id", type=str)
-@click.option("--id", required=True, type=str)
+@click.option("--id", type=str)
 @pass_api
 def create(
     api: APIRequest,
@@ -39,6 +39,7 @@ def create(
     id,
 ):
     """Add user to role"""
+
     json_body = RhubapiauthuseraddUserRoleJsonBody(
         id=id,
     )
@@ -53,7 +54,7 @@ def create(
 
 @roles.command()
 @click.argument("user_id", type=str)
-@click.option("--id", required=True, type=str)
+@click.option("--id", type=str)
 @pass_api
 def remove(
     api: APIRequest,
@@ -61,6 +62,7 @@ def remove(
     id,
 ):
     """Remove user from role"""
+
     json_body = RhubapiauthuserdeleteUserRoleJsonBody(
         id=id,
     )

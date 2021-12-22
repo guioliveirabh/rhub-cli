@@ -29,13 +29,14 @@ def get_list(
 
 
 @role.command()
-@click.option("--name", required=True, type=str)
+@click.option("--name", type=str)
 @pass_api
 def create(
     api: APIRequest,
     name,
 ):
     """Create role"""
+
     json_body = RhubapiauthrolecreateRoleJsonBody(
         name=name,
     )
@@ -89,6 +90,7 @@ def update(
     name,
 ):
     """Update role"""
+
     json_body = RhubapiauthroleupdateRoleJsonBody(
         name=name,
     )

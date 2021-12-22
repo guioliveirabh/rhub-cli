@@ -1,11 +1,13 @@
-from typing import List
-
 import click
 
 from rhub_cli.api.lab.rhubapilabclustercreate_cluster_hosts import sync_detailed as hosts_create
 from rhub_cli.api.lab.rhubapilabclusterdelete_cluster_hosts import sync_detailed as hosts_remove
 from rhub_cli.api.lab.rhubapilabclusterlist_cluster_hosts import sync_detailed as hosts_get_list
 from rhub_cli.api_request import APIRequest, pass_api
+from rhub_cli.models import *
+from rhub_cli.models.rhubapilabclustercreate_cluster_hosts_json_body_item import (
+    RhubapilabclustercreateClusterHostsJsonBodyItem,
+)
 
 
 @click.group()
@@ -31,8 +33,8 @@ def get_list(
 
 @hosts.command()
 @click.argument("cluster_id", type=int)
-@click.option("--fqdn", required=True, type=str)
-@click.option("--ipaddr", required=True, type=List[str])
+@click.option("--fqdn", type=str)
+@click.option("--ipaddr", type=str, multiple=True)
 @click.option("--num-vcpus", type=int)
 @click.option("--num-volumes", type=int)
 @click.option("--ram-mb", type=int)
@@ -49,11 +51,19 @@ def create(
     volumes_gb,
 ):
     """Create or update cluster hosts"""
-    # TODO: json_body
-    # TODO: required
+
+    json_body_item = RhubapilabclustercreateClusterHostsJsonBodyItem(
+        fqdn=fqdn,
+        ipaddr=ipaddr,
+        num_vcpus=num_vcpus,
+        num_volumes=num_volumes,
+        ram_mb=ram_mb,
+        volumes_gb=volumes_gb,
+    )
 
     response = hosts_create(
         cluster_id=cluster_id,
+        json_body=json_body,
         client=api.authenticated_client,
     )
     api.handle_response(response)

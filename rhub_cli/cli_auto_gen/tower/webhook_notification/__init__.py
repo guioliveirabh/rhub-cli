@@ -15,14 +15,14 @@ def webhook_notification():
 @click.option("--created-by", type=str)
 @click.option("--credential", type=str)
 @click.option("--extra-vars", type=str)
-@click.option("--finished", type=str)
+@click.option("--finished", type=click.DateTime())
 @click.option("--id", type=int)
 @click.option("--inventory", type=str)
 @click.option("--limit", type=str)
 @click.option("--name", type=str)
 @click.option("--playbook", type=str)
 @click.option("--project", type=str)
-@click.option("--started", type=str)
+@click.option("--started", type=click.DateTime())
 @click.option("--status", type=str)
 @click.option("--traceback", type=str)
 @click.option("--url", type=str)
@@ -46,6 +46,7 @@ def create(
     url,
 ):
     """Incoming webhook notification from Tower"""
+
     json_body = RhubapitowerwebhookNotificationJsonBody(
         body=body,
         created_by=created_by,

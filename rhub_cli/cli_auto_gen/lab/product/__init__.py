@@ -1,5 +1,3 @@
-from typing import Any, List
-
 import click
 
 from rhub_cli.api.lab.rhubapilabproductcreate_product import sync_detailed as product_create
@@ -25,6 +23,7 @@ def get_list(
     api: APIRequest,
 ):
     """Get product list"""
+
     # TODO: query_parameters
 
     response = product_get_list(
@@ -34,12 +33,12 @@ def get_list(
 
 
 @product.command()
-@click.option("--name", required=True, type=str)
-@click.option("--parameters", required=True, type=List[Any])
-@click.option("--tower-template-name-create", required=True, type=str)
-@click.option("--tower-template-name-delete", required=True, type=str)
+@click.option("--name", type=str)
+@click.option("--parameters", multiple=True)
+@click.option("--tower-template-name-create", type=str)
+@click.option("--tower-template-name-delete", type=str)
 @click.option("--description", type=str)
-@click.option("--enabled", type=bool)
+@click.option("--enabled", is_flag=True)
 @pass_api
 def create(
     api: APIRequest,
@@ -51,6 +50,7 @@ def create(
     enabled,
 ):
     """Create product"""
+
     json_body = RhubapilabproductcreateProductJsonBody(
         name=name,
         parameters=parameters,
@@ -102,9 +102,9 @@ def remove(
 @product.command()
 @click.argument("product_id", type=int)
 @click.option("--description", type=str)
-@click.option("--enabled", type=bool)
+@click.option("--enabled", is_flag=True)
 @click.option("--name", type=str)
-@click.option("--parameters", type=List[Any])
+@click.option("--parameters", multiple=True)
 @click.option("--tower-template-name-create", type=str)
 @click.option("--tower-template-name-delete", type=str)
 @pass_api
@@ -119,6 +119,7 @@ def update(
     tower_template_name_delete,
 ):
     """Update product"""
+
     json_body = RhubapilabproductupdateProductJsonBody(
         description=description,
         enabled=enabled,

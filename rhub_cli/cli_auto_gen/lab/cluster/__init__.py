@@ -1,5 +1,3 @@
-from typing import Any, Dict, List, Union
-
 import click
 
 from rhub_cli.api.lab.rhubapilabclustercreate_cluster import sync_detailed as cluster_create
@@ -26,6 +24,7 @@ def get_list(
     api: APIRequest,
 ):
     """Get cluster list"""
+
     # TODO: query_parameters
 
     response = cluster_get_list(
@@ -35,20 +34,25 @@ def get_list(
 
 
 @cluster.command()
-@click.option("--created", type=str)
+@click.option("--created", type=click.DateTime())
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--hosts", type=List[Dict[str, Any]])
-@click.option("--lifespan-expiration", type=str)
+@click.option("--hosts-fqdn", type=str)
+@click.option("--hosts-ipaddr", type=str, multiple=True)
+@click.option("--hosts-num-vcpus", type=int)
+@click.option("--hosts-num-volumes", type=int)
+@click.option("--hosts-ram-mb", type=int)
+@click.option("--hosts-volumes-gb", type=int)
+@click.option("--lifespan-expiration", type=click.DateTime())
 @click.option("--name", type=str)
 @click.option("--product-id", type=int)
 @click.option("--product-name", type=str)
-@click.option("--quota", type=Union[Any, Dict[str, Any]])
+@click.option("--quota")
 @click.option("--region-id", type=int)
 @click.option("--region-name", type=str)
-@click.option("--reservation-expiration", type=str)
-@click.option("--status", type=str)
+@click.option("--reservation-expiration", type=click.DateTime())
+@click.option("--status")
 @click.option("--user-id", type=str)
 @click.option("--user-name", type=str)
 @pass_api
@@ -58,7 +62,12 @@ def create(
     description,
     group_id,
     group_name,
-    hosts,
+    hosts_fqdn,
+    hosts_ipaddr,
+    hosts_num_vcpus,
+    hosts_num_volumes,
+    hosts_ram_mb,
+    hosts_volumes_gb,
     lifespan_expiration,
     name,
     product_id,
@@ -72,6 +81,7 @@ def create(
     user_name,
 ):
     """Create cluster"""
+
     json_body = RhubapilabclustercreateClusterJsonBody(
         created=created,
         description=description,
@@ -132,20 +142,25 @@ def remove(
 
 @cluster.command()
 @click.argument("cluster_id", type=int)
-@click.option("--created", type=str)
+@click.option("--created", type=click.DateTime())
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--hosts", type=List[Dict[str, Any]])
-@click.option("--lifespan-expiration", type=str)
+@click.option("--hosts-fqdn", type=str)
+@click.option("--hosts-ipaddr", type=str, multiple=True)
+@click.option("--hosts-num-vcpus", type=int)
+@click.option("--hosts-num-volumes", type=int)
+@click.option("--hosts-ram-mb", type=int)
+@click.option("--hosts-volumes-gb", type=int)
+@click.option("--lifespan-expiration", type=click.DateTime())
 @click.option("--name", type=str)
 @click.option("--product-id", type=int)
 @click.option("--product-name", type=str)
-@click.option("--quota", type=Union[Any, Dict[str, Any]])
+@click.option("--quota")
 @click.option("--region-id", type=int)
 @click.option("--region-name", type=str)
-@click.option("--reservation-expiration", type=str)
-@click.option("--status", type=str)
+@click.option("--reservation-expiration", type=click.DateTime())
+@click.option("--status")
 @click.option("--user-id", type=str)
 @click.option("--user-name", type=str)
 @pass_api
@@ -156,7 +171,12 @@ def update(
     description,
     group_id,
     group_name,
-    hosts,
+    hosts_fqdn,
+    hosts_ipaddr,
+    hosts_num_vcpus,
+    hosts_num_volumes,
+    hosts_ram_mb,
+    hosts_volumes_gb,
     lifespan_expiration,
     name,
     product_id,
@@ -170,6 +190,7 @@ def update(
     user_name,
 ):
     """Update cluster"""
+
     json_body = RhubapilabclusterupdateClusterJsonBody(
         created=created,
         description=description,

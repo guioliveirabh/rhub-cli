@@ -18,6 +18,7 @@ def create(
     template_id,
 ):
     """Launch Tower template"""
+
     json_body = RhubapitowerlaunchTemplateJsonBody()
 
     response = launch_create(

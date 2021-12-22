@@ -21,6 +21,7 @@ def get_list(
     api: APIRequest,
 ):
     """Get CronJob list"""
+
     # TODO: query_parameters
 
     response = cron_get_list(
@@ -30,12 +31,12 @@ def get_list(
 
 
 @cron.command()
-@click.option("--job-name", required=True, type=str)
-@click.option("--name", required=True, type=str)
-@click.option("--time-expr", required=True, type=str)
+@click.option("--job-name")
+@click.option("--name", type=str)
+@click.option("--time-expr", type=str)
 @click.option("--description", type=str)
-@click.option("--enabled", type=bool)
-@click.option("--last-run", type=str)
+@click.option("--enabled", is_flag=True)
+@click.option("--last-run", type=click.DateTime())
 @pass_api
 def create(
     api: APIRequest,
@@ -47,6 +48,7 @@ def create(
     last_run,
 ):
     """Create CronJob"""
+
     json_body = RhubapischedulercroncreateJobJsonBody(
         job_name=job_name,
         name=name,
@@ -98,9 +100,9 @@ def remove(
 @cron.command()
 @click.argument("cron_job_id", type=int)
 @click.option("--description", type=str)
-@click.option("--enabled", type=bool)
-@click.option("--job-name", type=str)
-@click.option("--last-run", type=str)
+@click.option("--enabled", is_flag=True)
+@click.option("--job-name")
+@click.option("--last-run", type=click.DateTime())
 @click.option("--name", type=str)
 @click.option("--time-expr", type=str)
 @pass_api
@@ -115,6 +117,7 @@ def update(
     time_expr,
 ):
     """Update CronJob"""
+
     json_body = RhubapischedulercronupdateJobJsonBody(
         description=description,
         enabled=enabled,

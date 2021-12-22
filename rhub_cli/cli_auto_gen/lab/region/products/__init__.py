@@ -21,6 +21,7 @@ def get_list(
     region_id,
 ):
     """Get list of products that can be installed in the selected region."""
+
     # TODO: query_parameters
 
     response = products_get_list(
@@ -32,8 +33,8 @@ def get_list(
 
 @products.command()
 @click.argument("region_id", type=int)
-@click.option("--id", required=True, type=int)
-@click.option("--enabled", type=bool)
+@click.option("--id", type=int)
+@click.option("--enabled", is_flag=True)
 @pass_api
 def create(
     api: APIRequest,
@@ -42,6 +43,7 @@ def create(
     enabled,
 ):
     """Add product to region or disable/enable product in region"""
+
     json_body = RhubapilabregionaddRegionProductJsonBody(
         id=id,
         enabled=enabled,
@@ -57,7 +59,7 @@ def create(
 
 @products.command()
 @click.argument("region_id", type=int)
-@click.option("--id", required=True, type=int)
+@click.option("--id", type=int)
 @pass_api
 def remove(
     api: APIRequest,
@@ -65,6 +67,7 @@ def remove(
     id,
 ):
     """Remove product from region"""
+
     json_body = RhubapilabregiondeleteRegionProductJsonBody(
         id=id,
     )
