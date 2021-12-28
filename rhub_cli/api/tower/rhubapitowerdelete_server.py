@@ -53,6 +53,14 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapitowerdeleteServerResponseDefault]]:
+    """
+    Args:
+        server_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapitowerdeleteServerResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         server_id=server_id,
         client=client,
@@ -71,7 +79,13 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapitowerdeleteServerResponseDefault]]:
-    """ """
+    """
+    Args:
+        server_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapitowerdeleteServerResponseDefault]]
+    """
 
     return sync_detailed(
         server_id=server_id,
@@ -84,6 +98,14 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapitowerdeleteServerResponseDefault]]:
+    """
+    Args:
+        server_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapitowerdeleteServerResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         server_id=server_id,
         client=client,
@@ -100,7 +122,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapitowerdeleteServerResponseDefault]]:
-    """ """
+    """
+    Args:
+        server_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapitowerdeleteServerResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

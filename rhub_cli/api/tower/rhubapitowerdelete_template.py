@@ -53,6 +53,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapitowerdeleteTemplateResponseDefault]]:
+    """Delete Tower template
+
+    Args:
+        template_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapitowerdeleteTemplateResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -71,7 +80,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapitowerdeleteTemplateResponseDefault]]:
-    """ """
+    """Delete Tower template
+
+    Args:
+        template_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapitowerdeleteTemplateResponseDefault]]
+    """
 
     return sync_detailed(
         template_id=template_id,
@@ -84,6 +100,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapitowerdeleteTemplateResponseDefault]]:
+    """Delete Tower template
+
+    Args:
+        template_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapitowerdeleteTemplateResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -100,7 +125,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapitowerdeleteTemplateResponseDefault]]:
-    """ """
+    """Delete Tower template
+
+    Args:
+        template_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapitowerdeleteTemplateResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

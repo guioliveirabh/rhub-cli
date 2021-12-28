@@ -13,7 +13,12 @@ T = TypeVar("T", bound="RhubapipolicieslistPoliciesResponse200DataItem")
 
 @attr.s(auto_attribs=True)
 class RhubapipolicieslistPoliciesResponse200DataItem:
-    """ """
+    """
+    Attributes:
+        department (Union[Unset, str]): Department Name
+        id (Union[Unset, RhubapipolicieslistPoliciesResponse200DataItemId]): Internal ID
+        name (Union[Unset, str]): Name
+    """
 
     department: Union[Unset, str] = UNSET
     id: Union[Unset, RhubapipolicieslistPoliciesResponse200DataItemId] = UNSET

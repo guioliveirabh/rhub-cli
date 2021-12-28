@@ -64,6 +64,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabclusterupdateClusterJsonBody,
 ) -> Response[Union[RhubapilabclusterupdateClusterResponse200, RhubapilabclusterupdateClusterResponseDefault]]:
+    """Update cluster
+
+     See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster) for more info.
+
+    Args:
+        cluster_id (int):
+        json_body (RhubapilabclusterupdateClusterJsonBody):
+
+    Returns:
+        Response[Union[RhubapilabclusterupdateClusterResponse200, RhubapilabclusterupdateClusterResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -84,7 +96,17 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapilabclusterupdateClusterJsonBody,
 ) -> Optional[Union[RhubapilabclusterupdateClusterResponse200, RhubapilabclusterupdateClusterResponseDefault]]:
-    """See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster) for more info."""
+    """Update cluster
+
+     See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster) for more info.
+
+    Args:
+        cluster_id (int):
+        json_body (RhubapilabclusterupdateClusterJsonBody):
+
+    Returns:
+        Response[Union[RhubapilabclusterupdateClusterResponse200, RhubapilabclusterupdateClusterResponseDefault]]
+    """
 
     return sync_detailed(
         cluster_id=cluster_id,
@@ -99,6 +121,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabclusterupdateClusterJsonBody,
 ) -> Response[Union[RhubapilabclusterupdateClusterResponse200, RhubapilabclusterupdateClusterResponseDefault]]:
+    """Update cluster
+
+     See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster) for more info.
+
+    Args:
+        cluster_id (int):
+        json_body (RhubapilabclusterupdateClusterJsonBody):
+
+    Returns:
+        Response[Union[RhubapilabclusterupdateClusterResponse200, RhubapilabclusterupdateClusterResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -117,7 +151,17 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapilabclusterupdateClusterJsonBody,
 ) -> Optional[Union[RhubapilabclusterupdateClusterResponse200, RhubapilabclusterupdateClusterResponseDefault]]:
-    """See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster) for more info."""
+    """Update cluster
+
+     See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster) for more info.
+
+    Args:
+        cluster_id (int):
+        json_body (RhubapilabclusterupdateClusterJsonBody):
+
+    Returns:
+        Response[Union[RhubapilabclusterupdateClusterResponse200, RhubapilabclusterupdateClusterResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

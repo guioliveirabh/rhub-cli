@@ -62,6 +62,21 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthusercreateUserJsonBody,
 ) -> Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
+    """Create user
+
+     Create a user in the database. Returns created user data with extra
+    fields added by auth database (UUID and other fields).
+
+    See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        json_body (RhubapiauthusercreateUserJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -80,11 +95,19 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthusercreateUserJsonBody,
 ) -> Optional[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
-    """Create a user in the database. Returns created user data with extra
+    """Create user
+
+     Create a user in the database. Returns created user data with extra
     fields added by auth database (UUID and other fields).
 
     See also [Keycloak API: UserRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        json_body (RhubapiauthusercreateUserJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]
     """
 
     return sync_detailed(
@@ -98,6 +121,21 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthusercreateUserJsonBody,
 ) -> Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
+    """Create user
+
+     Create a user in the database. Returns created user data with extra
+    fields added by auth database (UUID and other fields).
+
+    See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        json_body (RhubapiauthusercreateUserJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -114,11 +152,19 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthusercreateUserJsonBody,
 ) -> Optional[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]:
-    """Create a user in the database. Returns created user data with extra
+    """Create user
+
+     Create a user in the database. Returns created user data with extra
     fields added by auth database (UUID and other fields).
 
     See also [Keycloak API: UserRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        json_body (RhubapiauthusercreateUserJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthusercreateUserResponse200, RhubapiauthusercreateUserResponseDefault]]
     """
 
     return (

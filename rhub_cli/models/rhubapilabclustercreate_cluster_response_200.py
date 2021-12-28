@@ -23,7 +23,28 @@ T = TypeVar("T", bound="RhubapilabclustercreateClusterResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapilabclustercreateClusterResponse200:
-    """ """
+    """
+    Attributes:
+        name (str):
+        product_id (int):
+        product_params (RhubapilabclustercreateClusterResponse200ProductParams):
+        region_id (int):
+        created (Union[Unset, datetime.datetime]):
+        description (Union[Unset, str]):
+        group_id (Union[Unset, None, str]):
+        group_name (Union[Unset, None, str]):
+        hosts (Union[Unset, List[RhubapilabclustercreateClusterResponse200HostsItem]]):
+        id (Union[Unset, RhubapilabclustercreateClusterResponse200Id]):
+        lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
+        product_name (Union[Unset, str]):
+        quota (Union[Any, RhubapilabclustercreateClusterResponse200QuotaType0, Unset]):  Example: {'num_vcpus': 40,
+            'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
+        region_name (Union[Unset, str]):
+        reservation_expiration (Optional[datetime.datetime]): Soft-limit expiration.
+        status (Union[Unset, None, RhubapilabclustercreateClusterResponse200Status]):
+        user_id (Union[Unset, str]):
+        user_name (Union[Unset, str]):
+    """
 
     name: str
     product_id: int

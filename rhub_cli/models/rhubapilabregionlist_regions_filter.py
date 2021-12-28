@@ -10,7 +10,15 @@ T = TypeVar("T", bound="RhubapilabregionlistRegionsFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionlistRegionsFilter:
-    """ """
+    """
+    Attributes:
+        enabled (Union[Unset, bool]):
+        location (Union[Unset, str]): Location of a region. Wildcard ``%`` can be used to match zero, one, or multiple
+            characters
+        name (Union[Unset, str]): Name of a region. Wildcard ``%`` can be used to match zero, one, or multiple
+            characters
+        reservations_enabled (Union[Unset, bool]):
+    """
 
     enabled: Union[Unset, bool] = UNSET
     location: Union[Unset, str] = UNSET

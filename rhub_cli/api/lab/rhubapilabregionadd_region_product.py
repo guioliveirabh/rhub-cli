@@ -65,6 +65,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabregionaddRegionProductJsonBody,
 ) -> Response[Union[Any, RhubapilabregionaddRegionProductResponseDefault]]:
+    """Add product to region or disable/enable product in region
+
+    Args:
+        region_id (int):
+        json_body (RhubapilabregionaddRegionProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregionaddRegionProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -85,7 +95,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapilabregionaddRegionProductJsonBody,
 ) -> Optional[Union[Any, RhubapilabregionaddRegionProductResponseDefault]]:
-    """ """
+    """Add product to region or disable/enable product in region
+
+    Args:
+        region_id (int):
+        json_body (RhubapilabregionaddRegionProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregionaddRegionProductResponseDefault]]
+    """
 
     return sync_detailed(
         region_id=region_id,
@@ -100,6 +118,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabregionaddRegionProductJsonBody,
 ) -> Response[Union[Any, RhubapilabregionaddRegionProductResponseDefault]]:
+    """Add product to region or disable/enable product in region
+
+    Args:
+        region_id (int):
+        json_body (RhubapilabregionaddRegionProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregionaddRegionProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -118,7 +146,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapilabregionaddRegionProductJsonBody,
 ) -> Optional[Union[Any, RhubapilabregionaddRegionProductResponseDefault]]:
-    """ """
+    """Add product to region or disable/enable product in region
+
+    Args:
+        region_id (int):
+        json_body (RhubapilabregionaddRegionProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregionaddRegionProductResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

@@ -10,7 +10,13 @@ T = TypeVar("T", bound="RhubapilabproductlistProductRegionsResponse200ItemRegion
 
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0:
-    """ """
+    """
+    Attributes:
+        num_vcpus (Union[Unset, None, int]):
+        num_volumes (Union[Unset, None, int]):
+        ram_mb (Union[Unset, None, int]):
+        volumes_gb (Union[Unset, None, int]):
+    """
 
     num_vcpus: Union[Unset, None, int] = UNSET
     num_volumes: Union[Unset, None, int] = UNSET

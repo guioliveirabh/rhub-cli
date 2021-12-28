@@ -10,7 +10,12 @@ T = TypeVar("T", bound="RhubapilabregionlistRegionProductsFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionlistRegionProductsFilter:
-    """ """
+    """
+    Attributes:
+        enabled (Union[Unset, bool]):
+        name (Union[Unset, str]): Name of a product. Wildcard ``%`` can be used to match zero, one, or multiple
+            characters
+    """
 
     enabled: Union[Unset, bool] = UNSET
     name: Union[Unset, str] = UNSET

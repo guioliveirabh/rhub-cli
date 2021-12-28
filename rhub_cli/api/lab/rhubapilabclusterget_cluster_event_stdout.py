@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Optional, Union, cast
 
 import httpx
 
@@ -31,7 +31,7 @@ def _parse_response(
     *, response: httpx.Response
 ) -> Optional[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
     if response.status_code == 200:
-        response_200 = response.text
+        response_200 = cast(str, response.text)
         return response_200
 
     else:
@@ -58,6 +58,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
+    """Get cluster event output
+
+    Args:
+        event_id (int):
+
+    Returns:
+        Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]
+    """
+
     kwargs = _get_kwargs(
         event_id=event_id,
         client=client,
@@ -76,7 +85,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
-    """ """
+    """Get cluster event output
+
+    Args:
+        event_id (int):
+
+    Returns:
+        Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]
+    """
 
     return sync_detailed(
         event_id=event_id,
@@ -89,6 +105,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
+    """Get cluster event output
+
+    Args:
+        event_id (int):
+
+    Returns:
+        Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]
+    """
+
     kwargs = _get_kwargs(
         event_id=event_id,
         client=client,
@@ -105,7 +130,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]:
-    """ """
+    """Get cluster event output
+
+    Args:
+        event_id (int):
+
+    Returns:
+        Response[Union[RhubapilabclustergetClusterEventStdoutResponseDefault, str]]
+    """
 
     return (
         await asyncio_detailed(

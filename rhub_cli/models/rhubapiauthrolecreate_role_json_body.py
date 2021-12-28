@@ -12,7 +12,12 @@ T = TypeVar("T", bound="RhubapiauthrolecreateRoleJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapiauthrolecreateRoleJsonBody:
-    """ """
+    """
+    Attributes:
+        name (str):
+        attributes (Union[Unset, RhubapiauthrolecreateRoleJsonBodyAttributes]): Role attributes
+        id (Union[Unset, RhubapiauthrolecreateRoleJsonBodyId]):
+    """
 
     name: str
     attributes: Union[Unset, RhubapiauthrolecreateRoleJsonBodyAttributes] = UNSET

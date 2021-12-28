@@ -73,6 +73,15 @@ def sync_detailed(
 ) -> Response[
     Union[List[RhubapilabclusterlistClusterHostsResponse200Item], RhubapilabclusterlistClusterHostsResponseDefault]
 ]:
+    """Get cluster hosts
+
+    Args:
+        cluster_id (int):
+
+    Returns:
+        Response[Union[List[RhubapilabclusterlistClusterHostsResponse200Item], RhubapilabclusterlistClusterHostsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -93,7 +102,14 @@ def sync(
 ) -> Optional[
     Union[List[RhubapilabclusterlistClusterHostsResponse200Item], RhubapilabclusterlistClusterHostsResponseDefault]
 ]:
-    """ """
+    """Get cluster hosts
+
+    Args:
+        cluster_id (int):
+
+    Returns:
+        Response[Union[List[RhubapilabclusterlistClusterHostsResponse200Item], RhubapilabclusterlistClusterHostsResponseDefault]]
+    """
 
     return sync_detailed(
         cluster_id=cluster_id,
@@ -108,6 +124,15 @@ async def asyncio_detailed(
 ) -> Response[
     Union[List[RhubapilabclusterlistClusterHostsResponse200Item], RhubapilabclusterlistClusterHostsResponseDefault]
 ]:
+    """Get cluster hosts
+
+    Args:
+        cluster_id (int):
+
+    Returns:
+        Response[Union[List[RhubapilabclusterlistClusterHostsResponse200Item], RhubapilabclusterlistClusterHostsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -126,7 +151,14 @@ async def asyncio(
 ) -> Optional[
     Union[List[RhubapilabclusterlistClusterHostsResponse200Item], RhubapilabclusterlistClusterHostsResponseDefault]
 ]:
-    """ """
+    """Get cluster hosts
+
+    Args:
+        cluster_id (int):
+
+    Returns:
+        Response[Union[List[RhubapilabclusterlistClusterHostsResponse200Item], RhubapilabclusterlistClusterHostsResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

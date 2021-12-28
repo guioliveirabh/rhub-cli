@@ -13,7 +13,12 @@ T = TypeVar("T", bound="RhubapilabregionlistRegionProductsResponse200Item")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionlistRegionProductsResponse200Item:
-    """ """
+    """
+    Attributes:
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, int]):
+        product (Union[Unset, RhubapilabregionlistRegionProductsResponse200ItemProduct]):
+    """
 
     enabled: Union[Unset, bool] = UNSET
     id: Union[Unset, int] = UNSET

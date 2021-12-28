@@ -60,6 +60,19 @@ def sync_detailed(
     client: Client,
     authorization: str,
 ) -> Response[Union[RhubapiauthtokencreateTokenResponse200, RhubapiauthtokencreateTokenResponseDefault]]:
+    """Login and get access token
+
+     This endpoint requires HTTP basic authentication. If credentials are
+    correct then it returns oauth2 token info - access token, refresh token
+    and some other informations about generated token.
+
+    Args:
+        authorization (str):  Example: Basic dXNlcm5hbWU6cGFzc3dvcmQ=.
+
+    Returns:
+        Response[Union[RhubapiauthtokencreateTokenResponse200, RhubapiauthtokencreateTokenResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         authorization=authorization,
@@ -78,9 +91,17 @@ def sync(
     client: Client,
     authorization: str,
 ) -> Optional[Union[RhubapiauthtokencreateTokenResponse200, RhubapiauthtokencreateTokenResponseDefault]]:
-    """This endpoint requires HTTP basic authentication. If credentials are
+    """Login and get access token
+
+     This endpoint requires HTTP basic authentication. If credentials are
     correct then it returns oauth2 token info - access token, refresh token
     and some other informations about generated token.
+
+    Args:
+        authorization (str):  Example: Basic dXNlcm5hbWU6cGFzc3dvcmQ=.
+
+    Returns:
+        Response[Union[RhubapiauthtokencreateTokenResponse200, RhubapiauthtokencreateTokenResponseDefault]]
     """
 
     return sync_detailed(
@@ -94,6 +115,19 @@ async def asyncio_detailed(
     client: Client,
     authorization: str,
 ) -> Response[Union[RhubapiauthtokencreateTokenResponse200, RhubapiauthtokencreateTokenResponseDefault]]:
+    """Login and get access token
+
+     This endpoint requires HTTP basic authentication. If credentials are
+    correct then it returns oauth2 token info - access token, refresh token
+    and some other informations about generated token.
+
+    Args:
+        authorization (str):  Example: Basic dXNlcm5hbWU6cGFzc3dvcmQ=.
+
+    Returns:
+        Response[Union[RhubapiauthtokencreateTokenResponse200, RhubapiauthtokencreateTokenResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         authorization=authorization,
@@ -110,9 +144,17 @@ async def asyncio(
     client: Client,
     authorization: str,
 ) -> Optional[Union[RhubapiauthtokencreateTokenResponse200, RhubapiauthtokencreateTokenResponseDefault]]:
-    """This endpoint requires HTTP basic authentication. If credentials are
+    """Login and get access token
+
+     This endpoint requires HTTP basic authentication. If credentials are
     correct then it returns oauth2 token info - access token, refresh token
     and some other informations about generated token.
+
+    Args:
+        authorization (str):  Example: Basic dXNlcm5hbWU6cGFzc3dvcmQ=.
+
+    Returns:
+        Response[Union[RhubapiauthtokencreateTokenResponse200, RhubapiauthtokencreateTokenResponseDefault]]
     """
 
     return (

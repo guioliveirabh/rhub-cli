@@ -58,6 +58,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapischedulercrongetJobResponse200, RhubapischedulercrongetJobResponseDefault]]:
+    """Get CronJob
+
+    Args:
+        cron_job_id (int):
+
+    Returns:
+        Response[Union[RhubapischedulercrongetJobResponse200, RhubapischedulercrongetJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
         client=client,
@@ -76,7 +85,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapischedulercrongetJobResponse200, RhubapischedulercrongetJobResponseDefault]]:
-    """ """
+    """Get CronJob
+
+    Args:
+        cron_job_id (int):
+
+    Returns:
+        Response[Union[RhubapischedulercrongetJobResponse200, RhubapischedulercrongetJobResponseDefault]]
+    """
 
     return sync_detailed(
         cron_job_id=cron_job_id,
@@ -89,6 +105,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapischedulercrongetJobResponse200, RhubapischedulercrongetJobResponseDefault]]:
+    """Get CronJob
+
+    Args:
+        cron_job_id (int):
+
+    Returns:
+        Response[Union[RhubapischedulercrongetJobResponse200, RhubapischedulercrongetJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
         client=client,
@@ -105,7 +130,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapischedulercrongetJobResponse200, RhubapischedulercrongetJobResponseDefault]]:
-    """ """
+    """Get CronJob
+
+    Args:
+        cron_job_id (int):
+
+    Returns:
+        Response[Union[RhubapischedulercrongetJobResponse200, RhubapischedulercrongetJobResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

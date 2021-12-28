@@ -25,7 +25,32 @@ T = TypeVar("T", bound="RhubapilabproductlistProductRegionsResponse200ItemRegion
 
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsResponse200ItemRegion:
-    """ """
+    """
+    Attributes:
+        banner (Union[Unset, str]):
+        description (Union[Unset, str]):
+        dns_server (Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionDnsServer]):  Example:
+            {'hostname': 'ns.example.com', 'key': 'kv/region/rdu2-a/dns', 'zone': 'example.com.'}.
+        download_server (Union[Unset, str]):  Example: https://download.example.com.
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionId]):
+        lifespan_length (Union[Unset, None, int]):
+        location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
+        name (Union[Unset, str]):  Example: rdu2-a.
+        openstack (Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack]):  Example:
+            {'credentials': 'kv/region/rdu2-a/openstack', 'domain_id': 'default', 'domain_name': 'Default', 'keyname':
+            'rhub', 'networks': ['provider_net_rhub'], 'project': 'rhub', 'url': 'https://openstack.example.com:13000'}.
+        owner_group (Union[Unset, str]):  Example: 7670ac07-cb21-448d-af8a-6e3882216be3.
+        quota (Union[Any, RhubapilabproductlistProductRegionsResponse200ItemRegionQuotaType0, Unset]):  Example:
+            {'num_vcpus': 40, 'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
+        reservation_expiration_max (Union[Unset, None, int]):
+        reservations_enabled (Union[Unset, bool]):
+        satellite (Union[Unset, RhubapilabproductlistProductRegionsResponse200ItemRegionSatellite]):  Example:
+            {'credentials': 'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com'}.
+        tower_id (Union[Unset, int]):
+        users_group (Union[Unset, None, str]):
+        vault_server (Union[Unset, str]):  Example: https://vault.example.com.
+    """
 
     banner: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET

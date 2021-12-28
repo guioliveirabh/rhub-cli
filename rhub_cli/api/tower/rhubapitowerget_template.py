@@ -58,6 +58,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
+    """Get Tower template
+
+    Args:
+        template_id (int):
+
+    Returns:
+        Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -76,7 +85,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
-    """ """
+    """Get Tower template
+
+    Args:
+        template_id (int):
+
+    Returns:
+        Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]
+    """
 
     return sync_detailed(
         template_id=template_id,
@@ -89,6 +105,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
+    """Get Tower template
+
+    Args:
+        template_id (int):
+
+    Returns:
+        Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -105,7 +130,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]:
-    """ """
+    """Get Tower template
+
+    Args:
+        template_id (int):
+
+    Returns:
+        Response[Union[RhubapitowergetTemplateResponse200, RhubapitowergetTemplateResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

@@ -13,7 +13,10 @@ T = TypeVar("T", bound="RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPr
 
 @attr.s(auto_attribs=True)
 class RhubapitowerwebhookNotificationJsonBodyHostsAdditionalProperty:
-    """ """
+    """
+    Attributes:
+        localhost (Union[Unset, RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost]):
+    """
 
     localhost: Union[Unset, RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)

@@ -64,6 +64,29 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthuserupdateUserJsonBody,
 ) -> Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
+    """Update user
+
+     Update user in the database. Returns updated user data including extra
+    fields added by auth database.
+
+    See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuserupdateUserJsonBody): See [Keycloak API: UserRepresentation](
+              https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+             Example: {'access': {'impersonate': True, 'manage': True, 'manageGroupMembership': True,
+            'mapRoles': True, 'view': True}, 'createdTimestamp': 1614717256570,
+            'disableableCredentialTypes': [], 'email': 'testuser1@example.com', 'emailVerified':
+            False, 'enabled': True, 'firstName': 'test', 'id': '743a5375-3513-4749-acb9-1cde1e159e3b',
+            'lastName': 'user1', 'notBefore': 0, 'requiredActions': [], 'totp': False, 'username':
+            'testuser1'}.
+
+    Returns:
+        Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -84,11 +107,27 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthuserupdateUserJsonBody,
 ) -> Optional[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
-    """Update user in the database. Returns updated user data including extra
+    """Update user
+
+     Update user in the database. Returns updated user data including extra
     fields added by auth database.
 
     See also [Keycloak API: UserRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuserupdateUserJsonBody): See [Keycloak API: UserRepresentation](
+              https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+             Example: {'access': {'impersonate': True, 'manage': True, 'manageGroupMembership': True,
+            'mapRoles': True, 'view': True}, 'createdTimestamp': 1614717256570,
+            'disableableCredentialTypes': [], 'email': 'testuser1@example.com', 'emailVerified':
+            False, 'enabled': True, 'firstName': 'test', 'id': '743a5375-3513-4749-acb9-1cde1e159e3b',
+            'lastName': 'user1', 'notBefore': 0, 'requiredActions': [], 'totp': False, 'username':
+            'testuser1'}.
+
+    Returns:
+        Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]
     """
 
     return sync_detailed(
@@ -104,6 +143,29 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthuserupdateUserJsonBody,
 ) -> Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
+    """Update user
+
+     Update user in the database. Returns updated user data including extra
+    fields added by auth database.
+
+    See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuserupdateUserJsonBody): See [Keycloak API: UserRepresentation](
+              https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+             Example: {'access': {'impersonate': True, 'manage': True, 'manageGroupMembership': True,
+            'mapRoles': True, 'view': True}, 'createdTimestamp': 1614717256570,
+            'disableableCredentialTypes': [], 'email': 'testuser1@example.com', 'emailVerified':
+            False, 'enabled': True, 'firstName': 'test', 'id': '743a5375-3513-4749-acb9-1cde1e159e3b',
+            'lastName': 'user1', 'notBefore': 0, 'requiredActions': [], 'totp': False, 'username':
+            'testuser1'}.
+
+    Returns:
+        Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -122,11 +184,27 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthuserupdateUserJsonBody,
 ) -> Optional[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]:
-    """Update user in the database. Returns updated user data including extra
+    """Update user
+
+     Update user in the database. Returns updated user data including extra
     fields added by auth database.
 
     See also [Keycloak API: UserRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuserupdateUserJsonBody): See [Keycloak API: UserRepresentation](
+              https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+             Example: {'access': {'impersonate': True, 'manage': True, 'manageGroupMembership': True,
+            'mapRoles': True, 'view': True}, 'createdTimestamp': 1614717256570,
+            'disableableCredentialTypes': [], 'email': 'testuser1@example.com', 'emailVerified':
+            False, 'enabled': True, 'firstName': 'test', 'id': '743a5375-3513-4749-acb9-1cde1e159e3b',
+            'lastName': 'user1', 'notBefore': 0, 'requiredActions': [], 'totp': False, 'username':
+            'testuser1'}.
+
+    Returns:
+        Response[Union[RhubapiauthuserupdateUserResponse200, RhubapiauthuserupdateUserResponseDefault]]
     """
 
     return (

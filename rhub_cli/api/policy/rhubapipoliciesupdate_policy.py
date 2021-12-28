@@ -64,6 +64,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapipoliciesupdatePolicyJsonBody,
 ) -> Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
+    """Update policy
+
+    Args:
+        policy_id (int):
+        json_body (RhubapipoliciesupdatePolicyJsonBody):
+
+    Returns:
+        Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         policy_id=policy_id,
         client=client,
@@ -84,7 +94,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapipoliciesupdatePolicyJsonBody,
 ) -> Optional[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
-    """ """
+    """Update policy
+
+    Args:
+        policy_id (int):
+        json_body (RhubapipoliciesupdatePolicyJsonBody):
+
+    Returns:
+        Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]
+    """
 
     return sync_detailed(
         policy_id=policy_id,
@@ -99,6 +117,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapipoliciesupdatePolicyJsonBody,
 ) -> Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
+    """Update policy
+
+    Args:
+        policy_id (int):
+        json_body (RhubapipoliciesupdatePolicyJsonBody):
+
+    Returns:
+        Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         policy_id=policy_id,
         client=client,
@@ -117,7 +145,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapipoliciesupdatePolicyJsonBody,
 ) -> Optional[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]:
-    """ """
+    """Update policy
+
+    Args:
+        policy_id (int):
+        json_body (RhubapipoliciesupdatePolicyJsonBody):
+
+    Returns:
+        Response[Union[RhubapipoliciesupdatePolicyResponse200, RhubapipoliciesupdatePolicyResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

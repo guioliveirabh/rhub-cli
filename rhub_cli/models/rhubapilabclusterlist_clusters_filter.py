@@ -10,7 +10,15 @@ T = TypeVar("T", bound="RhubapilabclusterlistClustersFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapilabclusterlistClustersFilter:
-    """ """
+    """
+    Attributes:
+        group_id (Union[Unset, None, str]): ID of the group or ``null``.
+        name (Union[Unset, str]): Name of a cluster. Wildcard ``%`` can be used to match zero, one, or multiple
+            characters
+        region_id (Union[Unset, int]): ID of the region.
+        shared (Union[Unset, bool]): Filter shared clusters
+        user_id (Union[Unset, str]): ID of the user.
+    """
 
     group_id: Union[Unset, None, str] = UNSET
     name: Union[Unset, str] = UNSET

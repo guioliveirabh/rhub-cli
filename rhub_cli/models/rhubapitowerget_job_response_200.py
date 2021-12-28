@@ -13,7 +13,20 @@ T = TypeVar("T", bound="RhubapitowergetJobResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapitowergetJobResponse200:
-    """ """
+    """
+    Attributes:
+        created_at (Union[Unset, datetime.datetime]):
+        failed (Union[Unset, bool]):
+        finished (Union[Unset, bool]):
+        finished_at (Union[Unset, None, datetime.datetime]):
+        id (Union[Unset, RhubapitowergetJobResponse200Id]): Internal ID
+        launched_by (Union[Unset, str]):
+        started (Union[Unset, bool]):
+        started_at (Union[Unset, None, datetime.datetime]):
+        status (Union[Unset, str]): Job status
+        template_id (Union[Unset, int]):
+        tower_job_id (Union[Unset, int]):
+    """
 
     created_at: Union[Unset, datetime.datetime] = UNSET
     failed: Union[Unset, bool] = UNSET

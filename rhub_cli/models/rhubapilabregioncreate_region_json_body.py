@@ -12,7 +12,28 @@ T = TypeVar("T", bound="RhubapilabregioncreateRegionJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregioncreateRegionJsonBody:
-    """ """
+    """
+    Attributes:
+        dns_server (Any):
+        download_server (str):  Example: https://download.example.com.
+        name (str):  Example: rdu2-a.
+        openstack (Any):
+        satellite (Any):
+        tower_id (int):
+        vault_server (str):  Example: https://vault.example.com.
+        banner (Union[Unset, str]):
+        description (Union[Unset, str]):
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubapilabregioncreateRegionJsonBodyId]):
+        lifespan_length (Union[Unset, None, int]):
+        location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
+        owner_group (Union[Unset, str]):  Example: 7670ac07-cb21-448d-af8a-6e3882216be3.
+        quota (Union[Any, RhubapilabregioncreateRegionJsonBodyQuotaType0, Unset]):  Example: {'num_vcpus': 40,
+            'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
+        reservation_expiration_max (Union[Unset, None, int]):
+        reservations_enabled (Union[Unset, bool]):
+        users_group (Union[Unset, None, str]):
+    """
 
     dns_server: Any
     download_server: str

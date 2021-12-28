@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, cast
 
 import httpx
 
@@ -25,7 +25,7 @@ def _get_kwargs(
 
 def _parse_response(*, response: httpx.Response) -> Optional[str]:
     if response.status_code == 200:
-        response_200 = response.text
+        response_200 = cast(str, response.text)
         return response_200
 
     return None
@@ -44,6 +44,12 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[str]:
+    """Most important endpoint!
+
+    Returns:
+        Response[str]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -60,7 +66,11 @@ def sync(
     *,
     client: Client,
 ) -> Optional[str]:
-    """ """
+    """Most important endpoint!
+
+    Returns:
+        Response[str]
+    """
 
     return sync_detailed(
         client=client,
@@ -71,6 +81,12 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[str]:
+    """Most important endpoint!
+
+    Returns:
+        Response[str]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -85,7 +101,11 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[str]:
-    """ """
+    """Most important endpoint!
+
+    Returns:
+        Response[str]
+    """
 
     return (
         await asyncio_detailed(

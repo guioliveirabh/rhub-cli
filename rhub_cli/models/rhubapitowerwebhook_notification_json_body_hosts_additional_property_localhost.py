@@ -10,7 +10,18 @@ T = TypeVar("T", bound="RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPr
 
 @attr.s(auto_attribs=True)
 class RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost:
-    """ """
+    """
+    Attributes:
+        changed (Union[Unset, int]):
+        dark (Union[Unset, int]):
+        failed (Union[Unset, bool]):
+        failures (Union[Unset, int]):
+        ignored (Union[Unset, int]):
+        ok (Union[Unset, int]):
+        processed (Union[Unset, int]):
+        rescued (Union[Unset, int]):
+        skipped (Union[Unset, int]):
+    """
 
     changed: Union[Unset, int] = UNSET
     dark: Union[Unset, int] = UNSET

@@ -58,6 +58,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
+    """Re-launch Tower job
+
+    Args:
+        job_id (int):
+
+    Returns:
+        Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         job_id=job_id,
         client=client,
@@ -76,7 +85,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
-    """ """
+    """Re-launch Tower job
+
+    Args:
+        job_id (int):
+
+    Returns:
+        Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]
+    """
 
     return sync_detailed(
         job_id=job_id,
@@ -89,6 +105,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
+    """Re-launch Tower job
+
+    Args:
+        job_id (int):
+
+    Returns:
+        Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         job_id=job_id,
         client=client,
@@ -105,7 +130,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]:
-    """ """
+    """Re-launch Tower job
+
+    Args:
+        job_id (int):
+
+    Returns:
+        Response[Union[RhubapitowerrelaunchJobResponse200, RhubapitowerrelaunchJobResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

@@ -61,6 +61,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[List[RhubapiauthrolelistRolesResponse200Item], RhubapiauthrolelistRolesResponseDefault]]:
+    """Get role list
+
+     See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Returns:
+        Response[Union[List[RhubapiauthrolelistRolesResponse200Item], RhubapiauthrolelistRolesResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -77,8 +86,13 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[List[RhubapiauthrolelistRolesResponse200Item], RhubapiauthrolelistRolesResponseDefault]]:
-    """See [Keycloak API: RoleRepresentation](
-    https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+    """Get role list
+
+     See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Returns:
+        Response[Union[List[RhubapiauthrolelistRolesResponse200Item], RhubapiauthrolelistRolesResponseDefault]]
     """
 
     return sync_detailed(
@@ -90,6 +104,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[List[RhubapiauthrolelistRolesResponse200Item], RhubapiauthrolelistRolesResponseDefault]]:
+    """Get role list
+
+     See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Returns:
+        Response[Union[List[RhubapiauthrolelistRolesResponse200Item], RhubapiauthrolelistRolesResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -104,8 +127,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[List[RhubapiauthrolelistRolesResponse200Item], RhubapiauthrolelistRolesResponseDefault]]:
-    """See [Keycloak API: RoleRepresentation](
-    https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+    """Get role list
+
+     See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Returns:
+        Response[Union[List[RhubapiauthrolelistRolesResponse200Item], RhubapiauthrolelistRolesResponseDefault]]
     """
 
     return (

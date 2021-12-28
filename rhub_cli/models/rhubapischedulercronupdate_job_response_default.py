@@ -10,7 +10,13 @@ T = TypeVar("T", bound="RhubapischedulercronupdateJobResponseDefault")
 
 @attr.s(auto_attribs=True)
 class RhubapischedulercronupdateJobResponseDefault:
-    """ """
+    """
+    Attributes:
+        detail (Union[Unset, str]):
+        status (Union[Unset, int]):
+        title (Union[Unset, str]):
+        type (Union[Unset, str]):
+    """
 
     detail: Union[Unset, str] = UNSET
     status: Union[Unset, int] = UNSET

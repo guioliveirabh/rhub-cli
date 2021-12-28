@@ -62,6 +62,21 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupcreateGroupJsonBody,
 ) -> Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
+    """Create group
+
+     Create a group in the database. Returns created group data with extra
+    fields added by auth database (UUID and other fields).
+
+    See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        json_body (RhubapiauthgroupcreateGroupJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -80,11 +95,19 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupcreateGroupJsonBody,
 ) -> Optional[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
-    """Create a group in the database. Returns created group data with extra
+    """Create group
+
+     Create a group in the database. Returns created group data with extra
     fields added by auth database (UUID and other fields).
 
     See also [Keycloak API: GroupRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        json_body (RhubapiauthgroupcreateGroupJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]
     """
 
     return sync_detailed(
@@ -98,6 +121,21 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupcreateGroupJsonBody,
 ) -> Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
+    """Create group
+
+     Create a group in the database. Returns created group data with extra
+    fields added by auth database (UUID and other fields).
+
+    See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        json_body (RhubapiauthgroupcreateGroupJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -114,11 +152,19 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupcreateGroupJsonBody,
 ) -> Optional[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]:
-    """Create a group in the database. Returns created group data with extra
+    """Create group
+
+     Create a group in the database. Returns created group data with extra
     fields added by auth database (UUID and other fields).
 
     See also [Keycloak API: GroupRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        json_body (RhubapiauthgroupcreateGroupJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthgroupcreateGroupResponse200, RhubapiauthgroupcreateGroupResponseDefault]]
     """
 
     return (

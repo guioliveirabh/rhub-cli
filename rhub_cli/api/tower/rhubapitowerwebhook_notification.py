@@ -61,6 +61,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapitowerwebhookNotificationJsonBody,
 ) -> Response[Union[Any, RhubapitowerwebhookNotificationResponseDefault]]:
+    """Incoming webhook notification from Tower
+
+    Args:
+        json_body (RhubapitowerwebhookNotificationJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapitowerwebhookNotificationResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -79,7 +88,14 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapitowerwebhookNotificationJsonBody,
 ) -> Optional[Union[Any, RhubapitowerwebhookNotificationResponseDefault]]:
-    """ """
+    """Incoming webhook notification from Tower
+
+    Args:
+        json_body (RhubapitowerwebhookNotificationJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapitowerwebhookNotificationResponseDefault]]
+    """
 
     return sync_detailed(
         client=client,
@@ -92,6 +108,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapitowerwebhookNotificationJsonBody,
 ) -> Response[Union[Any, RhubapitowerwebhookNotificationResponseDefault]]:
+    """Incoming webhook notification from Tower
+
+    Args:
+        json_body (RhubapitowerwebhookNotificationJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapitowerwebhookNotificationResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -108,7 +133,14 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapitowerwebhookNotificationJsonBody,
 ) -> Optional[Union[Any, RhubapitowerwebhookNotificationResponseDefault]]:
-    """ """
+    """Incoming webhook notification from Tower
+
+    Args:
+        json_body (RhubapitowerwebhookNotificationJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapitowerwebhookNotificationResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

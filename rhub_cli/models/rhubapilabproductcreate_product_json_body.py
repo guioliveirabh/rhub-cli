@@ -11,7 +11,16 @@ T = TypeVar("T", bound="RhubapilabproductcreateProductJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapilabproductcreateProductJsonBody:
-    """ """
+    """
+    Attributes:
+        name (str):  Example: OpenShift.
+        parameters (List[Any]):
+        tower_template_name_create (str):  Example: rhub-openshift-create.
+        tower_template_name_delete (str):  Example: rhub-openshift-delete.
+        description (Union[Unset, str]):
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubapilabproductcreateProductJsonBodyId]):
+    """
 
     name: str
     parameters: List[Any]

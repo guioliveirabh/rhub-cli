@@ -10,7 +10,13 @@ T = TypeVar("T", bound="RhubapipolicieslistPoliciesFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapipolicieslistPoliciesFilter:
-    """ """
+    """
+    Attributes:
+        department (Union[Unset, str]): Department of a policy. Wildcard ``%`` can be used to match zero, one, or
+            multiple characters
+        name (Union[Unset, str]): Name of a policy. Wildcard ``%`` can be used to match zero, one, or multiple
+            characters
+    """
 
     department: Union[Unset, str] = UNSET
     name: Union[Unset, str] = UNSET

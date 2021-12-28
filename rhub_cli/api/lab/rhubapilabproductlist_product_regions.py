@@ -93,6 +93,18 @@ def sync_detailed(
 ) -> Response[
     Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
 ]:
+    """Get list of regions where product can be installed.
+
+    Args:
+        product_id (int):
+        filter_ (Union[Unset, None, RhubapilabproductlistProductRegionsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         product_id=product_id,
         client=client,
@@ -119,7 +131,17 @@ def sync(
 ) -> Optional[
     Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
 ]:
-    """ """
+    """Get list of regions where product can be installed.
+
+    Args:
+        product_id (int):
+        filter_ (Union[Unset, None, RhubapilabproductlistProductRegionsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]]
+    """
 
     return sync_detailed(
         product_id=product_id,
@@ -140,6 +162,18 @@ async def asyncio_detailed(
 ) -> Response[
     Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
 ]:
+    """Get list of regions where product can be installed.
+
+    Args:
+        product_id (int):
+        filter_ (Union[Unset, None, RhubapilabproductlistProductRegionsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         product_id=product_id,
         client=client,
@@ -164,7 +198,17 @@ async def asyncio(
 ) -> Optional[
     Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]
 ]:
-    """ """
+    """Get list of regions where product can be installed.
+
+    Args:
+        product_id (int):
+        filter_ (Union[Unset, None, RhubapilabproductlistProductRegionsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[List[RhubapilabproductlistProductRegionsResponse200Item], RhubapilabproductlistProductRegionsResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

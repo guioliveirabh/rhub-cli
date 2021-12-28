@@ -59,6 +59,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabproductupdateProductJsonBody,
 ) -> Response[Union[Any, RhubapilabproductupdateProductResponseDefault]]:
+    """Update product
+
+    Args:
+        product_id (int):
+        json_body (RhubapilabproductupdateProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductupdateProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         product_id=product_id,
         client=client,
@@ -79,7 +89,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapilabproductupdateProductJsonBody,
 ) -> Optional[Union[Any, RhubapilabproductupdateProductResponseDefault]]:
-    """ """
+    """Update product
+
+    Args:
+        product_id (int):
+        json_body (RhubapilabproductupdateProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductupdateProductResponseDefault]]
+    """
 
     return sync_detailed(
         product_id=product_id,
@@ -94,6 +112,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabproductupdateProductJsonBody,
 ) -> Response[Union[Any, RhubapilabproductupdateProductResponseDefault]]:
+    """Update product
+
+    Args:
+        product_id (int):
+        json_body (RhubapilabproductupdateProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductupdateProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         product_id=product_id,
         client=client,
@@ -112,7 +140,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapilabproductupdateProductJsonBody,
 ) -> Optional[Union[Any, RhubapilabproductupdateProductResponseDefault]]:
-    """ """
+    """Update product
+
+    Args:
+        product_id (int):
+        json_body (RhubapilabproductupdateProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductupdateProductResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

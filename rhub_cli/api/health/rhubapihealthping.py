@@ -46,6 +46,12 @@ def sync_detailed(
     *,
     client: Client,
 ) -> Response[RhubapihealthpingResponse200]:
+    """Basic availablity endpoint
+
+    Returns:
+        Response[RhubapihealthpingResponse200]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -62,7 +68,11 @@ def sync(
     *,
     client: Client,
 ) -> Optional[RhubapihealthpingResponse200]:
-    """ """
+    """Basic availablity endpoint
+
+    Returns:
+        Response[RhubapihealthpingResponse200]
+    """
 
     return sync_detailed(
         client=client,
@@ -73,6 +83,12 @@ async def asyncio_detailed(
     *,
     client: Client,
 ) -> Response[RhubapihealthpingResponse200]:
+    """Basic availablity endpoint
+
+    Returns:
+        Response[RhubapihealthpingResponse200]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -87,7 +103,11 @@ async def asyncio(
     *,
     client: Client,
 ) -> Optional[RhubapihealthpingResponse200]:
-    """ """
+    """Basic availablity endpoint
+
+    Returns:
+        Response[RhubapihealthpingResponse200]
+    """
 
     return (
         await asyncio_detailed(

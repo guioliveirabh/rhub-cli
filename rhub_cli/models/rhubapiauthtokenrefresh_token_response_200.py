@@ -8,7 +8,13 @@ T = TypeVar("T", bound="RhubapiauthtokenrefreshTokenResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapiauthtokenrefreshTokenResponse200:
-    """ """
+    """
+    Example:
+        {'access_token': 'eyJhbGciOiJSUzI1...oJhA', 'expires_in': 300, 'not-before-policy': 0, 'refresh_expires_in':
+            1800, 'refresh_token': 'eyJhbGciOiJIUzI1...fc8A', 'scope': 'profile email', 'session_state':
+            '82b7637e-69a2-41e1-ab0b-e3d6b6e1fb0a', 'token_type': 'Bearer'}
+
+    """
 
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 

@@ -8,7 +8,10 @@ T = TypeVar("T", bound="RhubapilabregiondeleteRegionProductJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregiondeleteRegionProductJsonBody:
-    """ """
+    """
+    Attributes:
+        id (int):
+    """
 
     id: int
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)

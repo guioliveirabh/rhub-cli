@@ -12,7 +12,12 @@ T = TypeVar("T", bound="RhubapiauthgroupcreateGroupJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapiauthgroupcreateGroupJsonBody:
-    """ """
+    """
+    Attributes:
+        name (str):
+        attributes (Union[Unset, RhubapiauthgroupcreateGroupJsonBodyAttributes]): Group attributes
+        id (Union[Unset, RhubapiauthgroupcreateGroupJsonBodyId]):
+    """
 
     name: str
     attributes: Union[Unset, RhubapiauthgroupcreateGroupJsonBodyAttributes] = UNSET

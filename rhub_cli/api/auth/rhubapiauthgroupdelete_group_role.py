@@ -63,6 +63,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupdeleteGroupRoleJsonBody,
 ) -> Response[Union[Any, RhubapiauthgroupdeleteGroupRoleResponseDefault]]:
+    """Remove group from role
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupdeleteGroupRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthgroupdeleteGroupRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -83,7 +93,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupdeleteGroupRoleJsonBody,
 ) -> Optional[Union[Any, RhubapiauthgroupdeleteGroupRoleResponseDefault]]:
-    """ """
+    """Remove group from role
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupdeleteGroupRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthgroupdeleteGroupRoleResponseDefault]]
+    """
 
     return sync_detailed(
         group_id=group_id,
@@ -98,6 +116,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupdeleteGroupRoleJsonBody,
 ) -> Response[Union[Any, RhubapiauthgroupdeleteGroupRoleResponseDefault]]:
+    """Remove group from role
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupdeleteGroupRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthgroupdeleteGroupRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -116,7 +144,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupdeleteGroupRoleJsonBody,
 ) -> Optional[Union[Any, RhubapiauthgroupdeleteGroupRoleResponseDefault]]:
-    """ """
+    """Remove group from role
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupdeleteGroupRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthgroupdeleteGroupRoleResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

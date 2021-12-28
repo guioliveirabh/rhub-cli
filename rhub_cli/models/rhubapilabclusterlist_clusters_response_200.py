@@ -13,7 +13,11 @@ T = TypeVar("T", bound="RhubapilabclusterlistClustersResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapilabclusterlistClustersResponse200:
-    """ """
+    """
+    Attributes:
+        data (Union[Unset, List[RhubapilabclusterlistClustersResponse200DataItem]]):
+        total (Union[Unset, int]): The total number of items.
+    """
 
     data: Union[Unset, List[RhubapilabclusterlistClustersResponse200DataItem]] = UNSET
     total: Union[Unset, int] = UNSET

@@ -10,7 +10,13 @@ T = TypeVar("T", bound="RhubapilabregionaddRegionProductResponseDefault")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionaddRegionProductResponseDefault:
-    """ """
+    """
+    Attributes:
+        detail (Union[Unset, str]):
+        status (Union[Unset, int]):
+        title (Union[Unset, str]):
+        type (Union[Unset, str]):
+    """
 
     detail: Union[Unset, str] = UNSET
     status: Union[Unset, int] = UNSET

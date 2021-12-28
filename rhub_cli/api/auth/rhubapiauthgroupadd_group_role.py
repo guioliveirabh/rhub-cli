@@ -59,6 +59,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupaddGroupRoleJsonBody,
 ) -> Response[Union[Any, RhubapiauthgroupaddGroupRoleResponseDefault]]:
+    """Add group to role
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupaddGroupRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthgroupaddGroupRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -79,7 +89,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupaddGroupRoleJsonBody,
 ) -> Optional[Union[Any, RhubapiauthgroupaddGroupRoleResponseDefault]]:
-    """ """
+    """Add group to role
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupaddGroupRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthgroupaddGroupRoleResponseDefault]]
+    """
 
     return sync_detailed(
         group_id=group_id,
@@ -94,6 +112,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupaddGroupRoleJsonBody,
 ) -> Response[Union[Any, RhubapiauthgroupaddGroupRoleResponseDefault]]:
+    """Add group to role
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupaddGroupRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthgroupaddGroupRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -112,7 +140,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupaddGroupRoleJsonBody,
 ) -> Optional[Union[Any, RhubapiauthgroupaddGroupRoleResponseDefault]]:
-    """ """
+    """Add group to role
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupaddGroupRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthgroupaddGroupRoleResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

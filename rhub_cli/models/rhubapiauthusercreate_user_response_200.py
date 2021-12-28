@@ -13,6 +13,21 @@ T = TypeVar("T", bound="RhubapiauthusercreateUserResponse200")
 class RhubapiauthusercreateUserResponse200:
     """See [Keycloak API: UserRepresentation](
     https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+      Example:
+          {'access': {'impersonate': True, 'manage': True, 'manageGroupMembership': True, 'mapRoles': True, 'view': True},
+              'createdTimestamp': 1614717256570, 'disableableCredentialTypes': [], 'email': 'testuser1@example.com',
+              'emailVerified': False, 'enabled': True, 'firstName': 'test', 'id': '743a5375-3513-4749-acb9-1cde1e159e3b',
+              'lastName': 'user1', 'notBefore': 0, 'requiredActions': [], 'totp': False, 'username': 'testuser1'}
+
+      Attributes:
+          email (Union[Unset, str]):
+          enabled (Union[Unset, bool]):
+          first_name (Union[Unset, str]):
+          id (Union[Unset, RhubapiauthusercreateUserResponse200Id]):
+          last_name (Union[Unset, str]):
+          password (Union[Unset, str]):
+          username (Union[Unset, str]):
     """
 
     email: Union[Unset, str] = UNSET

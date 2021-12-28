@@ -53,6 +53,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapilabregiondeleteRegionResponseDefault]]:
+    """Delete region
+
+    Args:
+        region_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiondeleteRegionResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -71,7 +80,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapilabregiondeleteRegionResponseDefault]]:
-    """ """
+    """Delete region
+
+    Args:
+        region_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiondeleteRegionResponseDefault]]
+    """
 
     return sync_detailed(
         region_id=region_id,
@@ -84,6 +100,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapilabregiondeleteRegionResponseDefault]]:
+    """Delete region
+
+    Args:
+        region_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiondeleteRegionResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -100,7 +125,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapilabregiondeleteRegionResponseDefault]]:
-    """ """
+    """Delete region
+
+    Args:
+        region_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiondeleteRegionResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

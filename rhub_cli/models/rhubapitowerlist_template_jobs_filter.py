@@ -10,7 +10,10 @@ T = TypeVar("T", bound="RhubapitowerlistTemplateJobsFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapitowerlistTemplateJobsFilter:
-    """ """
+    """
+    Attributes:
+        launched_by (Union[Unset, str]): ID of the user who launched template
+    """
 
     launched_by: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)

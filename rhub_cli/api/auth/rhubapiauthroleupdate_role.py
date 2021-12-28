@@ -64,6 +64,26 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthroleupdateRoleJsonBody,
 ) -> Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
+    """Update role
+
+     Update role in the database. Returns updated role data including extra
+    fields added by auth database.
+
+    See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        role_id (str):
+        json_body (RhubapiauthroleupdateRoleJsonBody): See [Keycloak API: RoleRepresentation](
+            https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+             Example: {'attributes': {}, 'clientRole': False, 'composite': False, 'composites': {},
+            'containerId': 'admin', 'description': 'adminRole', 'id':
+            'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin'}.
+
+    Returns:
+        Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -84,11 +104,24 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthroleupdateRoleJsonBody,
 ) -> Optional[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
-    """Update role in the database. Returns updated role data including extra
+    """Update role
+
+     Update role in the database. Returns updated role data including extra
     fields added by auth database.
 
     See [Keycloak API: RoleRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        role_id (str):
+        json_body (RhubapiauthroleupdateRoleJsonBody): See [Keycloak API: RoleRepresentation](
+            https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+             Example: {'attributes': {}, 'clientRole': False, 'composite': False, 'composites': {},
+            'containerId': 'admin', 'description': 'adminRole', 'id':
+            'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin'}.
+
+    Returns:
+        Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]
     """
 
     return sync_detailed(
@@ -104,6 +137,26 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthroleupdateRoleJsonBody,
 ) -> Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
+    """Update role
+
+     Update role in the database. Returns updated role data including extra
+    fields added by auth database.
+
+    See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        role_id (str):
+        json_body (RhubapiauthroleupdateRoleJsonBody): See [Keycloak API: RoleRepresentation](
+            https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+             Example: {'attributes': {}, 'clientRole': False, 'composite': False, 'composites': {},
+            'containerId': 'admin', 'description': 'adminRole', 'id':
+            'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin'}.
+
+    Returns:
+        Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -122,11 +175,24 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthroleupdateRoleJsonBody,
 ) -> Optional[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]:
-    """Update role in the database. Returns updated role data including extra
+    """Update role
+
+     Update role in the database. Returns updated role data including extra
     fields added by auth database.
 
     See [Keycloak API: RoleRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        role_id (str):
+        json_body (RhubapiauthroleupdateRoleJsonBody): See [Keycloak API: RoleRepresentation](
+            https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+             Example: {'attributes': {}, 'clientRole': False, 'composite': False, 'composites': {},
+            'containerId': 'admin', 'description': 'adminRole', 'id':
+            'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin'}.
+
+    Returns:
+        Response[Union[RhubapiauthroleupdateRoleResponse200, RhubapiauthroleupdateRoleResponseDefault]]
     """
 
     return (

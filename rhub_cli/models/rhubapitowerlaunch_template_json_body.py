@@ -10,7 +10,10 @@ T = TypeVar("T", bound="RhubapitowerlaunchTemplateJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapitowerlaunchTemplateJsonBody:
-    """ """
+    """
+    Attributes:
+        extra_vars (RhubapitowerlaunchTemplateJsonBodyExtraVars): Extra variable to pass to the template
+    """
 
     extra_vars: RhubapitowerlaunchTemplateJsonBodyExtraVars
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)

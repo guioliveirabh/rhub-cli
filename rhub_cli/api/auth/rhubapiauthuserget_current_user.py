@@ -56,6 +56,12 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
+    """Get info about logged in user
+
+    Returns:
+        Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -72,7 +78,11 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
-    """ """
+    """Get info about logged in user
+
+    Returns:
+        Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]
+    """
 
     return sync_detailed(
         client=client,
@@ -83,6 +93,12 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
+    """Get info about logged in user
+
+    Returns:
+        Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -97,7 +113,11 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]:
-    """ """
+    """Get info about logged in user
+
+    Returns:
+        Response[Union[RhubapiauthusergetCurrentUserResponse200, RhubapiauthusergetCurrentUserResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

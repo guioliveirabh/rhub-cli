@@ -16,6 +16,16 @@ T = TypeVar("T", bound="RhubapiauthuserlistUserGroupsResponse200Item")
 class RhubapiauthuserlistUserGroupsResponse200Item:
     """See [Keycloak API: GroupRepresentation](
     https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+        Example:
+            {'access': {'manage': True, 'manageMembership': True, 'view': True}, 'attributes': {'mailing-list': ['admin-
+                list@example.com']}, 'clientRoles': {}, 'id': 'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin', 'path':
+                '/admin', 'realmRoles': [], 'subGroups': []}
+
+        Attributes:
+            attributes (Union[Unset, RhubapiauthuserlistUserGroupsResponse200ItemAttributes]): Group attributes
+            id (Union[Unset, RhubapiauthuserlistUserGroupsResponse200ItemId]):
+            name (Union[Unset, str]):
     """
 
     attributes: Union[Unset, RhubapiauthuserlistUserGroupsResponse200ItemAttributes] = UNSET

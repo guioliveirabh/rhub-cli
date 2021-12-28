@@ -13,7 +13,15 @@ T = TypeVar("T", bound="RhubapilabregionlistRegionsResponse200DataItemSatellite"
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionlistRegionsResponse200DataItemSatellite:
-    """ """
+    """
+    Example:
+        {'credentials': 'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com'}
+
+    Attributes:
+        credentials (Union[RhubapilabregionlistRegionsResponse200DataItemSatelliteCredentialsType0, Unset, str]):
+        hostname (Union[Unset, str]):
+        insecure (Union[Unset, bool]):
+    """
 
     credentials: Union[RhubapilabregionlistRegionsResponse200DataItemSatelliteCredentialsType0, Unset, str] = UNSET
     hostname: Union[Unset, str] = UNSET

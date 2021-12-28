@@ -53,6 +53,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapilabproductdeleteProductResponseDefault]]:
+    """Delete product
+
+    Args:
+        product_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductdeleteProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         product_id=product_id,
         client=client,
@@ -71,7 +80,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapilabproductdeleteProductResponseDefault]]:
-    """ """
+    """Delete product
+
+    Args:
+        product_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductdeleteProductResponseDefault]]
+    """
 
     return sync_detailed(
         product_id=product_id,
@@ -84,6 +100,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapilabproductdeleteProductResponseDefault]]:
+    """Delete product
+
+    Args:
+        product_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductdeleteProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         product_id=product_id,
         client=client,
@@ -100,7 +125,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapilabproductdeleteProductResponseDefault]]:
-    """ """
+    """Delete product
+
+    Args:
+        product_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductdeleteProductResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

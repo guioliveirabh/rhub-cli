@@ -27,7 +27,28 @@ T = TypeVar("T", bound="RhubapilabclusterlistClustersResponse200DataItem")
 
 @attr.s(auto_attribs=True)
 class RhubapilabclusterlistClustersResponse200DataItem:
-    """ """
+    """
+    Attributes:
+        created (Union[Unset, datetime.datetime]):
+        description (Union[Unset, str]):
+        group_id (Union[Unset, None, str]):
+        group_name (Union[Unset, None, str]):
+        hosts (Union[Unset, List[RhubapilabclusterlistClustersResponse200DataItemHostsItem]]):
+        id (Union[Unset, RhubapilabclusterlistClustersResponse200DataItemId]):
+        lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
+        name (Union[Unset, str]):
+        product_id (Union[Unset, int]):
+        product_name (Union[Unset, str]):
+        product_params (Union[Unset, RhubapilabclusterlistClustersResponse200DataItemProductParams]):
+        quota (Union[Any, RhubapilabclusterlistClustersResponse200DataItemQuotaType0, Unset]):  Example: {'num_vcpus':
+            40, 'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
+        region_id (Union[Unset, int]):
+        region_name (Union[Unset, str]):
+        reservation_expiration (Union[Unset, None, datetime.datetime]): Soft-limit expiration.
+        status (Union[Unset, None, RhubapilabclusterlistClustersResponse200DataItemStatus]):
+        user_id (Union[Unset, str]):
+        user_name (Union[Unset, str]):
+    """
 
     created: Union[Unset, datetime.datetime] = UNSET
     description: Union[Unset, str] = UNSET

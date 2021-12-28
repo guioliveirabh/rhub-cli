@@ -11,7 +11,15 @@ T = TypeVar("T", bound="RhubapitowercreateTemplateJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapitowercreateTemplateJsonBody:
-    """ """
+    """
+    Attributes:
+        name (str):
+        server_id (int):
+        tower_template_id (int):
+        tower_template_is_workflow (bool): Is template workflow?
+        description (Union[Unset, str]):
+        id (Union[Unset, RhubapitowercreateTemplateJsonBodyId]): Internal ID
+    """
 
     name: str
     server_id: int

@@ -85,6 +85,16 @@ def sync_detailed(
 ) -> Response[
     Union[List[RhubapilabclustercreateClusterHostsResponse200Item], RhubapilabclustercreateClusterHostsResponseDefault]
 ]:
+    """Create or update cluster hosts
+
+    Args:
+        cluster_id (int):
+        json_body (List[RhubapilabclustercreateClusterHostsJsonBodyItem]):
+
+    Returns:
+        Response[Union[List[RhubapilabclustercreateClusterHostsResponse200Item], RhubapilabclustercreateClusterHostsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -107,7 +117,15 @@ def sync(
 ) -> Optional[
     Union[List[RhubapilabclustercreateClusterHostsResponse200Item], RhubapilabclustercreateClusterHostsResponseDefault]
 ]:
-    """ """
+    """Create or update cluster hosts
+
+    Args:
+        cluster_id (int):
+        json_body (List[RhubapilabclustercreateClusterHostsJsonBodyItem]):
+
+    Returns:
+        Response[Union[List[RhubapilabclustercreateClusterHostsResponse200Item], RhubapilabclustercreateClusterHostsResponseDefault]]
+    """
 
     return sync_detailed(
         cluster_id=cluster_id,
@@ -124,6 +142,16 @@ async def asyncio_detailed(
 ) -> Response[
     Union[List[RhubapilabclustercreateClusterHostsResponse200Item], RhubapilabclustercreateClusterHostsResponseDefault]
 ]:
+    """Create or update cluster hosts
+
+    Args:
+        cluster_id (int):
+        json_body (List[RhubapilabclustercreateClusterHostsJsonBodyItem]):
+
+    Returns:
+        Response[Union[List[RhubapilabclustercreateClusterHostsResponse200Item], RhubapilabclustercreateClusterHostsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -144,7 +172,15 @@ async def asyncio(
 ) -> Optional[
     Union[List[RhubapilabclustercreateClusterHostsResponse200Item], RhubapilabclustercreateClusterHostsResponseDefault]
 ]:
-    """ """
+    """Create or update cluster hosts
+
+    Args:
+        cluster_id (int):
+        json_body (List[RhubapilabclustercreateClusterHostsJsonBodyItem]):
+
+    Returns:
+        Response[Union[List[RhubapilabclustercreateClusterHostsResponse200Item], RhubapilabclustercreateClusterHostsResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

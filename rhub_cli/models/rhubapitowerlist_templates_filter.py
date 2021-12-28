@@ -10,7 +10,12 @@ T = TypeVar("T", bound="RhubapitowerlistTemplatesFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapitowerlistTemplatesFilter:
-    """ """
+    """
+    Attributes:
+        name (Union[Unset, str]): Name of a template. Wildcard ``%`` can be used to match zero, one, or multiple
+            characters
+        server_id (Union[Unset, int]): ID of the server
+    """
 
     name: Union[Unset, str] = UNSET
     server_id: Union[Unset, int] = UNSET

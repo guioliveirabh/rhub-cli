@@ -63,6 +63,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[List[RhubapiauthuserlistUserRolesResponse200Item], RhubapiauthuserlistUserRolesResponseDefault]]:
+    """Get user roles
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthuserlistUserRolesResponse200Item], RhubapiauthuserlistUserRolesResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -81,7 +90,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[List[RhubapiauthuserlistUserRolesResponse200Item], RhubapiauthuserlistUserRolesResponseDefault]]:
-    """ """
+    """Get user roles
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthuserlistUserRolesResponse200Item], RhubapiauthuserlistUserRolesResponseDefault]]
+    """
 
     return sync_detailed(
         user_id=user_id,
@@ -94,6 +110,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[List[RhubapiauthuserlistUserRolesResponse200Item], RhubapiauthuserlistUserRolesResponseDefault]]:
+    """Get user roles
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthuserlistUserRolesResponse200Item], RhubapiauthuserlistUserRolesResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -110,7 +135,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[List[RhubapiauthuserlistUserRolesResponse200Item], RhubapiauthuserlistUserRolesResponseDefault]]:
-    """ """
+    """Get user roles
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthuserlistUserRolesResponse200Item], RhubapiauthuserlistUserRolesResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

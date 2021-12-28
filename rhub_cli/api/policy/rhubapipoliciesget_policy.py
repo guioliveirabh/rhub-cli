@@ -63,6 +63,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapipoliciesgetPolicyResponse200, RhubapipoliciesgetPolicyResponseDefault]]:
+    """Get policy
+
+    Args:
+        policy_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapipoliciesgetPolicyResponse200, RhubapipoliciesgetPolicyResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         policy_id=policy_id,
         client=client,
@@ -81,7 +90,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapipoliciesgetPolicyResponse200, RhubapipoliciesgetPolicyResponseDefault]]:
-    """ """
+    """Get policy
+
+    Args:
+        policy_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapipoliciesgetPolicyResponse200, RhubapipoliciesgetPolicyResponseDefault]]
+    """
 
     return sync_detailed(
         policy_id=policy_id,
@@ -94,6 +110,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapipoliciesgetPolicyResponse200, RhubapipoliciesgetPolicyResponseDefault]]:
+    """Get policy
+
+    Args:
+        policy_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapipoliciesgetPolicyResponse200, RhubapipoliciesgetPolicyResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         policy_id=policy_id,
         client=client,
@@ -110,7 +135,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapipoliciesgetPolicyResponse200, RhubapipoliciesgetPolicyResponseDefault]]:
-    """ """
+    """Get policy
+
+    Args:
+        policy_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapipoliciesgetPolicyResponse200, RhubapipoliciesgetPolicyResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

@@ -16,7 +16,17 @@ T = TypeVar("T", bound="RhubapilabclusterupdateClusterJsonBodyHostsItem")
 
 @attr.s(auto_attribs=True)
 class RhubapilabclusterupdateClusterJsonBodyHostsItem:
-    """ """
+    """
+    Attributes:
+        cluster_id (Union[Unset, RhubapilabclusterupdateClusterJsonBodyHostsItemClusterId]):
+        fqdn (Union[Unset, str]):
+        id (Union[Unset, RhubapilabclusterupdateClusterJsonBodyHostsItemId]):
+        ipaddr (Union[Unset, List[str]]):
+        num_vcpus (Union[Unset, None, int]):
+        num_volumes (Union[Unset, None, int]):
+        ram_mb (Union[Unset, None, int]):
+        volumes_gb (Union[Unset, None, int]):
+    """
 
     cluster_id: Union[Unset, RhubapilabclusterupdateClusterJsonBodyHostsItemClusterId] = UNSET
     fqdn: Union[Unset, str] = UNSET

@@ -58,6 +58,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapilabclustergetClusterResponse200, RhubapilabclustergetClusterResponseDefault]]:
+    """Get cluster
+
+    Args:
+        cluster_id (int):
+
+    Returns:
+        Response[Union[RhubapilabclustergetClusterResponse200, RhubapilabclustergetClusterResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -76,7 +85,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapilabclustergetClusterResponse200, RhubapilabclustergetClusterResponseDefault]]:
-    """ """
+    """Get cluster
+
+    Args:
+        cluster_id (int):
+
+    Returns:
+        Response[Union[RhubapilabclustergetClusterResponse200, RhubapilabclustergetClusterResponseDefault]]
+    """
 
     return sync_detailed(
         cluster_id=cluster_id,
@@ -89,6 +105,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapilabclustergetClusterResponse200, RhubapilabclustergetClusterResponseDefault]]:
+    """Get cluster
+
+    Args:
+        cluster_id (int):
+
+    Returns:
+        Response[Union[RhubapilabclustergetClusterResponse200, RhubapilabclustergetClusterResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cluster_id=cluster_id,
         client=client,
@@ -105,7 +130,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapilabclustergetClusterResponse200, RhubapilabclustergetClusterResponseDefault]]:
-    """ """
+    """Get cluster
+
+    Args:
+        cluster_id (int):
+
+    Returns:
+        Response[Union[RhubapilabclustergetClusterResponse200, RhubapilabclustergetClusterResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

@@ -61,6 +61,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[List[RhubapiauthgrouplistGroupsResponse200Item], RhubapiauthgrouplistGroupsResponseDefault]]:
+    """Get group list
+
+     See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupsResponse200Item], RhubapiauthgrouplistGroupsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -77,8 +86,13 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[List[RhubapiauthgrouplistGroupsResponse200Item], RhubapiauthgrouplistGroupsResponseDefault]]:
-    """See also [Keycloak API: GroupRepresentation](
-    https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+    """Get group list
+
+     See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupsResponse200Item], RhubapiauthgrouplistGroupsResponseDefault]]
     """
 
     return sync_detailed(
@@ -90,6 +104,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[List[RhubapiauthgrouplistGroupsResponse200Item], RhubapiauthgrouplistGroupsResponseDefault]]:
+    """Get group list
+
+     See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupsResponse200Item], RhubapiauthgrouplistGroupsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
     )
@@ -104,8 +127,13 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[List[RhubapiauthgrouplistGroupsResponse200Item], RhubapiauthgrouplistGroupsResponseDefault]]:
-    """See also [Keycloak API: GroupRepresentation](
-    https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+    """Get group list
+
+     See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupsResponse200Item], RhubapiauthgrouplistGroupsResponseDefault]]
     """
 
     return (

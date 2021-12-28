@@ -58,6 +58,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapitowergetServerResponse200, RhubapitowergetServerResponseDefault]]:
+    """Get Tower server
+
+    Args:
+        server_id (int):
+
+    Returns:
+        Response[Union[RhubapitowergetServerResponse200, RhubapitowergetServerResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         server_id=server_id,
         client=client,
@@ -76,7 +85,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapitowergetServerResponse200, RhubapitowergetServerResponseDefault]]:
-    """ """
+    """Get Tower server
+
+    Args:
+        server_id (int):
+
+    Returns:
+        Response[Union[RhubapitowergetServerResponse200, RhubapitowergetServerResponseDefault]]
+    """
 
     return sync_detailed(
         server_id=server_id,
@@ -89,6 +105,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapitowergetServerResponse200, RhubapitowergetServerResponseDefault]]:
+    """Get Tower server
+
+    Args:
+        server_id (int):
+
+    Returns:
+        Response[Union[RhubapitowergetServerResponse200, RhubapitowergetServerResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         server_id=server_id,
         client=client,
@@ -105,7 +130,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapitowergetServerResponse200, RhubapitowergetServerResponseDefault]]:
-    """ """
+    """Get Tower server
+
+    Args:
+        server_id (int):
+
+    Returns:
+        Response[Union[RhubapitowergetServerResponse200, RhubapitowergetServerResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

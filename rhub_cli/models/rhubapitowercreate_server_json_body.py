@@ -11,7 +11,16 @@ T = TypeVar("T", bound="RhubapitowercreateServerJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapitowercreateServerJsonBody:
-    """ """
+    """
+    Attributes:
+        credentials (str): Tower credentials path (Vault mount/path)
+        name (str):
+        url (str):
+        description (Union[Unset, str]):
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubapitowercreateServerJsonBodyId]):
+        verify_ssl (Union[Unset, bool]): Option to disable SSL certificate verification.
+    """
 
     credentials: str
     name: str

@@ -81,6 +81,20 @@ def sync_detailed(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
+    """Get user list
+
+     See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        filter_ (Union[Unset, None, RhubapiauthuserlistUsersFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -103,8 +117,18 @@ def sync(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Optional[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
-    """See also [Keycloak API: UserRepresentation](
-    https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+    """Get user list
+
+     See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        filter_ (Union[Unset, None, RhubapiauthuserlistUsersFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]
     """
 
     return sync_detailed(
@@ -122,6 +146,20 @@ async def asyncio_detailed(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
+    """Get user list
+
+     See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        filter_ (Union[Unset, None, RhubapiauthuserlistUsersFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -142,8 +180,18 @@ async def asyncio(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Optional[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]:
-    """See also [Keycloak API: UserRepresentation](
-    https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+    """Get user list
+
+     See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        filter_ (Union[Unset, None, RhubapiauthuserlistUsersFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[List[RhubapiauthuserlistUsersResponse200Item], RhubapiauthuserlistUsersResponseDefault]]
     """
 
     return (

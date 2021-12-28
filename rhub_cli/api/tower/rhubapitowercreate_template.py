@@ -62,6 +62,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapitowercreateTemplateJsonBody,
 ) -> Response[Union[RhubapitowercreateTemplateResponse200, RhubapitowercreateTemplateResponseDefault]]:
+    """Create Tower template
+
+    Args:
+        json_body (RhubapitowercreateTemplateJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowercreateTemplateResponse200, RhubapitowercreateTemplateResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -80,7 +89,14 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapitowercreateTemplateJsonBody,
 ) -> Optional[Union[RhubapitowercreateTemplateResponse200, RhubapitowercreateTemplateResponseDefault]]:
-    """ """
+    """Create Tower template
+
+    Args:
+        json_body (RhubapitowercreateTemplateJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowercreateTemplateResponse200, RhubapitowercreateTemplateResponseDefault]]
+    """
 
     return sync_detailed(
         client=client,
@@ -93,6 +109,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapitowercreateTemplateJsonBody,
 ) -> Response[Union[RhubapitowercreateTemplateResponse200, RhubapitowercreateTemplateResponseDefault]]:
+    """Create Tower template
+
+    Args:
+        json_body (RhubapitowercreateTemplateJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowercreateTemplateResponse200, RhubapitowercreateTemplateResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -109,7 +134,14 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapitowercreateTemplateJsonBody,
 ) -> Optional[Union[RhubapitowercreateTemplateResponse200, RhubapitowercreateTemplateResponseDefault]]:
-    """ """
+    """Create Tower template
+
+    Args:
+        json_body (RhubapitowercreateTemplateJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowercreateTemplateResponse200, RhubapitowercreateTemplateResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

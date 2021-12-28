@@ -64,6 +64,27 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupupdateGroupJsonBody,
 ) -> Response[Union[RhubapiauthgroupupdateGroupResponse200, RhubapiauthgroupupdateGroupResponseDefault]]:
+    """Update group
+
+     Update group in the database. Returns updated group data including extra
+    fields added by auth database.
+
+    See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupupdateGroupJsonBody): See [Keycloak API: GroupRepresentation](
+            https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+             Example: {'access': {'manage': True, 'manageMembership': True, 'view': True},
+            'attributes': {'mailing-list': ['admin-list@example.com']}, 'clientRoles': {}, 'id':
+            'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin', 'path': '/admin', 'realmRoles':
+            [], 'subGroups': []}.
+
+    Returns:
+        Response[Union[RhubapiauthgroupupdateGroupResponse200, RhubapiauthgroupupdateGroupResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -84,11 +105,25 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupupdateGroupJsonBody,
 ) -> Optional[Union[RhubapiauthgroupupdateGroupResponse200, RhubapiauthgroupupdateGroupResponseDefault]]:
-    """Update group in the database. Returns updated group data including extra
+    """Update group
+
+     Update group in the database. Returns updated group data including extra
     fields added by auth database.
 
     See also [Keycloak API: GroupRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupupdateGroupJsonBody): See [Keycloak API: GroupRepresentation](
+            https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+             Example: {'access': {'manage': True, 'manageMembership': True, 'view': True},
+            'attributes': {'mailing-list': ['admin-list@example.com']}, 'clientRoles': {}, 'id':
+            'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin', 'path': '/admin', 'realmRoles':
+            [], 'subGroups': []}.
+
+    Returns:
+        Response[Union[RhubapiauthgroupupdateGroupResponse200, RhubapiauthgroupupdateGroupResponseDefault]]
     """
 
     return sync_detailed(
@@ -104,6 +139,27 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupupdateGroupJsonBody,
 ) -> Response[Union[RhubapiauthgroupupdateGroupResponse200, RhubapiauthgroupupdateGroupResponseDefault]]:
+    """Update group
+
+     Update group in the database. Returns updated group data including extra
+    fields added by auth database.
+
+    See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupupdateGroupJsonBody): See [Keycloak API: GroupRepresentation](
+            https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+             Example: {'access': {'manage': True, 'manageMembership': True, 'view': True},
+            'attributes': {'mailing-list': ['admin-list@example.com']}, 'clientRoles': {}, 'id':
+            'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin', 'path': '/admin', 'realmRoles':
+            [], 'subGroups': []}.
+
+    Returns:
+        Response[Union[RhubapiauthgroupupdateGroupResponse200, RhubapiauthgroupupdateGroupResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -122,11 +178,25 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthgroupupdateGroupJsonBody,
 ) -> Optional[Union[RhubapiauthgroupupdateGroupResponse200, RhubapiauthgroupupdateGroupResponseDefault]]:
-    """Update group in the database. Returns updated group data including extra
+    """Update group
+
+     Update group in the database. Returns updated group data including extra
     fields added by auth database.
 
     See also [Keycloak API: GroupRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        group_id (str):
+        json_body (RhubapiauthgroupupdateGroupJsonBody): See [Keycloak API: GroupRepresentation](
+            https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+             Example: {'access': {'manage': True, 'manageMembership': True, 'view': True},
+            'attributes': {'mailing-list': ['admin-list@example.com']}, 'clientRoles': {}, 'id':
+            'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin', 'path': '/admin', 'realmRoles':
+            [], 'subGroups': []}.
+
+    Returns:
+        Response[Union[RhubapiauthgroupupdateGroupResponse200, RhubapiauthgroupupdateGroupResponseDefault]]
     """
 
     return (

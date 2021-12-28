@@ -69,6 +69,18 @@ def sync_detailed(
 ) -> Response[
     Union[List[RhubapiauthgrouplistGroupUsersResponse200Item], RhubapiauthgrouplistGroupUsersResponseDefault]
 ]:
+    """Get users in group
+
+     See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupUsersResponse200Item], RhubapiauthgrouplistGroupUsersResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -89,8 +101,16 @@ def sync(
 ) -> Optional[
     Union[List[RhubapiauthgrouplistGroupUsersResponse200Item], RhubapiauthgrouplistGroupUsersResponseDefault]
 ]:
-    """See also [Keycloak API: UserRepresentation](
-    https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+    """Get users in group
+
+     See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupUsersResponse200Item], RhubapiauthgrouplistGroupUsersResponseDefault]]
     """
 
     return sync_detailed(
@@ -106,6 +126,18 @@ async def asyncio_detailed(
 ) -> Response[
     Union[List[RhubapiauthgrouplistGroupUsersResponse200Item], RhubapiauthgrouplistGroupUsersResponseDefault]
 ]:
+    """Get users in group
+
+     See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupUsersResponse200Item], RhubapiauthgrouplistGroupUsersResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -124,8 +156,16 @@ async def asyncio(
 ) -> Optional[
     Union[List[RhubapiauthgrouplistGroupUsersResponse200Item], RhubapiauthgrouplistGroupUsersResponseDefault]
 ]:
-    """See also [Keycloak API: UserRepresentation](
-    https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+    """Get users in group
+
+     See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupUsersResponse200Item], RhubapiauthgrouplistGroupUsersResponseDefault]]
     """
 
     return (

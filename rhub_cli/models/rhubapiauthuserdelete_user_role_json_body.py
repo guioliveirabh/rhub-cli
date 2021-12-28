@@ -8,7 +8,10 @@ T = TypeVar("T", bound="RhubapiauthuserdeleteUserRoleJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapiauthuserdeleteUserRoleJsonBody:
-    """ """
+    """
+    Attributes:
+        id (str):
+    """
 
     id: str
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)

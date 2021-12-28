@@ -10,7 +10,12 @@ T = TypeVar("T", bound="RhubapilabproductlistProductRegionsResponse200ItemRegion
 
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsResponse200ItemRegionDnsServerKeyType0:
-    """Credentials to store in Vault"""
+    """Credentials to store in Vault
+
+    Attributes:
+        name (Union[Unset, str]):
+        secret (Union[Unset, str]):
+    """
 
     name: Union[Unset, str] = UNSET
     secret: Union[Unset, str] = UNSET

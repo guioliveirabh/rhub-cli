@@ -11,7 +11,16 @@ T = TypeVar("T", bound="RhubapitowercreateServerResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapitowercreateServerResponse200:
-    """ """
+    """
+    Attributes:
+        credentials (Union[Unset, str]): Tower credentials path (Vault mount/path)
+        description (Union[Unset, str]):
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubapitowercreateServerResponse200Id]):
+        name (Union[Unset, str]):
+        url (Union[Unset, str]):
+        verify_ssl (Union[Unset, bool]): Option to disable SSL certificate verification.
+    """
 
     credentials: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET

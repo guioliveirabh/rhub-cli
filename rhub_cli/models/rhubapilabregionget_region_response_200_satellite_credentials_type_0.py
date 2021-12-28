@@ -10,7 +10,12 @@ T = TypeVar("T", bound="RhubapilabregiongetRegionResponse200SatelliteCredentials
 
 @attr.s(auto_attribs=True)
 class RhubapilabregiongetRegionResponse200SatelliteCredentialsType0:
-    """Credentials to store in Vault"""
+    """Credentials to store in Vault
+
+    Attributes:
+        password (Union[Unset, str]):
+        username (Union[Unset, str]):
+    """
 
     password: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET

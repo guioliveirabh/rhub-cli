@@ -57,6 +57,18 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabproductcreateProductJsonBody,
 ) -> Response[Union[Any, RhubapilabproductcreateProductResponseDefault]]:
+    """Create product
+
+     `tower_template_name_create` is the Tower template name to create the
+    cluster, and `tower_template_name_delete` to delete.
+
+    Args:
+        json_body (RhubapilabproductcreateProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductcreateProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -75,8 +87,16 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapilabproductcreateProductJsonBody,
 ) -> Optional[Union[Any, RhubapilabproductcreateProductResponseDefault]]:
-    """`tower_template_name_create` is the Tower template name to create the
+    """Create product
+
+     `tower_template_name_create` is the Tower template name to create the
     cluster, and `tower_template_name_delete` to delete.
+
+    Args:
+        json_body (RhubapilabproductcreateProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductcreateProductResponseDefault]]
     """
 
     return sync_detailed(
@@ -90,6 +110,18 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabproductcreateProductJsonBody,
 ) -> Response[Union[Any, RhubapilabproductcreateProductResponseDefault]]:
+    """Create product
+
+     `tower_template_name_create` is the Tower template name to create the
+    cluster, and `tower_template_name_delete` to delete.
+
+    Args:
+        json_body (RhubapilabproductcreateProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductcreateProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -106,8 +138,16 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapilabproductcreateProductJsonBody,
 ) -> Optional[Union[Any, RhubapilabproductcreateProductResponseDefault]]:
-    """`tower_template_name_create` is the Tower template name to create the
+    """Create product
+
+     `tower_template_name_create` is the Tower template name to create the
     cluster, and `tower_template_name_delete` to delete.
+
+    Args:
+        json_body (RhubapilabproductcreateProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabproductcreateProductResponseDefault]]
     """
 
     return (

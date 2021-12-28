@@ -13,7 +13,15 @@ T = TypeVar("T", bound="RhubapilabregionupdateRegionJsonBodyDnsServer")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionupdateRegionJsonBodyDnsServer:
-    """ """
+    """
+    Example:
+        {'hostname': 'ns.example.com', 'key': 'kv/region/rdu2-a/dns', 'zone': 'example.com.'}
+
+    Attributes:
+        hostname (Union[Unset, str]):
+        key (Union[RhubapilabregionupdateRegionJsonBodyDnsServerKeyType0, Unset, str]):
+        zone (Union[Unset, str]):
+    """
 
     hostname: Union[Unset, str] = UNSET
     key: Union[RhubapilabregionupdateRegionJsonBodyDnsServerKeyType0, Unset, str] = UNSET

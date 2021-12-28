@@ -62,6 +62,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapitowercreateServerJsonBody,
 ) -> Response[Union[RhubapitowercreateServerResponse200, RhubapitowercreateServerResponseDefault]]:
+    """Create Tower server
+
+    Args:
+        json_body (RhubapitowercreateServerJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowercreateServerResponse200, RhubapitowercreateServerResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -80,7 +89,14 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapitowercreateServerJsonBody,
 ) -> Optional[Union[RhubapitowercreateServerResponse200, RhubapitowercreateServerResponseDefault]]:
-    """ """
+    """Create Tower server
+
+    Args:
+        json_body (RhubapitowercreateServerJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowercreateServerResponse200, RhubapitowercreateServerResponseDefault]]
+    """
 
     return sync_detailed(
         client=client,
@@ -93,6 +109,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapitowercreateServerJsonBody,
 ) -> Response[Union[RhubapitowercreateServerResponse200, RhubapitowercreateServerResponseDefault]]:
+    """Create Tower server
+
+    Args:
+        json_body (RhubapitowercreateServerJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowercreateServerResponse200, RhubapitowercreateServerResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -109,7 +134,14 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapitowercreateServerJsonBody,
 ) -> Optional[Union[RhubapitowercreateServerResponse200, RhubapitowercreateServerResponseDefault]]:
-    """ """
+    """Create Tower server
+
+    Args:
+        json_body (RhubapitowercreateServerJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowercreateServerResponse200, RhubapitowercreateServerResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

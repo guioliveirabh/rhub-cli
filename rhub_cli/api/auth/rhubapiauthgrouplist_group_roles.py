@@ -69,6 +69,15 @@ def sync_detailed(
 ) -> Response[
     Union[List[RhubapiauthgrouplistGroupRolesResponse200Item], RhubapiauthgrouplistGroupRolesResponseDefault]
 ]:
+    """Get group roles
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupRolesResponse200Item], RhubapiauthgrouplistGroupRolesResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -89,7 +98,14 @@ def sync(
 ) -> Optional[
     Union[List[RhubapiauthgrouplistGroupRolesResponse200Item], RhubapiauthgrouplistGroupRolesResponseDefault]
 ]:
-    """ """
+    """Get group roles
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupRolesResponse200Item], RhubapiauthgrouplistGroupRolesResponseDefault]]
+    """
 
     return sync_detailed(
         group_id=group_id,
@@ -104,6 +120,15 @@ async def asyncio_detailed(
 ) -> Response[
     Union[List[RhubapiauthgrouplistGroupRolesResponse200Item], RhubapiauthgrouplistGroupRolesResponseDefault]
 ]:
+    """Get group roles
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupRolesResponse200Item], RhubapiauthgrouplistGroupRolesResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -122,7 +147,14 @@ async def asyncio(
 ) -> Optional[
     Union[List[RhubapiauthgrouplistGroupRolesResponse200Item], RhubapiauthgrouplistGroupRolesResponseDefault]
 ]:
-    """ """
+    """Get group roles
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[List[RhubapiauthgrouplistGroupRolesResponse200Item], RhubapiauthgrouplistGroupRolesResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

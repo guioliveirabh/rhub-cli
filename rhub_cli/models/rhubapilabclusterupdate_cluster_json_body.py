@@ -23,7 +23,28 @@ T = TypeVar("T", bound="RhubapilabclusterupdateClusterJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapilabclusterupdateClusterJsonBody:
-    """ """
+    """
+    Attributes:
+        created (Union[Unset, datetime.datetime]):
+        description (Union[Unset, str]):
+        group_id (Union[Unset, None, str]):
+        group_name (Union[Unset, None, str]):
+        hosts (Union[Unset, List[RhubapilabclusterupdateClusterJsonBodyHostsItem]]):
+        id (Union[Unset, RhubapilabclusterupdateClusterJsonBodyId]):
+        lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
+        name (Union[Unset, str]):
+        product_id (Union[Unset, int]):
+        product_name (Union[Unset, str]):
+        product_params (Union[Unset, RhubapilabclusterupdateClusterJsonBodyProductParams]):
+        quota (Union[Any, RhubapilabclusterupdateClusterJsonBodyQuotaType0, Unset]):  Example: {'num_vcpus': 40,
+            'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
+        region_id (Union[Unset, int]):
+        region_name (Union[Unset, str]):
+        reservation_expiration (Union[Unset, None, datetime.datetime]): Soft-limit expiration.
+        status (Union[Unset, None, RhubapilabclusterupdateClusterJsonBodyStatus]):
+        user_id (Union[Unset, str]):
+        user_name (Union[Unset, str]):
+    """
 
     created: Union[Unset, datetime.datetime] = UNSET
     description: Union[Unset, str] = UNSET

@@ -53,6 +53,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapiauthuserdeleteUserResponseDefault]]:
+    """Delete user
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuserdeleteUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -71,7 +80,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapiauthuserdeleteUserResponseDefault]]:
-    """ """
+    """Delete user
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuserdeleteUserResponseDefault]]
+    """
 
     return sync_detailed(
         user_id=user_id,
@@ -84,6 +100,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapiauthuserdeleteUserResponseDefault]]:
+    """Delete user
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuserdeleteUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -100,7 +125,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapiauthuserdeleteUserResponseDefault]]:
-    """ """
+    """Delete user
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuserdeleteUserResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

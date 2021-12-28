@@ -64,6 +64,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
 ) -> Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
+    """Update CronJob
+
+    Args:
+        cron_job_id (int):
+        json_body (RhubapischedulercronupdateJobJsonBody):
+
+    Returns:
+        Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
         client=client,
@@ -84,7 +94,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
 ) -> Optional[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
-    """ """
+    """Update CronJob
+
+    Args:
+        cron_job_id (int):
+        json_body (RhubapischedulercronupdateJobJsonBody):
+
+    Returns:
+        Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]
+    """
 
     return sync_detailed(
         cron_job_id=cron_job_id,
@@ -99,6 +117,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
 ) -> Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
+    """Update CronJob
+
+    Args:
+        cron_job_id (int):
+        json_body (RhubapischedulercronupdateJobJsonBody):
+
+    Returns:
+        Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
         client=client,
@@ -117,7 +145,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapischedulercronupdateJobJsonBody,
 ) -> Optional[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]:
-    """ """
+    """Update CronJob
+
+    Args:
+        cron_job_id (int):
+        json_body (RhubapischedulercronupdateJobJsonBody):
+
+    Returns:
+        Response[Union[RhubapischedulercronupdateJobResponse200, RhubapischedulercronupdateJobResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

@@ -64,6 +64,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
 ) -> Response[Union[RhubapitowerlaunchTemplateResponse200, RhubapitowerlaunchTemplateResponseDefault]]:
+    """Launch Tower template
+
+    Args:
+        template_id (int):
+        json_body (RhubapitowerlaunchTemplateJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowerlaunchTemplateResponse200, RhubapitowerlaunchTemplateResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -84,7 +94,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
 ) -> Optional[Union[RhubapitowerlaunchTemplateResponse200, RhubapitowerlaunchTemplateResponseDefault]]:
-    """ """
+    """Launch Tower template
+
+    Args:
+        template_id (int):
+        json_body (RhubapitowerlaunchTemplateJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowerlaunchTemplateResponse200, RhubapitowerlaunchTemplateResponseDefault]]
+    """
 
     return sync_detailed(
         template_id=template_id,
@@ -99,6 +117,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
 ) -> Response[Union[RhubapitowerlaunchTemplateResponse200, RhubapitowerlaunchTemplateResponseDefault]]:
+    """Launch Tower template
+
+    Args:
+        template_id (int):
+        json_body (RhubapitowerlaunchTemplateJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowerlaunchTemplateResponse200, RhubapitowerlaunchTemplateResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -117,7 +145,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapitowerlaunchTemplateJsonBody,
 ) -> Optional[Union[RhubapitowerlaunchTemplateResponse200, RhubapitowerlaunchTemplateResponseDefault]]:
-    """ """
+    """Launch Tower template
+
+    Args:
+        template_id (int):
+        json_body (RhubapitowerlaunchTemplateJsonBody):
+
+    Returns:
+        Response[Union[RhubapitowerlaunchTemplateResponse200, RhubapitowerlaunchTemplateResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

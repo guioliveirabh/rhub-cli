@@ -62,6 +62,21 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthrolecreateRoleJsonBody,
 ) -> Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
+    """Create role
+
+     Create a role in the database. Returns created role data with extra
+    fields added by auth database (UUID and other fields).
+
+    See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        json_body (RhubapiauthrolecreateRoleJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -80,11 +95,19 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthrolecreateRoleJsonBody,
 ) -> Optional[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
-    """Create a role in the database. Returns created role data with extra
+    """Create role
+
+     Create a role in the database. Returns created role data with extra
     fields added by auth database (UUID and other fields).
 
     See [Keycloak API: RoleRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        json_body (RhubapiauthrolecreateRoleJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]
     """
 
     return sync_detailed(
@@ -98,6 +121,21 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthrolecreateRoleJsonBody,
 ) -> Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
+    """Create role
+
+     Create a role in the database. Returns created role data with extra
+    fields added by auth database (UUID and other fields).
+
+    See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        json_body (RhubapiauthrolecreateRoleJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -114,11 +152,19 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthrolecreateRoleJsonBody,
 ) -> Optional[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]:
-    """Create a role in the database. Returns created role data with extra
+    """Create role
+
+     Create a role in the database. Returns created role data with extra
     fields added by auth database (UUID and other fields).
 
     See [Keycloak API: RoleRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        json_body (RhubapiauthrolecreateRoleJsonBody):
+
+    Returns:
+        Response[Union[RhubapiauthrolecreateRoleResponse200, RhubapiauthrolecreateRoleResponseDefault]]
     """
 
     return (

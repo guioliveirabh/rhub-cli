@@ -60,6 +60,20 @@ def sync_detailed(
     client: Client,
     authorization: str,
 ) -> Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
+    """Refresh token
+
+     This endpoint requires HTTP bearer authentication. The bearer token in
+    'Authorization' header is not access token but refresh token. If refresh
+    was successful return new oauth2 token info. Response is the same as
+    from token create endpoint.
+
+    Args:
+        authorization (str):  Example: Bearer eyJhbGciOiJIUzI1...VLzc.
+
+    Returns:
+        Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         authorization=authorization,
@@ -78,10 +92,18 @@ def sync(
     client: Client,
     authorization: str,
 ) -> Optional[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
-    """This endpoint requires HTTP bearer authentication. The bearer token in
+    """Refresh token
+
+     This endpoint requires HTTP bearer authentication. The bearer token in
     'Authorization' header is not access token but refresh token. If refresh
     was successful return new oauth2 token info. Response is the same as
     from token create endpoint.
+
+    Args:
+        authorization (str):  Example: Bearer eyJhbGciOiJIUzI1...VLzc.
+
+    Returns:
+        Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]
     """
 
     return sync_detailed(
@@ -95,6 +117,20 @@ async def asyncio_detailed(
     client: Client,
     authorization: str,
 ) -> Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
+    """Refresh token
+
+     This endpoint requires HTTP bearer authentication. The bearer token in
+    'Authorization' header is not access token but refresh token. If refresh
+    was successful return new oauth2 token info. Response is the same as
+    from token create endpoint.
+
+    Args:
+        authorization (str):  Example: Bearer eyJhbGciOiJIUzI1...VLzc.
+
+    Returns:
+        Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         authorization=authorization,
@@ -111,10 +147,18 @@ async def asyncio(
     client: Client,
     authorization: str,
 ) -> Optional[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]:
-    """This endpoint requires HTTP bearer authentication. The bearer token in
+    """Refresh token
+
+     This endpoint requires HTTP bearer authentication. The bearer token in
     'Authorization' header is not access token but refresh token. If refresh
     was successful return new oauth2 token info. Response is the same as
     from token create endpoint.
+
+    Args:
+        authorization (str):  Example: Bearer eyJhbGciOiJIUzI1...VLzc.
+
+    Returns:
+        Response[Union[RhubapiauthtokenrefreshTokenResponse200, RhubapiauthtokenrefreshTokenResponseDefault]]
     """
 
     return (

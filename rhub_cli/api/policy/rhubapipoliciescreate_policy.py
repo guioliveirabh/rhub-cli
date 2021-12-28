@@ -62,6 +62,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapipoliciescreatePolicyJsonBody,
 ) -> Response[Union[RhubapipoliciescreatePolicyResponse200, RhubapipoliciescreatePolicyResponseDefault]]:
+    """Create policy
+
+    Args:
+        json_body (RhubapipoliciescreatePolicyJsonBody):
+
+    Returns:
+        Response[Union[RhubapipoliciescreatePolicyResponse200, RhubapipoliciescreatePolicyResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -80,7 +89,14 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapipoliciescreatePolicyJsonBody,
 ) -> Optional[Union[RhubapipoliciescreatePolicyResponse200, RhubapipoliciescreatePolicyResponseDefault]]:
-    """ """
+    """Create policy
+
+    Args:
+        json_body (RhubapipoliciescreatePolicyJsonBody):
+
+    Returns:
+        Response[Union[RhubapipoliciescreatePolicyResponse200, RhubapipoliciescreatePolicyResponseDefault]]
+    """
 
     return sync_detailed(
         client=client,
@@ -93,6 +109,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapipoliciescreatePolicyJsonBody,
 ) -> Response[Union[RhubapipoliciescreatePolicyResponse200, RhubapipoliciescreatePolicyResponseDefault]]:
+    """Create policy
+
+    Args:
+        json_body (RhubapipoliciescreatePolicyJsonBody):
+
+    Returns:
+        Response[Union[RhubapipoliciescreatePolicyResponse200, RhubapipoliciescreatePolicyResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -109,7 +134,14 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapipoliciescreatePolicyJsonBody,
 ) -> Optional[Union[RhubapipoliciescreatePolicyResponse200, RhubapipoliciescreatePolicyResponseDefault]]:
-    """ """
+    """Create policy
+
+    Args:
+        json_body (RhubapipoliciescreatePolicyJsonBody):
+
+    Returns:
+        Response[Union[RhubapipoliciescreatePolicyResponse200, RhubapipoliciescreatePolicyResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

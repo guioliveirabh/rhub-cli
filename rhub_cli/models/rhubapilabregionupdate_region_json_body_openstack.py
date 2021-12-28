@@ -13,7 +13,20 @@ T = TypeVar("T", bound="RhubapilabregionupdateRegionJsonBodyOpenstack")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionupdateRegionJsonBodyOpenstack:
-    """ """
+    """
+    Example:
+        {'credentials': 'kv/region/rdu2-a/openstack', 'domain_id': 'default', 'domain_name': 'Default', 'keyname':
+            'rhub', 'networks': ['provider_net_rhub'], 'project': 'rhub', 'url': 'https://openstack.example.com:13000'}
+
+    Attributes:
+        credentials (Union[RhubapilabregionupdateRegionJsonBodyOpenstackCredentialsType0, Unset, str]):
+        domain_id (Union[Unset, str]):
+        domain_name (Union[Unset, str]):
+        keyname (Union[Unset, str]): SSH key name
+        networks (Union[Unset, List[str]]): Network providers that can be used in the region
+        project (Union[Unset, str]):
+        url (Union[Unset, str]):
+    """
 
     credentials: Union[RhubapilabregionupdateRegionJsonBodyOpenstackCredentialsType0, Unset, str] = UNSET
     domain_id: Union[Unset, str] = UNSET

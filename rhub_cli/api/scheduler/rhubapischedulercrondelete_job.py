@@ -53,6 +53,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapischedulercrondeleteJobResponseDefault]]:
+    """Delete CronJob
+
+    Args:
+        cron_job_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapischedulercrondeleteJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
         client=client,
@@ -71,7 +80,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapischedulercrondeleteJobResponseDefault]]:
-    """ """
+    """Delete CronJob
+
+    Args:
+        cron_job_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapischedulercrondeleteJobResponseDefault]]
+    """
 
     return sync_detailed(
         cron_job_id=cron_job_id,
@@ -84,6 +100,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapischedulercrondeleteJobResponseDefault]]:
+    """Delete CronJob
+
+    Args:
+        cron_job_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapischedulercrondeleteJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         cron_job_id=cron_job_id,
         client=client,
@@ -100,7 +125,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapischedulercrondeleteJobResponseDefault]]:
-    """ """
+    """Delete CronJob
+
+    Args:
+        cron_job_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapischedulercrondeleteJobResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

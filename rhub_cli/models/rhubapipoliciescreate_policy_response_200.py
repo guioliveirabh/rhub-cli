@@ -14,7 +14,13 @@ T = TypeVar("T", bound="RhubapipoliciescreatePolicyResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapipoliciescreatePolicyResponse200:
-    """ """
+    """
+    Attributes:
+        constraint (Union[Unset, RhubapipoliciescreatePolicyResponse200Constraint]):
+        department (Union[Unset, str]): Department Name
+        id (Union[Unset, RhubapipoliciescreatePolicyResponse200Id]): Internal ID
+        name (Union[Unset, str]): Name
+    """
 
     constraint: Union[Unset, RhubapipoliciescreatePolicyResponse200Constraint] = UNSET
     department: Union[Unset, str] = UNSET

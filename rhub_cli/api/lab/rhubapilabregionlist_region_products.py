@@ -86,6 +86,16 @@ def sync_detailed(
 ) -> Response[
     Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
 ]:
+    """Get list of products that can be installed in the selected region.
+
+    Args:
+        region_id (int):
+        filter_ (Union[Unset, None, RhubapilabregionlistRegionProductsFilter]):
+
+    Returns:
+        Response[Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -108,7 +118,15 @@ def sync(
 ) -> Optional[
     Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
 ]:
-    """ """
+    """Get list of products that can be installed in the selected region.
+
+    Args:
+        region_id (int):
+        filter_ (Union[Unset, None, RhubapilabregionlistRegionProductsFilter]):
+
+    Returns:
+        Response[Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]]
+    """
 
     return sync_detailed(
         region_id=region_id,
@@ -125,6 +143,16 @@ async def asyncio_detailed(
 ) -> Response[
     Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
 ]:
+    """Get list of products that can be installed in the selected region.
+
+    Args:
+        region_id (int):
+        filter_ (Union[Unset, None, RhubapilabregionlistRegionProductsFilter]):
+
+    Returns:
+        Response[Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -145,7 +173,15 @@ async def asyncio(
 ) -> Optional[
     Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]
 ]:
-    """ """
+    """Get list of products that can be installed in the selected region.
+
+    Args:
+        region_id (int):
+        filter_ (Union[Unset, None, RhubapilabregionlistRegionProductsFilter]):
+
+    Returns:
+        Response[Union[List[RhubapilabregionlistRegionProductsResponse200Item], RhubapilabregionlistRegionProductsResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

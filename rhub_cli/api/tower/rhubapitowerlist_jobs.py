@@ -76,6 +76,17 @@ def sync_detailed(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Response[Union[RhubapitowerlistJobsResponse200, RhubapitowerlistJobsResponseDefault]]:
+    """List Tower jobs
+
+    Args:
+        filter_ (Union[Unset, None, RhubapitowerlistJobsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[RhubapitowerlistJobsResponse200, RhubapitowerlistJobsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -98,7 +109,16 @@ def sync(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Optional[Union[RhubapitowerlistJobsResponse200, RhubapitowerlistJobsResponseDefault]]:
-    """ """
+    """List Tower jobs
+
+    Args:
+        filter_ (Union[Unset, None, RhubapitowerlistJobsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[RhubapitowerlistJobsResponse200, RhubapitowerlistJobsResponseDefault]]
+    """
 
     return sync_detailed(
         client=client,
@@ -115,6 +135,17 @@ async def asyncio_detailed(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Response[Union[RhubapitowerlistJobsResponse200, RhubapitowerlistJobsResponseDefault]]:
+    """List Tower jobs
+
+    Args:
+        filter_ (Union[Unset, None, RhubapitowerlistJobsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[RhubapitowerlistJobsResponse200, RhubapitowerlistJobsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
@@ -135,7 +166,16 @@ async def asyncio(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Optional[Union[RhubapitowerlistJobsResponse200, RhubapitowerlistJobsResponseDefault]]:
-    """ """
+    """List Tower jobs
+
+    Args:
+        filter_ (Union[Unset, None, RhubapitowerlistJobsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[RhubapitowerlistJobsResponse200, RhubapitowerlistJobsResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

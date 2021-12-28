@@ -21,7 +21,17 @@ T = TypeVar("T", bound="RhubapischedulercronlistJobsResponse200DataItem")
 
 @attr.s(auto_attribs=True)
 class RhubapischedulercronlistJobsResponse200DataItem:
-    """ """
+    """
+    Attributes:
+        description (Union[Unset, str]):
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubapischedulercronlistJobsResponse200DataItemId]):
+        job_name (Union[Unset, RhubapischedulercronlistJobsResponse200DataItemJobName]):
+        job_params (Union[Unset, None, RhubapischedulercronlistJobsResponse200DataItemJobParams]):
+        last_run (Union[Unset, None, datetime.datetime]):
+        name (Union[Unset, str]):
+        time_expr (Union[Unset, str]): cron time expression
+    """
 
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET

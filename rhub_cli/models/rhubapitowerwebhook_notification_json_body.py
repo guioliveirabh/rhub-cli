@@ -13,7 +13,26 @@ T = TypeVar("T", bound="RhubapitowerwebhookNotificationJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapitowerwebhookNotificationJsonBody:
-    """ """
+    """
+    Attributes:
+        body (Union[Unset, None, str]): Enumerates all the nodes in the workflow job with a description of the job
+            associated with each
+        created_by (Union[Unset, str]):
+        credential (Union[Unset, None, str]): Credential used by Job
+        extra_vars (Union[Unset, None, str]): Extra variables for playbook encoded as a dictionary within a string
+        finished (Union[Unset, None, datetime.datetime]): Date/Time job finished
+        hosts (Union[Unset, None, RhubapitowerwebhookNotificationJsonBodyHosts]):
+        id (Union[Unset, int]): jobId
+        inventory (Union[Unset, None, str]): Inventory used by Job
+        limit (Union[Unset, None, str]): Job limit
+        name (Union[Unset, str]): jobName
+        playbook (Union[Unset, None, str]): Playbook executed in Job
+        project (Union[Unset, None, str]): Project job belongs to
+        started (Union[Unset, None, datetime.datetime]): Date/Time job started
+        status (Union[Unset, str]): Job status
+        traceback (Union[Unset, None, str]): Traceback if failed
+        url (Union[Unset, str]): URL to Job on Tower
+    """
 
     body: Union[Unset, None, str] = UNSET
     created_by: Union[Unset, str] = UNSET

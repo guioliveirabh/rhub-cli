@@ -68,6 +68,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapilabclustergetClusterEventResponseDefault]]:
+    """Get cluster event
+
+    Args:
+        event_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabclustergetClusterEventResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         event_id=event_id,
         client=client,
@@ -86,7 +95,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapilabclustergetClusterEventResponseDefault]]:
-    """ """
+    """Get cluster event
+
+    Args:
+        event_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabclustergetClusterEventResponseDefault]]
+    """
 
     return sync_detailed(
         event_id=event_id,
@@ -99,6 +115,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapilabclustergetClusterEventResponseDefault]]:
+    """Get cluster event
+
+    Args:
+        event_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabclustergetClusterEventResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         event_id=event_id,
         client=client,
@@ -115,7 +140,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapilabclustergetClusterEventResponseDefault]]:
-    """ """
+    """Get cluster event
+
+    Args:
+        event_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabclustergetClusterEventResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

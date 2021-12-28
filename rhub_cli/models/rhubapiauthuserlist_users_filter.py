@@ -10,7 +10,13 @@ T = TypeVar("T", bound="RhubapiauthuserlistUsersFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapiauthuserlistUsersFilter:
-    """ """
+    """
+    Attributes:
+        email (Union[Unset, str]):
+        first_name (Union[Unset, str]):
+        last_name (Union[Unset, str]):
+        username (Union[Unset, str]):
+    """
 
     email: Union[Unset, str] = UNSET
     first_name: Union[Unset, str] = UNSET

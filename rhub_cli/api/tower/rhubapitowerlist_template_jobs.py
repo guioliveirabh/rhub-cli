@@ -78,6 +78,18 @@ def sync_detailed(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Response[Union[RhubapitowerlistTemplateJobsResponse200, RhubapitowerlistTemplateJobsResponseDefault]]:
+    """List Tower template jobs
+
+    Args:
+        template_id (int):
+        filter_ (Union[Unset, None, RhubapitowerlistTemplateJobsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[RhubapitowerlistTemplateJobsResponse200, RhubapitowerlistTemplateJobsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -102,7 +114,17 @@ def sync(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Optional[Union[RhubapitowerlistTemplateJobsResponse200, RhubapitowerlistTemplateJobsResponseDefault]]:
-    """ """
+    """List Tower template jobs
+
+    Args:
+        template_id (int):
+        filter_ (Union[Unset, None, RhubapitowerlistTemplateJobsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[RhubapitowerlistTemplateJobsResponse200, RhubapitowerlistTemplateJobsResponseDefault]]
+    """
 
     return sync_detailed(
         template_id=template_id,
@@ -121,6 +143,18 @@ async def asyncio_detailed(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Response[Union[RhubapitowerlistTemplateJobsResponse200, RhubapitowerlistTemplateJobsResponseDefault]]:
+    """List Tower template jobs
+
+    Args:
+        template_id (int):
+        filter_ (Union[Unset, None, RhubapitowerlistTemplateJobsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[RhubapitowerlistTemplateJobsResponse200, RhubapitowerlistTemplateJobsResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         template_id=template_id,
         client=client,
@@ -143,7 +177,17 @@ async def asyncio(
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Optional[Union[RhubapitowerlistTemplateJobsResponse200, RhubapitowerlistTemplateJobsResponseDefault]]:
-    """ """
+    """List Tower template jobs
+
+    Args:
+        template_id (int):
+        filter_ (Union[Unset, None, RhubapitowerlistTemplateJobsFilter]):
+        page (Union[Unset, None, int]):
+        limit (Union[Unset, None, int]):
+
+    Returns:
+        Response[Union[RhubapitowerlistTemplateJobsResponse200, RhubapitowerlistTemplateJobsResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

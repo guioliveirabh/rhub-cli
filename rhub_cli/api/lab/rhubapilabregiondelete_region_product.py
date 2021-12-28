@@ -65,6 +65,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabregiondeleteRegionProductJsonBody,
 ) -> Response[Union[Any, RhubapilabregiondeleteRegionProductResponseDefault]]:
+    """Remove product from region
+
+    Args:
+        region_id (int):
+        json_body (RhubapilabregiondeleteRegionProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiondeleteRegionProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -85,7 +95,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapilabregiondeleteRegionProductJsonBody,
 ) -> Optional[Union[Any, RhubapilabregiondeleteRegionProductResponseDefault]]:
-    """ """
+    """Remove product from region
+
+    Args:
+        region_id (int):
+        json_body (RhubapilabregiondeleteRegionProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiondeleteRegionProductResponseDefault]]
+    """
 
     return sync_detailed(
         region_id=region_id,
@@ -100,6 +118,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabregiondeleteRegionProductJsonBody,
 ) -> Response[Union[Any, RhubapilabregiondeleteRegionProductResponseDefault]]:
+    """Remove product from region
+
+    Args:
+        region_id (int):
+        json_body (RhubapilabregiondeleteRegionProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiondeleteRegionProductResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -118,7 +146,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapilabregiondeleteRegionProductJsonBody,
 ) -> Optional[Union[Any, RhubapilabregiondeleteRegionProductResponseDefault]]:
-    """ """
+    """Remove product from region
+
+    Args:
+        region_id (int):
+        json_body (RhubapilabregiondeleteRegionProductJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiondeleteRegionProductResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

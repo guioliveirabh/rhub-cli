@@ -58,6 +58,22 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
+    """Get role
+
+     Returns role data including extra fields added by auth database. Data
+    object contains at least properties that are in the schema but also
+    database internal data like `description` and others.
+
+    See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        role_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -76,12 +92,20 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
-    """Returns role data including extra fields added by auth database. Data
+    """Get role
+
+     Returns role data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `description` and others.
 
     See [Keycloak API: RoleRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        role_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]
     """
 
     return sync_detailed(
@@ -95,6 +119,22 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
+    """Get role
+
+     Returns role data including extra fields added by auth database. Data
+    object contains at least properties that are in the schema but also
+    database internal data like `description` and others.
+
+    See [Keycloak API: RoleRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        role_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -111,12 +151,20 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]:
-    """Returns role data including extra fields added by auth database. Data
+    """Get role
+
+     Returns role data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `description` and others.
 
     See [Keycloak API: RoleRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+    Args:
+        role_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthrolegetRoleResponse200, RhubapiauthrolegetRoleResponseDefault]]
     """
 
     return (

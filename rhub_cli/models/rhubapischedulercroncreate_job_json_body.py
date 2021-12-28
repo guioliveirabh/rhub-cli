@@ -15,7 +15,17 @@ T = TypeVar("T", bound="RhubapischedulercroncreateJobJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapischedulercroncreateJobJsonBody:
-    """ """
+    """
+    Attributes:
+        job_name (RhubapischedulercroncreateJobJsonBodyJobName):
+        name (str):
+        time_expr (str): cron time expression
+        description (Union[Unset, str]):
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubapischedulercroncreateJobJsonBodyId]):
+        job_params (Union[Unset, None, RhubapischedulercroncreateJobJsonBodyJobParams]):
+        last_run (Union[Unset, None, datetime.datetime]):
+    """
 
     job_name: RhubapischedulercroncreateJobJsonBodyJobName
     name: str

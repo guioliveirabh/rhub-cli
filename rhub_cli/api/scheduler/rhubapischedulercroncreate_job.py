@@ -62,6 +62,15 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapischedulercroncreateJobJsonBody,
 ) -> Response[Union[RhubapischedulercroncreateJobResponse200, RhubapischedulercroncreateJobResponseDefault]]:
+    """Create CronJob
+
+    Args:
+        json_body (RhubapischedulercroncreateJobJsonBody):
+
+    Returns:
+        Response[Union[RhubapischedulercroncreateJobResponse200, RhubapischedulercroncreateJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -80,7 +89,14 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapischedulercroncreateJobJsonBody,
 ) -> Optional[Union[RhubapischedulercroncreateJobResponse200, RhubapischedulercroncreateJobResponseDefault]]:
-    """ """
+    """Create CronJob
+
+    Args:
+        json_body (RhubapischedulercroncreateJobJsonBody):
+
+    Returns:
+        Response[Union[RhubapischedulercroncreateJobResponse200, RhubapischedulercroncreateJobResponseDefault]]
+    """
 
     return sync_detailed(
         client=client,
@@ -93,6 +109,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapischedulercroncreateJobJsonBody,
 ) -> Response[Union[RhubapischedulercroncreateJobResponse200, RhubapischedulercroncreateJobResponseDefault]]:
+    """Create CronJob
+
+    Args:
+        json_body (RhubapischedulercroncreateJobJsonBody):
+
+    Returns:
+        Response[Union[RhubapischedulercroncreateJobResponse200, RhubapischedulercroncreateJobResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -109,7 +134,14 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapischedulercroncreateJobJsonBody,
 ) -> Optional[Union[RhubapischedulercroncreateJobResponse200, RhubapischedulercroncreateJobResponseDefault]]:
-    """ """
+    """Create CronJob
+
+    Args:
+        json_body (RhubapischedulercroncreateJobJsonBody):
+
+    Returns:
+        Response[Union[RhubapischedulercroncreateJobResponse200, RhubapischedulercroncreateJobResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

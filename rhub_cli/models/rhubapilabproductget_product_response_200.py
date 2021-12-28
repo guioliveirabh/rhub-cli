@@ -11,7 +11,16 @@ T = TypeVar("T", bound="RhubapilabproductgetProductResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapilabproductgetProductResponse200:
-    """ """
+    """
+    Attributes:
+        description (Union[Unset, str]):
+        enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubapilabproductgetProductResponse200Id]):
+        name (Union[Unset, str]):  Example: OpenShift.
+        parameters (Union[Unset, List[Any]]):
+        tower_template_name_create (Union[Unset, str]):  Example: rhub-openshift-create.
+        tower_template_name_delete (Union[Unset, str]):  Example: rhub-openshift-delete.
+    """
 
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET

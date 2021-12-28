@@ -63,6 +63,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapilabregiongetRegionResponse200, RhubapilabregiongetRegionResponseDefault]]:
+    """Get region
+
+    Args:
+        region_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiongetRegionResponse200, RhubapilabregiongetRegionResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -81,7 +90,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapilabregiongetRegionResponse200, RhubapilabregiongetRegionResponseDefault]]:
-    """ """
+    """Get region
+
+    Args:
+        region_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiongetRegionResponse200, RhubapilabregiongetRegionResponseDefault]]
+    """
 
     return sync_detailed(
         region_id=region_id,
@@ -94,6 +110,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapilabregiongetRegionResponse200, RhubapilabregiongetRegionResponseDefault]]:
+    """Get region
+
+    Args:
+        region_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiongetRegionResponse200, RhubapilabregiongetRegionResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         region_id=region_id,
         client=client,
@@ -110,7 +135,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapilabregiongetRegionResponse200, RhubapilabregiongetRegionResponseDefault]]:
-    """ """
+    """Get region
+
+    Args:
+        region_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapilabregiongetRegionResponse200, RhubapilabregiongetRegionResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

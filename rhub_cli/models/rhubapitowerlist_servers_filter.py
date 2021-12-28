@@ -10,7 +10,12 @@ T = TypeVar("T", bound="RhubapitowerlistServersFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapitowerlistServersFilter:
-    """ """
+    """
+    Attributes:
+        enabled (Union[Unset, bool]):
+        name (Union[Unset, str]): Name of a server. Wildcard ``%`` can be used to match zero, one, or multiple
+            characters
+    """
 
     enabled: Union[Unset, bool] = UNSET
     name: Union[Unset, str] = UNSET

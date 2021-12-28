@@ -12,7 +12,13 @@ T = TypeVar("T", bound="RhubapipoliciescreatePolicyJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapipoliciescreatePolicyJsonBody:
-    """ """
+    """
+    Attributes:
+        department (str): Department Name
+        name (str): Name
+        constraint (Union[Unset, RhubapipoliciescreatePolicyJsonBodyConstraint]):
+        id (Union[Unset, RhubapipoliciescreatePolicyJsonBodyId]): Internal ID
+    """
 
     department: str
     name: str

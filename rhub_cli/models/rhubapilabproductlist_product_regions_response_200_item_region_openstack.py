@@ -13,7 +13,21 @@ T = TypeVar("T", bound="RhubapilabproductlistProductRegionsResponse200ItemRegion
 
 @attr.s(auto_attribs=True)
 class RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstack:
-    """ """
+    """
+    Example:
+        {'credentials': 'kv/region/rdu2-a/openstack', 'domain_id': 'default', 'domain_name': 'Default', 'keyname':
+            'rhub', 'networks': ['provider_net_rhub'], 'project': 'rhub', 'url': 'https://openstack.example.com:13000'}
+
+    Attributes:
+        credentials (Union[RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0, Unset,
+            str]):
+        domain_id (Union[Unset, str]):
+        domain_name (Union[Unset, str]):
+        keyname (Union[Unset, str]): SSH key name
+        networks (Union[Unset, List[str]]): Network providers that can be used in the region
+        project (Union[Unset, str]):
+        url (Union[Unset, str]):
+    """
 
     credentials: Union[
         RhubapilabproductlistProductRegionsResponse200ItemRegionOpenstackCredentialsType0, Unset, str

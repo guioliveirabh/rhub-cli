@@ -58,6 +58,22 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
+    """Get group
+
+     Returns group data including extra fields added by auth database. Data
+    object contains at least properties that are in the schema but also
+    database internal data like `subGroups` and others.
+
+    See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -76,12 +92,20 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
-    """Returns group data including extra fields added by auth database. Data
+    """Get group
+
+     Returns group data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `subGroups` and others.
 
     See also [Keycloak API: GroupRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]
     """
 
     return sync_detailed(
@@ -95,6 +119,22 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
+    """Get group
+
+     Returns group data including extra fields added by auth database. Data
+    object contains at least properties that are in the schema but also
+    database internal data like `subGroups` and others.
+
+    See also [Keycloak API: GroupRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         group_id=group_id,
         client=client,
@@ -111,12 +151,20 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]:
-    """Returns group data including extra fields added by auth database. Data
+    """Get group
+
+     Returns group data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `subGroups` and others.
 
     See also [Keycloak API: GroupRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_grouprepresentation)
+
+    Args:
+        group_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthgroupgetGroupResponse200, RhubapiauthgroupgetGroupResponseDefault]]
     """
 
     return (

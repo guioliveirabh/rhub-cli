@@ -11,7 +11,11 @@ T = TypeVar("T", bound="RhubapitowerlistJobsResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapitowerlistJobsResponse200:
-    """ """
+    """
+    Attributes:
+        data (Union[Unset, List[RhubapitowerlistJobsResponse200DataItem]]):
+        total (Union[Unset, int]): The total number of items.
+    """
 
     data: Union[Unset, List[RhubapitowerlistJobsResponse200DataItem]] = UNSET
     total: Union[Unset, int] = UNSET

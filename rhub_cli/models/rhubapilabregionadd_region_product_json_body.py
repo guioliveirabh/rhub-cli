@@ -10,7 +10,11 @@ T = TypeVar("T", bound="RhubapilabregionaddRegionProductJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionaddRegionProductJsonBody:
-    """ """
+    """
+    Attributes:
+        id (int):
+        enabled (Union[Unset, bool]):
+    """
 
     id: int
     enabled: Union[Unset, bool] = UNSET

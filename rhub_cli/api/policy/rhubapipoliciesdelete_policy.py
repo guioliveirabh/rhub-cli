@@ -53,6 +53,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapipoliciesdeletePolicyResponseDefault]]:
+    """Delete policy
+
+    Args:
+        policy_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapipoliciesdeletePolicyResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         policy_id=policy_id,
         client=client,
@@ -71,7 +80,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapipoliciesdeletePolicyResponseDefault]]:
-    """ """
+    """Delete policy
+
+    Args:
+        policy_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapipoliciesdeletePolicyResponseDefault]]
+    """
 
     return sync_detailed(
         policy_id=policy_id,
@@ -84,6 +100,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapipoliciesdeletePolicyResponseDefault]]:
+    """Delete policy
+
+    Args:
+        policy_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapipoliciesdeletePolicyResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         policy_id=policy_id,
         client=client,
@@ -100,7 +125,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapipoliciesdeletePolicyResponseDefault]]:
-    """ """
+    """Delete policy
+
+    Args:
+        policy_id (int):
+
+    Returns:
+        Response[Union[Any, RhubapipoliciesdeletePolicyResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

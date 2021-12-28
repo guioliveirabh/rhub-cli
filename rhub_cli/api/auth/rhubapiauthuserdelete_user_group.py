@@ -59,6 +59,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserGroupJsonBody,
 ) -> Response[Union[Any, RhubapiauthuserdeleteUserGroupResponseDefault]]:
+    """Remove user from group
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuserdeleteUserGroupJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuserdeleteUserGroupResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -79,7 +89,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserGroupJsonBody,
 ) -> Optional[Union[Any, RhubapiauthuserdeleteUserGroupResponseDefault]]:
-    """ """
+    """Remove user from group
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuserdeleteUserGroupJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuserdeleteUserGroupResponseDefault]]
+    """
 
     return sync_detailed(
         user_id=user_id,
@@ -94,6 +112,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserGroupJsonBody,
 ) -> Response[Union[Any, RhubapiauthuserdeleteUserGroupResponseDefault]]:
+    """Remove user from group
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuserdeleteUserGroupJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuserdeleteUserGroupResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -112,7 +140,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthuserdeleteUserGroupJsonBody,
 ) -> Optional[Union[Any, RhubapiauthuserdeleteUserGroupResponseDefault]]:
-    """ """
+    """Remove user from group
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuserdeleteUserGroupJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuserdeleteUserGroupResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

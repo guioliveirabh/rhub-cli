@@ -11,7 +11,16 @@ T = TypeVar("T", bound="RhubapiauthusercreateUserJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapiauthusercreateUserJsonBody:
-    """ """
+    """
+    Attributes:
+        email (str):
+        username (str):
+        enabled (Union[Unset, bool]):
+        first_name (Union[Unset, str]):
+        id (Union[Unset, RhubapiauthusercreateUserJsonBodyId]):
+        last_name (Union[Unset, str]):
+        password (Union[Unset, str]):
+    """
 
     email: str
     username: str

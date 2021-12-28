@@ -53,6 +53,15 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapiauthroledeleteRoleResponseDefault]]:
+    """Delete role
+
+    Args:
+        role_id (str):
+
+    Returns:
+        Response[Union[Any, RhubapiauthroledeleteRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -71,7 +80,14 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapiauthroledeleteRoleResponseDefault]]:
-    """ """
+    """Delete role
+
+    Args:
+        role_id (str):
+
+    Returns:
+        Response[Union[Any, RhubapiauthroledeleteRoleResponseDefault]]
+    """
 
     return sync_detailed(
         role_id=role_id,
@@ -84,6 +100,15 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubapiauthroledeleteRoleResponseDefault]]:
+    """Delete role
+
+    Args:
+        role_id (str):
+
+    Returns:
+        Response[Union[Any, RhubapiauthroledeleteRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         role_id=role_id,
         client=client,
@@ -100,7 +125,14 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubapiauthroledeleteRoleResponseDefault]]:
-    """ """
+    """Delete role
+
+    Args:
+        role_id (str):
+
+    Returns:
+        Response[Union[Any, RhubapiauthroledeleteRoleResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

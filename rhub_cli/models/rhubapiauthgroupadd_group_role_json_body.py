@@ -8,7 +8,10 @@ T = TypeVar("T", bound="RhubapiauthgroupaddGroupRoleJsonBody")
 
 @attr.s(auto_attribs=True)
 class RhubapiauthgroupaddGroupRoleJsonBody:
-    """ """
+    """
+    Attributes:
+        id (str):
+    """
 
     id: str
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)

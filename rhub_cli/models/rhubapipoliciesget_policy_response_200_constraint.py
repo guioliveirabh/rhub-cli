@@ -15,7 +15,16 @@ T = TypeVar("T", bound="RhubapipoliciesgetPolicyResponse200Constraint")
 
 @attr.s(auto_attribs=True)
 class RhubapipoliciesgetPolicyResponse200Constraint:
-    """ """
+    """
+    Attributes:
+        cost (Union[Unset, None, float]):
+        density (Union[Unset, None, str]):
+        limit (Union[Unset, None, RhubapipoliciesgetPolicyResponse200ConstraintLimit]):
+        location (Union[Unset, None, str]):
+        sched_avail (Union[Unset, None, List[datetime.datetime]]):
+        serv_avail (Union[Unset, None, float]):
+        tag (Union[Unset, None, List[str]]):
+    """
 
     cost: Union[Unset, None, float] = UNSET
     density: Union[Unset, None, str] = UNSET

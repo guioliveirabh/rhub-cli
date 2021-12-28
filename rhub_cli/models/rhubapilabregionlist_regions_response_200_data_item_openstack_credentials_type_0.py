@@ -10,7 +10,12 @@ T = TypeVar("T", bound="RhubapilabregionlistRegionsResponse200DataItemOpenstackC
 
 @attr.s(auto_attribs=True)
 class RhubapilabregionlistRegionsResponse200DataItemOpenstackCredentialsType0:
-    """Credentials to store in Vault"""
+    """Credentials to store in Vault
+
+    Attributes:
+        password (Union[Unset, str]):
+        username (Union[Unset, str]):
+    """
 
     password: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET

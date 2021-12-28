@@ -10,7 +10,11 @@ T = TypeVar("T", bound="RhubapischedulercronlistJobsFilter")
 
 @attr.s(auto_attribs=True)
 class RhubapischedulercronlistJobsFilter:
-    """ """
+    """
+    Attributes:
+        enabled (Union[Unset, bool]):
+        name (Union[Unset, str]): Name of a job. Wildcard ``%`` can be used to match zero, one, or multiple characters
+    """
 
     enabled: Union[Unset, bool] = UNSET
     name: Union[Unset, str] = UNSET

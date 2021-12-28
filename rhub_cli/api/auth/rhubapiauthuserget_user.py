@@ -58,6 +58,22 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
+    """Get user
+
+     Returns user data including extra fields added by auth database. Data
+    object contains at least properties that are in the schema but also
+    database internal data like `createdTimestamp` and others.
+
+    See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -76,12 +92,20 @@ def sync(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
-    """Returns user data including extra fields added by auth database. Data
+    """Get user
+
+     Returns user data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `createdTimestamp` and others.
 
     See also [Keycloak API: UserRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]
     """
 
     return sync_detailed(
@@ -95,6 +119,22 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
 ) -> Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
+    """Get user
+
+     Returns user data including extra fields added by auth database. Data
+    object contains at least properties that are in the schema but also
+    database internal data like `createdTimestamp` and others.
+
+    See also [Keycloak API: UserRepresentation](
+      https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -111,12 +151,20 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
 ) -> Optional[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]:
-    """Returns user data including extra fields added by auth database. Data
+    """Get user
+
+     Returns user data including extra fields added by auth database. Data
     object contains at least properties that are in the schema but also
     database internal data like `createdTimestamp` and others.
 
     See also [Keycloak API: UserRepresentation](
       https://www.keycloak.org/docs-api/11.0/rest-api/#_userrepresentation)
+
+    Args:
+        user_id (str):
+
+    Returns:
+        Response[Union[RhubapiauthusergetUserResponse200, RhubapiauthusergetUserResponseDefault]]
     """
 
     return (

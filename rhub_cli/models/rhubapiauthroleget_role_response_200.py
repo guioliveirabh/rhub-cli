@@ -14,6 +14,15 @@ T = TypeVar("T", bound="RhubapiauthrolegetRoleResponse200")
 class RhubapiauthrolegetRoleResponse200:
     """See [Keycloak API: RoleRepresentation](
     https://www.keycloak.org/docs-api/11.0/rest-api/#_rolerepresentation)
+
+        Example:
+            {'attributes': {}, 'clientRole': False, 'composite': False, 'composites': {}, 'containerId': 'admin',
+                'description': 'adminRole', 'id': 'fa831aa3-7a5a-4667-9c3f-bf20465058f6', 'name': 'admin'}
+
+        Attributes:
+            attributes (Union[Unset, RhubapiauthrolegetRoleResponse200Attributes]): Role attributes
+            id (Union[Unset, RhubapiauthrolegetRoleResponse200Id]):
+            name (Union[Unset, str]):
     """
 
     attributes: Union[Unset, RhubapiauthrolegetRoleResponse200Attributes] = UNSET

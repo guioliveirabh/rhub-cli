@@ -59,6 +59,16 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthuseraddUserRoleJsonBody,
 ) -> Response[Union[Any, RhubapiauthuseraddUserRoleResponseDefault]]:
+    """Add user to role
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuseraddUserRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuseraddUserRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -79,7 +89,15 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapiauthuseraddUserRoleJsonBody,
 ) -> Optional[Union[Any, RhubapiauthuseraddUserRoleResponseDefault]]:
-    """ """
+    """Add user to role
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuseraddUserRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuseraddUserRoleResponseDefault]]
+    """
 
     return sync_detailed(
         user_id=user_id,
@@ -94,6 +112,16 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapiauthuseraddUserRoleJsonBody,
 ) -> Response[Union[Any, RhubapiauthuseraddUserRoleResponseDefault]]:
+    """Add user to role
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuseraddUserRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuseraddUserRoleResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         user_id=user_id,
         client=client,
@@ -112,7 +140,15 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapiauthuseraddUserRoleJsonBody,
 ) -> Optional[Union[Any, RhubapiauthuseraddUserRoleResponseDefault]]:
-    """ """
+    """Add user to role
+
+    Args:
+        user_id (str):
+        json_body (RhubapiauthuseraddUserRoleJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapiauthuseraddUserRoleResponseDefault]]
+    """
 
     return (
         await asyncio_detailed(

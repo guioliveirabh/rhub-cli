@@ -57,6 +57,24 @@ def sync_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabregioncreateRegionJsonBody,
 ) -> Response[Union[Any, RhubapilabregioncreateRegionResponseDefault]]:
+    """Create region
+
+     See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster)
+    for more info how reservation, lifespan, and other properties affects clusters.
+
+    `quota` and `lifespan` can be set to `null` to provide unlimited access
+    to the region.
+
+    `users_group` limits region to a selected group of users, if the value
+    is `null` any user can use region.
+
+    Args:
+        json_body (RhubapilabregioncreateRegionJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregioncreateRegionResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -75,7 +93,9 @@ def sync(
     client: AuthenticatedClient,
     json_body: RhubapilabregioncreateRegionJsonBody,
 ) -> Optional[Union[Any, RhubapilabregioncreateRegionResponseDefault]]:
-    """See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster)
+    """Create region
+
+     See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster)
     for more info how reservation, lifespan, and other properties affects clusters.
 
     `quota` and `lifespan` can be set to `null` to provide unlimited access
@@ -83,6 +103,12 @@ def sync(
 
     `users_group` limits region to a selected group of users, if the value
     is `null` any user can use region.
+
+    Args:
+        json_body (RhubapilabregioncreateRegionJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregioncreateRegionResponseDefault]]
     """
 
     return sync_detailed(
@@ -96,6 +122,24 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
     json_body: RhubapilabregioncreateRegionJsonBody,
 ) -> Response[Union[Any, RhubapilabregioncreateRegionResponseDefault]]:
+    """Create region
+
+     See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster)
+    for more info how reservation, lifespan, and other properties affects clusters.
+
+    `quota` and `lifespan` can be set to `null` to provide unlimited access
+    to the region.
+
+    `users_group` limits region to a selected group of users, if the value
+    is `null` any user can use region.
+
+    Args:
+        json_body (RhubapilabregioncreateRegionJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregioncreateRegionResponseDefault]]
+    """
+
     kwargs = _get_kwargs(
         client=client,
         json_body=json_body,
@@ -112,7 +156,9 @@ async def asyncio(
     client: AuthenticatedClient,
     json_body: RhubapilabregioncreateRegionJsonBody,
 ) -> Optional[Union[Any, RhubapilabregioncreateRegionResponseDefault]]:
-    """See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster)
+    """Create region
+
+     See [create cluster endpoint](#/lab/rhub.api.lab.cluster.create_cluster)
     for more info how reservation, lifespan, and other properties affects clusters.
 
     `quota` and `lifespan` can be set to `null` to provide unlimited access
@@ -120,6 +166,12 @@ async def asyncio(
 
     `users_group` limits region to a selected group of users, if the value
     is `null` any user can use region.
+
+    Args:
+        json_body (RhubapilabregioncreateRegionJsonBody):
+
+    Returns:
+        Response[Union[Any, RhubapilabregioncreateRegionResponseDefault]]
     """
 
     return (

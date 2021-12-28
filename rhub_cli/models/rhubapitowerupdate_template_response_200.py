@@ -11,7 +11,15 @@ T = TypeVar("T", bound="RhubapitowerupdateTemplateResponse200")
 
 @attr.s(auto_attribs=True)
 class RhubapitowerupdateTemplateResponse200:
-    """ """
+    """
+    Attributes:
+        description (Union[Unset, str]):
+        id (Union[Unset, RhubapitowerupdateTemplateResponse200Id]): Internal ID
+        name (Union[Unset, str]):
+        server_id (Union[Unset, int]):
+        tower_template_id (Union[Unset, int]):
+        tower_template_is_workflow (Union[Unset, bool]): Is template workflow?
+    """
 
     description: Union[Unset, str] = UNSET
     id: Union[Unset, RhubapitowerupdateTemplateResponse200Id] = UNSET
