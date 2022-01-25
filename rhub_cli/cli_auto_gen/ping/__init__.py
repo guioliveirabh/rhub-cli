@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.health.rhubapihealthping import sync_detailed as ping_get
+from rhub_cli.api.health.rhub_api_health_ping import sync_detailed as ping_get
 from rhub_cli.api_request import APIRequest, pass_api
 
 

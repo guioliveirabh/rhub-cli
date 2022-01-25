@@ -1,11 +1,13 @@
 import click
 
-from rhub_cli.api.lab.rhubapilabregionadd_region_product import sync_detailed as products_create
-from rhub_cli.api.lab.rhubapilabregiondelete_region_product import sync_detailed as products_remove
-from rhub_cli.api.lab.rhubapilabregionlist_region_products import sync_detailed as products_get_list
+from rhub_cli.api.lab.rhub_api_lab_region_add_region_product import sync_detailed as products_create
+from rhub_cli.api.lab.rhub_api_lab_region_delete_region_product import sync_detailed as products_remove
+from rhub_cli.api.lab.rhub_api_lab_region_list_region_products import sync_detailed as products_get_list
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapilabregionadd_region_product_json_body import RhubapilabregionaddRegionProductJsonBody
-from rhub_cli.models.rhubapilabregiondelete_region_product_json_body import RhubapilabregiondeleteRegionProductJsonBody
+from rhub_cli.models.rhub_api_lab_region_add_region_product_json_body import RhubApiLabRegionAddRegionProductJsonBody
+from rhub_cli.models.rhub_api_lab_region_delete_region_product_json_body import (
+    RhubApiLabRegionDeleteRegionProductJsonBody,
+)
 
 
 @click.group()
@@ -44,7 +46,7 @@ def create(
 ):
     """Add product to region or disable/enable product in region"""
 
-    json_body = RhubapilabregionaddRegionProductJsonBody(
+    json_body = RhubApiLabRegionAddRegionProductJsonBody(
         id=id,
         enabled=enabled,
     )
@@ -68,7 +70,7 @@ def remove(
 ):
     """Remove product from region"""
 
-    json_body = RhubapilabregiondeleteRegionProductJsonBody(
+    json_body = RhubApiLabRegionDeleteRegionProductJsonBody(
         id=id,
     )
 

@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.lab.rhubapilabclusterget_cluster_event import sync_detailed as cluster_event_get
+from rhub_cli.api.lab.rhub_api_lab_cluster_get_cluster_event import sync_detailed as cluster_event_get
 from rhub_cli.api_request import APIRequest, pass_api
 
 from .stdout import stdout

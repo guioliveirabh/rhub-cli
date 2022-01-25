@@ -1,13 +1,13 @@
 import click
 
-from rhub_cli.api.lab.rhubapilabclustercreate_cluster import sync_detailed as cluster_create
-from rhub_cli.api.lab.rhubapilabclusterdelete_cluster import sync_detailed as cluster_remove
-from rhub_cli.api.lab.rhubapilabclusterget_cluster import sync_detailed as cluster_get
-from rhub_cli.api.lab.rhubapilabclusterlist_clusters import sync_detailed as cluster_get_list
-from rhub_cli.api.lab.rhubapilabclusterupdate_cluster import sync_detailed as cluster_update
+from rhub_cli.api.lab.rhub_api_lab_cluster_create_cluster import sync_detailed as cluster_create
+from rhub_cli.api.lab.rhub_api_lab_cluster_delete_cluster import sync_detailed as cluster_remove
+from rhub_cli.api.lab.rhub_api_lab_cluster_get_cluster import sync_detailed as cluster_get
+from rhub_cli.api.lab.rhub_api_lab_cluster_list_clusters import sync_detailed as cluster_get_list
+from rhub_cli.api.lab.rhub_api_lab_cluster_update_cluster import sync_detailed as cluster_update
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapilabclustercreate_cluster_json_body import RhubapilabclustercreateClusterJsonBody
-from rhub_cli.models.rhubapilabclusterupdate_cluster_json_body import RhubapilabclusterupdateClusterJsonBody
+from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body import RhubApiLabClusterCreateClusterJsonBody
+from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body import RhubApiLabClusterUpdateClusterJsonBody
 
 from .events import events
 from .hosts import hosts
@@ -87,7 +87,7 @@ def create(
 ):
     """Create cluster"""
 
-    json_body = RhubapilabclustercreateClusterJsonBody(
+    json_body = RhubApiLabClusterCreateClusterJsonBody(
         created=created,
         description=description,
         group_id=group_id,
@@ -202,7 +202,7 @@ def update(
 ):
     """Update cluster"""
 
-    json_body = RhubapilabclusterupdateClusterJsonBody(
+    json_body = RhubApiLabClusterUpdateClusterJsonBody(
         created=created,
         description=description,
         group_id=group_id,

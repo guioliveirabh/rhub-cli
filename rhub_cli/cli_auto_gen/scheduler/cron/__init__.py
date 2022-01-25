@@ -1,13 +1,13 @@
 import click
 
-from rhub_cli.api.scheduler.rhubapischedulercroncreate_job import sync_detailed as cron_create
-from rhub_cli.api.scheduler.rhubapischedulercrondelete_job import sync_detailed as cron_remove
-from rhub_cli.api.scheduler.rhubapischedulercronget_job import sync_detailed as cron_get
-from rhub_cli.api.scheduler.rhubapischedulercronlist_jobs import sync_detailed as cron_get_list
-from rhub_cli.api.scheduler.rhubapischedulercronupdate_job import sync_detailed as cron_update
+from rhub_cli.api.scheduler.rhub_api_scheduler_cron_create_job import sync_detailed as cron_create
+from rhub_cli.api.scheduler.rhub_api_scheduler_cron_delete_job import sync_detailed as cron_remove
+from rhub_cli.api.scheduler.rhub_api_scheduler_cron_get_job import sync_detailed as cron_get
+from rhub_cli.api.scheduler.rhub_api_scheduler_cron_list_jobs import sync_detailed as cron_get_list
+from rhub_cli.api.scheduler.rhub_api_scheduler_cron_update_job import sync_detailed as cron_update
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapischedulercroncreate_job_json_body import RhubapischedulercroncreateJobJsonBody
-from rhub_cli.models.rhubapischedulercronupdate_job_json_body import RhubapischedulercronupdateJobJsonBody
+from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body import RhubApiSchedulerCronCreateJobJsonBody
+from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body import RhubApiSchedulerCronUpdateJobJsonBody
 
 
 @click.group()
@@ -49,7 +49,7 @@ def create(
 ):
     """Create CronJob"""
 
-    json_body = RhubapischedulercroncreateJobJsonBody(
+    json_body = RhubApiSchedulerCronCreateJobJsonBody(
         job_name=job_name,
         name=name,
         time_expr=time_expr,
@@ -118,7 +118,7 @@ def update(
 ):
     """Update CronJob"""
 
-    json_body = RhubapischedulercronupdateJobJsonBody(
+    json_body = RhubApiSchedulerCronUpdateJobJsonBody(
         description=description,
         enabled=enabled,
         job_name=job_name,

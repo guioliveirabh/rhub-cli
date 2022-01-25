@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.tower.rhubapitowerrelaunch_job import sync_detailed as relaunch_create
+from rhub_cli.api.tower.rhub_api_tower_relaunch_job import sync_detailed as relaunch_create
 from rhub_cli.api_request import APIRequest, pass_api
 
 

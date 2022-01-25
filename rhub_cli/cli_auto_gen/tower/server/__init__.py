@@ -1,13 +1,13 @@
 import click
 
-from rhub_cli.api.tower.rhubapitowercreate_server import sync_detailed as server_create
-from rhub_cli.api.tower.rhubapitowerdelete_server import sync_detailed as server_remove
-from rhub_cli.api.tower.rhubapitowerget_server import sync_detailed as server_get
-from rhub_cli.api.tower.rhubapitowerlist_servers import sync_detailed as server_get_list
-from rhub_cli.api.tower.rhubapitowerupdate_server import sync_detailed as server_update
+from rhub_cli.api.tower.rhub_api_tower_create_server import sync_detailed as server_create
+from rhub_cli.api.tower.rhub_api_tower_delete_server import sync_detailed as server_remove
+from rhub_cli.api.tower.rhub_api_tower_get_server import sync_detailed as server_get
+from rhub_cli.api.tower.rhub_api_tower_list_servers import sync_detailed as server_get_list
+from rhub_cli.api.tower.rhub_api_tower_update_server import sync_detailed as server_update
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapitowercreate_server_json_body import RhubapitowercreateServerJsonBody
-from rhub_cli.models.rhubapitowerupdate_server_json_body import RhubapitowerupdateServerJsonBody
+from rhub_cli.models.rhub_api_tower_create_server_json_body import RhubApiTowerCreateServerJsonBody
+from rhub_cli.models.rhub_api_tower_update_server_json_body import RhubApiTowerUpdateServerJsonBody
 
 
 @click.group()
@@ -49,7 +49,7 @@ def create(
 ):
     """Create Tower server"""
 
-    json_body = RhubapitowercreateServerJsonBody(
+    json_body = RhubApiTowerCreateServerJsonBody(
         credentials=credentials,
         name=name,
         url=url,
@@ -118,7 +118,7 @@ def update(
 ):
     """Change Tower server"""
 
-    json_body = RhubapitowerupdateServerJsonBody(
+    json_body = RhubApiTowerUpdateServerJsonBody(
         credentials=credentials,
         description=description,
         enabled=enabled,

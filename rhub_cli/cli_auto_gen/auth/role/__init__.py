@@ -1,13 +1,13 @@
 import click
 
-from rhub_cli.api.auth.rhubapiauthrolecreate_role import sync_detailed as role_create
-from rhub_cli.api.auth.rhubapiauthroledelete_role import sync_detailed as role_remove
-from rhub_cli.api.auth.rhubapiauthroleget_role import sync_detailed as role_get
-from rhub_cli.api.auth.rhubapiauthrolelist_roles import sync_detailed as role_get_list
-from rhub_cli.api.auth.rhubapiauthroleupdate_role import sync_detailed as role_update
+from rhub_cli.api.auth.rhub_api_auth_role_create_role import sync_detailed as role_create
+from rhub_cli.api.auth.rhub_api_auth_role_delete_role import sync_detailed as role_remove
+from rhub_cli.api.auth.rhub_api_auth_role_get_role import sync_detailed as role_get
+from rhub_cli.api.auth.rhub_api_auth_role_list_roles import sync_detailed as role_get_list
+from rhub_cli.api.auth.rhub_api_auth_role_update_role import sync_detailed as role_update
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapiauthrolecreate_role_json_body import RhubapiauthrolecreateRoleJsonBody
-from rhub_cli.models.rhubapiauthroleupdate_role_json_body import RhubapiauthroleupdateRoleJsonBody
+from rhub_cli.models.rhub_api_auth_role_create_role_json_body import RhubApiAuthRoleCreateRoleJsonBody
+from rhub_cli.models.rhub_api_auth_role_update_role_json_body import RhubApiAuthRoleUpdateRoleJsonBody
 
 
 @click.group()
@@ -37,7 +37,7 @@ def create(
 ):
     """Create role"""
 
-    json_body = RhubapiauthrolecreateRoleJsonBody(
+    json_body = RhubApiAuthRoleCreateRoleJsonBody(
         name=name,
     )
 
@@ -91,7 +91,7 @@ def update(
 ):
     """Update role"""
 
-    json_body = RhubapiauthroleupdateRoleJsonBody(
+    json_body = RhubApiAuthRoleUpdateRoleJsonBody(
         name=name,
     )
 

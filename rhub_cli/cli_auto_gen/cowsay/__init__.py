@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.health.rhubapihealthcowsay import sync_detailed as cowsay_get
+from rhub_cli.api.health.rhub_api_health_cowsay import sync_detailed as cowsay_get
 from rhub_cli.api_request import APIRequest, pass_api
 
 

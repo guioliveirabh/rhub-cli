@@ -1,12 +1,12 @@
 import click
 
-from rhub_cli.api.lab.rhubapilabclustercreate_cluster_hosts import sync_detailed as hosts_create
-from rhub_cli.api.lab.rhubapilabclusterdelete_cluster_hosts import sync_detailed as hosts_remove
-from rhub_cli.api.lab.rhubapilabclusterlist_cluster_hosts import sync_detailed as hosts_get_list
+from rhub_cli.api.lab.rhub_api_lab_cluster_create_cluster_hosts import sync_detailed as hosts_create
+from rhub_cli.api.lab.rhub_api_lab_cluster_delete_cluster_hosts import sync_detailed as hosts_remove
+from rhub_cli.api.lab.rhub_api_lab_cluster_list_cluster_hosts import sync_detailed as hosts_get_list
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models import *
-from rhub_cli.models.rhubapilabclustercreate_cluster_hosts_json_body_item import (
-    RhubapilabclustercreateClusterHostsJsonBodyItem,
+from rhub_cli.models.rhub_api_lab_cluster_create_cluster_hosts_json_body_item import (
+    RhubApiLabClusterCreateClusterHostsJsonBodyItem,
 )
 
 
@@ -52,7 +52,7 @@ def create(
 ):
     """Create or update cluster hosts"""
 
-    json_body_item = RhubapilabclustercreateClusterHostsJsonBodyItem(
+    json_body_item = RhubApiLabClusterCreateClusterHostsJsonBodyItem(
         fqdn=fqdn,
         ipaddr=ipaddr,
         num_vcpus=num_vcpus,

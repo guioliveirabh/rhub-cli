@@ -1,8 +1,8 @@
 import click
 
-from rhub_cli.api.tower.rhubapitowerlaunch_template import sync_detailed as launch_create
+from rhub_cli.api.tower.rhub_api_tower_launch_template import sync_detailed as launch_create
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapitowerlaunch_template_json_body import RhubapitowerlaunchTemplateJsonBody
+from rhub_cli.models.rhub_api_tower_launch_template_json_body import RhubApiTowerLaunchTemplateJsonBody
 
 
 @click.group()
@@ -19,7 +19,7 @@ def create(
 ):
     """Launch Tower template"""
 
-    json_body = RhubapitowerlaunchTemplateJsonBody()
+    json_body = RhubApiTowerLaunchTemplateJsonBody()
 
     response = launch_create(
         template_id=template_id,

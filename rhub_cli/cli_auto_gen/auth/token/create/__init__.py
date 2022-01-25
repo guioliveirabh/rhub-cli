@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.auth.rhubapiauthtokencreate_token import sync_detailed as create_create
+from rhub_cli.api.auth.rhub_api_auth_token_create_token import sync_detailed as create_create
 from rhub_cli.api_request import APIRequest, pass_api
 
 

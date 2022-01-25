@@ -1,13 +1,13 @@
 import click
 
-from rhub_cli.api.tower.rhubapitowercreate_template import sync_detailed as template_create
-from rhub_cli.api.tower.rhubapitowerdelete_template import sync_detailed as template_remove
-from rhub_cli.api.tower.rhubapitowerget_template import sync_detailed as template_get
-from rhub_cli.api.tower.rhubapitowerlist_templates import sync_detailed as template_get_list
-from rhub_cli.api.tower.rhubapitowerupdate_template import sync_detailed as template_update
+from rhub_cli.api.tower.rhub_api_tower_create_template import sync_detailed as template_create
+from rhub_cli.api.tower.rhub_api_tower_delete_template import sync_detailed as template_remove
+from rhub_cli.api.tower.rhub_api_tower_get_template import sync_detailed as template_get
+from rhub_cli.api.tower.rhub_api_tower_list_templates import sync_detailed as template_get_list
+from rhub_cli.api.tower.rhub_api_tower_update_template import sync_detailed as template_update
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapitowercreate_template_json_body import RhubapitowercreateTemplateJsonBody
-from rhub_cli.models.rhubapitowerupdate_template_json_body import RhubapitowerupdateTemplateJsonBody
+from rhub_cli.models.rhub_api_tower_create_template_json_body import RhubApiTowerCreateTemplateJsonBody
+from rhub_cli.models.rhub_api_tower_update_template_json_body import RhubApiTowerUpdateTemplateJsonBody
 
 from .jobs import jobs
 from .launch import launch
@@ -50,7 +50,7 @@ def create(
 ):
     """Create Tower template"""
 
-    json_body = RhubapitowercreateTemplateJsonBody(
+    json_body = RhubApiTowerCreateTemplateJsonBody(
         name=name,
         server_id=server_id,
         tower_template_id=tower_template_id,
@@ -118,7 +118,7 @@ def update(
 ):
     """Change Tower template"""
 
-    json_body = RhubapitowerupdateTemplateJsonBody(
+    json_body = RhubApiTowerUpdateTemplateJsonBody(
         credentials=credentials,
         description=description,
         enabled=enabled,

@@ -1,14 +1,14 @@
 import click
 
-from rhub_cli.api.policy.rhubapipoliciescreate_policy import sync_detailed as policies_create
-from rhub_cli.api.policy.rhubapipoliciesdelete_policy import sync_detailed as policies_remove
-from rhub_cli.api.policy.rhubapipoliciesget_policy import sync_detailed as policies_get
-from rhub_cli.api.policy.rhubapipolicieslist_policies import sync_detailed as policies_get_list
-from rhub_cli.api.policy.rhubapipoliciesupdate_policy import sync_detailed as policies_update
+from rhub_cli.api.policy.rhub_api_policies_create_policy import sync_detailed as policies_create
+from rhub_cli.api.policy.rhub_api_policies_delete_policy import sync_detailed as policies_remove
+from rhub_cli.api.policy.rhub_api_policies_get_policy import sync_detailed as policies_get
+from rhub_cli.api.policy.rhub_api_policies_list_policies import sync_detailed as policies_get_list
+from rhub_cli.api.policy.rhub_api_policies_update_policy import sync_detailed as policies_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models import *
-from rhub_cli.models.rhubapipoliciescreate_policy_json_body import RhubapipoliciescreatePolicyJsonBody
-from rhub_cli.models.rhubapipoliciesupdate_policy_json_body import RhubapipoliciesupdatePolicyJsonBody
+from rhub_cli.models.rhub_api_policies_create_policy_json_body import RhubApiPoliciesCreatePolicyJsonBody
+from rhub_cli.models.rhub_api_policies_update_policy_json_body import RhubApiPoliciesUpdatePolicyJsonBody
 
 
 @click.group()
@@ -54,7 +54,7 @@ def create(
 ):
     """Create policy"""
 
-    constraint = RhubapipoliciescreatePolicyJsonBodyConstraint(
+    constraint = RhubApiPoliciesCreatePolicyJsonBodyConstraint(
         cost=constraint_cost,
         density=constraint_density,
         location=constraint_location,
@@ -63,7 +63,7 @@ def create(
         tag=constraint_tag,
     )
 
-    json_body = RhubapipoliciescreatePolicyJsonBody(
+    json_body = RhubApiPoliciesCreatePolicyJsonBody(
         department=department,
         name=name,
         constraint=constraint,
@@ -133,7 +133,7 @@ def update(
 ):
     """Update policy"""
 
-    constraint = RhubapipoliciesupdatePolicyJsonBodyConstraint(
+    constraint = RhubApiPoliciesUpdatePolicyJsonBodyConstraint(
         cost=constraint_cost,
         density=constraint_density,
         location=constraint_location,
@@ -142,7 +142,7 @@ def update(
         tag=constraint_tag,
     )
 
-    json_body = RhubapipoliciesupdatePolicyJsonBody(
+    json_body = RhubApiPoliciesUpdatePolicyJsonBody(
         constraint=constraint,
         department=department,
         name=name,

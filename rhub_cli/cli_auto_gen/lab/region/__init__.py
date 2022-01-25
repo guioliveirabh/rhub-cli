@@ -1,14 +1,14 @@
 import click
 
-from rhub_cli.api.lab.rhubapilabregioncreate_region import sync_detailed as region_create
-from rhub_cli.api.lab.rhubapilabregiondelete_region import sync_detailed as region_remove
-from rhub_cli.api.lab.rhubapilabregionget_region import sync_detailed as region_get
-from rhub_cli.api.lab.rhubapilabregionlist_regions import sync_detailed as region_get_list
-from rhub_cli.api.lab.rhubapilabregionupdate_region import sync_detailed as region_update
+from rhub_cli.api.lab.rhub_api_lab_region_create_region import sync_detailed as region_create
+from rhub_cli.api.lab.rhub_api_lab_region_delete_region import sync_detailed as region_remove
+from rhub_cli.api.lab.rhub_api_lab_region_get_region import sync_detailed as region_get
+from rhub_cli.api.lab.rhub_api_lab_region_list_regions import sync_detailed as region_get_list
+from rhub_cli.api.lab.rhub_api_lab_region_update_region import sync_detailed as region_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models import *
-from rhub_cli.models.rhubapilabregioncreate_region_json_body import RhubapilabregioncreateRegionJsonBody
-from rhub_cli.models.rhubapilabregionupdate_region_json_body import RhubapilabregionupdateRegionJsonBody
+from rhub_cli.models.rhub_api_lab_region_create_region_json_body import RhubApiLabRegionCreateRegionJsonBody
+from rhub_cli.models.rhub_api_lab_region_update_region_json_body import RhubApiLabRegionUpdateRegionJsonBody
 
 from .products import products
 from .usage import usage
@@ -77,7 +77,7 @@ def create(
 ):
     """Create region"""
 
-    json_body = RhubapilabregioncreateRegionJsonBody(
+    json_body = RhubApiLabRegionCreateRegionJsonBody(
         dns_server=dns_server,
         download_server=download_server,
         name=name,
@@ -202,13 +202,13 @@ def update(
 ):
     """Update region"""
 
-    satellite = RhubapilabregionupdateRegionJsonBodySatellite(
+    satellite = RhubApiLabRegionUpdateRegionJsonBodySatellite(
         credentials=satellite_credentials,
         hostname=satellite_hostname,
         insecure=satellite_insecure,
     )
 
-    openstack = RhubapilabregionupdateRegionJsonBodyOpenstack(
+    openstack = RhubApiLabRegionUpdateRegionJsonBodyOpenstack(
         credentials=openstack_credentials,
         domain_id=openstack_domain_id,
         domain_name=openstack_domain_name,
@@ -218,13 +218,13 @@ def update(
         url=openstack_url,
     )
 
-    dns_server = RhubapilabregionupdateRegionJsonBodyDnsServer(
+    dns_server = RhubApiLabRegionUpdateRegionJsonBodyDnsServer(
         hostname=dns_server_hostname,
         key=dns_server_key,
         zone=dns_server_zone,
     )
 
-    json_body = RhubapilabregionupdateRegionJsonBody(
+    json_body = RhubApiLabRegionUpdateRegionJsonBody(
         banner=banner,
         description=description,
         dns_server=dns_server,

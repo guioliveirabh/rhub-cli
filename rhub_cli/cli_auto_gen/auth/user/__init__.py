@@ -1,13 +1,13 @@
 import click
 
-from rhub_cli.api.auth.rhubapiauthusercreate_user import sync_detailed as user_create
-from rhub_cli.api.auth.rhubapiauthuserdelete_user import sync_detailed as user_remove
-from rhub_cli.api.auth.rhubapiauthuserget_user import sync_detailed as user_get
-from rhub_cli.api.auth.rhubapiauthuserlist_users import sync_detailed as user_get_list
-from rhub_cli.api.auth.rhubapiauthuserupdate_user import sync_detailed as user_update
+from rhub_cli.api.auth.rhub_api_auth_user_create_user import sync_detailed as user_create
+from rhub_cli.api.auth.rhub_api_auth_user_delete_user import sync_detailed as user_remove
+from rhub_cli.api.auth.rhub_api_auth_user_get_user import sync_detailed as user_get
+from rhub_cli.api.auth.rhub_api_auth_user_list_users import sync_detailed as user_get_list
+from rhub_cli.api.auth.rhub_api_auth_user_update_user import sync_detailed as user_update
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapiauthusercreate_user_json_body import RhubapiauthusercreateUserJsonBody
-from rhub_cli.models.rhubapiauthuserupdate_user_json_body import RhubapiauthuserupdateUserJsonBody
+from rhub_cli.models.rhub_api_auth_user_create_user_json_body import RhubApiAuthUserCreateUserJsonBody
+from rhub_cli.models.rhub_api_auth_user_update_user_json_body import RhubApiAuthUserUpdateUserJsonBody
 
 from .groups import groups
 from .roles import roles
@@ -52,7 +52,7 @@ def create(
 ):
     """Create user"""
 
-    json_body = RhubapiauthusercreateUserJsonBody(
+    json_body = RhubApiAuthUserCreateUserJsonBody(
         email=email,
         username=username,
         enabled=enabled,
@@ -121,7 +121,7 @@ def update(
 ):
     """Update user"""
 
-    json_body = RhubapiauthuserupdateUserJsonBody(
+    json_body = RhubApiAuthUserUpdateUserJsonBody(
         email=email,
         enabled=enabled,
         first_name=first_name,

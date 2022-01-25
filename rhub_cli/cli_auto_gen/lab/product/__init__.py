@@ -1,13 +1,13 @@
 import click
 
-from rhub_cli.api.lab.rhubapilabproductcreate_product import sync_detailed as product_create
-from rhub_cli.api.lab.rhubapilabproductdelete_product import sync_detailed as product_remove
-from rhub_cli.api.lab.rhubapilabproductget_product import sync_detailed as product_get
-from rhub_cli.api.lab.rhubapilabproductlist_products import sync_detailed as product_get_list
-from rhub_cli.api.lab.rhubapilabproductupdate_product import sync_detailed as product_update
+from rhub_cli.api.lab.rhub_api_lab_product_create_product import sync_detailed as product_create
+from rhub_cli.api.lab.rhub_api_lab_product_delete_product import sync_detailed as product_remove
+from rhub_cli.api.lab.rhub_api_lab_product_get_product import sync_detailed as product_get
+from rhub_cli.api.lab.rhub_api_lab_product_list_products import sync_detailed as product_get_list
+from rhub_cli.api.lab.rhub_api_lab_product_update_product import sync_detailed as product_update
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapilabproductcreate_product_json_body import RhubapilabproductcreateProductJsonBody
-from rhub_cli.models.rhubapilabproductupdate_product_json_body import RhubapilabproductupdateProductJsonBody
+from rhub_cli.models.rhub_api_lab_product_create_product_json_body import RhubApiLabProductCreateProductJsonBody
+from rhub_cli.models.rhub_api_lab_product_update_product_json_body import RhubApiLabProductUpdateProductJsonBody
 
 from .regions import regions
 
@@ -51,7 +51,7 @@ def create(
 ):
     """Create product"""
 
-    json_body = RhubapilabproductcreateProductJsonBody(
+    json_body = RhubApiLabProductCreateProductJsonBody(
         name=name,
         parameters=parameters,
         tower_template_name_create=tower_template_name_create,
@@ -120,7 +120,7 @@ def update(
 ):
     """Update product"""
 
-    json_body = RhubapilabproductupdateProductJsonBody(
+    json_body = RhubApiLabProductUpdateProductJsonBody(
         description=description,
         enabled=enabled,
         name=name,

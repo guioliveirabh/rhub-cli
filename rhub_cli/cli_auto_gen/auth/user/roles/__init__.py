@@ -1,11 +1,11 @@
 import click
 
-from rhub_cli.api.auth.rhubapiauthuseradd_user_role import sync_detailed as roles_create
-from rhub_cli.api.auth.rhubapiauthuserdelete_user_role import sync_detailed as roles_remove
-from rhub_cli.api.auth.rhubapiauthuserlist_user_roles import sync_detailed as roles_get_list
+from rhub_cli.api.auth.rhub_api_auth_user_add_user_role import sync_detailed as roles_create
+from rhub_cli.api.auth.rhub_api_auth_user_delete_user_role import sync_detailed as roles_remove
+from rhub_cli.api.auth.rhub_api_auth_user_list_user_roles import sync_detailed as roles_get_list
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapiauthuseradd_user_role_json_body import RhubapiauthuseraddUserRoleJsonBody
-from rhub_cli.models.rhubapiauthuserdelete_user_role_json_body import RhubapiauthuserdeleteUserRoleJsonBody
+from rhub_cli.models.rhub_api_auth_user_add_user_role_json_body import RhubApiAuthUserAddUserRoleJsonBody
+from rhub_cli.models.rhub_api_auth_user_delete_user_role_json_body import RhubApiAuthUserDeleteUserRoleJsonBody
 
 
 @click.group()
@@ -40,7 +40,7 @@ def create(
 ):
     """Add user to role"""
 
-    json_body = RhubapiauthuseraddUserRoleJsonBody(
+    json_body = RhubApiAuthUserAddUserRoleJsonBody(
         id=id,
     )
 
@@ -63,7 +63,7 @@ def remove(
 ):
     """Remove user from role"""
 
-    json_body = RhubapiauthuserdeleteUserRoleJsonBody(
+    json_body = RhubApiAuthUserDeleteUserRoleJsonBody(
         id=id,
     )
 

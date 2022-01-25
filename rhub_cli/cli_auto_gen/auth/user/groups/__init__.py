@@ -1,11 +1,11 @@
 import click
 
-from rhub_cli.api.auth.rhubapiauthuseradd_user_group import sync_detailed as groups_create
-from rhub_cli.api.auth.rhubapiauthuserdelete_user_group import sync_detailed as groups_remove
-from rhub_cli.api.auth.rhubapiauthuserlist_user_groups import sync_detailed as groups_get_list
+from rhub_cli.api.auth.rhub_api_auth_user_add_user_group import sync_detailed as groups_create
+from rhub_cli.api.auth.rhub_api_auth_user_delete_user_group import sync_detailed as groups_remove
+from rhub_cli.api.auth.rhub_api_auth_user_list_user_groups import sync_detailed as groups_get_list
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapiauthuseradd_user_group_json_body import RhubapiauthuseraddUserGroupJsonBody
-from rhub_cli.models.rhubapiauthuserdelete_user_group_json_body import RhubapiauthuserdeleteUserGroupJsonBody
+from rhub_cli.models.rhub_api_auth_user_add_user_group_json_body import RhubApiAuthUserAddUserGroupJsonBody
+from rhub_cli.models.rhub_api_auth_user_delete_user_group_json_body import RhubApiAuthUserDeleteUserGroupJsonBody
 
 
 @click.group()
@@ -40,7 +40,7 @@ def create(
 ):
     """Add user to group"""
 
-    json_body = RhubapiauthuseraddUserGroupJsonBody(
+    json_body = RhubApiAuthUserAddUserGroupJsonBody(
         id=id,
     )
 
@@ -63,7 +63,7 @@ def remove(
 ):
     """Remove user from group"""
 
-    json_body = RhubapiauthuserdeleteUserGroupJsonBody(
+    json_body = RhubApiAuthUserDeleteUserGroupJsonBody(
         id=id,
     )
 

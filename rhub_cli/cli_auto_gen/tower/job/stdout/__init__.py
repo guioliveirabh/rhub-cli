@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.tower.rhubapitowerget_job_stdout import sync_detailed as stdout_get
+from rhub_cli.api.tower.rhub_api_tower_get_job_stdout import sync_detailed as stdout_get
 from rhub_cli.api_request import APIRequest, pass_api
 
 

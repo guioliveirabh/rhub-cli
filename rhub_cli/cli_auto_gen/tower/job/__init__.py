@@ -1,7 +1,7 @@
 import click
 
-from rhub_cli.api.tower.rhubapitowerget_job import sync_detailed as job_get
-from rhub_cli.api.tower.rhubapitowerlist_jobs import sync_detailed as job_get_list
+from rhub_cli.api.tower.rhub_api_tower_get_job import sync_detailed as job_get
+from rhub_cli.api.tower.rhub_api_tower_list_jobs import sync_detailed as job_get_list
 from rhub_cli.api_request import APIRequest, pass_api
 
 from .relaunch import relaunch

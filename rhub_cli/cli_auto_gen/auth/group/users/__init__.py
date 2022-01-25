@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.auth.rhubapiauthgrouplist_group_users import sync_detailed as users_get_list
+from rhub_cli.api.auth.rhub_api_auth_group_list_group_users import sync_detailed as users_get_list
 from rhub_cli.api_request import APIRequest, pass_api
 
 

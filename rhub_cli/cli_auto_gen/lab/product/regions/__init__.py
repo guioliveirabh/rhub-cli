@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.lab.rhubapilabproductlist_product_regions import sync_detailed as regions_get_list
+from rhub_cli.api.lab.rhub_api_lab_product_list_product_regions import sync_detailed as regions_get_list
 from rhub_cli.api_request import APIRequest, pass_api
 
 

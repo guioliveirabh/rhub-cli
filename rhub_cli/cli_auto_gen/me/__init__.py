@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.auth.rhubapiauthuserget_current_user import sync_detailed as me_get
+from rhub_cli.api.auth.rhub_api_auth_user_get_current_user import sync_detailed as me_get
 from rhub_cli.api_request import APIRequest, pass_api
 
 

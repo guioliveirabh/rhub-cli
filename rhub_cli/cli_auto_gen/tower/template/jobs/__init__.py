@@ -1,6 +1,6 @@
 import click
 
-from rhub_cli.api.tower.rhubapitowerlist_template_jobs import sync_detailed as jobs_get_list
+from rhub_cli.api.tower.rhub_api_tower_list_template_jobs import sync_detailed as jobs_get_list
 from rhub_cli.api_request import APIRequest, pass_api
 
 

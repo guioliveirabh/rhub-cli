@@ -1,8 +1,8 @@
 import click
 
-from rhub_cli.api.tower.rhubapitowerwebhook_notification import sync_detailed as webhook_notification_create
+from rhub_cli.api.tower.rhub_api_tower_webhook_notification import sync_detailed as webhook_notification_create
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapitowerwebhook_notification_json_body import RhubapitowerwebhookNotificationJsonBody
+from rhub_cli.models.rhub_api_tower_webhook_notification_json_body import RhubApiTowerWebhookNotificationJsonBody
 
 
 @click.group()
@@ -47,7 +47,7 @@ def create(
 ):
     """Incoming webhook notification from Tower"""
 
-    json_body = RhubapitowerwebhookNotificationJsonBody(
+    json_body = RhubApiTowerWebhookNotificationJsonBody(
         body=body,
         created_by=created_by,
         credential=credential,

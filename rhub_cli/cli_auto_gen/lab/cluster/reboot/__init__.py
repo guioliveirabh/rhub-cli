@@ -1,8 +1,8 @@
 import click
 
-from rhub_cli.api.lab.rhubapilabclusterreboot_hosts import sync_detailed as reboot_create
+from rhub_cli.api.lab.rhub_api_lab_cluster_reboot_hosts import sync_detailed as reboot_create
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models.rhubapilabclusterreboot_hosts_json_body import RhubapilabclusterrebootHostsJsonBody
+from rhub_cli.models.rhub_api_lab_cluster_reboot_hosts_json_body import RhubApiLabClusterRebootHostsJsonBody
 
 
 @click.group()
@@ -23,7 +23,7 @@ def create(
 ):
     """Reboot cluster hosts"""
 
-    json_body = RhubapilabclusterrebootHostsJsonBody(
+    json_body = RhubApiLabClusterRebootHostsJsonBody(
         hosts=hosts,
         type=type,
     )
