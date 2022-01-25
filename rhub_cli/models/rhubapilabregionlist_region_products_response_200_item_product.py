@@ -3,6 +3,9 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.rhubapilabregionlist_region_products_response_200_item_product_flavors import (
+    RhubapilabregionlistRegionProductsResponse200ItemProductFlavors,
+)
 from ..models.rhubapilabregionlist_region_products_response_200_item_product_id import (
     RhubapilabregionlistRegionProductsResponse200ItemProductId,
 )
@@ -17,6 +20,7 @@ class RhubapilabregionlistRegionProductsResponse200ItemProduct:
     Attributes:
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
+        flavors (Union[Unset, None, RhubapilabregionlistRegionProductsResponse200ItemProductFlavors]):
         id (Union[Unset, RhubapilabregionlistRegionProductsResponse200ItemProductId]):
         name (Union[Unset, str]):  Example: OpenShift.
         parameters (Union[Unset, List[Any]]):
@@ -26,6 +30,7 @@ class RhubapilabregionlistRegionProductsResponse200ItemProduct:
 
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
+    flavors: Union[Unset, None, RhubapilabregionlistRegionProductsResponse200ItemProductFlavors] = UNSET
     id: Union[Unset, RhubapilabregionlistRegionProductsResponse200ItemProductId] = UNSET
     name: Union[Unset, str] = UNSET
     parameters: Union[Unset, List[Any]] = UNSET
@@ -36,6 +41,10 @@ class RhubapilabregionlistRegionProductsResponse200ItemProduct:
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
         enabled = self.enabled
+        flavors: Union[Unset, None, Dict[str, Any]] = UNSET
+        if not isinstance(self.flavors, Unset):
+            flavors = self.flavors.to_dict() if self.flavors else None
+
         id: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.id, Unset):
             id = self.id.to_dict()
@@ -66,6 +75,8 @@ class RhubapilabregionlistRegionProductsResponse200ItemProduct:
             field_dict["description"] = description
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
+        if flavors is not UNSET:
+            field_dict["flavors"] = flavors
         if id is not UNSET:
             field_dict["id"] = id
         if name is not UNSET:
@@ -85,6 +96,15 @@ class RhubapilabregionlistRegionProductsResponse200ItemProduct:
         description = d.pop("description", UNSET)
 
         enabled = d.pop("enabled", UNSET)
+
+        _flavors = d.pop("flavors", UNSET)
+        flavors: Union[Unset, None, RhubapilabregionlistRegionProductsResponse200ItemProductFlavors]
+        if _flavors is None:
+            flavors = None
+        elif isinstance(_flavors, Unset):
+            flavors = UNSET
+        else:
+            flavors = RhubapilabregionlistRegionProductsResponse200ItemProductFlavors.from_dict(_flavors)
 
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabregionlistRegionProductsResponse200ItemProductId]
@@ -121,6 +141,7 @@ class RhubapilabregionlistRegionProductsResponse200ItemProduct:
         rhubapilabregionlist_region_products_response_200_item_product = cls(
             description=description,
             enabled=enabled,
+            flavors=flavors,
             id=id,
             name=name,
             parameters=parameters,

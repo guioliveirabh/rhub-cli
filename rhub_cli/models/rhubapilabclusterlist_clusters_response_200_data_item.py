@@ -17,6 +17,9 @@ from ..models.rhubapilabclusterlist_clusters_response_200_data_item_product_para
 from ..models.rhubapilabclusterlist_clusters_response_200_data_item_quota_type_0 import (
     RhubapilabclusterlistClustersResponse200DataItemQuotaType0,
 )
+from ..models.rhubapilabclusterlist_clusters_response_200_data_item_quota_usage_type_0 import (
+    RhubapilabclusterlistClustersResponse200DataItemQuotaUsageType0,
+)
 from ..models.rhubapilabclusterlist_clusters_response_200_data_item_status import (
     RhubapilabclusterlistClustersResponse200DataItemStatus,
 )
@@ -42,9 +45,12 @@ class RhubapilabclusterlistClustersResponse200DataItem:
         product_params (Union[Unset, RhubapilabclusterlistClustersResponse200DataItemProductParams]):
         quota (Union[Any, RhubapilabclusterlistClustersResponse200DataItemQuotaType0, Unset]):  Example: {'num_vcpus':
             40, 'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
+        quota_usage (Union[Any, RhubapilabclusterlistClustersResponse200DataItemQuotaUsageType0, Unset]):  Example:
+            {'num_vcpus': 16, 'num_volumes': 2, 'ram_mb': 64000, 'volumes_gb': 256}.
         region_id (Union[Unset, int]):
         region_name (Union[Unset, str]):
         reservation_expiration (Union[Unset, None, datetime.datetime]): Soft-limit expiration.
+        shared (Union[Unset, bool]):
         status (Union[Unset, None, RhubapilabclusterlistClustersResponse200DataItemStatus]):
         user_id (Union[Unset, str]):
         user_name (Union[Unset, str]):
@@ -62,9 +68,11 @@ class RhubapilabclusterlistClustersResponse200DataItem:
     product_name: Union[Unset, str] = UNSET
     product_params: Union[Unset, RhubapilabclusterlistClustersResponse200DataItemProductParams] = UNSET
     quota: Union[Any, RhubapilabclusterlistClustersResponse200DataItemQuotaType0, Unset] = UNSET
+    quota_usage: Union[Any, RhubapilabclusterlistClustersResponse200DataItemQuotaUsageType0, Unset] = UNSET
     region_id: Union[Unset, int] = UNSET
     region_name: Union[Unset, str] = UNSET
     reservation_expiration: Union[Unset, None, datetime.datetime] = UNSET
+    shared: Union[Unset, bool] = UNSET
     status: Union[Unset, None, RhubapilabclusterlistClustersResponse200DataItemStatus] = UNSET
     user_id: Union[Unset, str] = UNSET
     user_name: Union[Unset, str] = UNSET
@@ -112,12 +120,24 @@ class RhubapilabclusterlistClustersResponse200DataItem:
         else:
             quota = self.quota
 
+        quota_usage: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.quota_usage, Unset):
+            quota_usage = UNSET
+        elif isinstance(self.quota_usage, RhubapilabclusterlistClustersResponse200DataItemQuotaUsageType0):
+            quota_usage = UNSET
+            if not isinstance(self.quota_usage, Unset):
+                quota_usage = self.quota_usage.to_dict()
+
+        else:
+            quota_usage = self.quota_usage
+
         region_id = self.region_id
         region_name = self.region_name
         reservation_expiration: Union[Unset, None, str] = UNSET
         if not isinstance(self.reservation_expiration, Unset):
             reservation_expiration = self.reservation_expiration.isoformat() if self.reservation_expiration else None
 
+        shared = self.shared
         status: Union[Unset, None, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value if self.status else None
@@ -152,12 +172,16 @@ class RhubapilabclusterlistClustersResponse200DataItem:
             field_dict["product_params"] = product_params
         if quota is not UNSET:
             field_dict["quota"] = quota
+        if quota_usage is not UNSET:
+            field_dict["quota_usage"] = quota_usage
         if region_id is not UNSET:
             field_dict["region_id"] = region_id
         if region_name is not UNSET:
             field_dict["region_name"] = region_name
         if reservation_expiration is not UNSET:
             field_dict["reservation_expiration"] = reservation_expiration
+        if shared is not UNSET:
+            field_dict["shared"] = shared
         if status is not UNSET:
             field_dict["status"] = status
         if user_id is not UNSET:
@@ -241,6 +265,32 @@ class RhubapilabclusterlistClustersResponse200DataItem:
 
         quota = _parse_quota(d.pop("quota", UNSET))
 
+        def _parse_quota_usage(
+            data: object,
+        ) -> Union[Any, RhubapilabclusterlistClustersResponse200DataItemQuotaUsageType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _quota_usage_type_0 = data
+                quota_usage_type_0: Union[Unset, RhubapilabclusterlistClustersResponse200DataItemQuotaUsageType0]
+                if isinstance(_quota_usage_type_0, Unset):
+                    quota_usage_type_0 = UNSET
+                else:
+                    quota_usage_type_0 = RhubapilabclusterlistClustersResponse200DataItemQuotaUsageType0.from_dict(
+                        _quota_usage_type_0
+                    )
+
+                return quota_usage_type_0
+            except:  # noqa: E722
+                pass
+            quota_usage_type_1 = data
+
+            return quota_usage_type_1
+
+        quota_usage = _parse_quota_usage(d.pop("quota_usage", UNSET))
+
         region_id = d.pop("region_id", UNSET)
 
         region_name = d.pop("region_name", UNSET)
@@ -253,6 +303,8 @@ class RhubapilabclusterlistClustersResponse200DataItem:
             reservation_expiration = UNSET
         else:
             reservation_expiration = isoparse(_reservation_expiration)
+
+        shared = d.pop("shared", UNSET)
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, None, RhubapilabclusterlistClustersResponse200DataItemStatus]
@@ -280,9 +332,11 @@ class RhubapilabclusterlistClustersResponse200DataItem:
             product_name=product_name,
             product_params=product_params,
             quota=quota,
+            quota_usage=quota_usage,
             region_id=region_id,
             region_name=region_name,
             reservation_expiration=reservation_expiration,
+            shared=shared,
             status=status,
             user_id=user_id,
             user_name=user_name,

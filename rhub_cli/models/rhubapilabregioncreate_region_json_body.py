@@ -4,7 +4,12 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 import attr
 
 from ..models.rhubapilabregioncreate_region_json_body_id import RhubapilabregioncreateRegionJsonBodyId
-from ..models.rhubapilabregioncreate_region_json_body_quota_type_0 import RhubapilabregioncreateRegionJsonBodyQuotaType0
+from ..models.rhubapilabregioncreate_region_json_body_total_quota_type_0 import (
+    RhubapilabregioncreateRegionJsonBodyTotalQuotaType0,
+)
+from ..models.rhubapilabregioncreate_region_json_body_user_quota_type_0 import (
+    RhubapilabregioncreateRegionJsonBodyUserQuotaType0,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubapilabregioncreateRegionJsonBody")
@@ -28,10 +33,12 @@ class RhubapilabregioncreateRegionJsonBody:
         lifespan_length (Union[Unset, None, int]):
         location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
         owner_group (Union[Unset, str]):  Example: 7670ac07-cb21-448d-af8a-6e3882216be3.
-        quota (Union[Any, RhubapilabregioncreateRegionJsonBodyQuotaType0, Unset]):  Example: {'num_vcpus': 40,
-            'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
         reservation_expiration_max (Union[Unset, None, int]):
         reservations_enabled (Union[Unset, bool]):
+        total_quota (Union[Any, RhubapilabregioncreateRegionJsonBodyTotalQuotaType0, Unset]):  Example: {'num_vcpus':
+            40000, 'num_volumes': 40000, 'ram_mb': 200000000, 'volumes_gb': 540000}.
+        user_quota (Union[Any, RhubapilabregioncreateRegionJsonBodyUserQuotaType0, Unset]):  Example: {'num_vcpus': 40,
+            'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
         users_group (Union[Unset, None, str]):
     """
 
@@ -49,9 +56,10 @@ class RhubapilabregioncreateRegionJsonBody:
     lifespan_length: Union[Unset, None, int] = UNSET
     location: Union[Unset, None, str] = UNSET
     owner_group: Union[Unset, str] = UNSET
-    quota: Union[Any, RhubapilabregioncreateRegionJsonBodyQuotaType0, Unset] = UNSET
     reservation_expiration_max: Union[Unset, None, int] = UNSET
     reservations_enabled: Union[Unset, bool] = UNSET
+    total_quota: Union[Any, RhubapilabregioncreateRegionJsonBodyTotalQuotaType0, Unset] = UNSET
+    user_quota: Union[Any, RhubapilabregioncreateRegionJsonBodyUserQuotaType0, Unset] = UNSET
     users_group: Union[Unset, None, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -76,19 +84,30 @@ class RhubapilabregioncreateRegionJsonBody:
         lifespan_length = self.lifespan_length
         location = self.location
         owner_group = self.owner_group
-        quota: Union[Any, Dict[str, Any], Unset]
-        if isinstance(self.quota, Unset):
-            quota = UNSET
-        elif isinstance(self.quota, RhubapilabregioncreateRegionJsonBodyQuotaType0):
-            quota = UNSET
-            if not isinstance(self.quota, Unset):
-                quota = self.quota.to_dict()
-
-        else:
-            quota = self.quota
-
         reservation_expiration_max = self.reservation_expiration_max
         reservations_enabled = self.reservations_enabled
+        total_quota: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.total_quota, Unset):
+            total_quota = UNSET
+        elif isinstance(self.total_quota, RhubapilabregioncreateRegionJsonBodyTotalQuotaType0):
+            total_quota = UNSET
+            if not isinstance(self.total_quota, Unset):
+                total_quota = self.total_quota.to_dict()
+
+        else:
+            total_quota = self.total_quota
+
+        user_quota: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.user_quota, Unset):
+            user_quota = UNSET
+        elif isinstance(self.user_quota, RhubapilabregioncreateRegionJsonBodyUserQuotaType0):
+            user_quota = UNSET
+            if not isinstance(self.user_quota, Unset):
+                user_quota = self.user_quota.to_dict()
+
+        else:
+            user_quota = self.user_quota
+
         users_group = self.users_group
 
         field_dict: Dict[str, Any] = {}
@@ -118,12 +137,14 @@ class RhubapilabregioncreateRegionJsonBody:
             field_dict["location"] = location
         if owner_group is not UNSET:
             field_dict["owner_group"] = owner_group
-        if quota is not UNSET:
-            field_dict["quota"] = quota
         if reservation_expiration_max is not UNSET:
             field_dict["reservation_expiration_max"] = reservation_expiration_max
         if reservations_enabled is not UNSET:
             field_dict["reservations_enabled"] = reservations_enabled
+        if total_quota is not UNSET:
+            field_dict["total_quota"] = total_quota
+        if user_quota is not UNSET:
+            field_dict["user_quota"] = user_quota
         if users_group is not UNSET:
             field_dict["users_group"] = users_group
 
@@ -165,31 +186,55 @@ class RhubapilabregioncreateRegionJsonBody:
 
         owner_group = d.pop("owner_group", UNSET)
 
-        def _parse_quota(data: object) -> Union[Any, RhubapilabregioncreateRegionJsonBodyQuotaType0, Unset]:
+        reservation_expiration_max = d.pop("reservation_expiration_max", UNSET)
+
+        reservations_enabled = d.pop("reservations_enabled", UNSET)
+
+        def _parse_total_quota(data: object) -> Union[Any, RhubapilabregioncreateRegionJsonBodyTotalQuotaType0, Unset]:
             if isinstance(data, Unset):
                 return data
             try:
                 if not isinstance(data, dict):
                     raise TypeError()
-                _quota_type_0 = data
-                quota_type_0: Union[Unset, RhubapilabregioncreateRegionJsonBodyQuotaType0]
-                if isinstance(_quota_type_0, Unset):
-                    quota_type_0 = UNSET
+                _total_quota_type_0 = data
+                total_quota_type_0: Union[Unset, RhubapilabregioncreateRegionJsonBodyTotalQuotaType0]
+                if isinstance(_total_quota_type_0, Unset):
+                    total_quota_type_0 = UNSET
                 else:
-                    quota_type_0 = RhubapilabregioncreateRegionJsonBodyQuotaType0.from_dict(_quota_type_0)
+                    total_quota_type_0 = RhubapilabregioncreateRegionJsonBodyTotalQuotaType0.from_dict(
+                        _total_quota_type_0
+                    )
 
-                return quota_type_0
+                return total_quota_type_0
             except:  # noqa: E722
                 pass
-            quota_type_1 = data
+            total_quota_type_1 = data
 
-            return quota_type_1
+            return total_quota_type_1
 
-        quota = _parse_quota(d.pop("quota", UNSET))
+        total_quota = _parse_total_quota(d.pop("total_quota", UNSET))
 
-        reservation_expiration_max = d.pop("reservation_expiration_max", UNSET)
+        def _parse_user_quota(data: object) -> Union[Any, RhubapilabregioncreateRegionJsonBodyUserQuotaType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _user_quota_type_0 = data
+                user_quota_type_0: Union[Unset, RhubapilabregioncreateRegionJsonBodyUserQuotaType0]
+                if isinstance(_user_quota_type_0, Unset):
+                    user_quota_type_0 = UNSET
+                else:
+                    user_quota_type_0 = RhubapilabregioncreateRegionJsonBodyUserQuotaType0.from_dict(_user_quota_type_0)
 
-        reservations_enabled = d.pop("reservations_enabled", UNSET)
+                return user_quota_type_0
+            except:  # noqa: E722
+                pass
+            user_quota_type_1 = data
+
+            return user_quota_type_1
+
+        user_quota = _parse_user_quota(d.pop("user_quota", UNSET))
 
         users_group = d.pop("users_group", UNSET)
 
@@ -208,9 +253,10 @@ class RhubapilabregioncreateRegionJsonBody:
             lifespan_length=lifespan_length,
             location=location,
             owner_group=owner_group,
-            quota=quota,
             reservation_expiration_max=reservation_expiration_max,
             reservations_enabled=reservations_enabled,
+            total_quota=total_quota,
+            user_quota=user_quota,
             users_group=users_group,
         )
 

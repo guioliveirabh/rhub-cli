@@ -5,11 +5,11 @@ import attr
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RhubapilabregionlistRegionsResponse200DataItemQuotaType0")
+T = TypeVar("T", bound="RhubapilabproductlistProductsResponse200DataItemFlavorsAdditionalProperty")
 
 
 @attr.s(auto_attribs=True)
-class RhubapilabregionlistRegionsResponse200DataItemQuotaType0:
+class RhubapilabproductlistProductsResponse200DataItemFlavorsAdditionalProperty:
     """
     Attributes:
         num_vcpus (Union[Unset, None, int]):
@@ -55,15 +55,15 @@ class RhubapilabregionlistRegionsResponse200DataItemQuotaType0:
 
         volumes_gb = d.pop("volumes_gb", UNSET)
 
-        rhubapilabregionlist_regions_response_200_data_item_quota_type_0 = cls(
+        rhubapilabproductlist_products_response_200_data_item_flavors_additional_property = cls(
             num_vcpus=num_vcpus,
             num_volumes=num_volumes,
             ram_mb=ram_mb,
             volumes_gb=volumes_gb,
         )
 
-        rhubapilabregionlist_regions_response_200_data_item_quota_type_0.additional_properties = d
-        return rhubapilabregionlist_regions_response_200_data_item_quota_type_0
+        rhubapilabproductlist_products_response_200_data_item_flavors_additional_property.additional_properties = d
+        return rhubapilabproductlist_products_response_200_data_item_flavors_additional_property
 
     @property
     def additional_keys(self) -> List[str]:

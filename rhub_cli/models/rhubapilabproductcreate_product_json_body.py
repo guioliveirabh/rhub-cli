@@ -3,6 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.rhubapilabproductcreate_product_json_body_flavors import RhubapilabproductcreateProductJsonBodyFlavors
 from ..models.rhubapilabproductcreate_product_json_body_id import RhubapilabproductcreateProductJsonBodyId
 from ..types import UNSET, Unset
 
@@ -19,6 +20,7 @@ class RhubapilabproductcreateProductJsonBody:
         tower_template_name_delete (str):  Example: rhub-openshift-delete.
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
+        flavors (Union[Unset, None, RhubapilabproductcreateProductJsonBodyFlavors]):
         id (Union[Unset, RhubapilabproductcreateProductJsonBodyId]):
     """
 
@@ -28,6 +30,7 @@ class RhubapilabproductcreateProductJsonBody:
     tower_template_name_delete: str
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
+    flavors: Union[Unset, None, RhubapilabproductcreateProductJsonBodyFlavors] = UNSET
     id: Union[Unset, RhubapilabproductcreateProductJsonBodyId] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -50,6 +53,10 @@ class RhubapilabproductcreateProductJsonBody:
         tower_template_name_delete = self.tower_template_name_delete
         description = self.description
         enabled = self.enabled
+        flavors: Union[Unset, None, Dict[str, Any]] = UNSET
+        if not isinstance(self.flavors, Unset):
+            flavors = self.flavors.to_dict() if self.flavors else None
+
         id: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.id, Unset):
             id = self.id.to_dict()
@@ -68,6 +75,8 @@ class RhubapilabproductcreateProductJsonBody:
             field_dict["description"] = description
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
+        if flavors is not UNSET:
+            field_dict["flavors"] = flavors
         if id is not UNSET:
             field_dict["id"] = id
 
@@ -105,6 +114,15 @@ class RhubapilabproductcreateProductJsonBody:
 
         enabled = d.pop("enabled", UNSET)
 
+        _flavors = d.pop("flavors", UNSET)
+        flavors: Union[Unset, None, RhubapilabproductcreateProductJsonBodyFlavors]
+        if _flavors is None:
+            flavors = None
+        elif isinstance(_flavors, Unset):
+            flavors = UNSET
+        else:
+            flavors = RhubapilabproductcreateProductJsonBodyFlavors.from_dict(_flavors)
+
         _id = d.pop("id", UNSET)
         id: Union[Unset, RhubapilabproductcreateProductJsonBodyId]
         if isinstance(_id, Unset):
@@ -119,6 +137,7 @@ class RhubapilabproductcreateProductJsonBody:
             tower_template_name_delete=tower_template_name_delete,
             description=description,
             enabled=enabled,
+            flavors=flavors,
             id=id,
         )
 

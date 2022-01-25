@@ -15,6 +15,9 @@ from ..models.rhubapilabclustercreate_cluster_response_200_product_params import
 from ..models.rhubapilabclustercreate_cluster_response_200_quota_type_0 import (
     RhubapilabclustercreateClusterResponse200QuotaType0,
 )
+from ..models.rhubapilabclustercreate_cluster_response_200_quota_usage_type_0 import (
+    RhubapilabclustercreateClusterResponse200QuotaUsageType0,
+)
 from ..models.rhubapilabclustercreate_cluster_response_200_status import RhubapilabclustercreateClusterResponse200Status
 from ..types import UNSET, Unset
 
@@ -39,8 +42,11 @@ class RhubapilabclustercreateClusterResponse200:
         product_name (Union[Unset, str]):
         quota (Union[Any, RhubapilabclustercreateClusterResponse200QuotaType0, Unset]):  Example: {'num_vcpus': 40,
             'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
+        quota_usage (Union[Any, RhubapilabclustercreateClusterResponse200QuotaUsageType0, Unset]):  Example:
+            {'num_vcpus': 16, 'num_volumes': 2, 'ram_mb': 64000, 'volumes_gb': 256}.
         region_name (Union[Unset, str]):
         reservation_expiration (Optional[datetime.datetime]): Soft-limit expiration.
+        shared (Union[Unset, bool]):
         status (Union[Unset, None, RhubapilabclustercreateClusterResponse200Status]):
         user_id (Union[Unset, str]):
         user_name (Union[Unset, str]):
@@ -60,7 +66,9 @@ class RhubapilabclustercreateClusterResponse200:
     lifespan_expiration: Union[Unset, None, datetime.datetime] = UNSET
     product_name: Union[Unset, str] = UNSET
     quota: Union[Any, RhubapilabclustercreateClusterResponse200QuotaType0, Unset] = UNSET
+    quota_usage: Union[Any, RhubapilabclustercreateClusterResponse200QuotaUsageType0, Unset] = UNSET
     region_name: Union[Unset, str] = UNSET
+    shared: Union[Unset, bool] = UNSET
     status: Union[Unset, None, RhubapilabclustercreateClusterResponse200Status] = UNSET
     user_id: Union[Unset, str] = UNSET
     user_name: Union[Unset, str] = UNSET
@@ -107,9 +115,21 @@ class RhubapilabclustercreateClusterResponse200:
         else:
             quota = self.quota
 
+        quota_usage: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.quota_usage, Unset):
+            quota_usage = UNSET
+        elif isinstance(self.quota_usage, RhubapilabclustercreateClusterResponse200QuotaUsageType0):
+            quota_usage = UNSET
+            if not isinstance(self.quota_usage, Unset):
+                quota_usage = self.quota_usage.to_dict()
+
+        else:
+            quota_usage = self.quota_usage
+
         region_name = self.region_name
         reservation_expiration = self.reservation_expiration.isoformat() if self.reservation_expiration else None
 
+        shared = self.shared
         status: Union[Unset, None, str] = UNSET
         if not isinstance(self.status, Unset):
             status = self.status.value if self.status else None
@@ -146,8 +166,12 @@ class RhubapilabclustercreateClusterResponse200:
             field_dict["product_name"] = product_name
         if quota is not UNSET:
             field_dict["quota"] = quota
+        if quota_usage is not UNSET:
+            field_dict["quota_usage"] = quota_usage
         if region_name is not UNSET:
             field_dict["region_name"] = region_name
+        if shared is not UNSET:
+            field_dict["shared"] = shared
         if status is not UNSET:
             field_dict["status"] = status
         if user_id is not UNSET:
@@ -228,6 +252,32 @@ class RhubapilabclustercreateClusterResponse200:
 
         quota = _parse_quota(d.pop("quota", UNSET))
 
+        def _parse_quota_usage(
+            data: object,
+        ) -> Union[Any, RhubapilabclustercreateClusterResponse200QuotaUsageType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _quota_usage_type_0 = data
+                quota_usage_type_0: Union[Unset, RhubapilabclustercreateClusterResponse200QuotaUsageType0]
+                if isinstance(_quota_usage_type_0, Unset):
+                    quota_usage_type_0 = UNSET
+                else:
+                    quota_usage_type_0 = RhubapilabclustercreateClusterResponse200QuotaUsageType0.from_dict(
+                        _quota_usage_type_0
+                    )
+
+                return quota_usage_type_0
+            except:  # noqa: E722
+                pass
+            quota_usage_type_1 = data
+
+            return quota_usage_type_1
+
+        quota_usage = _parse_quota_usage(d.pop("quota_usage", UNSET))
+
         region_name = d.pop("region_name", UNSET)
 
         _reservation_expiration = d.pop("reservation_expiration")
@@ -236,6 +286,8 @@ class RhubapilabclustercreateClusterResponse200:
             reservation_expiration = None
         else:
             reservation_expiration = isoparse(_reservation_expiration)
+
+        shared = d.pop("shared", UNSET)
 
         _status = d.pop("status", UNSET)
         status: Union[Unset, None, RhubapilabclustercreateClusterResponse200Status]
@@ -264,8 +316,10 @@ class RhubapilabclustercreateClusterResponse200:
             lifespan_expiration=lifespan_expiration,
             product_name=product_name,
             quota=quota,
+            quota_usage=quota_usage,
             region_name=region_name,
             reservation_expiration=reservation_expiration,
+            shared=shared,
             status=status,
             user_id=user_id,
             user_name=user_name,

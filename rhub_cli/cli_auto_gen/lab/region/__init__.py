@@ -11,6 +11,7 @@ from rhub_cli.models.rhubapilabregioncreate_region_json_body import Rhubapilabre
 from rhub_cli.models.rhubapilabregionupdate_region_json_body import RhubapilabregionupdateRegionJsonBody
 
 from .products import products
+from .usage import usage
 
 
 @click.group()
@@ -47,9 +48,10 @@ def get_list(
 @click.option("--lifespan-length", type=int)
 @click.option("--location", type=str)
 @click.option("--owner-group", type=str)
-@click.option("--quota")
 @click.option("--reservation-expiration-max", type=int)
 @click.option("--reservations-enabled", is_flag=True)
+@click.option("--total-quota")
+@click.option("--user-quota")
 @click.option("--users-group", type=str)
 @pass_api
 def create(
@@ -67,9 +69,10 @@ def create(
     lifespan_length,
     location,
     owner_group,
-    quota,
     reservation_expiration_max,
     reservations_enabled,
+    total_quota,
+    user_quota,
     users_group,
 ):
     """Create region"""
@@ -88,9 +91,10 @@ def create(
         lifespan_length=lifespan_length,
         location=location,
         owner_group=owner_group,
-        quota=quota,
         reservation_expiration_max=reservation_expiration_max,
         reservations_enabled=reservations_enabled,
+        total_quota=total_quota,
+        user_quota=user_quota,
         users_group=users_group,
     )
 
@@ -153,13 +157,14 @@ def remove(
 @click.option("--openstack-project", type=str)
 @click.option("--openstack-url", type=str)
 @click.option("--owner-group", type=str)
-@click.option("--quota")
 @click.option("--reservation-expiration-max", type=int)
 @click.option("--reservations-enabled", is_flag=True)
 @click.option("--satellite-credentials")
 @click.option("--satellite-hostname", type=str)
 @click.option("--satellite-insecure", is_flag=True)
+@click.option("--total-quota")
 @click.option("--tower-id", type=int)
+@click.option("--user-quota")
 @click.option("--users-group", type=str)
 @click.option("--vault-server", type=str)
 @pass_api
@@ -184,13 +189,14 @@ def update(
     openstack_project,
     openstack_url,
     owner_group,
-    quota,
     reservation_expiration_max,
     reservations_enabled,
     satellite_credentials,
     satellite_hostname,
     satellite_insecure,
+    total_quota,
     tower_id,
+    user_quota,
     users_group,
     vault_server,
 ):
@@ -229,11 +235,12 @@ def update(
         name=name,
         openstack=openstack,
         owner_group=owner_group,
-        quota=quota,
         reservation_expiration_max=reservation_expiration_max,
         reservations_enabled=reservations_enabled,
         satellite=satellite,
+        total_quota=total_quota,
         tower_id=tower_id,
+        user_quota=user_quota,
         users_group=users_group,
         vault_server=vault_server,
     )
@@ -247,3 +254,4 @@ def update(
 
 
 region.add_command(products)
+region.add_command(usage)

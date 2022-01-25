@@ -42,6 +42,9 @@ def _parse_response(
                 response_200_item_type_1 = data
 
                 return response_200_item_type_1
+                response_200_item_type_2 = data
+
+                return response_200_item_type_2
 
             response_200_item = _parse_response_200_item(response_200_item_data)
 

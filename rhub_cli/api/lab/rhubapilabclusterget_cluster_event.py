@@ -39,6 +39,9 @@ def _parse_response(
             response_200_type_1 = data
 
             return response_200_type_1
+            response_200_type_2 = data
+
+            return response_200_type_2
 
         response_200 = _parse_response_200(response.json())
 

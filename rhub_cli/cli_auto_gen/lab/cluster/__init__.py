@@ -11,6 +11,7 @@ from rhub_cli.models.rhubapilabclusterupdate_cluster_json_body import Rhubapilab
 
 from .events import events
 from .hosts import hosts
+from .reboot import reboot
 
 
 @click.group()
@@ -49,9 +50,11 @@ def get_list(
 @click.option("--product-id", type=int)
 @click.option("--product-name", type=str)
 @click.option("--quota")
+@click.option("--quota-usage")
 @click.option("--region-id", type=int)
 @click.option("--region-name", type=str)
 @click.option("--reservation-expiration", type=click.DateTime())
+@click.option("--shared", is_flag=True)
 @click.option("--status")
 @click.option("--user-id", type=str)
 @click.option("--user-name", type=str)
@@ -73,9 +76,11 @@ def create(
     product_id,
     product_name,
     quota,
+    quota_usage,
     region_id,
     region_name,
     reservation_expiration,
+    shared,
     status,
     user_id,
     user_name,
@@ -93,9 +98,11 @@ def create(
         product_id=product_id,
         product_name=product_name,
         quota=quota,
+        quota_usage=quota_usage,
         region_id=region_id,
         region_name=region_name,
         reservation_expiration=reservation_expiration,
+        shared=shared,
         status=status,
         user_id=user_id,
         user_name=user_name,
@@ -157,9 +164,11 @@ def remove(
 @click.option("--product-id", type=int)
 @click.option("--product-name", type=str)
 @click.option("--quota")
+@click.option("--quota-usage")
 @click.option("--region-id", type=int)
 @click.option("--region-name", type=str)
 @click.option("--reservation-expiration", type=click.DateTime())
+@click.option("--shared", is_flag=True)
 @click.option("--status")
 @click.option("--user-id", type=str)
 @click.option("--user-name", type=str)
@@ -182,9 +191,11 @@ def update(
     product_id,
     product_name,
     quota,
+    quota_usage,
     region_id,
     region_name,
     reservation_expiration,
+    shared,
     status,
     user_id,
     user_name,
@@ -202,9 +213,11 @@ def update(
         product_id=product_id,
         product_name=product_name,
         quota=quota,
+        quota_usage=quota_usage,
         region_id=region_id,
         region_name=region_name,
         reservation_expiration=reservation_expiration,
+        shared=shared,
         status=status,
         user_id=user_id,
         user_name=user_name,
@@ -220,3 +233,4 @@ def update(
 
 cluster.add_command(events)
 cluster.add_command(hosts)
+cluster.add_command(reboot)
