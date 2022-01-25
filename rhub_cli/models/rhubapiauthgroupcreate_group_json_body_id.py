@@ -22,7 +22,7 @@ class RhubapiauthgroupcreateGroupJsonBodyId:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapiauthgroupcreate_group_json_body_id = cls()
 
         rhubapiauthgroupcreate_group_json_body_id.additional_properties = d

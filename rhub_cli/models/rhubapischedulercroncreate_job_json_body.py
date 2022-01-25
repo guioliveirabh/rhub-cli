@@ -80,7 +80,7 @@ class RhubapischedulercroncreateJobJsonBody:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         job_name = RhubapischedulercroncreateJobJsonBodyJobName(d.pop("job_name"))
 
         name = d.pop("name")

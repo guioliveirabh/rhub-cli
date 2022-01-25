@@ -22,7 +22,7 @@ class RhubapilabproductlistProductRegionsResponse200ItemRegionId:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapilabproductlist_product_regions_response_200_item_region_id = cls()
 
         rhubapilabproductlist_product_regions_response_200_item_region_id.additional_properties = d

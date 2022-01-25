@@ -159,7 +159,7 @@ class RhubapilabclustercreateClusterResponse200:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         name = d.pop("name")
 
         product_id = d.pop("product_id")

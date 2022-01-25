@@ -119,7 +119,7 @@ class RhubapitowerwebhookNotificationJsonBody:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         body = d.pop("body", UNSET)
 
         created_by = d.pop("created_by", UNSET)

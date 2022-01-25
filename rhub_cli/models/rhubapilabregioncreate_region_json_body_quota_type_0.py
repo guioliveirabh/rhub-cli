@@ -46,7 +46,7 @@ class RhubapilabregioncreateRegionJsonBodyQuotaType0:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         num_vcpus = d.pop("num_vcpus", UNSET)
 
         num_volumes = d.pop("num_volumes", UNSET)

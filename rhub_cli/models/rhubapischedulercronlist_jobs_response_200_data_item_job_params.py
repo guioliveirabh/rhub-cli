@@ -22,7 +22,7 @@ class RhubapischedulercronlistJobsResponse200DataItemJobParams:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapischedulercronlist_jobs_response_200_data_item_job_params = cls()
 
         rhubapischedulercronlist_jobs_response_200_data_item_job_params.additional_properties = d

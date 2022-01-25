@@ -22,7 +22,7 @@ class RhubapilabclusterupdateClusterResponse200HostsItemClusterId:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapilabclusterupdate_cluster_response_200_hosts_item_cluster_id = cls()
 
         rhubapilabclusterupdate_cluster_response_200_hosts_item_cluster_id.additional_properties = d

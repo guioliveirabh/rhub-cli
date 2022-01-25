@@ -24,7 +24,7 @@ class RhubapiauthgroupupdateGroupJsonBodyAttributes:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapiauthgroupupdate_group_json_body_attributes = cls()
 
         additional_properties = {}

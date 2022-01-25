@@ -28,7 +28,7 @@ class RhubapiauthtokenrefreshTokenResponse200:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapiauthtokenrefresh_token_response_200 = cls()
 
         rhubapiauthtokenrefresh_token_response_200.additional_properties = d

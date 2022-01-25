@@ -57,7 +57,7 @@ class RhubapiauthrolelistRolesResponse200Item:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         _attributes = d.pop("attributes", UNSET)
         attributes: Union[Unset, RhubapiauthrolelistRolesResponse200ItemAttributes]
         if isinstance(_attributes, Unset):

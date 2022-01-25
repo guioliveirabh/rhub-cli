@@ -22,7 +22,7 @@ class RhubapitowergetTemplateResponse200TowerSurvey:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapitowerget_template_response_200_tower_survey = cls()
 
         rhubapitowerget_template_response_200_tower_survey.additional_properties = d

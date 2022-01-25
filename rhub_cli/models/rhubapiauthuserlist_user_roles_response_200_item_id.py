@@ -22,7 +22,7 @@ class RhubapiauthuserlistUserRolesResponse200ItemId:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapiauthuserlist_user_roles_response_200_item_id = cls()
 
         rhubapiauthuserlist_user_roles_response_200_item_id.additional_properties = d

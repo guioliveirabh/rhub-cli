@@ -31,7 +31,7 @@ class RhubapiauthuserdeleteUserGroupJsonBody:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         id = d.pop("id")
 
         rhubapiauthuserdelete_user_group_json_body = cls(

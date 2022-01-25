@@ -85,7 +85,7 @@ class RhubapilabclusterlistClusterHostsResponse200Item:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         _cluster_id = d.pop("cluster_id", UNSET)
         cluster_id: Union[Unset, RhubapilabclusterlistClusterHostsResponse200ItemClusterId]
         if isinstance(_cluster_id, Unset):

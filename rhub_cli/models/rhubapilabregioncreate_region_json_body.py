@@ -131,7 +131,7 @@ class RhubapilabregioncreateRegionJsonBody:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         dns_server = d.pop("dns_server")
 
         download_server = d.pop("download_server")

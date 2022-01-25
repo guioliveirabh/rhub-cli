@@ -22,7 +22,7 @@ class RhubapitowerupdateTemplateJsonBodyId:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapitowerupdate_template_json_body_id = cls()
 
         rhubapitowerupdate_template_json_body_id.additional_properties = d

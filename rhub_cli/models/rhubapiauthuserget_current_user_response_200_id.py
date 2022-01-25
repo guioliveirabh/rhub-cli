@@ -22,7 +22,7 @@ class RhubapiauthusergetCurrentUserResponse200Id:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapiauthuserget_current_user_response_200_id = cls()
 
         rhubapiauthuserget_current_user_response_200_id.additional_properties = d

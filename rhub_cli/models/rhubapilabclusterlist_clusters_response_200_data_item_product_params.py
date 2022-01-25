@@ -22,7 +22,7 @@ class RhubapilabclusterlistClustersResponse200DataItemProductParams:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapilabclusterlist_clusters_response_200_data_item_product_params = cls()
 
         rhubapilabclusterlist_clusters_response_200_data_item_product_params.additional_properties = d

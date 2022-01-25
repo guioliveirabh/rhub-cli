@@ -57,7 +57,7 @@ class RhubapilabregiongetRegionResponse200DnsServer:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         hostname = d.pop("hostname", UNSET)
 
         def _parse_key(data: object) -> Union[RhubapilabregiongetRegionResponse200DnsServerKeyType0, Unset, str]:

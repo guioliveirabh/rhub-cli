@@ -65,7 +65,7 @@ class RhubapitowergetServerResponse200:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         credentials = d.pop("credentials", UNSET)
 
         description = d.pop("description", UNSET)

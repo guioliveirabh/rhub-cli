@@ -22,7 +22,7 @@ class RhubapipoliciesupdatePolicyResponse200ConstraintLimit:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         rhubapipoliciesupdate_policy_response_200_constraint_limit = cls()
 
         rhubapipoliciesupdate_policy_response_200_constraint_limit.additional_properties = d

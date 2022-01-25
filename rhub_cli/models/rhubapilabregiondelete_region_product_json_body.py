@@ -31,7 +31,7 @@ class RhubapilabregiondeleteRegionProductJsonBody:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         id = d.pop("id")
 
         rhubapilabregiondelete_region_product_json_body = cls(

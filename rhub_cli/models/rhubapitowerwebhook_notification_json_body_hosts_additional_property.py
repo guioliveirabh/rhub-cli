@@ -36,7 +36,7 @@ class RhubapitowerwebhookNotificationJsonBodyHostsAdditionalProperty:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = copy(src_dict)  # TODO: find the bug
+        d = copy(src_dict)
         _localhost = d.pop("localhost", UNSET)
         localhost: Union[Unset, RhubapitowerwebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost]
         if isinstance(_localhost, Unset):
