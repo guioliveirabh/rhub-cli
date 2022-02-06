@@ -6,6 +6,7 @@ from ...client import AuthenticatedClient
 from ...models.rhub_api_tower_list_servers_filter import RhubApiTowerListServersFilter
 from ...models.rhub_api_tower_list_servers_response_200 import RhubApiTowerListServersResponse200
 from ...models.rhub_api_tower_list_servers_response_default import RhubApiTowerListServersResponseDefault
+from ...models.rhub_api_tower_list_servers_sort import RhubApiTowerListServersSort
 from ...types import UNSET, Response, Unset
 
 
@@ -13,6 +14,7 @@ def _get_kwargs(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubApiTowerListServersFilter] = UNSET,
+    sort: Union[Unset, None, RhubApiTowerListServersSort] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Dict[str, Any]:
@@ -28,6 +30,12 @@ def _get_kwargs(
 
     if not isinstance(json_filter_, Unset) and json_filter_ is not None:
         params.update(json_filter_)
+
+    json_sort: Union[Unset, None, str] = UNSET
+    if not isinstance(sort, Unset):
+        json_sort = sort.value if sort else None
+
+    params["sort"] = json_sort
 
     params["page"] = page
 
@@ -76,6 +84,7 @@ def sync_detailed(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubApiTowerListServersFilter] = UNSET,
+    sort: Union[Unset, None, RhubApiTowerListServersSort] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Response[Union[RhubApiTowerListServersResponse200, RhubApiTowerListServersResponseDefault]]:
@@ -83,6 +92,7 @@ def sync_detailed(
 
     Args:
         filter_ (Union[Unset, None, RhubApiTowerListServersFilter]):
+        sort (Union[Unset, None, RhubApiTowerListServersSort]):
         page (Union[Unset, None, int]):
         limit (Union[Unset, None, int]):
 
@@ -93,6 +103,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
+        sort=sort,
         page=page,
         limit=limit,
     )
@@ -109,6 +120,7 @@ def sync(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubApiTowerListServersFilter] = UNSET,
+    sort: Union[Unset, None, RhubApiTowerListServersSort] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Optional[Union[RhubApiTowerListServersResponse200, RhubApiTowerListServersResponseDefault]]:
@@ -116,6 +128,7 @@ def sync(
 
     Args:
         filter_ (Union[Unset, None, RhubApiTowerListServersFilter]):
+        sort (Union[Unset, None, RhubApiTowerListServersSort]):
         page (Union[Unset, None, int]):
         limit (Union[Unset, None, int]):
 
@@ -126,6 +139,7 @@ def sync(
     return sync_detailed(
         client=client,
         filter_=filter_,
+        sort=sort,
         page=page,
         limit=limit,
     ).parsed
@@ -135,6 +149,7 @@ async def asyncio_detailed(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubApiTowerListServersFilter] = UNSET,
+    sort: Union[Unset, None, RhubApiTowerListServersSort] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Response[Union[RhubApiTowerListServersResponse200, RhubApiTowerListServersResponseDefault]]:
@@ -142,6 +157,7 @@ async def asyncio_detailed(
 
     Args:
         filter_ (Union[Unset, None, RhubApiTowerListServersFilter]):
+        sort (Union[Unset, None, RhubApiTowerListServersSort]):
         page (Union[Unset, None, int]):
         limit (Union[Unset, None, int]):
 
@@ -152,6 +168,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         client=client,
         filter_=filter_,
+        sort=sort,
         page=page,
         limit=limit,
     )
@@ -166,6 +183,7 @@ async def asyncio(
     *,
     client: AuthenticatedClient,
     filter_: Union[Unset, None, RhubApiTowerListServersFilter] = UNSET,
+    sort: Union[Unset, None, RhubApiTowerListServersSort] = UNSET,
     page: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
 ) -> Optional[Union[RhubApiTowerListServersResponse200, RhubApiTowerListServersResponseDefault]]:
@@ -173,6 +191,7 @@ async def asyncio(
 
     Args:
         filter_ (Union[Unset, None, RhubApiTowerListServersFilter]):
+        sort (Union[Unset, None, RhubApiTowerListServersSort]):
         page (Union[Unset, None, int]):
         limit (Union[Unset, None, int]):
 
@@ -184,6 +203,7 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             filter_=filter_,
+            sort=sort,
             page=page,
             limit=limit,
         )
