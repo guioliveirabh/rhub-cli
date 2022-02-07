@@ -7,6 +7,8 @@ from rhub_cli.api.tower.rhub_api_tower_list_templates import sync_detailed as te
 from rhub_cli.api.tower.rhub_api_tower_update_template import sync_detailed as template_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_tower_create_template_json_body import RhubApiTowerCreateTemplateJsonBody
+from rhub_cli.models.rhub_api_tower_list_templates_filter import RhubApiTowerListTemplatesFilter
+from rhub_cli.models.rhub_api_tower_list_templates_sort import RhubApiTowerListTemplatesSort
 from rhub_cli.models.rhub_api_tower_update_template_json_body import RhubApiTowerUpdateTemplateJsonBody
 
 from .jobs import jobs
@@ -19,15 +21,34 @@ def template():
 
 
 @template.command()
+@click.option("--filter-name", type=str)
+@click.option("--filter-server-id", type=int)
+@click.option("--sort", type=click.Choice(["name", "-name"]))
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
+    filter_name,
+    filter_server_id,
+    sort,
+    page,
+    limit,
 ):
     """Get list of Tower templates"""
 
-    # TODO: query_parameters
+    sort = RhubApiTowerListTemplatesSort(sort)
+
+    filter_ = RhubApiTowerListTemplatesFilter(
+        name=filter_name,
+        server_id=filter_server_id,
+    )
 
     response = template_get_list(
+        filter_=filter_,
+        sort=sort,
+        page=page,
+        limit=limit,
         client=api.authenticated_client,
     )
     api.handle_response(response)

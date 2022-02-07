@@ -7,6 +7,8 @@ from rhub_cli.api.lab.rhub_api_lab_cluster_list_clusters import sync_detailed as
 from rhub_cli.api.lab.rhub_api_lab_cluster_update_cluster import sync_detailed as cluster_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body import RhubApiLabClusterCreateClusterJsonBody
+from rhub_cli.models.rhub_api_lab_cluster_list_clusters_filter import RhubApiLabClusterListClustersFilter
+from rhub_cli.models.rhub_api_lab_cluster_list_clusters_sort import RhubApiLabClusterListClustersSort
 from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body import RhubApiLabClusterUpdateClusterJsonBody
 
 from .events import events
@@ -20,15 +22,55 @@ def cluster():
 
 
 @cluster.command()
+@click.option("--filter-group-id", type=str)
+@click.option("--filter-name", type=str)
+@click.option("--filter-region-id", type=int)
+@click.option("--filter-shared", is_flag=True)
+@click.option("--filter-user-id", type=str)
+@click.option(
+    "--sort",
+    type=click.Choice(
+        [
+            "name",
+            "-name",
+            "reservation_expiration",
+            "-reservation_expiration",
+            "lifespan_expiration",
+            "-lifespan_expiration",
+        ]
+    ),
+)
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
+    filter_group_id,
+    filter_name,
+    filter_region_id,
+    filter_shared,
+    filter_user_id,
+    sort,
+    page,
+    limit,
 ):
     """Get cluster list"""
 
-    # TODO: query_parameters
+    sort = RhubApiLabClusterListClustersSort(sort)
+
+    filter_ = RhubApiLabClusterListClustersFilter(
+        group_id=filter_group_id,
+        name=filter_name,
+        region_id=filter_region_id,
+        shared=filter_shared,
+        user_id=filter_user_id,
+    )
 
     response = cluster_get_list(
+        filter_=filter_,
+        sort=sort,
+        page=page,
+        limit=limit,
         client=api.authenticated_client,
     )
     api.handle_response(response)
@@ -55,7 +97,43 @@ def get_list(
 @click.option("--region-name", type=str)
 @click.option("--reservation-expiration", type=click.DateTime())
 @click.option("--shared", is_flag=True)
-@click.option("--status")
+@click.option(
+    "--status",
+    type=click.Choice(
+        [
+            "Active",
+            "Deleted",
+            "Deleting",
+            "Deletion Failed",
+            "Deletion Queued",
+            "Installation Failed",
+            "Installation Queued",
+            "Installing",
+            "Post-Deleting",
+            "Post-Deletion Failed",
+            "Post-Deletion Queued",
+            "Post-Installation Failed",
+            "Post-Installation Queued",
+            "Post-Installing",
+            "Post-Provisioning",
+            "Post-Provisioning Failed",
+            "Post-Provisioning Queued",
+            "Pre-Deleting",
+            "Pre-Deletion Failed",
+            "Pre-Deletion Queued",
+            "Pre-Installation Failed",
+            "Pre-Installation Queued",
+            "Pre-Installing",
+            "Pre-Provisioning",
+            "Pre-Provisioning Failed",
+            "Pre-Provisioning Queued",
+            "Provisioning",
+            "Provisioning Failed",
+            "Provisioning Queued",
+            "Queued",
+        ]
+    ),
+)
 @click.option("--user-id", type=str)
 @click.option("--user-name", type=str)
 @pass_api
@@ -169,7 +247,43 @@ def remove(
 @click.option("--region-name", type=str)
 @click.option("--reservation-expiration", type=click.DateTime())
 @click.option("--shared", is_flag=True)
-@click.option("--status")
+@click.option(
+    "--status",
+    type=click.Choice(
+        [
+            "Active",
+            "Deleted",
+            "Deleting",
+            "Deletion Failed",
+            "Deletion Queued",
+            "Installation Failed",
+            "Installation Queued",
+            "Installing",
+            "Post-Deleting",
+            "Post-Deletion Failed",
+            "Post-Deletion Queued",
+            "Post-Installation Failed",
+            "Post-Installation Queued",
+            "Post-Installing",
+            "Post-Provisioning",
+            "Post-Provisioning Failed",
+            "Post-Provisioning Queued",
+            "Pre-Deleting",
+            "Pre-Deletion Failed",
+            "Pre-Deletion Queued",
+            "Pre-Installation Failed",
+            "Pre-Installation Queued",
+            "Pre-Installing",
+            "Pre-Provisioning",
+            "Pre-Provisioning Failed",
+            "Pre-Provisioning Queued",
+            "Provisioning",
+            "Provisioning Failed",
+            "Provisioning Queued",
+            "Queued",
+        ]
+    ),
+)
 @click.option("--user-id", type=str)
 @click.option("--user-name", type=str)
 @pass_api

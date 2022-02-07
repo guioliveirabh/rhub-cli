@@ -10,15 +10,16 @@ def create():
 
 
 @create.command()
+@click.option("--authorization", type=str)
 @pass_api
 def create(
     api: APIRequest,
+    authorization,
 ):
     """Login and get access token"""
 
-    # TODO: header_parameters
-
     response = create_create(
+        authorization=authorization,
         client=api.client,
     )
     api.handle_response(response)

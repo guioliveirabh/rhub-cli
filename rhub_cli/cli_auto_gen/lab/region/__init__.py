@@ -8,6 +8,8 @@ from rhub_cli.api.lab.rhub_api_lab_region_update_region import sync_detailed as 
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models import *
 from rhub_cli.models.rhub_api_lab_region_create_region_json_body import RhubApiLabRegionCreateRegionJsonBody
+from rhub_cli.models.rhub_api_lab_region_list_regions_filter import RhubApiLabRegionListRegionsFilter
+from rhub_cli.models.rhub_api_lab_region_list_regions_sort import RhubApiLabRegionListRegionsSort
 from rhub_cli.models.rhub_api_lab_region_update_region_json_body import RhubApiLabRegionUpdateRegionJsonBody
 
 from .products import products
@@ -20,15 +22,45 @@ def region():
 
 
 @region.command()
+@click.option("--filter-enabled", is_flag=True)
+@click.option("--filter-location", type=str)
+@click.option("--filter-name", type=str)
+@click.option("--filter-reservations-enabled", is_flag=True)
+@click.option(
+    "--sort",
+    type=click.Choice(
+        ["name", "-name", "location", "-location", "reservation_expiration_max", "-reservation_expiration_max"]
+    ),
+)
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
+    filter_enabled,
+    filter_location,
+    filter_name,
+    filter_reservations_enabled,
+    sort,
+    page,
+    limit,
 ):
     """Get region list"""
 
-    # TODO: query_parameters
+    sort = RhubApiLabRegionListRegionsSort(sort)
+
+    filter_ = RhubApiLabRegionListRegionsFilter(
+        enabled=filter_enabled,
+        location=filter_location,
+        name=filter_name,
+        reservations_enabled=filter_reservations_enabled,
+    )
 
     response = region_get_list(
+        filter_=filter_,
+        sort=sort,
+        page=page,
+        limit=limit,
         client=api.authenticated_client,
     )
     api.handle_response(response)

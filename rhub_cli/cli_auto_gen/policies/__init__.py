@@ -8,6 +8,8 @@ from rhub_cli.api.policy.rhub_api_policies_update_policy import sync_detailed as
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models import *
 from rhub_cli.models.rhub_api_policies_create_policy_json_body import RhubApiPoliciesCreatePolicyJsonBody
+from rhub_cli.models.rhub_api_policies_list_policies_filter import RhubApiPoliciesListPoliciesFilter
+from rhub_cli.models.rhub_api_policies_list_policies_sort import RhubApiPoliciesListPoliciesSort
 from rhub_cli.models.rhub_api_policies_update_policy_json_body import RhubApiPoliciesUpdatePolicyJsonBody
 
 
@@ -17,15 +19,34 @@ def policies():
 
 
 @policies.command()
+@click.option("--filter-department", type=str)
+@click.option("--filter-name", type=str)
+@click.option("--sort", type=click.Choice(["name", "-name", "department", "-department"]))
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
+    filter_department,
+    filter_name,
+    sort,
+    page,
+    limit,
 ):
     """Get policy list"""
 
-    # TODO: query_parameters
+    sort = RhubApiPoliciesListPoliciesSort(sort)
+
+    filter_ = RhubApiPoliciesListPoliciesFilter(
+        department=filter_department,
+        name=filter_name,
+    )
 
     response = policies_get_list(
+        filter_=filter_,
+        sort=sort,
+        page=page,
+        limit=limit,
         client=api.authenticated_client,
     )
     api.handle_response(response)

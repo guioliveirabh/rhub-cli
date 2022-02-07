@@ -3,6 +3,7 @@ import click
 from rhub_cli.api.tower.rhub_api_tower_get_job import sync_detailed as job_get
 from rhub_cli.api.tower.rhub_api_tower_list_jobs import sync_detailed as job_get_list
 from rhub_cli.api_request import APIRequest, pass_api
+from rhub_cli.models.rhub_api_tower_list_jobs_filter import RhubApiTowerListJobsFilter
 
 from .relaunch import relaunch
 from .stdout import stdout
@@ -14,15 +15,26 @@ def job():
 
 
 @job.command()
+@click.option("--filter-launched-by", type=str)
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
+    filter_launched_by,
+    page,
+    limit,
 ):
     """List Tower jobs"""
 
-    # TODO: query_parameters
+    filter_ = RhubApiTowerListJobsFilter(
+        launched_by=filter_launched_by,
+    )
 
     response = job_get_list(
+        filter_=filter_,
+        page=page,
+        limit=limit,
         client=api.authenticated_client,
     )
     api.handle_response(response)

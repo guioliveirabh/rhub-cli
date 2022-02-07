@@ -7,6 +7,8 @@ from rhub_cli.api.tower.rhub_api_tower_list_servers import sync_detailed as serv
 from rhub_cli.api.tower.rhub_api_tower_update_server import sync_detailed as server_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_tower_create_server_json_body import RhubApiTowerCreateServerJsonBody
+from rhub_cli.models.rhub_api_tower_list_servers_filter import RhubApiTowerListServersFilter
+from rhub_cli.models.rhub_api_tower_list_servers_sort import RhubApiTowerListServersSort
 from rhub_cli.models.rhub_api_tower_update_server_json_body import RhubApiTowerUpdateServerJsonBody
 
 
@@ -16,15 +18,34 @@ def server():
 
 
 @server.command()
+@click.option("--filter-enabled", is_flag=True)
+@click.option("--filter-name", type=str)
+@click.option("--sort", type=click.Choice(["name", "-name"]))
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
+    filter_enabled,
+    filter_name,
+    sort,
+    page,
+    limit,
 ):
     """Get list of Tower servers"""
 
-    # TODO: query_parameters
+    sort = RhubApiTowerListServersSort(sort)
+
+    filter_ = RhubApiTowerListServersFilter(
+        enabled=filter_enabled,
+        name=filter_name,
+    )
 
     response = server_get_list(
+        filter_=filter_,
+        sort=sort,
+        page=page,
+        limit=limit,
         client=api.authenticated_client,
     )
     api.handle_response(response)

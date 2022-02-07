@@ -13,7 +13,7 @@ def reboot():
 @reboot.command()
 @click.argument("cluster_id", type=int)
 @click.option("--hosts")
-@click.option("--type")
+@click.option("--type", type=click.Choice(["soft", "hard"]))
 @pass_api
 def create(
     api: APIRequest,

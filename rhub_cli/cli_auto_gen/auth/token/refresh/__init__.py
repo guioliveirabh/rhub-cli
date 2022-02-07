@@ -10,15 +10,16 @@ def refresh():
 
 
 @refresh.command()
+@click.option("--authorization", type=str)
 @pass_api
 def create(
     api: APIRequest,
+    authorization,
 ):
     """Refresh token"""
 
-    # TODO: header_parameters
-
     response = refresh_create(
+        authorization=authorization,
         client=api.client,
     )
     api.handle_response(response)

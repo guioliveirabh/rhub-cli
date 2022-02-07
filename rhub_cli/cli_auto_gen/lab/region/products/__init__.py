@@ -8,6 +8,7 @@ from rhub_cli.models.rhub_api_lab_region_add_region_product_json_body import Rhu
 from rhub_cli.models.rhub_api_lab_region_delete_region_product_json_body import (
     RhubApiLabRegionDeleteRegionProductJsonBody,
 )
+from rhub_cli.models.rhub_api_lab_region_list_region_products_filter import RhubApiLabRegionListRegionProductsFilter
 
 
 @click.group()
@@ -17,17 +18,25 @@ def products():
 
 @products.command()
 @click.argument("region_id", type=int)
+@click.option("--filter-enabled", is_flag=True)
+@click.option("--filter-name", type=str)
 @pass_api
 def get_list(
     api: APIRequest,
     region_id,
+    filter_enabled,
+    filter_name,
 ):
     """Get list of products that can be installed in the selected region."""
 
-    # TODO: query_parameters
+    filter_ = RhubApiLabRegionListRegionProductsFilter(
+        enabled=filter_enabled,
+        name=filter_name,
+    )
 
     response = products_get_list(
         region_id=region_id,
+        filter_=filter_,
         client=api.authenticated_client,
     )
     api.handle_response(response)

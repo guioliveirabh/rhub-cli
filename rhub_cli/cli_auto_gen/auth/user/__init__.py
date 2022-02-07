@@ -7,6 +7,7 @@ from rhub_cli.api.auth.rhub_api_auth_user_list_users import sync_detailed as use
 from rhub_cli.api.auth.rhub_api_auth_user_update_user import sync_detailed as user_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_auth_user_create_user_json_body import RhubApiAuthUserCreateUserJsonBody
+from rhub_cli.models.rhub_api_auth_user_list_users_filter import RhubApiAuthUserListUsersFilter
 from rhub_cli.models.rhub_api_auth_user_update_user_json_body import RhubApiAuthUserUpdateUserJsonBody
 
 from .groups import groups
@@ -19,15 +20,35 @@ def user():
 
 
 @user.command()
+@click.option("--filter-email", type=str)
+@click.option("--filter-first-name", type=str)
+@click.option("--filter-last-name", type=str)
+@click.option("--filter-username", type=str)
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
+    filter_email,
+    filter_first_name,
+    filter_last_name,
+    filter_username,
+    page,
+    limit,
 ):
     """Get user list"""
 
-    # TODO: query_parameters
+    filter_ = RhubApiAuthUserListUsersFilter(
+        email=filter_email,
+        first_name=filter_first_name,
+        last_name=filter_last_name,
+        username=filter_username,
+    )
 
     response = user_get_list(
+        filter_=filter_,
+        page=page,
+        limit=limit,
         client=api.authenticated_client,
     )
     api.handle_response(response)

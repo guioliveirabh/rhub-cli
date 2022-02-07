@@ -7,6 +7,8 @@ from rhub_cli.api.scheduler.rhub_api_scheduler_cron_list_jobs import sync_detail
 from rhub_cli.api.scheduler.rhub_api_scheduler_cron_update_job import sync_detailed as cron_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body import RhubApiSchedulerCronCreateJobJsonBody
+from rhub_cli.models.rhub_api_scheduler_cron_list_jobs_filter import RhubApiSchedulerCronListJobsFilter
+from rhub_cli.models.rhub_api_scheduler_cron_list_jobs_sort import RhubApiSchedulerCronListJobsSort
 from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body import RhubApiSchedulerCronUpdateJobJsonBody
 
 
@@ -16,22 +18,41 @@ def cron():
 
 
 @cron.command()
+@click.option("--filter-enabled", is_flag=True)
+@click.option("--filter-name", type=str)
+@click.option("--sort", type=click.Choice(["name", "-name"]))
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
+    filter_enabled,
+    filter_name,
+    sort,
+    page,
+    limit,
 ):
     """Get CronJob list"""
 
-    # TODO: query_parameters
+    sort = RhubApiSchedulerCronListJobsSort(sort)
+
+    filter_ = RhubApiSchedulerCronListJobsFilter(
+        enabled=filter_enabled,
+        name=filter_name,
+    )
 
     response = cron_get_list(
+        filter_=filter_,
+        sort=sort,
+        page=page,
+        limit=limit,
         client=api.authenticated_client,
     )
     api.handle_response(response)
 
 
 @cron.command()
-@click.option("--job-name")
+@click.option("--job-name", type=click.Choice(["example", "tower_launch", "delete_expired_clusters"]))
 @click.option("--name", type=str)
 @click.option("--time-expr", type=str)
 @click.option("--description", type=str)
@@ -101,7 +122,7 @@ def remove(
 @click.argument("cron_job_id", type=int)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--job-name")
+@click.option("--job-name", type=click.Choice(["example", "tower_launch", "delete_expired_clusters"]))
 @click.option("--last-run", type=click.DateTime())
 @click.option("--name", type=str)
 @click.option("--time-expr", type=str)
