@@ -31,7 +31,7 @@ def get_list(
 
 @roles.command()
 @click.argument("group_id", type=str)
-@click.option("--id", type=str)
+@click.option("--id", required=True, type=str)
 @pass_api
 def create(
     api: APIRequest,
@@ -54,7 +54,7 @@ def create(
 
 @roles.command()
 @click.argument("group_id", type=str)
-@click.option("--id", type=str)
+@click.option("--id", required=True, type=str)
 @pass_api
 def remove(
     api: APIRequest,

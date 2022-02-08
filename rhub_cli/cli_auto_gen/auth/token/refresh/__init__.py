@@ -10,7 +10,7 @@ def refresh():
 
 
 @refresh.command()
-@click.option("--authorization", type=str)
+@click.option("--authorization", required=True, type=str)
 @pass_api
 def create(
     api: APIRequest,

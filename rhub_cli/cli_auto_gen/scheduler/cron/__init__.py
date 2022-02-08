@@ -52,9 +52,9 @@ def get_list(
 
 
 @cron.command()
-@click.option("--job-name", type=click.Choice(["example", "tower_launch", "delete_expired_clusters"]))
-@click.option("--name", type=str)
-@click.option("--time-expr", type=str)
+@click.option("--job-name", required=True, type=click.Choice(["example", "tower_launch", "delete_expired_clusters"]))
+@click.option("--name", required=True, type=str)
+@click.option("--time-expr", required=True, type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--last-run", type=click.DateTime())

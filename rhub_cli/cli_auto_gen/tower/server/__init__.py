@@ -52,9 +52,9 @@ def get_list(
 
 
 @server.command()
-@click.option("--credentials", type=str)
-@click.option("--name", type=str)
-@click.option("--url", type=str)
+@click.option("--credentials", required=True, type=str)
+@click.option("--name", required=True, type=str)
+@click.option("--url", required=True, type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--verify-ssl", is_flag=True)

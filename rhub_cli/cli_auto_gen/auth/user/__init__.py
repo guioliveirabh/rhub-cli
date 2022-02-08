@@ -55,8 +55,8 @@ def get_list(
 
 
 @user.command()
-@click.option("--email", type=str)
-@click.option("--username", type=str)
+@click.option("--email", required=True, type=str)
+@click.option("--username", required=True, type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--first-name", type=str)
 @click.option("--last-name", type=str)

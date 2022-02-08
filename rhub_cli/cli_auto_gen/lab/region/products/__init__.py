@@ -44,7 +44,7 @@ def get_list(
 
 @products.command()
 @click.argument("region_id", type=int)
-@click.option("--id", type=int)
+@click.option("--id", required=True, type=int)
 @click.option("--enabled", is_flag=True)
 @pass_api
 def create(
@@ -70,7 +70,7 @@ def create(
 
 @products.command()
 @click.argument("region_id", type=int)
-@click.option("--id", type=int)
+@click.option("--id", required=True, type=int)
 @pass_api
 def remove(
     api: APIRequest,

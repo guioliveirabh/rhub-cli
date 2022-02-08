@@ -54,10 +54,10 @@ def get_list(
 
 
 @product.command()
-@click.option("--name", type=str)
-@click.option("--parameters", multiple=True)
-@click.option("--tower-template-name-create", type=str)
-@click.option("--tower-template-name-delete", type=str)
+@click.option("--name", required=True, type=str)
+@click.option("--parameters", required=True, multiple=True)
+@click.option("--tower-template-name-create", required=True, type=str)
+@click.option("--tower-template-name-delete", required=True, type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
 @pass_api

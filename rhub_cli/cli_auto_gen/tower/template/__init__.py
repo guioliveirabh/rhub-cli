@@ -55,10 +55,10 @@ def get_list(
 
 
 @template.command()
-@click.option("--name", type=str)
-@click.option("--server-id", type=int)
-@click.option("--tower-template-id", type=int)
-@click.option("--tower-template-is-workflow", is_flag=True)
+@click.option("--name", required=True, type=str)
+@click.option("--server-id", required=True, type=int)
+@click.option("--tower-template-id", required=True, type=int)
+@click.option("--tower-template-is-workflow", required=True, is_flag=True)
 @click.option("--description", type=str)
 @pass_api
 def create(

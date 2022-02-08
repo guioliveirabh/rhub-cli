@@ -29,7 +29,7 @@ def get_list(
 
 
 @role.command()
-@click.option("--name", type=str)
+@click.option("--name", required=True, type=str)
 @pass_api
 def create(
     api: APIRequest,

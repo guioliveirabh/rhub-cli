@@ -53,8 +53,8 @@ def get_list(
 
 
 @policies.command()
-@click.option("--department", type=str)
-@click.option("--name", type=str)
+@click.option("--department", required=True, type=str)
+@click.option("--name", required=True, type=str)
 @click.option("--constraint-cost", type=float)
 @click.option("--constraint-density", type=str)
 @click.option("--constraint-location", type=str)

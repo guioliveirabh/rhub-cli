@@ -33,8 +33,8 @@ def get_list(
 
 @hosts.command()
 @click.argument("cluster_id", type=int)
-@click.option("--fqdn", type=str)
-@click.option("--ipaddr", type=str, multiple=True)
+@click.option("--fqdn", required=True, type=str)
+@click.option("--ipaddr", required=True, type=str, multiple=True)
 @click.option("--num-vcpus", type=int)
 @click.option("--num-volumes", type=int)
 @click.option("--ram-mb", type=int)

@@ -32,7 +32,7 @@ def get_list(
 
 
 @group.command()
-@click.option("--name", type=str)
+@click.option("--name", required=True, type=str)
 @pass_api
 def create(
     api: APIRequest,
