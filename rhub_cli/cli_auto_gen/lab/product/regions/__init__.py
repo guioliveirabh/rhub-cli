@@ -12,22 +12,22 @@ def regions():
 
 @regions.command()
 @click.argument("product_id", type=int)
+@click.option("--page", type=int)
+@click.option("--limit", type=int)
 @click.option("--filter-enabled", is_flag=True)
 @click.option("--filter-location", type=str)
 @click.option("--filter-name", type=str)
 @click.option("--filter-reservations-enabled", is_flag=True)
-@click.option("--page", type=int)
-@click.option("--limit", type=int)
 @pass_api
 def get_list(
     api: APIRequest,
     product_id,
+    page,
+    limit,
     filter_enabled,
     filter_location,
     filter_name,
     filter_reservations_enabled,
-    page,
-    limit,
 ):
     """Get list of regions where product can be installed."""
 

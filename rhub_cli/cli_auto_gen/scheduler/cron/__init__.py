@@ -1,3 +1,5 @@
+import json
+
 import click
 
 from rhub_cli.api.scheduler.rhub_api_scheduler_cron_create_job import sync_detailed as cron_create
@@ -7,9 +9,24 @@ from rhub_cli.api.scheduler.rhub_api_scheduler_cron_list_jobs import sync_detail
 from rhub_cli.api.scheduler.rhub_api_scheduler_cron_update_job import sync_detailed as cron_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body import RhubApiSchedulerCronCreateJobJsonBody
+from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body_id import RhubApiSchedulerCronCreateJobJsonBodyId
+from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body_job_name import (
+    RhubApiSchedulerCronCreateJobJsonBodyJobName,
+)
+from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body_job_params import (
+    RhubApiSchedulerCronCreateJobJsonBodyJobParams,
+)
 from rhub_cli.models.rhub_api_scheduler_cron_list_jobs_filter import RhubApiSchedulerCronListJobsFilter
 from rhub_cli.models.rhub_api_scheduler_cron_list_jobs_sort import RhubApiSchedulerCronListJobsSort
 from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body import RhubApiSchedulerCronUpdateJobJsonBody
+from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body_id import RhubApiSchedulerCronUpdateJobJsonBodyId
+from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body_job_name import (
+    RhubApiSchedulerCronUpdateJobJsonBodyJobName,
+)
+from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body_job_params import (
+    RhubApiSchedulerCronUpdateJobJsonBodyJobParams,
+)
+from rhub_cli.types import UNSET
 
 
 @click.group()
@@ -18,19 +35,19 @@ def cron():
 
 
 @cron.command()
-@click.option("--filter-enabled", is_flag=True)
-@click.option("--filter-name", type=str)
 @click.option("--sort", type=click.Choice(["name", "-name"]))
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
+@click.option("--filter-enabled", is_flag=True)
+@click.option("--filter-name", type=str)
 @pass_api
 def get_list(
     api: APIRequest,
-    filter_enabled,
-    filter_name,
     sort,
     page,
     limit,
+    filter_enabled,
+    filter_name,
 ):
     """Get CronJob list"""
 
@@ -57,6 +74,8 @@ def get_list(
 @click.option("--time-expr", required=True, type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
+@click.option("--id")
+@click.option("--job-params")
 @click.option("--last-run", type=click.DateTime())
 @pass_api
 def create(
@@ -66,9 +85,27 @@ def create(
     time_expr,
     description,
     enabled,
+    id,
+    job_params,
     last_run,
 ):
     """Create CronJob"""
+
+    if job_params is None:
+        job_params = UNSET
+    else:
+        _tmp = RhubApiSchedulerCronCreateJobJsonBodyJobParams()
+        _tmp.additional_properties = json.loads(job_params)  # TODO: check if dict
+        job_params = _tmp
+
+    if id is None:
+        id = UNSET
+    else:
+        _tmp = RhubApiSchedulerCronCreateJobJsonBodyId()
+        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
+        id = _tmp
+
+    job_name = RhubApiSchedulerCronCreateJobJsonBodyJobName(job_name)
 
     json_body = RhubApiSchedulerCronCreateJobJsonBody(
         job_name=job_name,
@@ -76,6 +113,8 @@ def create(
         time_expr=time_expr,
         description=description,
         enabled=enabled,
+        id=id,
+        job_params=job_params,
         last_run=last_run,
     )
 
@@ -122,7 +161,9 @@ def remove(
 @click.argument("cron_job_id", type=int)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
+@click.option("--id")
 @click.option("--job-name", type=click.Choice(["example", "tower_launch", "delete_expired_clusters"]))
+@click.option("--job-params")
 @click.option("--last-run", type=click.DateTime())
 @click.option("--name", type=str)
 @click.option("--time-expr", type=str)
@@ -132,17 +173,37 @@ def update(
     cron_job_id,
     description,
     enabled,
+    id,
     job_name,
+    job_params,
     last_run,
     name,
     time_expr,
 ):
     """Update CronJob"""
 
+    if job_params is None:
+        job_params = UNSET
+    else:
+        _tmp = RhubApiSchedulerCronUpdateJobJsonBodyJobParams()
+        _tmp.additional_properties = json.loads(job_params)  # TODO: check if dict
+        job_params = _tmp
+
+    job_name = RhubApiSchedulerCronUpdateJobJsonBodyJobName(job_name)
+
+    if id is None:
+        id = UNSET
+    else:
+        _tmp = RhubApiSchedulerCronUpdateJobJsonBodyId()
+        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
+        id = _tmp
+
     json_body = RhubApiSchedulerCronUpdateJobJsonBody(
         description=description,
         enabled=enabled,
+        id=id,
         job_name=job_name,
+        job_params=job_params,
         last_run=last_run,
         name=name,
         time_expr=time_expr,

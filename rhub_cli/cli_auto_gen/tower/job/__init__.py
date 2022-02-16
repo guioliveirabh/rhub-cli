@@ -15,15 +15,15 @@ def job():
 
 
 @job.command()
-@click.option("--filter-launched-by", type=str)
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
+@click.option("--filter-launched-by", type=str)
 @pass_api
 def get_list(
     api: APIRequest,
-    filter_launched_by,
     page,
     limit,
+    filter_launched_by,
 ):
     """List Tower jobs"""
 

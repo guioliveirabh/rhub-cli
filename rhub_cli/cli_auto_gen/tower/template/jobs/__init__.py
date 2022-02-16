@@ -12,16 +12,16 @@ def jobs():
 
 @jobs.command()
 @click.argument("template_id", type=int)
-@click.option("--filter-launched-by", type=str)
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
+@click.option("--filter-launched-by", type=str)
 @pass_api
 def get_list(
     api: APIRequest,
     template_id,
-    filter_launched_by,
     page,
     limit,
+    filter_launched_by,
 ):
     """List Tower template jobs"""
 

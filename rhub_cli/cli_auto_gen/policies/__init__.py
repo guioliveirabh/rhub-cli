@@ -1,3 +1,5 @@
+import json
+
 import click
 
 from rhub_cli.api.policy.rhub_api_policies_create_policy import sync_detailed as policies_create
@@ -6,11 +8,25 @@ from rhub_cli.api.policy.rhub_api_policies_get_policy import sync_detailed as po
 from rhub_cli.api.policy.rhub_api_policies_list_policies import sync_detailed as policies_get_list
 from rhub_cli.api.policy.rhub_api_policies_update_policy import sync_detailed as policies_update
 from rhub_cli.api_request import APIRequest, pass_api
-from rhub_cli.models import *
 from rhub_cli.models.rhub_api_policies_create_policy_json_body import RhubApiPoliciesCreatePolicyJsonBody
+from rhub_cli.models.rhub_api_policies_create_policy_json_body_constraint import (
+    RhubApiPoliciesCreatePolicyJsonBodyConstraint,
+)
+from rhub_cli.models.rhub_api_policies_create_policy_json_body_constraint_limit import (
+    RhubApiPoliciesCreatePolicyJsonBodyConstraintLimit,
+)
+from rhub_cli.models.rhub_api_policies_create_policy_json_body_id import RhubApiPoliciesCreatePolicyJsonBodyId
 from rhub_cli.models.rhub_api_policies_list_policies_filter import RhubApiPoliciesListPoliciesFilter
 from rhub_cli.models.rhub_api_policies_list_policies_sort import RhubApiPoliciesListPoliciesSort
 from rhub_cli.models.rhub_api_policies_update_policy_json_body import RhubApiPoliciesUpdatePolicyJsonBody
+from rhub_cli.models.rhub_api_policies_update_policy_json_body_constraint import (
+    RhubApiPoliciesUpdatePolicyJsonBodyConstraint,
+)
+from rhub_cli.models.rhub_api_policies_update_policy_json_body_constraint_limit import (
+    RhubApiPoliciesUpdatePolicyJsonBodyConstraintLimit,
+)
+from rhub_cli.models.rhub_api_policies_update_policy_json_body_id import RhubApiPoliciesUpdatePolicyJsonBodyId
+from rhub_cli.types import UNSET
 
 
 @click.group()
@@ -19,19 +35,19 @@ def policies():
 
 
 @policies.command()
-@click.option("--filter-department", type=str)
-@click.option("--filter-name", type=str)
 @click.option("--sort", type=click.Choice(["name", "-name", "department", "-department"]))
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
+@click.option("--filter-department", type=str)
+@click.option("--filter-name", type=str)
 @pass_api
 def get_list(
     api: APIRequest,
-    filter_department,
-    filter_name,
     sort,
     page,
     limit,
+    filter_department,
+    filter_name,
 ):
     """Get policy list"""
 
@@ -55,29 +71,56 @@ def get_list(
 @policies.command()
 @click.option("--department", required=True, type=str)
 @click.option("--name", required=True, type=str)
+@click.option("--id")
 @click.option("--constraint-cost", type=float)
 @click.option("--constraint-density", type=str)
+@click.option("--constraint-limit")
 @click.option("--constraint-location", type=str)
-@click.option("--constraint-sched-avail", type=click.DateTime(), multiple=True)
+@click.option("--constraint-sched-avail-item", type=click.DateTime())
 @click.option("--constraint-serv-avail", type=float)
-@click.option("--constraint-tag", type=str, multiple=True)
+@click.option("--constraint-tag-item", type=str)
 @pass_api
 def create(
     api: APIRequest,
     department,
     name,
+    id,
     constraint_cost,
     constraint_density,
+    constraint_limit,
     constraint_location,
-    constraint_sched_avail,
+    constraint_sched_avail_item,
     constraint_serv_avail,
-    constraint_tag,
+    constraint_tag_item,
 ):
     """Create policy"""
+
+    constraint_tag = []
+    if constraint_tag_item is not None:
+        constraint_tag.append(constraint_tag_item)
+
+    constraint_sched_avail = []
+    if constraint_sched_avail_item is not None:
+        constraint_sched_avail.append(constraint_sched_avail_item)
+
+    if constraint_limit is None:
+        constraint_limit = UNSET
+    else:
+        _tmp = RhubApiPoliciesCreatePolicyJsonBodyConstraintLimit()
+        _tmp.additional_properties = json.loads(constraint_limit)  # TODO: check if dict
+        constraint_limit = _tmp
+
+    if id is None:
+        id = UNSET
+    else:
+        _tmp = RhubApiPoliciesCreatePolicyJsonBodyId()
+        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
+        id = _tmp
 
     constraint = RhubApiPoliciesCreatePolicyJsonBodyConstraint(
         cost=constraint_cost,
         density=constraint_density,
+        limit=constraint_limit,
         location=constraint_location,
         sched_avail=constraint_sched_avail,
         serv_avail=constraint_serv_avail,
@@ -88,6 +131,7 @@ def create(
         department=department,
         name=name,
         constraint=constraint,
+        id=id,
     )
 
     response = policies_create(
@@ -131,32 +175,59 @@ def remove(
 
 @policies.command()
 @click.argument("policy_id", type=int)
+@click.option("--department", type=str)
+@click.option("--id")
+@click.option("--name", type=str)
 @click.option("--constraint-cost", type=float)
 @click.option("--constraint-density", type=str)
+@click.option("--constraint-limit")
 @click.option("--constraint-location", type=str)
-@click.option("--constraint-sched-avail", type=click.DateTime(), multiple=True)
+@click.option("--constraint-sched-avail-item", type=click.DateTime())
 @click.option("--constraint-serv-avail", type=float)
-@click.option("--constraint-tag", type=str, multiple=True)
-@click.option("--department", type=str)
-@click.option("--name", type=str)
+@click.option("--constraint-tag-item", type=str)
 @pass_api
 def update(
     api: APIRequest,
     policy_id,
+    department,
+    id,
+    name,
     constraint_cost,
     constraint_density,
+    constraint_limit,
     constraint_location,
-    constraint_sched_avail,
+    constraint_sched_avail_item,
     constraint_serv_avail,
-    constraint_tag,
-    department,
-    name,
+    constraint_tag_item,
 ):
     """Update policy"""
+
+    constraint_tag = []
+    if constraint_tag_item is not None:
+        constraint_tag.append(constraint_tag_item)
+
+    constraint_sched_avail = []
+    if constraint_sched_avail_item is not None:
+        constraint_sched_avail.append(constraint_sched_avail_item)
+
+    if constraint_limit is None:
+        constraint_limit = UNSET
+    else:
+        _tmp = RhubApiPoliciesUpdatePolicyJsonBodyConstraintLimit()
+        _tmp.additional_properties = json.loads(constraint_limit)  # TODO: check if dict
+        constraint_limit = _tmp
+
+    if id is None:
+        id = UNSET
+    else:
+        _tmp = RhubApiPoliciesUpdatePolicyJsonBodyId()
+        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
+        id = _tmp
 
     constraint = RhubApiPoliciesUpdatePolicyJsonBodyConstraint(
         cost=constraint_cost,
         density=constraint_density,
+        limit=constraint_limit,
         location=constraint_location,
         sched_avail=constraint_sched_avail,
         serv_avail=constraint_serv_avail,
@@ -166,6 +237,7 @@ def update(
     json_body = RhubApiPoliciesUpdatePolicyJsonBody(
         constraint=constraint,
         department=department,
+        id=id,
         name=name,
     )
 

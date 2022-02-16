@@ -3,6 +3,15 @@ import click
 from rhub_cli.api.tower.rhub_api_tower_webhook_notification import sync_detailed as webhook_notification_create
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_tower_webhook_notification_json_body import RhubApiTowerWebhookNotificationJsonBody
+from rhub_cli.models.rhub_api_tower_webhook_notification_json_body_hosts import (
+    RhubApiTowerWebhookNotificationJsonBodyHosts,
+)
+from rhub_cli.models.rhub_api_tower_webhook_notification_json_body_hosts_additional_property import (
+    RhubApiTowerWebhookNotificationJsonBodyHostsAdditionalProperty,
+)
+from rhub_cli.models.rhub_api_tower_webhook_notification_json_body_hosts_additional_property_localhost import (
+    RhubApiTowerWebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost,
+)
 
 
 @click.group()
@@ -26,6 +35,15 @@ def webhook_notification():
 @click.option("--status", type=str)
 @click.option("--traceback", type=str)
 @click.option("--url", type=str)
+@click.option("--hosts-additional-property-localhost-changed", type=int)
+@click.option("--hosts-additional-property-localhost-dark", type=int)
+@click.option("--hosts-additional-property-localhost-failed", is_flag=True)
+@click.option("--hosts-additional-property-localhost-failures", type=int)
+@click.option("--hosts-additional-property-localhost-ignored", type=int)
+@click.option("--hosts-additional-property-localhost-ok", type=int)
+@click.option("--hosts-additional-property-localhost-processed", type=int)
+@click.option("--hosts-additional-property-localhost-rescued", type=int)
+@click.option("--hosts-additional-property-localhost-skipped", type=int)
 @pass_api
 def create(
     api: APIRequest,
@@ -44,8 +62,36 @@ def create(
     status,
     traceback,
     url,
+    hosts_additional_property_localhost_changed,
+    hosts_additional_property_localhost_dark,
+    hosts_additional_property_localhost_failed,
+    hosts_additional_property_localhost_failures,
+    hosts_additional_property_localhost_ignored,
+    hosts_additional_property_localhost_ok,
+    hosts_additional_property_localhost_processed,
+    hosts_additional_property_localhost_rescued,
+    hosts_additional_property_localhost_skipped,
 ):
     """Incoming webhook notification from Tower"""
+
+    hosts_additional_property_localhost = RhubApiTowerWebhookNotificationJsonBodyHostsAdditionalPropertyLocalhost(
+        changed=hosts_additional_property_localhost_changed,
+        dark=hosts_additional_property_localhost_dark,
+        failed=hosts_additional_property_localhost_failed,
+        failures=hosts_additional_property_localhost_failures,
+        ignored=hosts_additional_property_localhost_ignored,
+        ok=hosts_additional_property_localhost_ok,
+        processed=hosts_additional_property_localhost_processed,
+        rescued=hosts_additional_property_localhost_rescued,
+        skipped=hosts_additional_property_localhost_skipped,
+    )
+
+    hosts_additional_property = RhubApiTowerWebhookNotificationJsonBodyHostsAdditionalProperty(
+        localhost=hosts_additional_property_localhost,
+    )
+
+    hosts = RhubApiTowerWebhookNotificationJsonBodyHosts()
+    hosts.additional_properties = {"hosts": hosts_additional_property}
 
     json_body = RhubApiTowerWebhookNotificationJsonBody(
         body=body,
@@ -53,6 +99,7 @@ def create(
         credential=credential,
         extra_vars=extra_vars,
         finished=finished,
+        hosts=hosts,
         id=id,
         inventory=inventory,
         limit=limit,
