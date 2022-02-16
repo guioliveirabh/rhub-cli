@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_tower_update_template_json_body_id import RhubApiTowerUpdateTemplateJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiTowerUpdateTemplateJsonBody")
@@ -13,86 +12,62 @@ T = TypeVar("T", bound="RhubApiTowerUpdateTemplateJsonBody")
 class RhubApiTowerUpdateTemplateJsonBody:
     """
     Attributes:
-        credentials (Union[Unset, str]): Tower credentials path (Vault mount/path)
         description (Union[Unset, str]):
-        enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiTowerUpdateTemplateJsonBodyId]):
         name (Union[Unset, str]):
-        url (Union[Unset, str]):
-        verify_ssl (Union[Unset, bool]): Option to disable SSL certificate verification.
+        server_id (Union[Unset, int]):
+        tower_template_id (Union[Unset, int]):
+        tower_template_is_workflow (Union[Unset, bool]): Is template workflow?
     """
 
-    credentials: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
-    enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiTowerUpdateTemplateJsonBodyId] = UNSET
     name: Union[Unset, str] = UNSET
-    url: Union[Unset, str] = UNSET
-    verify_ssl: Union[Unset, bool] = UNSET
+    server_id: Union[Unset, int] = UNSET
+    tower_template_id: Union[Unset, int] = UNSET
+    tower_template_is_workflow: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        credentials = self.credentials
         description = self.description
-        enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         name = self.name
-        url = self.url
-        verify_ssl = self.verify_ssl
+        server_id = self.server_id
+        tower_template_id = self.tower_template_id
+        tower_template_is_workflow = self.tower_template_is_workflow
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
-        if credentials is not UNSET:
-            field_dict["credentials"] = credentials
         if description is not UNSET:
             field_dict["description"] = description
-        if enabled is not UNSET:
-            field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
-        if url is not UNSET:
-            field_dict["url"] = url
-        if verify_ssl is not UNSET:
-            field_dict["verify_ssl"] = verify_ssl
+        if server_id is not UNSET:
+            field_dict["server_id"] = server_id
+        if tower_template_id is not UNSET:
+            field_dict["tower_template_id"] = tower_template_id
+        if tower_template_is_workflow is not UNSET:
+            field_dict["tower_template_is_workflow"] = tower_template_is_workflow
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = copy(src_dict)
-        credentials = d.pop("credentials", UNSET)
-
         description = d.pop("description", UNSET)
-
-        enabled = d.pop("enabled", UNSET)
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiTowerUpdateTemplateJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiTowerUpdateTemplateJsonBodyId.from_dict(_id)
 
         name = d.pop("name", UNSET)
 
-        url = d.pop("url", UNSET)
+        server_id = d.pop("server_id", UNSET)
 
-        verify_ssl = d.pop("verify_ssl", UNSET)
+        tower_template_id = d.pop("tower_template_id", UNSET)
+
+        tower_template_is_workflow = d.pop("tower_template_is_workflow", UNSET)
 
         rhub_api_tower_update_template_json_body = cls(
-            credentials=credentials,
             description=description,
-            enabled=enabled,
-            id=id,
             name=name,
-            url=url,
-            verify_ssl=verify_ssl,
+            server_id=server_id,
+            tower_template_id=tower_template_id,
+            tower_template_is_workflow=tower_template_is_workflow,
         )
 
         rhub_api_tower_update_template_json_body.additional_properties = d

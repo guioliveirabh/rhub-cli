@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_auth_user_update_user_json_body_id import RhubApiAuthUserUpdateUserJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiAuthUserUpdateUserJsonBody")
@@ -24,7 +23,6 @@ class RhubApiAuthUserUpdateUserJsonBody:
           email (Union[Unset, str]):
           enabled (Union[Unset, bool]):
           first_name (Union[Unset, str]):
-          id (Union[Unset, RhubApiAuthUserUpdateUserJsonBodyId]):
           last_name (Union[Unset, str]):
           password (Union[Unset, str]):
           username (Union[Unset, str]):
@@ -33,7 +31,6 @@ class RhubApiAuthUserUpdateUserJsonBody:
     email: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     first_name: Union[Unset, str] = UNSET
-    id: Union[Unset, RhubApiAuthUserUpdateUserJsonBodyId] = UNSET
     last_name: Union[Unset, str] = UNSET
     password: Union[Unset, str] = UNSET
     username: Union[Unset, str] = UNSET
@@ -43,10 +40,6 @@ class RhubApiAuthUserUpdateUserJsonBody:
         email = self.email
         enabled = self.enabled
         first_name = self.first_name
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         last_name = self.last_name
         password = self.password
         username = self.username
@@ -60,8 +53,6 @@ class RhubApiAuthUserUpdateUserJsonBody:
             field_dict["enabled"] = enabled
         if first_name is not UNSET:
             field_dict["firstName"] = first_name
-        if id is not UNSET:
-            field_dict["id"] = id
         if last_name is not UNSET:
             field_dict["lastName"] = last_name
         if password is not UNSET:
@@ -80,13 +71,6 @@ class RhubApiAuthUserUpdateUserJsonBody:
 
         first_name = d.pop("firstName", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiAuthUserUpdateUserJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiAuthUserUpdateUserJsonBodyId.from_dict(_id)
-
         last_name = d.pop("lastName", UNSET)
 
         password = d.pop("password", UNSET)
@@ -97,7 +81,6 @@ class RhubApiAuthUserUpdateUserJsonBody:
             email=email,
             enabled=enabled,
             first_name=first_name,
-            id=id,
             last_name=last_name,
             password=password,
             username=username,

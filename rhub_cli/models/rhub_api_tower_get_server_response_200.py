@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_tower_get_server_response_200_id import RhubApiTowerGetServerResponse200Id
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiTowerGetServerResponse200")
@@ -16,32 +15,29 @@ class RhubApiTowerGetServerResponse200:
         credentials (Union[Unset, str]): Tower credentials path (Vault mount/path)
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiTowerGetServerResponse200Id]):
         name (Union[Unset, str]):
         url (Union[Unset, str]):
         verify_ssl (Union[Unset, bool]): Option to disable SSL certificate verification.
+        id (Union[Unset, int]):
     """
 
     credentials: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiTowerGetServerResponse200Id] = UNSET
     name: Union[Unset, str] = UNSET
     url: Union[Unset, str] = UNSET
     verify_ssl: Union[Unset, bool] = UNSET
+    id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         credentials = self.credentials
         description = self.description
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         name = self.name
         url = self.url
         verify_ssl = self.verify_ssl
+        id = self.id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -52,14 +48,14 @@ class RhubApiTowerGetServerResponse200:
             field_dict["description"] = description
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
         if url is not UNSET:
             field_dict["url"] = url
         if verify_ssl is not UNSET:
             field_dict["verify_ssl"] = verify_ssl
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
@@ -72,27 +68,22 @@ class RhubApiTowerGetServerResponse200:
 
         enabled = d.pop("enabled", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiTowerGetServerResponse200Id]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiTowerGetServerResponse200Id.from_dict(_id)
-
         name = d.pop("name", UNSET)
 
         url = d.pop("url", UNSET)
 
         verify_ssl = d.pop("verify_ssl", UNSET)
 
+        id = d.pop("id", UNSET)
+
         rhub_api_tower_get_server_response_200 = cls(
             credentials=credentials,
             description=description,
             enabled=enabled,
-            id=id,
             name=name,
             url=url,
             verify_ssl=verify_ssl,
+            id=id,
         )
 
         rhub_api_tower_get_server_response_200.additional_properties = d

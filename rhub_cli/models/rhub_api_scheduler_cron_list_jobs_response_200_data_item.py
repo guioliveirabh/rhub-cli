@@ -5,9 +5,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 import attr
 from dateutil.parser import isoparse
 
-from ..models.rhub_api_scheduler_cron_list_jobs_response_200_data_item_id import (
-    RhubApiSchedulerCronListJobsResponse200DataItemId,
-)
 from ..models.rhub_api_scheduler_cron_list_jobs_response_200_data_item_job_name import (
     RhubApiSchedulerCronListJobsResponse200DataItemJobName,
 )
@@ -25,31 +22,27 @@ class RhubApiSchedulerCronListJobsResponse200DataItem:
     Attributes:
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiSchedulerCronListJobsResponse200DataItemId]):
         job_name (Union[Unset, RhubApiSchedulerCronListJobsResponse200DataItemJobName]):
         job_params (Union[Unset, None, RhubApiSchedulerCronListJobsResponse200DataItemJobParams]):
         last_run (Union[Unset, None, datetime.datetime]):
         name (Union[Unset, str]):
         time_expr (Union[Unset, str]): cron time expression
+        id (Union[Unset, int]):
     """
 
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiSchedulerCronListJobsResponse200DataItemId] = UNSET
     job_name: Union[Unset, RhubApiSchedulerCronListJobsResponse200DataItemJobName] = UNSET
     job_params: Union[Unset, None, RhubApiSchedulerCronListJobsResponse200DataItemJobParams] = UNSET
     last_run: Union[Unset, None, datetime.datetime] = UNSET
     name: Union[Unset, str] = UNSET
     time_expr: Union[Unset, str] = UNSET
+    id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         job_name: Union[Unset, str] = UNSET
         if not isinstance(self.job_name, Unset):
             job_name = self.job_name.value
@@ -64,6 +57,7 @@ class RhubApiSchedulerCronListJobsResponse200DataItem:
 
         name = self.name
         time_expr = self.time_expr
+        id = self.id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -72,8 +66,6 @@ class RhubApiSchedulerCronListJobsResponse200DataItem:
             field_dict["description"] = description
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if job_name is not UNSET:
             field_dict["job_name"] = job_name
         if job_params is not UNSET:
@@ -84,6 +76,8 @@ class RhubApiSchedulerCronListJobsResponse200DataItem:
             field_dict["name"] = name
         if time_expr is not UNSET:
             field_dict["time_expr"] = time_expr
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
@@ -93,13 +87,6 @@ class RhubApiSchedulerCronListJobsResponse200DataItem:
         description = d.pop("description", UNSET)
 
         enabled = d.pop("enabled", UNSET)
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiSchedulerCronListJobsResponse200DataItemId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiSchedulerCronListJobsResponse200DataItemId.from_dict(_id)
 
         _job_name = d.pop("job_name", UNSET)
         job_name: Union[Unset, RhubApiSchedulerCronListJobsResponse200DataItemJobName]
@@ -130,15 +117,17 @@ class RhubApiSchedulerCronListJobsResponse200DataItem:
 
         time_expr = d.pop("time_expr", UNSET)
 
+        id = d.pop("id", UNSET)
+
         rhub_api_scheduler_cron_list_jobs_response_200_data_item = cls(
             description=description,
             enabled=enabled,
-            id=id,
             job_name=job_name,
             job_params=job_params,
             last_run=last_run,
             name=name,
             time_expr=time_expr,
+            id=id,
         )
 
         rhub_api_scheduler_cron_list_jobs_response_200_data_item.additional_properties = d

@@ -12,13 +12,6 @@ from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body import RhubAp
 from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item import (
     RhubApiLabClusterCreateClusterJsonBodyHostsItem,
 )
-from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item_cluster_id import (
-    RhubApiLabClusterCreateClusterJsonBodyHostsItemClusterId,
-)
-from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item_id import (
-    RhubApiLabClusterCreateClusterJsonBodyHostsItemId,
-)
-from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_id import RhubApiLabClusterCreateClusterJsonBodyId
 from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_product_params import (
     RhubApiLabClusterCreateClusterJsonBodyProductParams,
 )
@@ -31,13 +24,6 @@ from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body import RhubAp
 from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_hosts_item import (
     RhubApiLabClusterUpdateClusterJsonBodyHostsItem,
 )
-from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_hosts_item_cluster_id import (
-    RhubApiLabClusterUpdateClusterJsonBodyHostsItemClusterId,
-)
-from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_hosts_item_id import (
-    RhubApiLabClusterUpdateClusterJsonBodyHostsItemId,
-)
-from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_id import RhubApiLabClusterUpdateClusterJsonBodyId
 from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_product_params import (
     RhubApiLabClusterUpdateClusterJsonBodyProductParams,
 )
@@ -112,21 +98,20 @@ def get_list(
 
 
 @cluster.command()
+@click.option("--name", required=True, type=str)
+@click.option("--product-id", required=True, type=int)
+@click.option("--product-params", required=True)
+@click.option("--region-id", required=True, type=int)
 @click.option("--created", type=click.DateTime())
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--id")
 @click.option("--lifespan-expiration", type=click.DateTime())
-@click.option("--name", type=str)
-@click.option("--product-id", type=int)
 @click.option("--product-name", type=str)
-@click.option("--product-params")
 @click.option("--quota")
 @click.option("--quota-usage")
-@click.option("--region-id", type=int)
 @click.option("--region-name", type=str)
-@click.option("--reservation-expiration", type=click.DateTime())
+@click.option("--reservation-expiration", required=True, type=click.DateTime())
 @click.option("--shared", is_flag=True)
 @click.option(
     "--status",
@@ -167,44 +152,43 @@ def get_list(
 )
 @click.option("--user-id", type=str)
 @click.option("--user-name", type=str)
-@click.option("--hosts-item-cluster-id")
 @click.option("--hosts-item-fqdn", type=str)
-@click.option("--hosts-item-id")
 @click.option("--hosts-item-ipaddr-item", type=str)
 @click.option("--hosts-item-num-vcpus", type=int)
 @click.option("--hosts-item-num-volumes", type=int)
 @click.option("--hosts-item-ram-mb", type=int)
 @click.option("--hosts-item-volumes-gb", type=int)
+@click.option("--hosts-item-cluster-id", type=int)
+@click.option("--hosts-item-id", type=int)
 @pass_api
 def create(
     api: APIRequest,
+    name,
+    product_id,
+    product_params,
+    region_id,
     created,
     description,
     group_id,
     group_name,
-    id,
     lifespan_expiration,
-    name,
-    product_id,
     product_name,
-    product_params,
     quota,
     quota_usage,
-    region_id,
     region_name,
     reservation_expiration,
     shared,
     status,
     user_id,
     user_name,
-    hosts_item_cluster_id,
     hosts_item_fqdn,
-    hosts_item_id,
     hosts_item_ipaddr_item,
     hosts_item_num_vcpus,
     hosts_item_num_volumes,
     hosts_item_ram_mb,
     hosts_item_volumes_gb,
+    hosts_item_cluster_id,
+    hosts_item_id,
 ):
     """Create cluster"""
 
@@ -212,21 +196,22 @@ def create(
     if hosts_item_ipaddr_item is not None:
         hosts_item_ipaddr.append(hosts_item_ipaddr_item)
 
-    if hosts_item_id is None:
-        hosts_item_id = UNSET
-    else:
-        _tmp = RhubApiLabClusterCreateClusterJsonBodyHostsItemId()
-        _tmp.additional_properties = json.loads(hosts_item_id)  # TODO: check if dict
-        hosts_item_id = _tmp
-
-    if hosts_item_cluster_id is None:
-        hosts_item_cluster_id = UNSET
-    else:
-        _tmp = RhubApiLabClusterCreateClusterJsonBodyHostsItemClusterId()
-        _tmp.additional_properties = json.loads(hosts_item_cluster_id)  # TODO: check if dict
-        hosts_item_cluster_id = _tmp
-
     status = RhubApiLabClusterCreateClusterJsonBodyStatus(status)
+
+    hosts_item = RhubApiLabClusterCreateClusterJsonBodyHostsItem(
+        fqdn=hosts_item_fqdn,
+        ipaddr=hosts_item_ipaddr,
+        num_vcpus=hosts_item_num_vcpus,
+        num_volumes=hosts_item_num_volumes,
+        ram_mb=hosts_item_ram_mb,
+        volumes_gb=hosts_item_volumes_gb,
+        cluster_id=hosts_item_cluster_id,
+        id=hosts_item_id,
+    )
+
+    hosts = []
+    if hosts_item is not None:
+        hosts.append(hosts_item)
 
     if product_params is None:
         product_params = UNSET
@@ -235,43 +220,20 @@ def create(
         _tmp.additional_properties = json.loads(product_params)  # TODO: check if dict
         product_params = _tmp
 
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiLabClusterCreateClusterJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
-
-    hosts_item = RhubApiLabClusterCreateClusterJsonBodyHostsItem(
-        cluster_id=hosts_item_cluster_id,
-        fqdn=hosts_item_fqdn,
-        id=hosts_item_id,
-        ipaddr=hosts_item_ipaddr,
-        num_vcpus=hosts_item_num_vcpus,
-        num_volumes=hosts_item_num_volumes,
-        ram_mb=hosts_item_ram_mb,
-        volumes_gb=hosts_item_volumes_gb,
-    )
-
-    hosts = []
-    if hosts_item is not None:
-        hosts.append(hosts_item)
-
     json_body = RhubApiLabClusterCreateClusterJsonBody(
+        name=name,
+        product_id=product_id,
+        product_params=product_params,
+        region_id=region_id,
         created=created,
         description=description,
         group_id=group_id,
         group_name=group_name,
         hosts=hosts,
-        id=id,
         lifespan_expiration=lifespan_expiration,
-        name=name,
-        product_id=product_id,
         product_name=product_name,
-        product_params=product_params,
         quota=quota,
         quota_usage=quota_usage,
-        region_id=region_id,
         region_name=region_name,
         reservation_expiration=reservation_expiration,
         shared=shared,
@@ -325,7 +287,6 @@ def remove(
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--id")
 @click.option("--lifespan-expiration", type=click.DateTime())
 @click.option("--name", type=str)
 @click.option("--product-id", type=int)
@@ -376,14 +337,14 @@ def remove(
 )
 @click.option("--user-id", type=str)
 @click.option("--user-name", type=str)
-@click.option("--hosts-item-cluster-id")
 @click.option("--hosts-item-fqdn", type=str)
-@click.option("--hosts-item-id")
 @click.option("--hosts-item-ipaddr-item", type=str)
 @click.option("--hosts-item-num-vcpus", type=int)
 @click.option("--hosts-item-num-volumes", type=int)
 @click.option("--hosts-item-ram-mb", type=int)
 @click.option("--hosts-item-volumes-gb", type=int)
+@click.option("--hosts-item-cluster-id", type=int)
+@click.option("--hosts-item-id", type=int)
 @pass_api
 def update(
     api: APIRequest,
@@ -392,7 +353,6 @@ def update(
     description,
     group_id,
     group_name,
-    id,
     lifespan_expiration,
     name,
     product_id,
@@ -407,34 +367,20 @@ def update(
     status,
     user_id,
     user_name,
-    hosts_item_cluster_id,
     hosts_item_fqdn,
-    hosts_item_id,
     hosts_item_ipaddr_item,
     hosts_item_num_vcpus,
     hosts_item_num_volumes,
     hosts_item_ram_mb,
     hosts_item_volumes_gb,
+    hosts_item_cluster_id,
+    hosts_item_id,
 ):
     """Update cluster"""
 
     hosts_item_ipaddr = []
     if hosts_item_ipaddr_item is not None:
         hosts_item_ipaddr.append(hosts_item_ipaddr_item)
-
-    if hosts_item_id is None:
-        hosts_item_id = UNSET
-    else:
-        _tmp = RhubApiLabClusterUpdateClusterJsonBodyHostsItemId()
-        _tmp.additional_properties = json.loads(hosts_item_id)  # TODO: check if dict
-        hosts_item_id = _tmp
-
-    if hosts_item_cluster_id is None:
-        hosts_item_cluster_id = UNSET
-    else:
-        _tmp = RhubApiLabClusterUpdateClusterJsonBodyHostsItemClusterId()
-        _tmp.additional_properties = json.loads(hosts_item_cluster_id)  # TODO: check if dict
-        hosts_item_cluster_id = _tmp
 
     status = RhubApiLabClusterUpdateClusterJsonBodyStatus(status)
 
@@ -445,22 +391,15 @@ def update(
         _tmp.additional_properties = json.loads(product_params)  # TODO: check if dict
         product_params = _tmp
 
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiLabClusterUpdateClusterJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
-
     hosts_item = RhubApiLabClusterUpdateClusterJsonBodyHostsItem(
-        cluster_id=hosts_item_cluster_id,
         fqdn=hosts_item_fqdn,
-        id=hosts_item_id,
         ipaddr=hosts_item_ipaddr,
         num_vcpus=hosts_item_num_vcpus,
         num_volumes=hosts_item_num_volumes,
         ram_mb=hosts_item_ram_mb,
         volumes_gb=hosts_item_volumes_gb,
+        cluster_id=hosts_item_cluster_id,
+        id=hosts_item_id,
     )
 
     hosts = []
@@ -473,7 +412,6 @@ def update(
         group_id=group_id,
         group_name=group_name,
         hosts=hosts,
-        id=id,
         lifespan_expiration=lifespan_expiration,
         name=name,
         product_id=product_id,

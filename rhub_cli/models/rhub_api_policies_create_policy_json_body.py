@@ -4,7 +4,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 import attr
 
 from ..models.rhub_api_policies_create_policy_json_body_constraint import RhubApiPoliciesCreatePolicyJsonBodyConstraint
-from ..models.rhub_api_policies_create_policy_json_body_id import RhubApiPoliciesCreatePolicyJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiPoliciesCreatePolicyJsonBody")
@@ -17,13 +16,11 @@ class RhubApiPoliciesCreatePolicyJsonBody:
         department (str): Department Name
         name (str): Name
         constraint (Union[Unset, RhubApiPoliciesCreatePolicyJsonBodyConstraint]):
-        id (Union[Unset, RhubApiPoliciesCreatePolicyJsonBodyId]): Internal ID
     """
 
     department: str
     name: str
     constraint: Union[Unset, RhubApiPoliciesCreatePolicyJsonBodyConstraint] = UNSET
-    id: Union[Unset, RhubApiPoliciesCreatePolicyJsonBodyId] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -32,10 +29,6 @@ class RhubApiPoliciesCreatePolicyJsonBody:
         constraint: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.constraint, Unset):
             constraint = self.constraint.to_dict()
-
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -47,8 +40,6 @@ class RhubApiPoliciesCreatePolicyJsonBody:
         )
         if constraint is not UNSET:
             field_dict["constraint"] = constraint
-        if id is not UNSET:
-            field_dict["id"] = id
 
         return field_dict
 
@@ -66,18 +57,10 @@ class RhubApiPoliciesCreatePolicyJsonBody:
         else:
             constraint = RhubApiPoliciesCreatePolicyJsonBodyConstraint.from_dict(_constraint)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiPoliciesCreatePolicyJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiPoliciesCreatePolicyJsonBodyId.from_dict(_id)
-
         rhub_api_policies_create_policy_json_body = cls(
             department=department,
             name=name,
             constraint=constraint,
-            id=id,
         )
 
         rhub_api_policies_create_policy_json_body.additional_properties = d

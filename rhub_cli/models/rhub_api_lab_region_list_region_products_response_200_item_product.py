@@ -6,9 +6,6 @@ import attr
 from ..models.rhub_api_lab_region_list_region_products_response_200_item_product_flavors import (
     RhubApiLabRegionListRegionProductsResponse200ItemProductFlavors,
 )
-from ..models.rhub_api_lab_region_list_region_products_response_200_item_product_id import (
-    RhubApiLabRegionListRegionProductsResponse200ItemProductId,
-)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiLabRegionListRegionProductsResponse200ItemProduct")
@@ -21,21 +18,21 @@ class RhubApiLabRegionListRegionProductsResponse200ItemProduct:
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
         flavors (Union[Unset, None, RhubApiLabRegionListRegionProductsResponse200ItemProductFlavors]):
-        id (Union[Unset, RhubApiLabRegionListRegionProductsResponse200ItemProductId]):
         name (Union[Unset, str]):  Example: OpenShift.
         parameters (Union[Unset, List[Any]]):
         tower_template_name_create (Union[Unset, str]):  Example: rhub-openshift-create.
         tower_template_name_delete (Union[Unset, str]):  Example: rhub-openshift-delete.
+        id (Union[Unset, int]):
     """
 
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     flavors: Union[Unset, None, RhubApiLabRegionListRegionProductsResponse200ItemProductFlavors] = UNSET
-    id: Union[Unset, RhubApiLabRegionListRegionProductsResponse200ItemProductId] = UNSET
     name: Union[Unset, str] = UNSET
     parameters: Union[Unset, List[Any]] = UNSET
     tower_template_name_create: Union[Unset, str] = UNSET
     tower_template_name_delete: Union[Unset, str] = UNSET
+    id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -44,10 +41,6 @@ class RhubApiLabRegionListRegionProductsResponse200ItemProduct:
         flavors: Union[Unset, None, Dict[str, Any]] = UNSET
         if not isinstance(self.flavors, Unset):
             flavors = self.flavors.to_dict() if self.flavors else None
-
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
 
         name = self.name
         parameters: Union[Unset, List[Any]] = UNSET
@@ -61,6 +54,7 @@ class RhubApiLabRegionListRegionProductsResponse200ItemProduct:
 
         tower_template_name_create = self.tower_template_name_create
         tower_template_name_delete = self.tower_template_name_delete
+        id = self.id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -71,8 +65,6 @@ class RhubApiLabRegionListRegionProductsResponse200ItemProduct:
             field_dict["enabled"] = enabled
         if flavors is not UNSET:
             field_dict["flavors"] = flavors
-        if id is not UNSET:
-            field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
         if parameters is not UNSET:
@@ -81,6 +73,8 @@ class RhubApiLabRegionListRegionProductsResponse200ItemProduct:
             field_dict["tower_template_name_create"] = tower_template_name_create
         if tower_template_name_delete is not UNSET:
             field_dict["tower_template_name_delete"] = tower_template_name_delete
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
@@ -100,13 +94,6 @@ class RhubApiLabRegionListRegionProductsResponse200ItemProduct:
         else:
             flavors = RhubApiLabRegionListRegionProductsResponse200ItemProductFlavors.from_dict(_flavors)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabRegionListRegionProductsResponse200ItemProductId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabRegionListRegionProductsResponse200ItemProductId.from_dict(_id)
-
         name = d.pop("name", UNSET)
 
         parameters = []
@@ -124,15 +111,17 @@ class RhubApiLabRegionListRegionProductsResponse200ItemProduct:
 
         tower_template_name_delete = d.pop("tower_template_name_delete", UNSET)
 
+        id = d.pop("id", UNSET)
+
         rhub_api_lab_region_list_region_products_response_200_item_product = cls(
             description=description,
             enabled=enabled,
             flavors=flavors,
-            id=id,
             name=name,
             parameters=parameters,
             tower_template_name_create=tower_template_name_create,
             tower_template_name_delete=tower_template_name_delete,
+            id=id,
         )
 
         rhub_api_lab_region_list_region_products_response_200_item_product.additional_properties = d

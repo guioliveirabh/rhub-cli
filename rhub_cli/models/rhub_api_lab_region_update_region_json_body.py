@@ -6,7 +6,6 @@ import attr
 from ..models.rhub_api_lab_region_update_region_json_body_dns_server import (
     RhubApiLabRegionUpdateRegionJsonBodyDnsServer,
 )
-from ..models.rhub_api_lab_region_update_region_json_body_id import RhubApiLabRegionUpdateRegionJsonBodyId
 from ..models.rhub_api_lab_region_update_region_json_body_openstack import RhubApiLabRegionUpdateRegionJsonBodyOpenstack
 from ..models.rhub_api_lab_region_update_region_json_body_satellite import RhubApiLabRegionUpdateRegionJsonBodySatellite
 from ..models.rhub_api_lab_region_update_region_json_body_total_quota_type_0 import (
@@ -30,7 +29,6 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             'ns.example.com', 'key': 'kv/region/rdu2-a/dns', 'zone': 'example.com.'}.
         download_server (Union[Unset, str]):  Example: https://download.example.com.
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiLabRegionUpdateRegionJsonBodyId]):
         lifespan_length (Union[Unset, None, int]):
         location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
         name (Union[Unset, str]):  Example: rdu2-a.
@@ -56,7 +54,6 @@ class RhubApiLabRegionUpdateRegionJsonBody:
     dns_server: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodyDnsServer] = UNSET
     download_server: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodyId] = UNSET
     lifespan_length: Union[Unset, None, int] = UNSET
     location: Union[Unset, None, str] = UNSET
     name: Union[Unset, str] = UNSET
@@ -81,10 +78,6 @@ class RhubApiLabRegionUpdateRegionJsonBody:
 
         download_server = self.download_server
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         lifespan_length = self.lifespan_length
         location = self.location
         name = self.name
@@ -140,8 +133,6 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             field_dict["download_server"] = download_server
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if lifespan_length is not UNSET:
             field_dict["lifespan_length"] = lifespan_length
         if location is not UNSET:
@@ -188,13 +179,6 @@ class RhubApiLabRegionUpdateRegionJsonBody:
         download_server = d.pop("download_server", UNSET)
 
         enabled = d.pop("enabled", UNSET)
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabRegionUpdateRegionJsonBodyId.from_dict(_id)
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 
@@ -276,7 +260,6 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             dns_server=dns_server,
             download_server=download_server,
             enabled=enabled,
-            id=id,
             lifespan_length=lifespan_length,
             location=location,
             name=name,

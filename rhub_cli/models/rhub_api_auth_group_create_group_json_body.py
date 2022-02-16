@@ -4,7 +4,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 import attr
 
 from ..models.rhub_api_auth_group_create_group_json_body_attributes import RhubApiAuthGroupCreateGroupJsonBodyAttributes
-from ..models.rhub_api_auth_group_create_group_json_body_id import RhubApiAuthGroupCreateGroupJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiAuthGroupCreateGroupJsonBody")
@@ -16,12 +15,12 @@ class RhubApiAuthGroupCreateGroupJsonBody:
     Attributes:
         name (str):
         attributes (Union[Unset, RhubApiAuthGroupCreateGroupJsonBodyAttributes]): Group attributes
-        id (Union[Unset, RhubApiAuthGroupCreateGroupJsonBodyId]):
+        id (Union[Unset, str]):
     """
 
     name: str
     attributes: Union[Unset, RhubApiAuthGroupCreateGroupJsonBodyAttributes] = UNSET
-    id: Union[Unset, RhubApiAuthGroupCreateGroupJsonBodyId] = UNSET
+    id: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -30,9 +29,7 @@ class RhubApiAuthGroupCreateGroupJsonBody:
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
+        id = self.id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -60,12 +57,7 @@ class RhubApiAuthGroupCreateGroupJsonBody:
         else:
             attributes = RhubApiAuthGroupCreateGroupJsonBodyAttributes.from_dict(_attributes)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiAuthGroupCreateGroupJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiAuthGroupCreateGroupJsonBodyId.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         rhub_api_auth_group_create_group_json_body = cls(
             name=name,

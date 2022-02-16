@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
-from ..models.rhub_api_lab_region_create_region_json_body_id import RhubApiLabRegionCreateRegionJsonBodyId
 from ..models.rhub_api_lab_region_create_region_json_body_total_quota_type_0 import (
     RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0,
 )
@@ -29,7 +28,6 @@ class RhubApiLabRegionCreateRegionJsonBody:
         banner (Union[Unset, str]):
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId]):
         lifespan_length (Union[Unset, None, int]):
         location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
         owner_group (Union[Unset, str]):  Example: 7670ac07-cb21-448d-af8a-6e3882216be3.
@@ -52,7 +50,6 @@ class RhubApiLabRegionCreateRegionJsonBody:
     banner: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId] = UNSET
     lifespan_length: Union[Unset, None, int] = UNSET
     location: Union[Unset, None, str] = UNSET
     owner_group: Union[Unset, str] = UNSET
@@ -74,10 +71,6 @@ class RhubApiLabRegionCreateRegionJsonBody:
         banner = self.banner
         description = self.description
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         lifespan_length = self.lifespan_length
         location = self.location
         owner_group = self.owner_group
@@ -128,8 +121,6 @@ class RhubApiLabRegionCreateRegionJsonBody:
             field_dict["description"] = description
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if lifespan_length is not UNSET:
             field_dict["lifespan_length"] = lifespan_length
         if location is not UNSET:
@@ -171,13 +162,6 @@ class RhubApiLabRegionCreateRegionJsonBody:
         description = d.pop("description", UNSET)
 
         enabled = d.pop("enabled", UNSET)
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabRegionCreateRegionJsonBodyId.from_dict(_id)
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 
@@ -244,7 +228,6 @@ class RhubApiLabRegionCreateRegionJsonBody:
             banner=banner,
             description=description,
             enabled=enabled,
-            id=id,
             lifespan_length=lifespan_length,
             location=location,
             owner_group=owner_group,

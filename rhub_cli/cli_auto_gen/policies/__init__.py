@@ -15,7 +15,6 @@ from rhub_cli.models.rhub_api_policies_create_policy_json_body_constraint import
 from rhub_cli.models.rhub_api_policies_create_policy_json_body_constraint_limit import (
     RhubApiPoliciesCreatePolicyJsonBodyConstraintLimit,
 )
-from rhub_cli.models.rhub_api_policies_create_policy_json_body_id import RhubApiPoliciesCreatePolicyJsonBodyId
 from rhub_cli.models.rhub_api_policies_list_policies_filter import RhubApiPoliciesListPoliciesFilter
 from rhub_cli.models.rhub_api_policies_list_policies_sort import RhubApiPoliciesListPoliciesSort
 from rhub_cli.models.rhub_api_policies_update_policy_json_body import RhubApiPoliciesUpdatePolicyJsonBody
@@ -25,7 +24,6 @@ from rhub_cli.models.rhub_api_policies_update_policy_json_body_constraint import
 from rhub_cli.models.rhub_api_policies_update_policy_json_body_constraint_limit import (
     RhubApiPoliciesUpdatePolicyJsonBodyConstraintLimit,
 )
-from rhub_cli.models.rhub_api_policies_update_policy_json_body_id import RhubApiPoliciesUpdatePolicyJsonBodyId
 from rhub_cli.types import UNSET
 
 
@@ -71,7 +69,6 @@ def get_list(
 @policies.command()
 @click.option("--department", required=True, type=str)
 @click.option("--name", required=True, type=str)
-@click.option("--id")
 @click.option("--constraint-cost", type=float)
 @click.option("--constraint-density", type=str)
 @click.option("--constraint-limit")
@@ -84,7 +81,6 @@ def create(
     api: APIRequest,
     department,
     name,
-    id,
     constraint_cost,
     constraint_density,
     constraint_limit,
@@ -110,13 +106,6 @@ def create(
         _tmp.additional_properties = json.loads(constraint_limit)  # TODO: check if dict
         constraint_limit = _tmp
 
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiPoliciesCreatePolicyJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
-
     constraint = RhubApiPoliciesCreatePolicyJsonBodyConstraint(
         cost=constraint_cost,
         density=constraint_density,
@@ -131,7 +120,6 @@ def create(
         department=department,
         name=name,
         constraint=constraint,
-        id=id,
     )
 
     response = policies_create(
@@ -176,7 +164,6 @@ def remove(
 @policies.command()
 @click.argument("policy_id", type=int)
 @click.option("--department", type=str)
-@click.option("--id")
 @click.option("--name", type=str)
 @click.option("--constraint-cost", type=float)
 @click.option("--constraint-density", type=str)
@@ -190,7 +177,6 @@ def update(
     api: APIRequest,
     policy_id,
     department,
-    id,
     name,
     constraint_cost,
     constraint_density,
@@ -217,13 +203,6 @@ def update(
         _tmp.additional_properties = json.loads(constraint_limit)  # TODO: check if dict
         constraint_limit = _tmp
 
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiPoliciesUpdatePolicyJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
-
     constraint = RhubApiPoliciesUpdatePolicyJsonBodyConstraint(
         cost=constraint_cost,
         density=constraint_density,
@@ -237,7 +216,6 @@ def update(
     json_body = RhubApiPoliciesUpdatePolicyJsonBody(
         constraint=constraint,
         department=department,
-        id=id,
         name=name,
     )
 

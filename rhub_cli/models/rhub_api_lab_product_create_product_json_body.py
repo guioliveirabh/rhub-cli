@@ -4,7 +4,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 import attr
 
 from ..models.rhub_api_lab_product_create_product_json_body_flavors import RhubApiLabProductCreateProductJsonBodyFlavors
-from ..models.rhub_api_lab_product_create_product_json_body_id import RhubApiLabProductCreateProductJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiLabProductCreateProductJsonBody")
@@ -21,7 +20,6 @@ class RhubApiLabProductCreateProductJsonBody:
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
         flavors (Union[Unset, None, RhubApiLabProductCreateProductJsonBodyFlavors]):
-        id (Union[Unset, RhubApiLabProductCreateProductJsonBodyId]):
     """
 
     name: str
@@ -31,7 +29,6 @@ class RhubApiLabProductCreateProductJsonBody:
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     flavors: Union[Unset, None, RhubApiLabProductCreateProductJsonBodyFlavors] = UNSET
-    id: Union[Unset, RhubApiLabProductCreateProductJsonBodyId] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -51,10 +48,6 @@ class RhubApiLabProductCreateProductJsonBody:
         if not isinstance(self.flavors, Unset):
             flavors = self.flavors.to_dict() if self.flavors else None
 
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -71,8 +64,6 @@ class RhubApiLabProductCreateProductJsonBody:
             field_dict["enabled"] = enabled
         if flavors is not UNSET:
             field_dict["flavors"] = flavors
-        if id is not UNSET:
-            field_dict["id"] = id
 
         return field_dict
 
@@ -109,13 +100,6 @@ class RhubApiLabProductCreateProductJsonBody:
         else:
             flavors = RhubApiLabProductCreateProductJsonBodyFlavors.from_dict(_flavors)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabProductCreateProductJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabProductCreateProductJsonBodyId.from_dict(_id)
-
         rhub_api_lab_product_create_product_json_body = cls(
             name=name,
             parameters=parameters,
@@ -124,7 +108,6 @@ class RhubApiLabProductCreateProductJsonBody:
             description=description,
             enabled=enabled,
             flavors=flavors,
-            id=id,
         )
 
         rhub_api_lab_product_create_product_json_body.additional_properties = d

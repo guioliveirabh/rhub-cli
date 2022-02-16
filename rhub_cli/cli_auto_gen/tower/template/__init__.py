@@ -1,5 +1,3 @@
-import json
-
 import click
 
 from rhub_cli.api.tower.rhub_api_tower_create_template import sync_detailed as template_create
@@ -9,12 +7,9 @@ from rhub_cli.api.tower.rhub_api_tower_list_templates import sync_detailed as te
 from rhub_cli.api.tower.rhub_api_tower_update_template import sync_detailed as template_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_tower_create_template_json_body import RhubApiTowerCreateTemplateJsonBody
-from rhub_cli.models.rhub_api_tower_create_template_json_body_id import RhubApiTowerCreateTemplateJsonBodyId
 from rhub_cli.models.rhub_api_tower_list_templates_filter import RhubApiTowerListTemplatesFilter
 from rhub_cli.models.rhub_api_tower_list_templates_sort import RhubApiTowerListTemplatesSort
 from rhub_cli.models.rhub_api_tower_update_template_json_body import RhubApiTowerUpdateTemplateJsonBody
-from rhub_cli.models.rhub_api_tower_update_template_json_body_id import RhubApiTowerUpdateTemplateJsonBodyId
-from rhub_cli.types import UNSET
 
 from .jobs import jobs
 from .launch import launch
@@ -65,7 +60,6 @@ def get_list(
 @click.option("--tower-template-id", required=True, type=int)
 @click.option("--tower-template-is-workflow", required=True, is_flag=True)
 @click.option("--description", type=str)
-@click.option("--id")
 @pass_api
 def create(
     api: APIRequest,
@@ -74,16 +68,8 @@ def create(
     tower_template_id,
     tower_template_is_workflow,
     description,
-    id,
 ):
     """Create Tower template"""
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiTowerCreateTemplateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiTowerCreateTemplateJsonBody(
         name=name,
@@ -91,7 +77,6 @@ def create(
         tower_template_id=tower_template_id,
         tower_template_is_workflow=tower_template_is_workflow,
         description=description,
-        id=id,
     )
 
     response = template_create(
@@ -135,42 +120,29 @@ def remove(
 
 @template.command()
 @click.argument("template_id", type=int)
-@click.option("--credentials", type=str)
 @click.option("--description", type=str)
-@click.option("--enabled", is_flag=True)
-@click.option("--id")
 @click.option("--name", type=str)
-@click.option("--url", type=str)
-@click.option("--verify-ssl", is_flag=True)
+@click.option("--server-id", type=int)
+@click.option("--tower-template-id", type=int)
+@click.option("--tower-template-is-workflow", is_flag=True)
 @pass_api
 def update(
     api: APIRequest,
     template_id,
-    credentials,
     description,
-    enabled,
-    id,
     name,
-    url,
-    verify_ssl,
+    server_id,
+    tower_template_id,
+    tower_template_is_workflow,
 ):
     """Change Tower template"""
 
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiTowerUpdateTemplateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
-
     json_body = RhubApiTowerUpdateTemplateJsonBody(
-        credentials=credentials,
         description=description,
-        enabled=enabled,
-        id=id,
         name=name,
-        url=url,
-        verify_ssl=verify_ssl,
+        server_id=server_id,
+        tower_template_id=tower_template_id,
+        tower_template_is_workflow=tower_template_is_workflow,
     )
 
     response = template_update(

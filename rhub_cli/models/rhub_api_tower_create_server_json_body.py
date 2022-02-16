@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_tower_create_server_json_body_id import RhubApiTowerCreateServerJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiTowerCreateServerJsonBody")
@@ -18,7 +17,6 @@ class RhubApiTowerCreateServerJsonBody:
         url (str):
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiTowerCreateServerJsonBodyId]):
         verify_ssl (Union[Unset, bool]): Option to disable SSL certificate verification.
     """
 
@@ -27,7 +25,6 @@ class RhubApiTowerCreateServerJsonBody:
     url: str
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiTowerCreateServerJsonBodyId] = UNSET
     verify_ssl: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -37,10 +34,6 @@ class RhubApiTowerCreateServerJsonBody:
         url = self.url
         description = self.description
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         verify_ssl = self.verify_ssl
 
         field_dict: Dict[str, Any] = {}
@@ -56,8 +49,6 @@ class RhubApiTowerCreateServerJsonBody:
             field_dict["description"] = description
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if verify_ssl is not UNSET:
             field_dict["verify_ssl"] = verify_ssl
 
@@ -76,13 +67,6 @@ class RhubApiTowerCreateServerJsonBody:
 
         enabled = d.pop("enabled", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiTowerCreateServerJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiTowerCreateServerJsonBodyId.from_dict(_id)
-
         verify_ssl = d.pop("verify_ssl", UNSET)
 
         rhub_api_tower_create_server_json_body = cls(
@@ -91,7 +75,6 @@ class RhubApiTowerCreateServerJsonBody:
             url=url,
             description=description,
             enabled=enabled,
-            id=id,
             verify_ssl=verify_ssl,
         )
 

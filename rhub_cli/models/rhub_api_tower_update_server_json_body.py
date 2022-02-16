@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_tower_update_server_json_body_id import RhubApiTowerUpdateServerJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiTowerUpdateServerJsonBody")
@@ -16,7 +15,6 @@ class RhubApiTowerUpdateServerJsonBody:
         credentials (Union[Unset, str]): Tower credentials path (Vault mount/path)
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiTowerUpdateServerJsonBodyId]):
         name (Union[Unset, str]):
         url (Union[Unset, str]):
         verify_ssl (Union[Unset, bool]): Option to disable SSL certificate verification.
@@ -25,7 +23,6 @@ class RhubApiTowerUpdateServerJsonBody:
     credentials: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiTowerUpdateServerJsonBodyId] = UNSET
     name: Union[Unset, str] = UNSET
     url: Union[Unset, str] = UNSET
     verify_ssl: Union[Unset, bool] = UNSET
@@ -35,10 +32,6 @@ class RhubApiTowerUpdateServerJsonBody:
         credentials = self.credentials
         description = self.description
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         name = self.name
         url = self.url
         verify_ssl = self.verify_ssl
@@ -52,8 +45,6 @@ class RhubApiTowerUpdateServerJsonBody:
             field_dict["description"] = description
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
         if url is not UNSET:
@@ -72,13 +63,6 @@ class RhubApiTowerUpdateServerJsonBody:
 
         enabled = d.pop("enabled", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiTowerUpdateServerJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiTowerUpdateServerJsonBodyId.from_dict(_id)
-
         name = d.pop("name", UNSET)
 
         url = d.pop("url", UNSET)
@@ -89,7 +73,6 @@ class RhubApiTowerUpdateServerJsonBody:
             credentials=credentials,
             description=description,
             enabled=enabled,
-            id=id,
             name=name,
             url=url,
             verify_ssl=verify_ssl,

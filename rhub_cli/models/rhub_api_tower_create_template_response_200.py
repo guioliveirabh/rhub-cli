@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_tower_create_template_response_200_id import RhubApiTowerCreateTemplateResponse200Id
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiTowerCreateTemplateResponse200")
@@ -14,39 +13,34 @@ class RhubApiTowerCreateTemplateResponse200:
     """
     Attributes:
         description (Union[Unset, str]):
-        id (Union[Unset, RhubApiTowerCreateTemplateResponse200Id]): Internal ID
         name (Union[Unset, str]):
         server_id (Union[Unset, int]):
         tower_template_id (Union[Unset, int]):
         tower_template_is_workflow (Union[Unset, bool]): Is template workflow?
+        id (Union[Unset, int]):
     """
 
     description: Union[Unset, str] = UNSET
-    id: Union[Unset, RhubApiTowerCreateTemplateResponse200Id] = UNSET
     name: Union[Unset, str] = UNSET
     server_id: Union[Unset, int] = UNSET
     tower_template_id: Union[Unset, int] = UNSET
     tower_template_is_workflow: Union[Unset, bool] = UNSET
+    id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         name = self.name
         server_id = self.server_id
         tower_template_id = self.tower_template_id
         tower_template_is_workflow = self.tower_template_is_workflow
+        id = self.id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
-        if id is not UNSET:
-            field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
         if server_id is not UNSET:
@@ -55,6 +49,8 @@ class RhubApiTowerCreateTemplateResponse200:
             field_dict["tower_template_id"] = tower_template_id
         if tower_template_is_workflow is not UNSET:
             field_dict["tower_template_is_workflow"] = tower_template_is_workflow
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
@@ -62,13 +58,6 @@ class RhubApiTowerCreateTemplateResponse200:
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = copy(src_dict)
         description = d.pop("description", UNSET)
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiTowerCreateTemplateResponse200Id]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiTowerCreateTemplateResponse200Id.from_dict(_id)
 
         name = d.pop("name", UNSET)
 
@@ -78,13 +67,15 @@ class RhubApiTowerCreateTemplateResponse200:
 
         tower_template_is_workflow = d.pop("tower_template_is_workflow", UNSET)
 
+        id = d.pop("id", UNSET)
+
         rhub_api_tower_create_template_response_200 = cls(
             description=description,
-            id=id,
             name=name,
             server_id=server_id,
             tower_template_id=tower_template_id,
             tower_template_is_workflow=tower_template_is_workflow,
+            id=id,
         )
 
         rhub_api_tower_create_template_response_200.additional_properties = d

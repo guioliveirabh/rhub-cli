@@ -8,7 +8,6 @@ from dateutil.parser import isoparse
 from ..models.rhub_api_lab_cluster_update_cluster_response_200_hosts_item import (
     RhubApiLabClusterUpdateClusterResponse200HostsItem,
 )
-from ..models.rhub_api_lab_cluster_update_cluster_response_200_id import RhubApiLabClusterUpdateClusterResponse200Id
 from ..models.rhub_api_lab_cluster_update_cluster_response_200_product_params import (
     RhubApiLabClusterUpdateClusterResponse200ProductParams,
 )
@@ -35,7 +34,6 @@ class RhubApiLabClusterUpdateClusterResponse200:
         group_id (Union[Unset, None, str]):
         group_name (Union[Unset, None, str]):
         hosts (Union[Unset, List[RhubApiLabClusterUpdateClusterResponse200HostsItem]]):
-        id (Union[Unset, RhubApiLabClusterUpdateClusterResponse200Id]):
         lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
         name (Union[Unset, str]):
         product_id (Union[Unset, int]):
@@ -52,6 +50,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
         status (Union[Unset, None, RhubApiLabClusterUpdateClusterResponse200Status]):
         user_id (Union[Unset, str]):
         user_name (Union[Unset, str]):
+        id (Union[Unset, int]):
     """
 
     created: Union[Unset, datetime.datetime] = UNSET
@@ -59,7 +58,6 @@ class RhubApiLabClusterUpdateClusterResponse200:
     group_id: Union[Unset, None, str] = UNSET
     group_name: Union[Unset, None, str] = UNSET
     hosts: Union[Unset, List[RhubApiLabClusterUpdateClusterResponse200HostsItem]] = UNSET
-    id: Union[Unset, RhubApiLabClusterUpdateClusterResponse200Id] = UNSET
     lifespan_expiration: Union[Unset, None, datetime.datetime] = UNSET
     name: Union[Unset, str] = UNSET
     product_id: Union[Unset, int] = UNSET
@@ -74,6 +72,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
     status: Union[Unset, None, RhubApiLabClusterUpdateClusterResponse200Status] = UNSET
     user_id: Union[Unset, str] = UNSET
     user_name: Union[Unset, str] = UNSET
+    id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -91,10 +90,6 @@ class RhubApiLabClusterUpdateClusterResponse200:
                 hosts_item = hosts_item_data.to_dict()
 
                 hosts.append(hosts_item)
-
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
 
         lifespan_expiration: Union[Unset, None, str] = UNSET
         if not isinstance(self.lifespan_expiration, Unset):
@@ -144,6 +139,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
 
         user_id = self.user_id
         user_name = self.user_name
+        id = self.id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -158,8 +154,6 @@ class RhubApiLabClusterUpdateClusterResponse200:
             field_dict["group_name"] = group_name
         if hosts is not UNSET:
             field_dict["hosts"] = hosts
-        if id is not UNSET:
-            field_dict["id"] = id
         if lifespan_expiration is not UNSET:
             field_dict["lifespan_expiration"] = lifespan_expiration
         if name is not UNSET:
@@ -188,6 +182,8 @@ class RhubApiLabClusterUpdateClusterResponse200:
             field_dict["user_id"] = user_id
         if user_name is not UNSET:
             field_dict["user_name"] = user_name
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
@@ -213,13 +209,6 @@ class RhubApiLabClusterUpdateClusterResponse200:
             hosts_item = RhubApiLabClusterUpdateClusterResponse200HostsItem.from_dict(hosts_item_data)
 
             hosts.append(hosts_item)
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabClusterUpdateClusterResponse200Id]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabClusterUpdateClusterResponse200Id.from_dict(_id)
 
         _lifespan_expiration = d.pop("lifespan_expiration", UNSET)
         lifespan_expiration: Union[Unset, None, datetime.datetime]
@@ -315,13 +304,14 @@ class RhubApiLabClusterUpdateClusterResponse200:
 
         user_name = d.pop("user_name", UNSET)
 
+        id = d.pop("id", UNSET)
+
         rhub_api_lab_cluster_update_cluster_response_200 = cls(
             created=created,
             description=description,
             group_id=group_id,
             group_name=group_name,
             hosts=hosts,
-            id=id,
             lifespan_expiration=lifespan_expiration,
             name=name,
             product_id=product_id,
@@ -336,6 +326,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
             status=status,
             user_id=user_id,
             user_name=user_name,
+            id=id,
         )
 
         rhub_api_lab_cluster_update_cluster_response_200.additional_properties = d

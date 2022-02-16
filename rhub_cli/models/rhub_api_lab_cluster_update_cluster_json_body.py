@@ -8,7 +8,6 @@ from dateutil.parser import isoparse
 from ..models.rhub_api_lab_cluster_update_cluster_json_body_hosts_item import (
     RhubApiLabClusterUpdateClusterJsonBodyHostsItem,
 )
-from ..models.rhub_api_lab_cluster_update_cluster_json_body_id import RhubApiLabClusterUpdateClusterJsonBodyId
 from ..models.rhub_api_lab_cluster_update_cluster_json_body_product_params import (
     RhubApiLabClusterUpdateClusterJsonBodyProductParams,
 )
@@ -33,7 +32,6 @@ class RhubApiLabClusterUpdateClusterJsonBody:
         group_id (Union[Unset, None, str]):
         group_name (Union[Unset, None, str]):
         hosts (Union[Unset, List[RhubApiLabClusterUpdateClusterJsonBodyHostsItem]]):
-        id (Union[Unset, RhubApiLabClusterUpdateClusterJsonBodyId]):
         lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
         name (Union[Unset, str]):
         product_id (Union[Unset, int]):
@@ -57,7 +55,6 @@ class RhubApiLabClusterUpdateClusterJsonBody:
     group_id: Union[Unset, None, str] = UNSET
     group_name: Union[Unset, None, str] = UNSET
     hosts: Union[Unset, List[RhubApiLabClusterUpdateClusterJsonBodyHostsItem]] = UNSET
-    id: Union[Unset, RhubApiLabClusterUpdateClusterJsonBodyId] = UNSET
     lifespan_expiration: Union[Unset, None, datetime.datetime] = UNSET
     name: Union[Unset, str] = UNSET
     product_id: Union[Unset, int] = UNSET
@@ -89,10 +86,6 @@ class RhubApiLabClusterUpdateClusterJsonBody:
                 hosts_item = hosts_item_data.to_dict()
 
                 hosts.append(hosts_item)
-
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
 
         lifespan_expiration: Union[Unset, None, str] = UNSET
         if not isinstance(self.lifespan_expiration, Unset):
@@ -156,8 +149,6 @@ class RhubApiLabClusterUpdateClusterJsonBody:
             field_dict["group_name"] = group_name
         if hosts is not UNSET:
             field_dict["hosts"] = hosts
-        if id is not UNSET:
-            field_dict["id"] = id
         if lifespan_expiration is not UNSET:
             field_dict["lifespan_expiration"] = lifespan_expiration
         if name is not UNSET:
@@ -211,13 +202,6 @@ class RhubApiLabClusterUpdateClusterJsonBody:
             hosts_item = RhubApiLabClusterUpdateClusterJsonBodyHostsItem.from_dict(hosts_item_data)
 
             hosts.append(hosts_item)
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabClusterUpdateClusterJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabClusterUpdateClusterJsonBodyId.from_dict(_id)
 
         _lifespan_expiration = d.pop("lifespan_expiration", UNSET)
         lifespan_expiration: Union[Unset, None, datetime.datetime]
@@ -319,7 +303,6 @@ class RhubApiLabClusterUpdateClusterJsonBody:
             group_id=group_id,
             group_name=group_name,
             hosts=hosts,
-            id=id,
             lifespan_expiration=lifespan_expiration,
             name=name,
             product_id=product_id,

@@ -6,9 +6,6 @@ import attr
 from ..models.rhub_api_lab_product_list_product_regions_response_200_item_region_dns_server import (
     RhubApiLabProductListProductRegionsResponse200ItemRegionDnsServer,
 )
-from ..models.rhub_api_lab_product_list_product_regions_response_200_item_region_id import (
-    RhubApiLabProductListProductRegionsResponse200ItemRegionId,
-)
 from ..models.rhub_api_lab_product_list_product_regions_response_200_item_region_openstack import (
     RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstack,
 )
@@ -36,7 +33,6 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
             {'hostname': 'ns.example.com', 'key': 'kv/region/rdu2-a/dns', 'zone': 'example.com.'}.
         download_server (Union[Unset, str]):  Example: https://download.example.com.
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionId]):
         lifespan_length (Union[Unset, None, int]):
         location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
         name (Union[Unset, str]):  Example: rdu2-a.
@@ -55,6 +51,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
             Example: {'num_vcpus': 40, 'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
         users_group (Union[Unset, None, str]):
         vault_server (Union[Unset, str]):  Example: https://vault.example.com.
+        id (Union[Unset, int]):
     """
 
     banner: Union[Unset, str] = UNSET
@@ -62,7 +59,6 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
     dns_server: Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionDnsServer] = UNSET
     download_server: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionId] = UNSET
     lifespan_length: Union[Unset, None, int] = UNSET
     location: Union[Unset, None, str] = UNSET
     name: Union[Unset, str] = UNSET
@@ -76,6 +72,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
     user_quota: Union[Any, RhubApiLabProductListProductRegionsResponse200ItemRegionUserQuotaType0, Unset] = UNSET
     users_group: Union[Unset, None, str] = UNSET
     vault_server: Union[Unset, str] = UNSET
+    id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -87,10 +84,6 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
 
         download_server = self.download_server
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
         lifespan_length = self.lifespan_length
         location = self.location
         name = self.name
@@ -132,6 +125,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
 
         users_group = self.users_group
         vault_server = self.vault_server
+        id = self.id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -146,8 +140,6 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
             field_dict["download_server"] = download_server
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if lifespan_length is not UNSET:
             field_dict["lifespan_length"] = lifespan_length
         if location is not UNSET:
@@ -174,6 +166,8 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
             field_dict["users_group"] = users_group
         if vault_server is not UNSET:
             field_dict["vault_server"] = vault_server
+        if id is not UNSET:
+            field_dict["id"] = id
 
         return field_dict
 
@@ -194,13 +188,6 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
         download_server = d.pop("download_server", UNSET)
 
         enabled = d.pop("enabled", UNSET)
-
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabProductListProductRegionsResponse200ItemRegionId.from_dict(_id)
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 
@@ -290,13 +277,14 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
 
         vault_server = d.pop("vault_server", UNSET)
 
+        id = d.pop("id", UNSET)
+
         rhub_api_lab_product_list_product_regions_response_200_item_region = cls(
             banner=banner,
             description=description,
             dns_server=dns_server,
             download_server=download_server,
             enabled=enabled,
-            id=id,
             lifespan_length=lifespan_length,
             location=location,
             name=name,
@@ -310,6 +298,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
             user_quota=user_quota,
             users_group=users_group,
             vault_server=vault_server,
+            id=id,
         )
 
         rhub_api_lab_product_list_product_regions_response_200_item_region.additional_properties = d
