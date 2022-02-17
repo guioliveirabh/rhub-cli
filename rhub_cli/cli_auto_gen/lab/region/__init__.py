@@ -100,9 +100,11 @@ def get_list(
 @click.option("--lifespan-length", type=int)
 @click.option("--location", type=str)
 @click.option("--owner-group", type=str)
+@click.option("--owner-group-name", type=str)
 @click.option("--reservation-expiration-max", type=int)
 @click.option("--reservations-enabled", is_flag=True)
 @click.option("--users-group", type=str)
+@click.option("--users-group-name", type=str)
 @click.option("--total-quota-num-vcpus", type=int)
 @click.option("--total-quota-num-volumes", type=int)
 @click.option("--total-quota-ram-mb", type=int)
@@ -127,9 +129,11 @@ def create(
     lifespan_length,
     location,
     owner_group,
+    owner_group_name,
     reservation_expiration_max,
     reservations_enabled,
     users_group,
+    users_group_name,
     total_quota_num_vcpus,
     total_quota_num_volumes,
     total_quota_ram_mb,
@@ -169,11 +173,13 @@ def create(
         lifespan_length=lifespan_length,
         location=location,
         owner_group=owner_group,
+        owner_group_name=owner_group_name,
         reservation_expiration_max=reservation_expiration_max,
         reservations_enabled=reservations_enabled,
         total_quota=total_quota,
         user_quota=user_quota,
         users_group=users_group,
+        users_group_name=users_group_name,
     )
 
     response = region_create(
@@ -225,10 +231,12 @@ def remove(
 @click.option("--location", type=str)
 @click.option("--name", type=str)
 @click.option("--owner-group", type=str)
+@click.option("--owner-group-name", type=str)
 @click.option("--reservation-expiration-max", type=int)
 @click.option("--reservations-enabled", is_flag=True)
 @click.option("--tower-id", type=int)
 @click.option("--users-group", type=str)
+@click.option("--users-group-name", type=str)
 @click.option("--vault-server", type=str)
 @click.option("--dns-server-hostname", type=str)
 @click.option("--dns-server-key")
@@ -263,10 +271,12 @@ def update(
     location,
     name,
     owner_group,
+    owner_group_name,
     reservation_expiration_max,
     reservations_enabled,
     tower_id,
     users_group,
+    users_group_name,
     vault_server,
     dns_server_hostname,
     dns_server_key,
@@ -343,6 +353,7 @@ def update(
         name=name,
         openstack=openstack,
         owner_group=owner_group,
+        owner_group_name=owner_group_name,
         reservation_expiration_max=reservation_expiration_max,
         reservations_enabled=reservations_enabled,
         satellite=satellite,
@@ -350,6 +361,7 @@ def update(
         tower_id=tower_id,
         user_quota=user_quota,
         users_group=users_group,
+        users_group_name=users_group_name,
         vault_server=vault_server,
     )
 

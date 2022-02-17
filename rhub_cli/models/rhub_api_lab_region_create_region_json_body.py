@@ -31,6 +31,7 @@ class RhubApiLabRegionCreateRegionJsonBody:
         lifespan_length (Union[Unset, None, int]):
         location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
         owner_group (Union[Unset, str]):  Example: 7670ac07-cb21-448d-af8a-6e3882216be3.
+        owner_group_name (Union[Unset, None, str]):
         reservation_expiration_max (Union[Unset, None, int]):
         reservations_enabled (Union[Unset, bool]):
         total_quota (Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyTotalQuota]):  Example: {'num_vcpus': 40000,
@@ -38,6 +39,7 @@ class RhubApiLabRegionCreateRegionJsonBody:
         user_quota (Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyUserQuota]):  Example: {'num_vcpus': 40,
             'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
         users_group (Union[Unset, None, str]):
+        users_group_name (Union[Unset, None, str]):
     """
 
     dns_server: Any
@@ -53,11 +55,13 @@ class RhubApiLabRegionCreateRegionJsonBody:
     lifespan_length: Union[Unset, None, int] = UNSET
     location: Union[Unset, None, str] = UNSET
     owner_group: Union[Unset, str] = UNSET
+    owner_group_name: Union[Unset, None, str] = UNSET
     reservation_expiration_max: Union[Unset, None, int] = UNSET
     reservations_enabled: Union[Unset, bool] = UNSET
     total_quota: Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyTotalQuota] = UNSET
     user_quota: Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyUserQuota] = UNSET
     users_group: Union[Unset, None, str] = UNSET
+    users_group_name: Union[Unset, None, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,6 +78,7 @@ class RhubApiLabRegionCreateRegionJsonBody:
         lifespan_length = self.lifespan_length
         location = self.location
         owner_group = self.owner_group
+        owner_group_name = self.owner_group_name
         reservation_expiration_max = self.reservation_expiration_max
         reservations_enabled = self.reservations_enabled
         total_quota: Union[Unset, None, Dict[str, Any]] = UNSET
@@ -85,6 +90,7 @@ class RhubApiLabRegionCreateRegionJsonBody:
             user_quota = self.user_quota.to_dict() if self.user_quota else None
 
         users_group = self.users_group
+        users_group_name = self.users_group_name
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -111,6 +117,8 @@ class RhubApiLabRegionCreateRegionJsonBody:
             field_dict["location"] = location
         if owner_group is not UNSET:
             field_dict["owner_group"] = owner_group
+        if owner_group_name is not UNSET:
+            field_dict["owner_group_name"] = owner_group_name
         if reservation_expiration_max is not UNSET:
             field_dict["reservation_expiration_max"] = reservation_expiration_max
         if reservations_enabled is not UNSET:
@@ -121,6 +129,8 @@ class RhubApiLabRegionCreateRegionJsonBody:
             field_dict["user_quota"] = user_quota
         if users_group is not UNSET:
             field_dict["users_group"] = users_group
+        if users_group_name is not UNSET:
+            field_dict["users_group_name"] = users_group_name
 
         return field_dict
 
@@ -153,6 +163,8 @@ class RhubApiLabRegionCreateRegionJsonBody:
 
         owner_group = d.pop("owner_group", UNSET)
 
+        owner_group_name = d.pop("owner_group_name", UNSET)
+
         reservation_expiration_max = d.pop("reservation_expiration_max", UNSET)
 
         reservations_enabled = d.pop("reservations_enabled", UNSET)
@@ -177,6 +189,8 @@ class RhubApiLabRegionCreateRegionJsonBody:
 
         users_group = d.pop("users_group", UNSET)
 
+        users_group_name = d.pop("users_group_name", UNSET)
+
         rhub_api_lab_region_create_region_json_body = cls(
             dns_server=dns_server,
             download_server=download_server,
@@ -191,11 +205,13 @@ class RhubApiLabRegionCreateRegionJsonBody:
             lifespan_length=lifespan_length,
             location=location,
             owner_group=owner_group,
+            owner_group_name=owner_group_name,
             reservation_expiration_max=reservation_expiration_max,
             reservations_enabled=reservations_enabled,
             total_quota=total_quota,
             user_quota=user_quota,
             users_group=users_group,
+            users_group_name=users_group_name,
         )
 
         rhub_api_lab_region_create_region_json_body.additional_properties = d

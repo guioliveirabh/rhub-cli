@@ -36,6 +36,7 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             'kv/region/rdu2-a/openstack', 'domain_id': 'default', 'domain_name': 'Default', 'keyname': 'rhub', 'networks':
             ['provider_net_rhub'], 'project': 'rhub', 'url': 'https://openstack.example.com:13000'}.
         owner_group (Union[Unset, str]):  Example: 7670ac07-cb21-448d-af8a-6e3882216be3.
+        owner_group_name (Union[Unset, None, str]):
         reservation_expiration_max (Union[Unset, None, int]):
         reservations_enabled (Union[Unset, bool]):
         satellite (Union[Unset, RhubApiLabRegionUpdateRegionJsonBodySatellite]):  Example: {'credentials':
@@ -46,6 +47,7 @@ class RhubApiLabRegionUpdateRegionJsonBody:
         user_quota (Union[Unset, None, RhubApiLabRegionUpdateRegionJsonBodyUserQuota]):  Example: {'num_vcpus': 40,
             'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
         users_group (Union[Unset, None, str]):
+        users_group_name (Union[Unset, None, str]):
         vault_server (Union[Unset, str]):  Example: https://vault.example.com.
     """
 
@@ -59,6 +61,7 @@ class RhubApiLabRegionUpdateRegionJsonBody:
     name: Union[Unset, str] = UNSET
     openstack: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodyOpenstack] = UNSET
     owner_group: Union[Unset, str] = UNSET
+    owner_group_name: Union[Unset, None, str] = UNSET
     reservation_expiration_max: Union[Unset, None, int] = UNSET
     reservations_enabled: Union[Unset, bool] = UNSET
     satellite: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodySatellite] = UNSET
@@ -66,6 +69,7 @@ class RhubApiLabRegionUpdateRegionJsonBody:
     tower_id: Union[Unset, int] = UNSET
     user_quota: Union[Unset, None, RhubApiLabRegionUpdateRegionJsonBodyUserQuota] = UNSET
     users_group: Union[Unset, None, str] = UNSET
+    users_group_name: Union[Unset, None, str] = UNSET
     vault_server: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -86,6 +90,7 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             openstack = self.openstack.to_dict()
 
         owner_group = self.owner_group
+        owner_group_name = self.owner_group_name
         reservation_expiration_max = self.reservation_expiration_max
         reservations_enabled = self.reservations_enabled
         satellite: Union[Unset, Dict[str, Any]] = UNSET
@@ -102,6 +107,7 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             user_quota = self.user_quota.to_dict() if self.user_quota else None
 
         users_group = self.users_group
+        users_group_name = self.users_group_name
         vault_server = self.vault_server
 
         field_dict: Dict[str, Any] = {}
@@ -127,6 +133,8 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             field_dict["openstack"] = openstack
         if owner_group is not UNSET:
             field_dict["owner_group"] = owner_group
+        if owner_group_name is not UNSET:
+            field_dict["owner_group_name"] = owner_group_name
         if reservation_expiration_max is not UNSET:
             field_dict["reservation_expiration_max"] = reservation_expiration_max
         if reservations_enabled is not UNSET:
@@ -141,6 +149,8 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             field_dict["user_quota"] = user_quota
         if users_group is not UNSET:
             field_dict["users_group"] = users_group
+        if users_group_name is not UNSET:
+            field_dict["users_group_name"] = users_group_name
         if vault_server is not UNSET:
             field_dict["vault_server"] = vault_server
 
@@ -179,6 +189,8 @@ class RhubApiLabRegionUpdateRegionJsonBody:
 
         owner_group = d.pop("owner_group", UNSET)
 
+        owner_group_name = d.pop("owner_group_name", UNSET)
+
         reservation_expiration_max = d.pop("reservation_expiration_max", UNSET)
 
         reservations_enabled = d.pop("reservations_enabled", UNSET)
@@ -212,6 +224,8 @@ class RhubApiLabRegionUpdateRegionJsonBody:
 
         users_group = d.pop("users_group", UNSET)
 
+        users_group_name = d.pop("users_group_name", UNSET)
+
         vault_server = d.pop("vault_server", UNSET)
 
         rhub_api_lab_region_update_region_json_body = cls(
@@ -225,6 +239,7 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             name=name,
             openstack=openstack,
             owner_group=owner_group,
+            owner_group_name=owner_group_name,
             reservation_expiration_max=reservation_expiration_max,
             reservations_enabled=reservations_enabled,
             satellite=satellite,
@@ -232,6 +247,7 @@ class RhubApiLabRegionUpdateRegionJsonBody:
             tower_id=tower_id,
             user_quota=user_quota,
             users_group=users_group,
+            users_group_name=users_group_name,
             vault_server=vault_server,
         )
 
