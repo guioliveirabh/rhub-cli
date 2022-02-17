@@ -1,18 +1,20 @@
 from copy import copy
-from typing import Any, Dict, List, Type, TypeVar, Union
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
 from ..models.rhub_api_lab_region_get_usage_response_200_openstack_limits import (
     RhubApiLabRegionGetUsageResponse200OpenstackLimits,
 )
-from ..models.rhub_api_lab_region_get_usage_response_200_total_quota import (
-    RhubApiLabRegionGetUsageResponse200TotalQuota,
+from ..models.rhub_api_lab_region_get_usage_response_200_total_quota_type_0 import (
+    RhubApiLabRegionGetUsageResponse200TotalQuotaType0,
 )
 from ..models.rhub_api_lab_region_get_usage_response_200_total_quota_usage import (
     RhubApiLabRegionGetUsageResponse200TotalQuotaUsage,
 )
-from ..models.rhub_api_lab_region_get_usage_response_200_user_quota import RhubApiLabRegionGetUsageResponse200UserQuota
+from ..models.rhub_api_lab_region_get_usage_response_200_user_quota_type_0 import (
+    RhubApiLabRegionGetUsageResponse200UserQuotaType0,
+)
 from ..models.rhub_api_lab_region_get_usage_response_200_user_quota_usage import (
     RhubApiLabRegionGetUsageResponse200UserQuotaUsage,
 )
@@ -27,16 +29,16 @@ class RhubApiLabRegionGetUsageResponse200:
     Attributes:
         openstack_limits (Union[Unset, RhubApiLabRegionGetUsageResponse200OpenstackLimits]): OpenStack limits RAW value
             from the API.
-        total_quota (Union[Unset, None, RhubApiLabRegionGetUsageResponse200TotalQuota]):
+        total_quota (Union[Any, RhubApiLabRegionGetUsageResponse200TotalQuotaType0, Unset]):
         total_quota_usage (Union[Unset, RhubApiLabRegionGetUsageResponse200TotalQuotaUsage]):
-        user_quota (Union[Unset, None, RhubApiLabRegionGetUsageResponse200UserQuota]):
+        user_quota (Union[Any, RhubApiLabRegionGetUsageResponse200UserQuotaType0, Unset]):
         user_quota_usage (Union[Unset, RhubApiLabRegionGetUsageResponse200UserQuotaUsage]):
     """
 
     openstack_limits: Union[Unset, RhubApiLabRegionGetUsageResponse200OpenstackLimits] = UNSET
-    total_quota: Union[Unset, None, RhubApiLabRegionGetUsageResponse200TotalQuota] = UNSET
+    total_quota: Union[Any, RhubApiLabRegionGetUsageResponse200TotalQuotaType0, Unset] = UNSET
     total_quota_usage: Union[Unset, RhubApiLabRegionGetUsageResponse200TotalQuotaUsage] = UNSET
-    user_quota: Union[Unset, None, RhubApiLabRegionGetUsageResponse200UserQuota] = UNSET
+    user_quota: Union[Any, RhubApiLabRegionGetUsageResponse200UserQuotaType0, Unset] = UNSET
     user_quota_usage: Union[Unset, RhubApiLabRegionGetUsageResponse200UserQuotaUsage] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -45,17 +47,33 @@ class RhubApiLabRegionGetUsageResponse200:
         if not isinstance(self.openstack_limits, Unset):
             openstack_limits = self.openstack_limits.to_dict()
 
-        total_quota: Union[Unset, None, Dict[str, Any]] = UNSET
-        if not isinstance(self.total_quota, Unset):
-            total_quota = self.total_quota.to_dict() if self.total_quota else None
+        total_quota: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.total_quota, Unset):
+            total_quota = UNSET
+
+        elif isinstance(self.total_quota, RhubApiLabRegionGetUsageResponse200TotalQuotaType0):
+            total_quota = UNSET
+            if not isinstance(self.total_quota, Unset):
+                total_quota = self.total_quota.to_dict()
+
+        else:
+            total_quota = self.total_quota
 
         total_quota_usage: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.total_quota_usage, Unset):
             total_quota_usage = self.total_quota_usage.to_dict()
 
-        user_quota: Union[Unset, None, Dict[str, Any]] = UNSET
-        if not isinstance(self.user_quota, Unset):
-            user_quota = self.user_quota.to_dict() if self.user_quota else None
+        user_quota: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.user_quota, Unset):
+            user_quota = UNSET
+
+        elif isinstance(self.user_quota, RhubApiLabRegionGetUsageResponse200UserQuotaType0):
+            user_quota = UNSET
+            if not isinstance(self.user_quota, Unset):
+                user_quota = self.user_quota.to_dict()
+
+        else:
+            user_quota = self.user_quota
 
         user_quota_usage: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.user_quota_usage, Unset):
@@ -87,14 +105,27 @@ class RhubApiLabRegionGetUsageResponse200:
         else:
             openstack_limits = RhubApiLabRegionGetUsageResponse200OpenstackLimits.from_dict(_openstack_limits)
 
-        _total_quota = d.pop("total_quota", UNSET)
-        total_quota: Union[Unset, None, RhubApiLabRegionGetUsageResponse200TotalQuota]
-        if _total_quota is None:
-            total_quota = None
-        elif isinstance(_total_quota, Unset):
-            total_quota = UNSET
-        else:
-            total_quota = RhubApiLabRegionGetUsageResponse200TotalQuota.from_dict(_total_quota)
+        def _parse_total_quota(data: object) -> Union[Any, RhubApiLabRegionGetUsageResponse200TotalQuotaType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _total_quota_type_0 = data
+                total_quota_type_0: Union[Unset, RhubApiLabRegionGetUsageResponse200TotalQuotaType0]
+                if isinstance(_total_quota_type_0, Unset):
+                    total_quota_type_0 = UNSET
+                else:
+                    total_quota_type_0 = RhubApiLabRegionGetUsageResponse200TotalQuotaType0.from_dict(
+                        _total_quota_type_0
+                    )
+
+                return total_quota_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Any, RhubApiLabRegionGetUsageResponse200TotalQuotaType0, Unset], data)
+
+        total_quota = _parse_total_quota(d.pop("total_quota", UNSET))
 
         _total_quota_usage = d.pop("total_quota_usage", UNSET)
         total_quota_usage: Union[Unset, RhubApiLabRegionGetUsageResponse200TotalQuotaUsage]
@@ -103,14 +134,25 @@ class RhubApiLabRegionGetUsageResponse200:
         else:
             total_quota_usage = RhubApiLabRegionGetUsageResponse200TotalQuotaUsage.from_dict(_total_quota_usage)
 
-        _user_quota = d.pop("user_quota", UNSET)
-        user_quota: Union[Unset, None, RhubApiLabRegionGetUsageResponse200UserQuota]
-        if _user_quota is None:
-            user_quota = None
-        elif isinstance(_user_quota, Unset):
-            user_quota = UNSET
-        else:
-            user_quota = RhubApiLabRegionGetUsageResponse200UserQuota.from_dict(_user_quota)
+        def _parse_user_quota(data: object) -> Union[Any, RhubApiLabRegionGetUsageResponse200UserQuotaType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _user_quota_type_0 = data
+                user_quota_type_0: Union[Unset, RhubApiLabRegionGetUsageResponse200UserQuotaType0]
+                if isinstance(_user_quota_type_0, Unset):
+                    user_quota_type_0 = UNSET
+                else:
+                    user_quota_type_0 = RhubApiLabRegionGetUsageResponse200UserQuotaType0.from_dict(_user_quota_type_0)
+
+                return user_quota_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Any, RhubApiLabRegionGetUsageResponse200UserQuotaType0, Unset], data)
+
+        user_quota = _parse_user_quota(d.pop("user_quota", UNSET))
 
         _user_quota_usage = d.pop("user_quota_usage", UNSET)
         user_quota_usage: Union[Unset, RhubApiLabRegionGetUsageResponse200UserQuotaUsage]

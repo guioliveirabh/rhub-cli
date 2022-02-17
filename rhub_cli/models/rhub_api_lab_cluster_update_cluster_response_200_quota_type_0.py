@@ -5,15 +5,12 @@ import attr
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RhubApiLabRegionGetRegionResponse200TotalQuota")
+T = TypeVar("T", bound="RhubApiLabClusterUpdateClusterResponse200QuotaType0")
 
 
 @attr.s(auto_attribs=True)
-class RhubApiLabRegionGetRegionResponse200TotalQuota:
+class RhubApiLabClusterUpdateClusterResponse200QuotaType0:
     """
-    Example:
-        {'num_vcpus': 40000, 'num_volumes': 40000, 'ram_mb': 200000000, 'volumes_gb': 540000}
-
     Attributes:
         num_vcpus (Union[Unset, None, int]):
         num_volumes (Union[Unset, None, int]):
@@ -58,15 +55,15 @@ class RhubApiLabRegionGetRegionResponse200TotalQuota:
 
         volumes_gb = d.pop("volumes_gb", UNSET)
 
-        rhub_api_lab_region_get_region_response_200_total_quota = cls(
+        rhub_api_lab_cluster_update_cluster_response_200_quota_type_0 = cls(
             num_vcpus=num_vcpus,
             num_volumes=num_volumes,
             ram_mb=ram_mb,
             volumes_gb=volumes_gb,
         )
 
-        rhub_api_lab_region_get_region_response_200_total_quota.additional_properties = d
-        return rhub_api_lab_region_get_region_response_200_total_quota
+        rhub_api_lab_cluster_update_cluster_response_200_quota_type_0.additional_properties = d
+        return rhub_api_lab_cluster_update_cluster_response_200_quota_type_0
 
     @property
     def additional_keys(self) -> List[str]:

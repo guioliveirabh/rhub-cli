@@ -1,6 +1,6 @@
 import datetime
 from copy import copy
-from typing import Any, Dict, List, Optional, Type, TypeVar, Union
+from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 from dateutil.parser import isoparse
@@ -11,9 +11,11 @@ from ..models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item import (
 from ..models.rhub_api_lab_cluster_create_cluster_json_body_product_params import (
     RhubApiLabClusterCreateClusterJsonBodyProductParams,
 )
-from ..models.rhub_api_lab_cluster_create_cluster_json_body_quota import RhubApiLabClusterCreateClusterJsonBodyQuota
-from ..models.rhub_api_lab_cluster_create_cluster_json_body_quota_usage import (
-    RhubApiLabClusterCreateClusterJsonBodyQuotaUsage,
+from ..models.rhub_api_lab_cluster_create_cluster_json_body_quota_type_0 import (
+    RhubApiLabClusterCreateClusterJsonBodyQuotaType0,
+)
+from ..models.rhub_api_lab_cluster_create_cluster_json_body_quota_usage_type_0 import (
+    RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0,
 )
 from ..models.rhub_api_lab_cluster_create_cluster_json_body_status import RhubApiLabClusterCreateClusterJsonBodyStatus
 from ..types import UNSET, Unset
@@ -36,12 +38,12 @@ class RhubApiLabClusterCreateClusterJsonBody:
         hosts (Union[Unset, List[RhubApiLabClusterCreateClusterJsonBodyHostsItem]]):
         lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
         product_name (Union[Unset, str]):
-        quota (Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyQuota]):  Example: {'num_vcpus': 40,
+        quota (Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaType0, Unset]):  Example: {'num_vcpus': 40,
             'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
-        quota_usage (Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyQuotaUsage]):  Example: {'num_vcpus': 16,
-            'num_volumes': 2, 'ram_mb': 64000, 'volumes_gb': 256}.
+        quota_usage (Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0, Unset]):  Example: {'num_vcpus':
+            16, 'num_volumes': 2, 'ram_mb': 64000, 'volumes_gb': 256}.
         region_name (Union[Unset, str]):
-        reservation_expiration (Optional[datetime.datetime]): Soft-limit expiration.
+        reservation_expiration (Union[Unset, None, datetime.datetime]): Soft-limit expiration.
         shared (Union[Unset, bool]):
         status (Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyStatus]):
         user_id (Union[Unset, str]):
@@ -52,7 +54,6 @@ class RhubApiLabClusterCreateClusterJsonBody:
     product_id: int
     product_params: RhubApiLabClusterCreateClusterJsonBodyProductParams
     region_id: int
-    reservation_expiration: Optional[datetime.datetime]
     created: Union[Unset, datetime.datetime] = UNSET
     description: Union[Unset, str] = UNSET
     group_id: Union[Unset, None, str] = UNSET
@@ -60,9 +61,10 @@ class RhubApiLabClusterCreateClusterJsonBody:
     hosts: Union[Unset, List[RhubApiLabClusterCreateClusterJsonBodyHostsItem]] = UNSET
     lifespan_expiration: Union[Unset, None, datetime.datetime] = UNSET
     product_name: Union[Unset, str] = UNSET
-    quota: Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyQuota] = UNSET
-    quota_usage: Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyQuotaUsage] = UNSET
+    quota: Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaType0, Unset] = UNSET
+    quota_usage: Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0, Unset] = UNSET
     region_name: Union[Unset, str] = UNSET
+    reservation_expiration: Union[Unset, None, datetime.datetime] = UNSET
     shared: Union[Unset, bool] = UNSET
     status: Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyStatus] = UNSET
     user_id: Union[Unset, str] = UNSET
@@ -95,16 +97,34 @@ class RhubApiLabClusterCreateClusterJsonBody:
             lifespan_expiration = self.lifespan_expiration.isoformat() if self.lifespan_expiration else None
 
         product_name = self.product_name
-        quota: Union[Unset, None, Dict[str, Any]] = UNSET
-        if not isinstance(self.quota, Unset):
-            quota = self.quota.to_dict() if self.quota else None
+        quota: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.quota, Unset):
+            quota = UNSET
 
-        quota_usage: Union[Unset, None, Dict[str, Any]] = UNSET
-        if not isinstance(self.quota_usage, Unset):
-            quota_usage = self.quota_usage.to_dict() if self.quota_usage else None
+        elif isinstance(self.quota, RhubApiLabClusterCreateClusterJsonBodyQuotaType0):
+            quota = UNSET
+            if not isinstance(self.quota, Unset):
+                quota = self.quota.to_dict()
+
+        else:
+            quota = self.quota
+
+        quota_usage: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.quota_usage, Unset):
+            quota_usage = UNSET
+
+        elif isinstance(self.quota_usage, RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0):
+            quota_usage = UNSET
+            if not isinstance(self.quota_usage, Unset):
+                quota_usage = self.quota_usage.to_dict()
+
+        else:
+            quota_usage = self.quota_usage
 
         region_name = self.region_name
-        reservation_expiration = self.reservation_expiration.isoformat() if self.reservation_expiration else None
+        reservation_expiration: Union[Unset, None, str] = UNSET
+        if not isinstance(self.reservation_expiration, Unset):
+            reservation_expiration = self.reservation_expiration.isoformat() if self.reservation_expiration else None
 
         shared = self.shared
         status: Union[Unset, None, str] = UNSET
@@ -122,7 +142,6 @@ class RhubApiLabClusterCreateClusterJsonBody:
                 "product_id": product_id,
                 "product_params": product_params,
                 "region_id": region_id,
-                "reservation_expiration": reservation_expiration,
             }
         )
         if created is not UNSET:
@@ -145,6 +164,8 @@ class RhubApiLabClusterCreateClusterJsonBody:
             field_dict["quota_usage"] = quota_usage
         if region_name is not UNSET:
             field_dict["region_name"] = region_name
+        if reservation_expiration is not UNSET:
+            field_dict["reservation_expiration"] = reservation_expiration
         if shared is not UNSET:
             field_dict["shared"] = shared
         if status is not UNSET:
@@ -198,30 +219,58 @@ class RhubApiLabClusterCreateClusterJsonBody:
 
         product_name = d.pop("product_name", UNSET)
 
-        _quota = d.pop("quota", UNSET)
-        quota: Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyQuota]
-        if _quota is None:
-            quota = None
-        elif isinstance(_quota, Unset):
-            quota = UNSET
-        else:
-            quota = RhubApiLabClusterCreateClusterJsonBodyQuota.from_dict(_quota)
+        def _parse_quota(data: object) -> Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _quota_type_0 = data
+                quota_type_0: Union[Unset, RhubApiLabClusterCreateClusterJsonBodyQuotaType0]
+                if isinstance(_quota_type_0, Unset):
+                    quota_type_0 = UNSET
+                else:
+                    quota_type_0 = RhubApiLabClusterCreateClusterJsonBodyQuotaType0.from_dict(_quota_type_0)
 
-        _quota_usage = d.pop("quota_usage", UNSET)
-        quota_usage: Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyQuotaUsage]
-        if _quota_usage is None:
-            quota_usage = None
-        elif isinstance(_quota_usage, Unset):
-            quota_usage = UNSET
-        else:
-            quota_usage = RhubApiLabClusterCreateClusterJsonBodyQuotaUsage.from_dict(_quota_usage)
+                return quota_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaType0, Unset], data)
+
+        quota = _parse_quota(d.pop("quota", UNSET))
+
+        def _parse_quota_usage(
+            data: object,
+        ) -> Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _quota_usage_type_0 = data
+                quota_usage_type_0: Union[Unset, RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0]
+                if isinstance(_quota_usage_type_0, Unset):
+                    quota_usage_type_0 = UNSET
+                else:
+                    quota_usage_type_0 = RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0.from_dict(
+                        _quota_usage_type_0
+                    )
+
+                return quota_usage_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0, Unset], data)
+
+        quota_usage = _parse_quota_usage(d.pop("quota_usage", UNSET))
 
         region_name = d.pop("region_name", UNSET)
 
-        _reservation_expiration = d.pop("reservation_expiration")
-        reservation_expiration: Optional[datetime.datetime]
+        _reservation_expiration = d.pop("reservation_expiration", UNSET)
+        reservation_expiration: Union[Unset, None, datetime.datetime]
         if _reservation_expiration is None:
             reservation_expiration = None
+        elif isinstance(_reservation_expiration, Unset):
+            reservation_expiration = UNSET
         else:
             reservation_expiration = isoparse(_reservation_expiration)
 

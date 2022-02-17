@@ -7,12 +7,6 @@ from rhub_cli.api.lab.rhub_api_lab_region_list_regions import sync_detailed as r
 from rhub_cli.api.lab.rhub_api_lab_region_update_region import sync_detailed as region_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_lab_region_create_region_json_body import RhubApiLabRegionCreateRegionJsonBody
-from rhub_cli.models.rhub_api_lab_region_create_region_json_body_total_quota import (
-    RhubApiLabRegionCreateRegionJsonBodyTotalQuota,
-)
-from rhub_cli.models.rhub_api_lab_region_create_region_json_body_user_quota import (
-    RhubApiLabRegionCreateRegionJsonBodyUserQuota,
-)
 from rhub_cli.models.rhub_api_lab_region_list_regions_filter import RhubApiLabRegionListRegionsFilter
 from rhub_cli.models.rhub_api_lab_region_list_regions_sort import RhubApiLabRegionListRegionsSort
 from rhub_cli.models.rhub_api_lab_region_update_region_json_body import RhubApiLabRegionUpdateRegionJsonBody
@@ -24,12 +18,6 @@ from rhub_cli.models.rhub_api_lab_region_update_region_json_body_openstack impor
 )
 from rhub_cli.models.rhub_api_lab_region_update_region_json_body_satellite import (
     RhubApiLabRegionUpdateRegionJsonBodySatellite,
-)
-from rhub_cli.models.rhub_api_lab_region_update_region_json_body_total_quota import (
-    RhubApiLabRegionUpdateRegionJsonBodyTotalQuota,
-)
-from rhub_cli.models.rhub_api_lab_region_update_region_json_body_user_quota import (
-    RhubApiLabRegionUpdateRegionJsonBodyUserQuota,
 )
 
 from .products import products
@@ -103,16 +91,10 @@ def get_list(
 @click.option("--owner-group-name", type=str)
 @click.option("--reservation-expiration-max", type=int)
 @click.option("--reservations-enabled", is_flag=True)
+@click.option("--total-quota")
+@click.option("--user-quota")
 @click.option("--users-group", type=str)
 @click.option("--users-group-name", type=str)
-@click.option("--total-quota-num-vcpus", type=int)
-@click.option("--total-quota-num-volumes", type=int)
-@click.option("--total-quota-ram-mb", type=int)
-@click.option("--total-quota-volumes-gb", type=int)
-@click.option("--user-quota-num-vcpus", type=int)
-@click.option("--user-quota-num-volumes", type=int)
-@click.option("--user-quota-ram-mb", type=int)
-@click.option("--user-quota-volumes-gb", type=int)
 @pass_api
 def create(
     api: APIRequest,
@@ -132,32 +114,12 @@ def create(
     owner_group_name,
     reservation_expiration_max,
     reservations_enabled,
+    total_quota,
+    user_quota,
     users_group,
     users_group_name,
-    total_quota_num_vcpus,
-    total_quota_num_volumes,
-    total_quota_ram_mb,
-    total_quota_volumes_gb,
-    user_quota_num_vcpus,
-    user_quota_num_volumes,
-    user_quota_ram_mb,
-    user_quota_volumes_gb,
 ):
     """Create region"""
-
-    user_quota = RhubApiLabRegionCreateRegionJsonBodyUserQuota(
-        num_vcpus=user_quota_num_vcpus,
-        num_volumes=user_quota_num_volumes,
-        ram_mb=user_quota_ram_mb,
-        volumes_gb=user_quota_volumes_gb,
-    )
-
-    total_quota = RhubApiLabRegionCreateRegionJsonBodyTotalQuota(
-        num_vcpus=total_quota_num_vcpus,
-        num_volumes=total_quota_num_volumes,
-        ram_mb=total_quota_ram_mb,
-        volumes_gb=total_quota_volumes_gb,
-    )
 
     json_body = RhubApiLabRegionCreateRegionJsonBody(
         dns_server=dns_server,
@@ -234,7 +196,9 @@ def remove(
 @click.option("--owner-group-name", type=str)
 @click.option("--reservation-expiration-max", type=int)
 @click.option("--reservations-enabled", is_flag=True)
+@click.option("--total-quota")
 @click.option("--tower-id", type=int)
+@click.option("--user-quota")
 @click.option("--users-group", type=str)
 @click.option("--users-group-name", type=str)
 @click.option("--vault-server", type=str)
@@ -251,14 +215,6 @@ def remove(
 @click.option("--satellite-credentials")
 @click.option("--satellite-hostname", type=str)
 @click.option("--satellite-insecure", is_flag=True)
-@click.option("--total-quota-num-vcpus", type=int)
-@click.option("--total-quota-num-volumes", type=int)
-@click.option("--total-quota-ram-mb", type=int)
-@click.option("--total-quota-volumes-gb", type=int)
-@click.option("--user-quota-num-vcpus", type=int)
-@click.option("--user-quota-num-volumes", type=int)
-@click.option("--user-quota-ram-mb", type=int)
-@click.option("--user-quota-volumes-gb", type=int)
 @pass_api
 def update(
     api: APIRequest,
@@ -274,7 +230,9 @@ def update(
     owner_group_name,
     reservation_expiration_max,
     reservations_enabled,
+    total_quota,
     tower_id,
+    user_quota,
     users_group,
     users_group_name,
     vault_server,
@@ -291,34 +249,12 @@ def update(
     satellite_credentials,
     satellite_hostname,
     satellite_insecure,
-    total_quota_num_vcpus,
-    total_quota_num_volumes,
-    total_quota_ram_mb,
-    total_quota_volumes_gb,
-    user_quota_num_vcpus,
-    user_quota_num_volumes,
-    user_quota_ram_mb,
-    user_quota_volumes_gb,
 ):
     """Update region"""
 
     openstack_networks = []
     if openstack_networks_item is not None:
         openstack_networks.append(openstack_networks_item)
-
-    user_quota = RhubApiLabRegionUpdateRegionJsonBodyUserQuota(
-        num_vcpus=user_quota_num_vcpus,
-        num_volumes=user_quota_num_volumes,
-        ram_mb=user_quota_ram_mb,
-        volumes_gb=user_quota_volumes_gb,
-    )
-
-    total_quota = RhubApiLabRegionUpdateRegionJsonBodyTotalQuota(
-        num_vcpus=total_quota_num_vcpus,
-        num_volumes=total_quota_num_volumes,
-        ram_mb=total_quota_ram_mb,
-        volumes_gb=total_quota_volumes_gb,
-    )
 
     satellite = RhubApiLabRegionUpdateRegionJsonBodySatellite(
         credentials=satellite_credentials,
