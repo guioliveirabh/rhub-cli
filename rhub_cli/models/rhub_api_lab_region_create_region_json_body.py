@@ -1,13 +1,13 @@
 from copy import copy
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_lab_region_create_region_json_body_total_quota_type_0 import (
-    RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0,
+from ..models.rhub_api_lab_region_create_region_json_body_total_quota import (
+    RhubApiLabRegionCreateRegionJsonBodyTotalQuota,
 )
-from ..models.rhub_api_lab_region_create_region_json_body_user_quota_type_0 import (
-    RhubApiLabRegionCreateRegionJsonBodyUserQuotaType0,
+from ..models.rhub_api_lab_region_create_region_json_body_user_quota import (
+    RhubApiLabRegionCreateRegionJsonBodyUserQuota,
 )
 from ..types import UNSET, Unset
 
@@ -33,9 +33,9 @@ class RhubApiLabRegionCreateRegionJsonBody:
         owner_group (Union[Unset, str]):  Example: 7670ac07-cb21-448d-af8a-6e3882216be3.
         reservation_expiration_max (Union[Unset, None, int]):
         reservations_enabled (Union[Unset, bool]):
-        total_quota (Union[Any, RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0, Unset]):  Example: {'num_vcpus':
-            40000, 'num_volumes': 40000, 'ram_mb': 200000000, 'volumes_gb': 540000}.
-        user_quota (Union[Any, RhubApiLabRegionCreateRegionJsonBodyUserQuotaType0, Unset]):  Example: {'num_vcpus': 40,
+        total_quota (Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyTotalQuota]):  Example: {'num_vcpus': 40000,
+            'num_volumes': 40000, 'ram_mb': 200000000, 'volumes_gb': 540000}.
+        user_quota (Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyUserQuota]):  Example: {'num_vcpus': 40,
             'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
         users_group (Union[Unset, None, str]):
     """
@@ -55,8 +55,8 @@ class RhubApiLabRegionCreateRegionJsonBody:
     owner_group: Union[Unset, str] = UNSET
     reservation_expiration_max: Union[Unset, None, int] = UNSET
     reservations_enabled: Union[Unset, bool] = UNSET
-    total_quota: Union[Any, RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0, Unset] = UNSET
-    user_quota: Union[Any, RhubApiLabRegionCreateRegionJsonBodyUserQuotaType0, Unset] = UNSET
+    total_quota: Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyTotalQuota] = UNSET
+    user_quota: Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyUserQuota] = UNSET
     users_group: Union[Unset, None, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -76,29 +76,13 @@ class RhubApiLabRegionCreateRegionJsonBody:
         owner_group = self.owner_group
         reservation_expiration_max = self.reservation_expiration_max
         reservations_enabled = self.reservations_enabled
-        total_quota: Union[Any, Dict[str, Any], Unset]
-        if isinstance(self.total_quota, Unset):
-            total_quota = UNSET
+        total_quota: Union[Unset, None, Dict[str, Any]] = UNSET
+        if not isinstance(self.total_quota, Unset):
+            total_quota = self.total_quota.to_dict() if self.total_quota else None
 
-        elif isinstance(self.total_quota, RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0):
-            total_quota = UNSET
-            if not isinstance(self.total_quota, Unset):
-                total_quota = self.total_quota.to_dict()
-
-        else:
-            total_quota = self.total_quota
-
-        user_quota: Union[Any, Dict[str, Any], Unset]
-        if isinstance(self.user_quota, Unset):
-            user_quota = UNSET
-
-        elif isinstance(self.user_quota, RhubApiLabRegionCreateRegionJsonBodyUserQuotaType0):
-            user_quota = UNSET
-            if not isinstance(self.user_quota, Unset):
-                user_quota = self.user_quota.to_dict()
-
-        else:
-            user_quota = self.user_quota
+        user_quota: Union[Unset, None, Dict[str, Any]] = UNSET
+        if not isinstance(self.user_quota, Unset):
+            user_quota = self.user_quota.to_dict() if self.user_quota else None
 
         users_group = self.users_group
 
@@ -173,47 +157,23 @@ class RhubApiLabRegionCreateRegionJsonBody:
 
         reservations_enabled = d.pop("reservations_enabled", UNSET)
 
-        def _parse_total_quota(data: object) -> Union[Any, RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0, Unset]:
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                _total_quota_type_0 = data
-                total_quota_type_0: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0]
-                if isinstance(_total_quota_type_0, Unset):
-                    total_quota_type_0 = UNSET
-                else:
-                    total_quota_type_0 = RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0.from_dict(
-                        _total_quota_type_0
-                    )
+        _total_quota = d.pop("total_quota", UNSET)
+        total_quota: Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyTotalQuota]
+        if _total_quota is None:
+            total_quota = None
+        elif isinstance(_total_quota, Unset):
+            total_quota = UNSET
+        else:
+            total_quota = RhubApiLabRegionCreateRegionJsonBodyTotalQuota.from_dict(_total_quota)
 
-                return total_quota_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[Any, RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0, Unset], data)
-
-        total_quota = _parse_total_quota(d.pop("total_quota", UNSET))
-
-        def _parse_user_quota(data: object) -> Union[Any, RhubApiLabRegionCreateRegionJsonBodyUserQuotaType0, Unset]:
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                _user_quota_type_0 = data
-                user_quota_type_0: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyUserQuotaType0]
-                if isinstance(_user_quota_type_0, Unset):
-                    user_quota_type_0 = UNSET
-                else:
-                    user_quota_type_0 = RhubApiLabRegionCreateRegionJsonBodyUserQuotaType0.from_dict(_user_quota_type_0)
-
-                return user_quota_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[Any, RhubApiLabRegionCreateRegionJsonBodyUserQuotaType0, Unset], data)
-
-        user_quota = _parse_user_quota(d.pop("user_quota", UNSET))
+        _user_quota = d.pop("user_quota", UNSET)
+        user_quota: Union[Unset, None, RhubApiLabRegionCreateRegionJsonBodyUserQuota]
+        if _user_quota is None:
+            user_quota = None
+        elif isinstance(_user_quota, Unset):
+            user_quota = UNSET
+        else:
+            user_quota = RhubApiLabRegionCreateRegionJsonBodyUserQuota.from_dict(_user_quota)
 
         users_group = d.pop("users_group", UNSET)
 

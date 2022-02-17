@@ -15,6 +15,12 @@ from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item im
 from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_product_params import (
     RhubApiLabClusterCreateClusterJsonBodyProductParams,
 )
+from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_quota import (
+    RhubApiLabClusterCreateClusterJsonBodyQuota,
+)
+from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_quota_usage import (
+    RhubApiLabClusterCreateClusterJsonBodyQuotaUsage,
+)
 from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_status import (
     RhubApiLabClusterCreateClusterJsonBodyStatus,
 )
@@ -26,6 +32,12 @@ from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_hosts_item im
 )
 from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_product_params import (
     RhubApiLabClusterUpdateClusterJsonBodyProductParams,
+)
+from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_quota import (
+    RhubApiLabClusterUpdateClusterJsonBodyQuota,
+)
+from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_quota_usage import (
+    RhubApiLabClusterUpdateClusterJsonBodyQuotaUsage,
 )
 from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_status import (
     RhubApiLabClusterUpdateClusterJsonBodyStatus,
@@ -108,8 +120,6 @@ def get_list(
 @click.option("--group-name", type=str)
 @click.option("--lifespan-expiration", type=click.DateTime())
 @click.option("--product-name", type=str)
-@click.option("--quota")
-@click.option("--quota-usage")
 @click.option("--region-name", type=str)
 @click.option("--reservation-expiration", required=True, type=click.DateTime())
 @click.option("--shared", is_flag=True)
@@ -160,6 +170,14 @@ def get_list(
 @click.option("--hosts-item-volumes-gb", type=int)
 @click.option("--hosts-item-cluster-id", type=int)
 @click.option("--hosts-item-id", type=int)
+@click.option("--quota-num-vcpus", type=int)
+@click.option("--quota-num-volumes", type=int)
+@click.option("--quota-ram-mb", type=int)
+@click.option("--quota-volumes-gb", type=int)
+@click.option("--quota-usage-num-vcpus", type=int)
+@click.option("--quota-usage-num-volumes", type=int)
+@click.option("--quota-usage-ram-mb", type=int)
+@click.option("--quota-usage-volumes-gb", type=int)
 @pass_api
 def create(
     api: APIRequest,
@@ -173,8 +191,6 @@ def create(
     group_name,
     lifespan_expiration,
     product_name,
-    quota,
-    quota_usage,
     region_name,
     reservation_expiration,
     shared,
@@ -189,6 +205,14 @@ def create(
     hosts_item_volumes_gb,
     hosts_item_cluster_id,
     hosts_item_id,
+    quota_num_vcpus,
+    quota_num_volumes,
+    quota_ram_mb,
+    quota_volumes_gb,
+    quota_usage_num_vcpus,
+    quota_usage_num_volumes,
+    quota_usage_ram_mb,
+    quota_usage_volumes_gb,
 ):
     """Create cluster"""
 
@@ -197,6 +221,20 @@ def create(
         hosts_item_ipaddr.append(hosts_item_ipaddr_item)
 
     status = RhubApiLabClusterCreateClusterJsonBodyStatus(status)
+
+    quota_usage = RhubApiLabClusterCreateClusterJsonBodyQuotaUsage(
+        num_vcpus=quota_usage_num_vcpus,
+        num_volumes=quota_usage_num_volumes,
+        ram_mb=quota_usage_ram_mb,
+        volumes_gb=quota_usage_volumes_gb,
+    )
+
+    quota = RhubApiLabClusterCreateClusterJsonBodyQuota(
+        num_vcpus=quota_num_vcpus,
+        num_volumes=quota_num_volumes,
+        ram_mb=quota_ram_mb,
+        volumes_gb=quota_volumes_gb,
+    )
 
     hosts_item = RhubApiLabClusterCreateClusterJsonBodyHostsItem(
         fqdn=hosts_item_fqdn,
@@ -292,8 +330,6 @@ def remove(
 @click.option("--product-id", type=int)
 @click.option("--product-name", type=str)
 @click.option("--product-params")
-@click.option("--quota")
-@click.option("--quota-usage")
 @click.option("--region-id", type=int)
 @click.option("--region-name", type=str)
 @click.option("--reservation-expiration", type=click.DateTime())
@@ -345,6 +381,14 @@ def remove(
 @click.option("--hosts-item-volumes-gb", type=int)
 @click.option("--hosts-item-cluster-id", type=int)
 @click.option("--hosts-item-id", type=int)
+@click.option("--quota-num-vcpus", type=int)
+@click.option("--quota-num-volumes", type=int)
+@click.option("--quota-ram-mb", type=int)
+@click.option("--quota-volumes-gb", type=int)
+@click.option("--quota-usage-num-vcpus", type=int)
+@click.option("--quota-usage-num-volumes", type=int)
+@click.option("--quota-usage-ram-mb", type=int)
+@click.option("--quota-usage-volumes-gb", type=int)
 @pass_api
 def update(
     api: APIRequest,
@@ -358,8 +402,6 @@ def update(
     product_id,
     product_name,
     product_params,
-    quota,
-    quota_usage,
     region_id,
     region_name,
     reservation_expiration,
@@ -375,6 +417,14 @@ def update(
     hosts_item_volumes_gb,
     hosts_item_cluster_id,
     hosts_item_id,
+    quota_num_vcpus,
+    quota_num_volumes,
+    quota_ram_mb,
+    quota_volumes_gb,
+    quota_usage_num_vcpus,
+    quota_usage_num_volumes,
+    quota_usage_ram_mb,
+    quota_usage_volumes_gb,
 ):
     """Update cluster"""
 
@@ -383,6 +433,20 @@ def update(
         hosts_item_ipaddr.append(hosts_item_ipaddr_item)
 
     status = RhubApiLabClusterUpdateClusterJsonBodyStatus(status)
+
+    quota_usage = RhubApiLabClusterUpdateClusterJsonBodyQuotaUsage(
+        num_vcpus=quota_usage_num_vcpus,
+        num_volumes=quota_usage_num_volumes,
+        ram_mb=quota_usage_ram_mb,
+        volumes_gb=quota_usage_volumes_gb,
+    )
+
+    quota = RhubApiLabClusterUpdateClusterJsonBodyQuota(
+        num_vcpus=quota_num_vcpus,
+        num_volumes=quota_num_volumes,
+        ram_mb=quota_ram_mb,
+        volumes_gb=quota_volumes_gb,
+    )
 
     if product_params is None:
         product_params = UNSET

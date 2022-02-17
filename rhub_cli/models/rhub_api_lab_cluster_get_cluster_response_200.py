@@ -1,6 +1,6 @@
 import datetime
 from copy import copy
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 from dateutil.parser import isoparse
@@ -11,11 +11,9 @@ from ..models.rhub_api_lab_cluster_get_cluster_response_200_hosts_item import (
 from ..models.rhub_api_lab_cluster_get_cluster_response_200_product_params import (
     RhubApiLabClusterGetClusterResponse200ProductParams,
 )
-from ..models.rhub_api_lab_cluster_get_cluster_response_200_quota_type_0 import (
-    RhubApiLabClusterGetClusterResponse200QuotaType0,
-)
-from ..models.rhub_api_lab_cluster_get_cluster_response_200_quota_usage_type_0 import (
-    RhubApiLabClusterGetClusterResponse200QuotaUsageType0,
+from ..models.rhub_api_lab_cluster_get_cluster_response_200_quota import RhubApiLabClusterGetClusterResponse200Quota
+from ..models.rhub_api_lab_cluster_get_cluster_response_200_quota_usage import (
+    RhubApiLabClusterGetClusterResponse200QuotaUsage,
 )
 from ..models.rhub_api_lab_cluster_get_cluster_response_200_status import RhubApiLabClusterGetClusterResponse200Status
 from ..types import UNSET, Unset
@@ -37,10 +35,10 @@ class RhubApiLabClusterGetClusterResponse200:
         product_id (Union[Unset, int]):
         product_name (Union[Unset, str]):
         product_params (Union[Unset, RhubApiLabClusterGetClusterResponse200ProductParams]):
-        quota (Union[Any, RhubApiLabClusterGetClusterResponse200QuotaType0, Unset]):  Example: {'num_vcpus': 40,
+        quota (Union[Unset, None, RhubApiLabClusterGetClusterResponse200Quota]):  Example: {'num_vcpus': 40,
             'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
-        quota_usage (Union[Any, RhubApiLabClusterGetClusterResponse200QuotaUsageType0, Unset]):  Example: {'num_vcpus':
-            16, 'num_volumes': 2, 'ram_mb': 64000, 'volumes_gb': 256}.
+        quota_usage (Union[Unset, None, RhubApiLabClusterGetClusterResponse200QuotaUsage]):  Example: {'num_vcpus': 16,
+            'num_volumes': 2, 'ram_mb': 64000, 'volumes_gb': 256}.
         region_id (Union[Unset, int]):
         region_name (Union[Unset, str]):
         reservation_expiration (Union[Unset, None, datetime.datetime]): Soft-limit expiration.
@@ -61,8 +59,8 @@ class RhubApiLabClusterGetClusterResponse200:
     product_id: Union[Unset, int] = UNSET
     product_name: Union[Unset, str] = UNSET
     product_params: Union[Unset, RhubApiLabClusterGetClusterResponse200ProductParams] = UNSET
-    quota: Union[Any, RhubApiLabClusterGetClusterResponse200QuotaType0, Unset] = UNSET
-    quota_usage: Union[Any, RhubApiLabClusterGetClusterResponse200QuotaUsageType0, Unset] = UNSET
+    quota: Union[Unset, None, RhubApiLabClusterGetClusterResponse200Quota] = UNSET
+    quota_usage: Union[Unset, None, RhubApiLabClusterGetClusterResponse200QuotaUsage] = UNSET
     region_id: Union[Unset, int] = UNSET
     region_name: Union[Unset, str] = UNSET
     reservation_expiration: Union[Unset, None, datetime.datetime] = UNSET
@@ -100,29 +98,13 @@ class RhubApiLabClusterGetClusterResponse200:
         if not isinstance(self.product_params, Unset):
             product_params = self.product_params.to_dict()
 
-        quota: Union[Any, Dict[str, Any], Unset]
-        if isinstance(self.quota, Unset):
-            quota = UNSET
+        quota: Union[Unset, None, Dict[str, Any]] = UNSET
+        if not isinstance(self.quota, Unset):
+            quota = self.quota.to_dict() if self.quota else None
 
-        elif isinstance(self.quota, RhubApiLabClusterGetClusterResponse200QuotaType0):
-            quota = UNSET
-            if not isinstance(self.quota, Unset):
-                quota = self.quota.to_dict()
-
-        else:
-            quota = self.quota
-
-        quota_usage: Union[Any, Dict[str, Any], Unset]
-        if isinstance(self.quota_usage, Unset):
-            quota_usage = UNSET
-
-        elif isinstance(self.quota_usage, RhubApiLabClusterGetClusterResponse200QuotaUsageType0):
-            quota_usage = UNSET
-            if not isinstance(self.quota_usage, Unset):
-                quota_usage = self.quota_usage.to_dict()
-
-        else:
-            quota_usage = self.quota_usage
+        quota_usage: Union[Unset, None, Dict[str, Any]] = UNSET
+        if not isinstance(self.quota_usage, Unset):
+            quota_usage = self.quota_usage.to_dict() if self.quota_usage else None
 
         region_id = self.region_id
         region_name = self.region_name
@@ -230,49 +212,23 @@ class RhubApiLabClusterGetClusterResponse200:
         else:
             product_params = RhubApiLabClusterGetClusterResponse200ProductParams.from_dict(_product_params)
 
-        def _parse_quota(data: object) -> Union[Any, RhubApiLabClusterGetClusterResponse200QuotaType0, Unset]:
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                _quota_type_0 = data
-                quota_type_0: Union[Unset, RhubApiLabClusterGetClusterResponse200QuotaType0]
-                if isinstance(_quota_type_0, Unset):
-                    quota_type_0 = UNSET
-                else:
-                    quota_type_0 = RhubApiLabClusterGetClusterResponse200QuotaType0.from_dict(_quota_type_0)
+        _quota = d.pop("quota", UNSET)
+        quota: Union[Unset, None, RhubApiLabClusterGetClusterResponse200Quota]
+        if _quota is None:
+            quota = None
+        elif isinstance(_quota, Unset):
+            quota = UNSET
+        else:
+            quota = RhubApiLabClusterGetClusterResponse200Quota.from_dict(_quota)
 
-                return quota_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[Any, RhubApiLabClusterGetClusterResponse200QuotaType0, Unset], data)
-
-        quota = _parse_quota(d.pop("quota", UNSET))
-
-        def _parse_quota_usage(
-            data: object,
-        ) -> Union[Any, RhubApiLabClusterGetClusterResponse200QuotaUsageType0, Unset]:
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                _quota_usage_type_0 = data
-                quota_usage_type_0: Union[Unset, RhubApiLabClusterGetClusterResponse200QuotaUsageType0]
-                if isinstance(_quota_usage_type_0, Unset):
-                    quota_usage_type_0 = UNSET
-                else:
-                    quota_usage_type_0 = RhubApiLabClusterGetClusterResponse200QuotaUsageType0.from_dict(
-                        _quota_usage_type_0
-                    )
-
-                return quota_usage_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[Any, RhubApiLabClusterGetClusterResponse200QuotaUsageType0, Unset], data)
-
-        quota_usage = _parse_quota_usage(d.pop("quota_usage", UNSET))
+        _quota_usage = d.pop("quota_usage", UNSET)
+        quota_usage: Union[Unset, None, RhubApiLabClusterGetClusterResponse200QuotaUsage]
+        if _quota_usage is None:
+            quota_usage = None
+        elif isinstance(_quota_usage, Unset):
+            quota_usage = UNSET
+        else:
+            quota_usage = RhubApiLabClusterGetClusterResponse200QuotaUsage.from_dict(_quota_usage)
 
         region_id = d.pop("region_id", UNSET)
 

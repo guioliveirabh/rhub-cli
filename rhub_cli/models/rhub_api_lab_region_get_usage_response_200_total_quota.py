@@ -5,11 +5,11 @@ import attr
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0")
+T = TypeVar("T", bound="RhubApiLabRegionGetUsageResponse200TotalQuota")
 
 
 @attr.s(auto_attribs=True)
-class RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0:
+class RhubApiLabRegionGetUsageResponse200TotalQuota:
     """
     Attributes:
         num_vcpus (Union[Unset, None, int]):
@@ -55,15 +55,15 @@ class RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0:
 
         volumes_gb = d.pop("volumes_gb", UNSET)
 
-        rhub_api_lab_region_create_region_json_body_total_quota_type_0 = cls(
+        rhub_api_lab_region_get_usage_response_200_total_quota = cls(
             num_vcpus=num_vcpus,
             num_volumes=num_volumes,
             ram_mb=ram_mb,
             volumes_gb=volumes_gb,
         )
 
-        rhub_api_lab_region_create_region_json_body_total_quota_type_0.additional_properties = d
-        return rhub_api_lab_region_create_region_json_body_total_quota_type_0
+        rhub_api_lab_region_get_usage_response_200_total_quota.additional_properties = d
+        return rhub_api_lab_region_get_usage_response_200_total_quota
 
     @property
     def additional_keys(self) -> List[str]:

@@ -5,12 +5,15 @@ import attr
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RhubApiLabRegionListRegionsResponse200DataItemTotalQuotaType0")
+T = TypeVar("T", bound="RhubApiLabClusterUpdateClusterJsonBodyQuota")
 
 
 @attr.s(auto_attribs=True)
-class RhubApiLabRegionListRegionsResponse200DataItemTotalQuotaType0:
+class RhubApiLabClusterUpdateClusterJsonBodyQuota:
     """
+    Example:
+        {'num_vcpus': 40, 'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}
+
     Attributes:
         num_vcpus (Union[Unset, None, int]):
         num_volumes (Union[Unset, None, int]):
@@ -55,15 +58,15 @@ class RhubApiLabRegionListRegionsResponse200DataItemTotalQuotaType0:
 
         volumes_gb = d.pop("volumes_gb", UNSET)
 
-        rhub_api_lab_region_list_regions_response_200_data_item_total_quota_type_0 = cls(
+        rhub_api_lab_cluster_update_cluster_json_body_quota = cls(
             num_vcpus=num_vcpus,
             num_volumes=num_volumes,
             ram_mb=ram_mb,
             volumes_gb=volumes_gb,
         )
 
-        rhub_api_lab_region_list_regions_response_200_data_item_total_quota_type_0.additional_properties = d
-        return rhub_api_lab_region_list_regions_response_200_data_item_total_quota_type_0
+        rhub_api_lab_cluster_update_cluster_json_body_quota.additional_properties = d
+        return rhub_api_lab_cluster_update_cluster_json_body_quota
 
     @property
     def additional_keys(self) -> List[str]:

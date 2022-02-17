@@ -5,12 +5,15 @@ import attr
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="RhubApiLabRegionListRegionsResponse200DataItemUserQuotaType0")
+T = TypeVar("T", bound="RhubApiLabClusterCreateClusterJsonBodyQuotaUsage")
 
 
 @attr.s(auto_attribs=True)
-class RhubApiLabRegionListRegionsResponse200DataItemUserQuotaType0:
+class RhubApiLabClusterCreateClusterJsonBodyQuotaUsage:
     """
+    Example:
+        {'num_vcpus': 16, 'num_volumes': 2, 'ram_mb': 64000, 'volumes_gb': 256}
+
     Attributes:
         num_vcpus (Union[Unset, None, int]):
         num_volumes (Union[Unset, None, int]):
@@ -55,15 +58,15 @@ class RhubApiLabRegionListRegionsResponse200DataItemUserQuotaType0:
 
         volumes_gb = d.pop("volumes_gb", UNSET)
 
-        rhub_api_lab_region_list_regions_response_200_data_item_user_quota_type_0 = cls(
+        rhub_api_lab_cluster_create_cluster_json_body_quota_usage = cls(
             num_vcpus=num_vcpus,
             num_volumes=num_volumes,
             ram_mb=ram_mb,
             volumes_gb=volumes_gb,
         )
 
-        rhub_api_lab_region_list_regions_response_200_data_item_user_quota_type_0.additional_properties = d
-        return rhub_api_lab_region_list_regions_response_200_data_item_user_quota_type_0
+        rhub_api_lab_cluster_create_cluster_json_body_quota_usage.additional_properties = d
+        return rhub_api_lab_cluster_create_cluster_json_body_quota_usage
 
     @property
     def additional_keys(self) -> List[str]:

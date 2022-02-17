@@ -1,5 +1,5 @@
 from copy import copy
-from typing import Any, Dict, List, Type, TypeVar, Union, cast
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
@@ -8,11 +8,11 @@ from ..models.rhub_api_lab_region_update_region_json_body_dns_server import (
 )
 from ..models.rhub_api_lab_region_update_region_json_body_openstack import RhubApiLabRegionUpdateRegionJsonBodyOpenstack
 from ..models.rhub_api_lab_region_update_region_json_body_satellite import RhubApiLabRegionUpdateRegionJsonBodySatellite
-from ..models.rhub_api_lab_region_update_region_json_body_total_quota_type_0 import (
-    RhubApiLabRegionUpdateRegionJsonBodyTotalQuotaType0,
+from ..models.rhub_api_lab_region_update_region_json_body_total_quota import (
+    RhubApiLabRegionUpdateRegionJsonBodyTotalQuota,
 )
-from ..models.rhub_api_lab_region_update_region_json_body_user_quota_type_0 import (
-    RhubApiLabRegionUpdateRegionJsonBodyUserQuotaType0,
+from ..models.rhub_api_lab_region_update_region_json_body_user_quota import (
+    RhubApiLabRegionUpdateRegionJsonBodyUserQuota,
 )
 from ..types import UNSET, Unset
 
@@ -40,10 +40,10 @@ class RhubApiLabRegionUpdateRegionJsonBody:
         reservations_enabled (Union[Unset, bool]):
         satellite (Union[Unset, RhubApiLabRegionUpdateRegionJsonBodySatellite]):  Example: {'credentials':
             'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com'}.
-        total_quota (Union[Any, RhubApiLabRegionUpdateRegionJsonBodyTotalQuotaType0, Unset]):  Example: {'num_vcpus':
-            40000, 'num_volumes': 40000, 'ram_mb': 200000000, 'volumes_gb': 540000}.
+        total_quota (Union[Unset, None, RhubApiLabRegionUpdateRegionJsonBodyTotalQuota]):  Example: {'num_vcpus': 40000,
+            'num_volumes': 40000, 'ram_mb': 200000000, 'volumes_gb': 540000}.
         tower_id (Union[Unset, int]):
-        user_quota (Union[Any, RhubApiLabRegionUpdateRegionJsonBodyUserQuotaType0, Unset]):  Example: {'num_vcpus': 40,
+        user_quota (Union[Unset, None, RhubApiLabRegionUpdateRegionJsonBodyUserQuota]):  Example: {'num_vcpus': 40,
             'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
         users_group (Union[Unset, None, str]):
         vault_server (Union[Unset, str]):  Example: https://vault.example.com.
@@ -62,9 +62,9 @@ class RhubApiLabRegionUpdateRegionJsonBody:
     reservation_expiration_max: Union[Unset, None, int] = UNSET
     reservations_enabled: Union[Unset, bool] = UNSET
     satellite: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodySatellite] = UNSET
-    total_quota: Union[Any, RhubApiLabRegionUpdateRegionJsonBodyTotalQuotaType0, Unset] = UNSET
+    total_quota: Union[Unset, None, RhubApiLabRegionUpdateRegionJsonBodyTotalQuota] = UNSET
     tower_id: Union[Unset, int] = UNSET
-    user_quota: Union[Any, RhubApiLabRegionUpdateRegionJsonBodyUserQuotaType0, Unset] = UNSET
+    user_quota: Union[Unset, None, RhubApiLabRegionUpdateRegionJsonBodyUserQuota] = UNSET
     users_group: Union[Unset, None, str] = UNSET
     vault_server: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
@@ -92,30 +92,14 @@ class RhubApiLabRegionUpdateRegionJsonBody:
         if not isinstance(self.satellite, Unset):
             satellite = self.satellite.to_dict()
 
-        total_quota: Union[Any, Dict[str, Any], Unset]
-        if isinstance(self.total_quota, Unset):
-            total_quota = UNSET
-
-        elif isinstance(self.total_quota, RhubApiLabRegionUpdateRegionJsonBodyTotalQuotaType0):
-            total_quota = UNSET
-            if not isinstance(self.total_quota, Unset):
-                total_quota = self.total_quota.to_dict()
-
-        else:
-            total_quota = self.total_quota
+        total_quota: Union[Unset, None, Dict[str, Any]] = UNSET
+        if not isinstance(self.total_quota, Unset):
+            total_quota = self.total_quota.to_dict() if self.total_quota else None
 
         tower_id = self.tower_id
-        user_quota: Union[Any, Dict[str, Any], Unset]
-        if isinstance(self.user_quota, Unset):
-            user_quota = UNSET
-
-        elif isinstance(self.user_quota, RhubApiLabRegionUpdateRegionJsonBodyUserQuotaType0):
-            user_quota = UNSET
-            if not isinstance(self.user_quota, Unset):
-                user_quota = self.user_quota.to_dict()
-
-        else:
-            user_quota = self.user_quota
+        user_quota: Union[Unset, None, Dict[str, Any]] = UNSET
+        if not isinstance(self.user_quota, Unset):
+            user_quota = self.user_quota.to_dict() if self.user_quota else None
 
         users_group = self.users_group
         vault_server = self.vault_server
@@ -206,49 +190,25 @@ class RhubApiLabRegionUpdateRegionJsonBody:
         else:
             satellite = RhubApiLabRegionUpdateRegionJsonBodySatellite.from_dict(_satellite)
 
-        def _parse_total_quota(data: object) -> Union[Any, RhubApiLabRegionUpdateRegionJsonBodyTotalQuotaType0, Unset]:
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                _total_quota_type_0 = data
-                total_quota_type_0: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodyTotalQuotaType0]
-                if isinstance(_total_quota_type_0, Unset):
-                    total_quota_type_0 = UNSET
-                else:
-                    total_quota_type_0 = RhubApiLabRegionUpdateRegionJsonBodyTotalQuotaType0.from_dict(
-                        _total_quota_type_0
-                    )
-
-                return total_quota_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[Any, RhubApiLabRegionUpdateRegionJsonBodyTotalQuotaType0, Unset], data)
-
-        total_quota = _parse_total_quota(d.pop("total_quota", UNSET))
+        _total_quota = d.pop("total_quota", UNSET)
+        total_quota: Union[Unset, None, RhubApiLabRegionUpdateRegionJsonBodyTotalQuota]
+        if _total_quota is None:
+            total_quota = None
+        elif isinstance(_total_quota, Unset):
+            total_quota = UNSET
+        else:
+            total_quota = RhubApiLabRegionUpdateRegionJsonBodyTotalQuota.from_dict(_total_quota)
 
         tower_id = d.pop("tower_id", UNSET)
 
-        def _parse_user_quota(data: object) -> Union[Any, RhubApiLabRegionUpdateRegionJsonBodyUserQuotaType0, Unset]:
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                _user_quota_type_0 = data
-                user_quota_type_0: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodyUserQuotaType0]
-                if isinstance(_user_quota_type_0, Unset):
-                    user_quota_type_0 = UNSET
-                else:
-                    user_quota_type_0 = RhubApiLabRegionUpdateRegionJsonBodyUserQuotaType0.from_dict(_user_quota_type_0)
-
-                return user_quota_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[Any, RhubApiLabRegionUpdateRegionJsonBodyUserQuotaType0, Unset], data)
-
-        user_quota = _parse_user_quota(d.pop("user_quota", UNSET))
+        _user_quota = d.pop("user_quota", UNSET)
+        user_quota: Union[Unset, None, RhubApiLabRegionUpdateRegionJsonBodyUserQuota]
+        if _user_quota is None:
+            user_quota = None
+        elif isinstance(_user_quota, Unset):
+            user_quota = UNSET
+        else:
+            user_quota = RhubApiLabRegionUpdateRegionJsonBodyUserQuota.from_dict(_user_quota)
 
         users_group = d.pop("users_group", UNSET)
 
