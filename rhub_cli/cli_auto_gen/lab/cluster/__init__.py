@@ -58,11 +58,15 @@ def cluster():
 )
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
-@click.option("--filter-group-id", type=str)
-@click.option("--filter-name", type=str)
-@click.option("--filter-region-id", type=int)
-@click.option("--filter-shared", is_flag=True)
-@click.option("--filter-user-id", type=str)
+@click.option("--filter-group-id", type=str, help="ID of the group or ``null``.")
+@click.option(
+    "--filter-name",
+    type=str,
+    help="Name of a cluster. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
+@click.option("--filter-region-id", type=int, help="ID of the region.")
+@click.option("--filter-shared", is_flag=True, help="Filter shared clusters")
+@click.option("--filter-user-id", type=str, help="ID of the user.")
 @pass_api
 def get_list(
     api: APIRequest,
@@ -106,12 +110,12 @@ def get_list(
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--lifespan-expiration", type=click.DateTime())
+@click.option("--lifespan-expiration", type=click.DateTime(), help="Hard-limit expiration.")
 @click.option("--product-name", type=str)
 @click.option("--quota")
 @click.option("--quota-usage")
 @click.option("--region-name", type=str)
-@click.option("--reservation-expiration", type=click.DateTime())
+@click.option("--reservation-expiration", type=click.DateTime(), help="Soft-limit expiration.")
 @click.option("--shared", is_flag=True)
 @click.option(
     "--status",
@@ -287,7 +291,7 @@ def remove(
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--lifespan-expiration", type=click.DateTime())
+@click.option("--lifespan-expiration", type=click.DateTime(), help="Hard-limit expiration.")
 @click.option("--name", type=str)
 @click.option("--product-id", type=int)
 @click.option("--product-name", type=str)
@@ -296,7 +300,7 @@ def remove(
 @click.option("--quota-usage")
 @click.option("--region-id", type=int)
 @click.option("--region-name", type=str)
-@click.option("--reservation-expiration", type=click.DateTime())
+@click.option("--reservation-expiration", type=click.DateTime(), help="Soft-limit expiration.")
 @click.option("--shared", is_flag=True)
 @click.option(
     "--status",

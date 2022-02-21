@@ -15,8 +15,16 @@ def regions():
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
 @click.option("--filter-enabled", is_flag=True)
-@click.option("--filter-location", type=str)
-@click.option("--filter-name", type=str)
+@click.option(
+    "--filter-location",
+    type=str,
+    help="Location of a region. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
+@click.option(
+    "--filter-name",
+    type=str,
+    help="Name of a region. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
 @click.option("--filter-reservations-enabled", is_flag=True)
 @pass_api
 def get_list(

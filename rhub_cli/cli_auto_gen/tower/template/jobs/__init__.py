@@ -14,7 +14,7 @@ def jobs():
 @click.argument("template_id", type=int)
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
-@click.option("--filter-launched-by", type=str)
+@click.option("--filter-launched-by", type=str, help="ID of the user who launched template")
 @pass_api
 def get_list(
     api: APIRequest,

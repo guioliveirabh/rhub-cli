@@ -39,8 +39,16 @@ def region():
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
 @click.option("--filter-enabled", is_flag=True)
-@click.option("--filter-location", type=str)
-@click.option("--filter-name", type=str)
+@click.option(
+    "--filter-location",
+    type=str,
+    help="Location of a region. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
+@click.option(
+    "--filter-name",
+    type=str,
+    help="Name of a region. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
 @click.option("--filter-reservations-enabled", is_flag=True)
 @pass_api
 def get_list(
@@ -86,7 +94,7 @@ def get_list(
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--lifespan-length", type=int)
-@click.option("--location", type=str)
+@click.option("--location", type=str, help="Geographical location of region.")
 @click.option("--owner-group", type=str)
 @click.option("--owner-group-name", type=str)
 @click.option("--reservation-expiration-max", type=int)
@@ -190,7 +198,7 @@ def remove(
 @click.option("--download-server", type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--lifespan-length", type=int)
-@click.option("--location", type=str)
+@click.option("--location", type=str, help="Geographical location of region.")
 @click.option("--name", type=str)
 @click.option("--owner-group", type=str)
 @click.option("--owner-group-name", type=str)
@@ -208,7 +216,7 @@ def remove(
 @click.option("--openstack-credentials")
 @click.option("--openstack-domain-id", type=str)
 @click.option("--openstack-domain-name", type=str)
-@click.option("--openstack-keyname", type=str)
+@click.option("--openstack-keyname", type=str, help="SSH key name")
 @click.option("--openstack-networks-item", type=str)
 @click.option("--openstack-project", type=str)
 @click.option("--openstack-url", type=str)

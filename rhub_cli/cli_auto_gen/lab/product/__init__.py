@@ -36,7 +36,11 @@ def product():
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
 @click.option("--filter-enabled", is_flag=True)
-@click.option("--filter-name", type=str)
+@click.option(
+    "--filter-name",
+    type=str,
+    help="Name of a product. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
 @pass_api
 def get_list(
     api: APIRequest,

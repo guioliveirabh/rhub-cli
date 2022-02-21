@@ -37,7 +37,11 @@ def cron():
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
 @click.option("--filter-enabled", is_flag=True)
-@click.option("--filter-name", type=str)
+@click.option(
+    "--filter-name",
+    type=str,
+    help="Name of a job. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
 @pass_api
 def get_list(
     api: APIRequest,
@@ -69,7 +73,7 @@ def get_list(
 @cron.command()
 @click.option("--job-name", required=True, type=click.Choice(["example", "tower_launch", "delete_expired_clusters"]))
 @click.option("--name", required=True, type=str)
-@click.option("--time-expr", required=True, type=str)
+@click.option("--time-expr", required=True, type=str, help="cron time expression")
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--job-params")
@@ -153,7 +157,7 @@ def remove(
 @click.option("--job-params")
 @click.option("--last-run", type=click.DateTime())
 @click.option("--name", type=str)
-@click.option("--time-expr", type=str)
+@click.option("--time-expr", type=str, help="cron time expression")
 @pass_api
 def update(
     api: APIRequest,

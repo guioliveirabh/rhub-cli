@@ -22,7 +22,11 @@ def server():
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
 @click.option("--filter-enabled", is_flag=True)
-@click.option("--filter-name", type=str)
+@click.option(
+    "--filter-name",
+    type=str,
+    help="Name of a server. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
 @pass_api
 def get_list(
     api: APIRequest,
@@ -52,12 +56,12 @@ def get_list(
 
 
 @server.command()
-@click.option("--credentials", required=True, type=str)
+@click.option("--credentials", required=True, type=str, help="Tower credentials path (Vault mount/path)")
 @click.option("--name", required=True, type=str)
 @click.option("--url", required=True, type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--verify-ssl", is_flag=True)
+@click.option("--verify-ssl", is_flag=True, help="Option to disable SSL certificate verification.")
 @pass_api
 def create(
     api: APIRequest,
@@ -120,12 +124,12 @@ def remove(
 
 @server.command()
 @click.argument("server_id", type=int)
-@click.option("--credentials", type=str)
+@click.option("--credentials", type=str, help="Tower credentials path (Vault mount/path)")
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--name", type=str)
 @click.option("--url", type=str)
-@click.option("--verify-ssl", is_flag=True)
+@click.option("--verify-ssl", is_flag=True, help="Option to disable SSL certificate verification.")
 @pass_api
 def update(
     api: APIRequest,

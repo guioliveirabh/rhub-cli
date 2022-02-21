@@ -24,8 +24,12 @@ def template():
 @click.option("--sort", type=click.Choice(["name", "-name"]))
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
-@click.option("--filter-name", type=str)
-@click.option("--filter-server-id", type=int)
+@click.option(
+    "--filter-name",
+    type=str,
+    help="Name of a template. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
+@click.option("--filter-server-id", type=int, help="ID of the server")
 @pass_api
 def get_list(
     api: APIRequest,
@@ -58,7 +62,7 @@ def get_list(
 @click.option("--name", required=True, type=str)
 @click.option("--server-id", required=True, type=int)
 @click.option("--tower-template-id", required=True, type=int)
-@click.option("--tower-template-is-workflow", required=True, is_flag=True)
+@click.option("--tower-template-is-workflow", required=True, is_flag=True, help="Is template workflow?")
 @click.option("--description", type=str)
 @pass_api
 def create(
@@ -124,7 +128,7 @@ def remove(
 @click.option("--name", type=str)
 @click.option("--server-id", type=int)
 @click.option("--tower-template-id", type=int)
-@click.option("--tower-template-is-workflow", is_flag=True)
+@click.option("--tower-template-is-workflow", is_flag=True, help="Is template workflow?")
 @pass_api
 def update(
     api: APIRequest,

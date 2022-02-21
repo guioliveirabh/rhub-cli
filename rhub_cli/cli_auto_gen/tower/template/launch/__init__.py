@@ -18,7 +18,7 @@ def launch():
 
 @launch.command()
 @click.argument("template_id", type=int)
-@click.option("--extra-vars", required=True)
+@click.option("--extra-vars", required=True, help="Extra variable to pass to the template")
 @pass_api
 def create(
     api: APIRequest,

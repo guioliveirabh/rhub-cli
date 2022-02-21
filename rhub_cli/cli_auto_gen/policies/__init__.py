@@ -36,8 +36,16 @@ def policies():
 @click.option("--sort", type=click.Choice(["name", "-name", "department", "-department"]))
 @click.option("--page", type=int)
 @click.option("--limit", type=int)
-@click.option("--filter-department", type=str)
-@click.option("--filter-name", type=str)
+@click.option(
+    "--filter-department",
+    type=str,
+    help="Department of a policy. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
+@click.option(
+    "--filter-name",
+    type=str,
+    help="Name of a policy. Wildcard ``%`` can be used to match zero, one, or multiple characters",
+)
 @pass_api
 def get_list(
     api: APIRequest,
@@ -67,8 +75,8 @@ def get_list(
 
 
 @policies.command()
-@click.option("--department", required=True, type=str)
-@click.option("--name", required=True, type=str)
+@click.option("--department", required=True, type=str, help="Department Name")
+@click.option("--name", required=True, type=str, help="Name")
 @click.option("--constraint-cost", type=float)
 @click.option("--constraint-density", type=str)
 @click.option("--constraint-limit")
@@ -163,8 +171,8 @@ def remove(
 
 @policies.command()
 @click.argument("policy_id", type=int)
-@click.option("--department", type=str)
-@click.option("--name", type=str)
+@click.option("--department", type=str, help="Department Name")
+@click.option("--name", type=str, help="Name")
 @click.option("--constraint-cost", type=float)
 @click.option("--constraint-density", type=str)
 @click.option("--constraint-limit")
