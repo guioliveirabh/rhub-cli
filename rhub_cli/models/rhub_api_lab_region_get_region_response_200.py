@@ -40,7 +40,7 @@ class RhubApiLabRegionGetRegionResponse200:
         reservation_expiration_max (Union[Unset, None, int]):
         reservations_enabled (Union[Unset, bool]):
         satellite (Union[Unset, RhubApiLabRegionGetRegionResponse200Satellite]):  Example: {'credentials':
-            'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com'}.
+            'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com', 'insecure': False}.
         total_quota (Union[Any, RhubApiLabRegionGetRegionResponse200TotalQuotaType0, Unset]):  Example: {'num_vcpus':
             40000, 'num_volumes': 40000, 'ram_mb': 200000000, 'volumes_gb': 540000}.
         tower_id (Union[Unset, int]):

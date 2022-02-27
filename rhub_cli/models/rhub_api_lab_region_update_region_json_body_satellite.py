@@ -15,7 +15,7 @@ T = TypeVar("T", bound="RhubApiLabRegionUpdateRegionJsonBodySatellite")
 class RhubApiLabRegionUpdateRegionJsonBodySatellite:
     """
     Example:
-        {'credentials': 'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com'}
+        {'credentials': 'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com', 'insecure': False}
 
     Attributes:
         credentials (Union[RhubApiLabRegionUpdateRegionJsonBodySatelliteCredentialsType0, Unset, str]):

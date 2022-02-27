@@ -81,7 +81,8 @@ def get_list(
 ):
     """Get cluster list"""
 
-    sort = RhubApiLabClusterListClustersSort(sort)
+    if sort is not None:
+        sort = RhubApiLabClusterListClustersSort(sort)
 
     filter_ = RhubApiLabClusterListClustersFilter(
         group_id=filter_group_id,
@@ -200,7 +201,8 @@ def create(
     if hosts_item_ipaddr_item is not None:
         hosts_item_ipaddr.append(hosts_item_ipaddr_item)
 
-    status = RhubApiLabClusterCreateClusterJsonBodyStatus(status)
+    if status is not None:
+        status = RhubApiLabClusterCreateClusterJsonBodyStatus(status)
 
     hosts_item = RhubApiLabClusterCreateClusterJsonBodyHostsItem(
         fqdn=hosts_item_fqdn,
@@ -386,7 +388,8 @@ def update(
     if hosts_item_ipaddr_item is not None:
         hosts_item_ipaddr.append(hosts_item_ipaddr_item)
 
-    status = RhubApiLabClusterUpdateClusterJsonBodyStatus(status)
+    if status is not None:
+        status = RhubApiLabClusterUpdateClusterJsonBodyStatus(status)
 
     if product_params is None:
         product_params = UNSET

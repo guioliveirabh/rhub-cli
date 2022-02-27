@@ -53,7 +53,8 @@ def get_list(
 ):
     """Get CronJob list"""
 
-    sort = RhubApiSchedulerCronListJobsSort(sort)
+    if sort is not None:
+        sort = RhubApiSchedulerCronListJobsSort(sort)
 
     filter_ = RhubApiSchedulerCronListJobsFilter(
         enabled=filter_enabled,
@@ -98,7 +99,8 @@ def create(
         _tmp.additional_properties = json.loads(job_params)  # TODO: check if dict
         job_params = _tmp
 
-    job_name = RhubApiSchedulerCronCreateJobJsonBodyJobName(job_name)
+    if job_name is not None:
+        job_name = RhubApiSchedulerCronCreateJobJsonBodyJobName(job_name)
 
     json_body = RhubApiSchedulerCronCreateJobJsonBody(
         job_name=job_name,
@@ -179,7 +181,8 @@ def update(
         _tmp.additional_properties = json.loads(job_params)  # TODO: check if dict
         job_params = _tmp
 
-    job_name = RhubApiSchedulerCronUpdateJobJsonBodyJobName(job_name)
+    if job_name is not None:
+        job_name = RhubApiSchedulerCronUpdateJobJsonBodyJobName(job_name)
 
     json_body = RhubApiSchedulerCronUpdateJobJsonBody(
         description=description,

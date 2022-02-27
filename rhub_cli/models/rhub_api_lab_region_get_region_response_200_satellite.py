@@ -15,7 +15,7 @@ T = TypeVar("T", bound="RhubApiLabRegionGetRegionResponse200Satellite")
 class RhubApiLabRegionGetRegionResponse200Satellite:
     """
     Example:
-        {'credentials': 'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com'}
+        {'credentials': 'kv/region/rdu2-a/satellite', 'hostname': 'satellite.example.com', 'insecure': False}
 
     Attributes:
         credentials (Union[RhubApiLabRegionGetRegionResponse200SatelliteCredentialsType0, Unset, str]):

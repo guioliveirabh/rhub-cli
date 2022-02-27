@@ -38,7 +38,8 @@ def get_list(
 ):
     """Get list of Tower servers"""
 
-    sort = RhubApiTowerListServersSort(sort)
+    if sort is not None:
+        sort = RhubApiTowerListServersSort(sort)
 
     filter_ = RhubApiTowerListServersFilter(
         enabled=filter_enabled,

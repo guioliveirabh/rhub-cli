@@ -24,7 +24,8 @@ def create(
 ):
     """Reboot cluster hosts"""
 
-    type = RhubApiLabClusterRebootHostsJsonBodyType(type)
+    if type is not None:
+        type = RhubApiLabClusterRebootHostsJsonBodyType(type)
 
     json_body = RhubApiLabClusterRebootHostsJsonBody(
         hosts=hosts,

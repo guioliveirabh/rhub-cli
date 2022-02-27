@@ -52,7 +52,8 @@ def get_list(
 ):
     """Get product list"""
 
-    sort = RhubApiLabProductListProductsSort(sort)
+    if sort is not None:
+        sort = RhubApiLabProductListProductsSort(sort)
 
     filter_ = RhubApiLabProductListProductsFilter(
         enabled=filter_enabled,

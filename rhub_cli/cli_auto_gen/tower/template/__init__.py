@@ -41,7 +41,8 @@ def get_list(
 ):
     """Get list of Tower templates"""
 
-    sort = RhubApiTowerListTemplatesSort(sort)
+    if sort is not None:
+        sort = RhubApiTowerListTemplatesSort(sort)
 
     filter_ = RhubApiTowerListTemplatesFilter(
         name=filter_name,

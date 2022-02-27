@@ -63,7 +63,8 @@ def get_list(
 ):
     """Get region list"""
 
-    sort = RhubApiLabRegionListRegionsSort(sort)
+    if sort is not None:
+        sort = RhubApiLabRegionListRegionsSort(sort)
 
     filter_ = RhubApiLabRegionListRegionsFilter(
         enabled=filter_enabled,

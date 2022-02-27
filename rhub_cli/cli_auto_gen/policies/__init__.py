@@ -57,7 +57,8 @@ def get_list(
 ):
     """Get policy list"""
 
-    sort = RhubApiPoliciesListPoliciesSort(sort)
+    if sort is not None:
+        sort = RhubApiPoliciesListPoliciesSort(sort)
 
     filter_ = RhubApiPoliciesListPoliciesFilter(
         department=filter_department,
