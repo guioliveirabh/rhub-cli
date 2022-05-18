@@ -3,6 +3,9 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.rhub_api_policies_list_policies_response_200_data_item_id import (
+    RhubApiPoliciesListPoliciesResponse200DataItemId,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiPoliciesListPoliciesResponse200DataItem")
@@ -13,18 +16,21 @@ class RhubApiPoliciesListPoliciesResponse200DataItem:
     """
     Attributes:
         department (Union[Unset, str]): Department Name
-        id (Union[Unset, int]):
+        id (Union[Unset, RhubApiPoliciesListPoliciesResponse200DataItemId]): Internal ID
         name (Union[Unset, str]): Name
     """
 
     department: Union[Unset, str] = UNSET
-    id: Union[Unset, int] = UNSET
+    id: Union[Unset, RhubApiPoliciesListPoliciesResponse200DataItemId] = UNSET
     name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         department = self.department
-        id = self.id
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
+
         name = self.name
 
         field_dict: Dict[str, Any] = {}
@@ -44,7 +50,12 @@ class RhubApiPoliciesListPoliciesResponse200DataItem:
         d = copy(src_dict)
         department = d.pop("department", UNSET)
 
-        id = d.pop("id", UNSET)
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiPoliciesListPoliciesResponse200DataItemId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiPoliciesListPoliciesResponse200DataItemId.from_dict(_id)
 
         name = d.pop("name", UNSET)
 

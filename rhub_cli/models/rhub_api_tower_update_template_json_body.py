@@ -3,6 +3,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
+from ..models.rhub_api_tower_update_template_json_body_id import RhubApiTowerUpdateTemplateJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiTowerUpdateTemplateJsonBody")
@@ -13,6 +14,7 @@ class RhubApiTowerUpdateTemplateJsonBody:
     """
     Attributes:
         description (Union[Unset, str]):
+        id (Union[Unset, RhubApiTowerUpdateTemplateJsonBodyId]): Internal ID
         name (Union[Unset, str]):
         server_id (Union[Unset, int]):
         tower_template_id (Union[Unset, int]):
@@ -20,6 +22,7 @@ class RhubApiTowerUpdateTemplateJsonBody:
     """
 
     description: Union[Unset, str] = UNSET
+    id: Union[Unset, RhubApiTowerUpdateTemplateJsonBodyId] = UNSET
     name: Union[Unset, str] = UNSET
     server_id: Union[Unset, int] = UNSET
     tower_template_id: Union[Unset, int] = UNSET
@@ -28,6 +31,10 @@ class RhubApiTowerUpdateTemplateJsonBody:
 
     def to_dict(self) -> Dict[str, Any]:
         description = self.description
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
+
         name = self.name
         server_id = self.server_id
         tower_template_id = self.tower_template_id
@@ -38,6 +45,8 @@ class RhubApiTowerUpdateTemplateJsonBody:
         field_dict.update({})
         if description is not UNSET:
             field_dict["description"] = description
+        if id is not UNSET:
+            field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
         if server_id is not UNSET:
@@ -54,6 +63,13 @@ class RhubApiTowerUpdateTemplateJsonBody:
         d = copy(src_dict)
         description = d.pop("description", UNSET)
 
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiTowerUpdateTemplateJsonBodyId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiTowerUpdateTemplateJsonBodyId.from_dict(_id)
+
         name = d.pop("name", UNSET)
 
         server_id = d.pop("server_id", UNSET)
@@ -64,6 +80,7 @@ class RhubApiTowerUpdateTemplateJsonBody:
 
         rhub_api_tower_update_template_json_body = cls(
             description=description,
+            id=id,
             name=name,
             server_id=server_id,
             tower_template_id=tower_template_id,

@@ -3,6 +3,10 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
+from ..models.rhub_api_lab_region_create_region_json_body_id import RhubApiLabRegionCreateRegionJsonBodyId
+from ..models.rhub_api_lab_region_create_region_json_body_location_type_0 import (
+    RhubApiLabRegionCreateRegionJsonBodyLocationType0,
+)
 from ..models.rhub_api_lab_region_create_region_json_body_total_quota_type_0 import (
     RhubApiLabRegionCreateRegionJsonBodyTotalQuotaType0,
 )
@@ -28,8 +32,10 @@ class RhubApiLabRegionCreateRegionJsonBody:
         banner (Union[Unset, str]):
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId]):
         lifespan_length (Union[Unset, None, int]):
-        location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
+        location (Union[Any, RhubApiLabRegionCreateRegionJsonBodyLocationType0, Unset]):
+        location_id (Union[Any, Unset, int]):
         owner_group (Union[Unset, str]):  Example: 7670ac07-cb21-448d-af8a-6e3882216be3.
         owner_group_name (Union[Unset, None, str]):
         reservation_expiration_max (Union[Unset, None, int]):
@@ -52,8 +58,10 @@ class RhubApiLabRegionCreateRegionJsonBody:
     banner: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
+    id: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId] = UNSET
     lifespan_length: Union[Unset, None, int] = UNSET
-    location: Union[Unset, None, str] = UNSET
+    location: Union[Any, RhubApiLabRegionCreateRegionJsonBodyLocationType0, Unset] = UNSET
+    location_id: Union[Any, Unset, int] = UNSET
     owner_group: Union[Unset, str] = UNSET
     owner_group_name: Union[Unset, None, str] = UNSET
     reservation_expiration_max: Union[Unset, None, int] = UNSET
@@ -75,8 +83,30 @@ class RhubApiLabRegionCreateRegionJsonBody:
         banner = self.banner
         description = self.description
         enabled = self.enabled
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
+
         lifespan_length = self.lifespan_length
-        location = self.location
+        location: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.location, Unset):
+            location = UNSET
+
+        elif isinstance(self.location, RhubApiLabRegionCreateRegionJsonBodyLocationType0):
+            location = UNSET
+            if not isinstance(self.location, Unset):
+                location = self.location.to_dict()
+
+        else:
+            location = self.location
+
+        location_id: Union[Any, Unset, int]
+        if isinstance(self.location_id, Unset):
+            location_id = UNSET
+
+        else:
+            location_id = self.location_id
+
         owner_group = self.owner_group
         owner_group_name = self.owner_group_name
         reservation_expiration_max = self.reservation_expiration_max
@@ -127,10 +157,14 @@ class RhubApiLabRegionCreateRegionJsonBody:
             field_dict["description"] = description
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
+        if id is not UNSET:
+            field_dict["id"] = id
         if lifespan_length is not UNSET:
             field_dict["lifespan_length"] = lifespan_length
         if location is not UNSET:
             field_dict["location"] = location
+        if location_id is not UNSET:
+            field_dict["location_id"] = location_id
         if owner_group is not UNSET:
             field_dict["owner_group"] = owner_group
         if owner_group_name is not UNSET:
@@ -173,9 +207,41 @@ class RhubApiLabRegionCreateRegionJsonBody:
 
         enabled = d.pop("enabled", UNSET)
 
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiLabRegionCreateRegionJsonBodyId.from_dict(_id)
+
         lifespan_length = d.pop("lifespan_length", UNSET)
 
-        location = d.pop("location", UNSET)
+        def _parse_location(data: object) -> Union[Any, RhubApiLabRegionCreateRegionJsonBodyLocationType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _location_type_0 = data
+                location_type_0: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyLocationType0]
+                if isinstance(_location_type_0, Unset):
+                    location_type_0 = UNSET
+                else:
+                    location_type_0 = RhubApiLabRegionCreateRegionJsonBodyLocationType0.from_dict(_location_type_0)
+
+                return location_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Any, RhubApiLabRegionCreateRegionJsonBodyLocationType0, Unset], data)
+
+        location = _parse_location(d.pop("location", UNSET))
+
+        def _parse_location_id(data: object) -> Union[Any, Unset, int]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Any, Unset, int], data)
+
+        location_id = _parse_location_id(d.pop("location_id", UNSET))
 
         owner_group = d.pop("owner_group", UNSET)
 
@@ -242,8 +308,10 @@ class RhubApiLabRegionCreateRegionJsonBody:
             banner=banner,
             description=description,
             enabled=enabled,
+            id=id,
             lifespan_length=lifespan_length,
             location=location,
+            location_id=location_id,
             owner_group=owner_group,
             owner_group_name=owner_group_name,
             reservation_expiration_max=reservation_expiration_max,

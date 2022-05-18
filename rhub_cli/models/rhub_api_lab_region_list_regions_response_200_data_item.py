@@ -6,6 +6,12 @@ import attr
 from ..models.rhub_api_lab_region_list_regions_response_200_data_item_dns_server import (
     RhubApiLabRegionListRegionsResponse200DataItemDnsServer,
 )
+from ..models.rhub_api_lab_region_list_regions_response_200_data_item_id import (
+    RhubApiLabRegionListRegionsResponse200DataItemId,
+)
+from ..models.rhub_api_lab_region_list_regions_response_200_data_item_location_type_0 import (
+    RhubApiLabRegionListRegionsResponse200DataItemLocationType0,
+)
 from ..models.rhub_api_lab_region_list_regions_response_200_data_item_openstack import (
     RhubApiLabRegionListRegionsResponse200DataItemOpenstack,
 )
@@ -33,8 +39,10 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
             'ns.example.com', 'key': 'kv/region/rdu2-a/dns', 'zone': 'example.com.'}.
         download_server (Union[Unset, str]):  Example: https://download.example.com.
         enabled (Union[Unset, bool]):
+        id (Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemId]):
         lifespan_length (Union[Unset, None, int]):
-        location (Union[Unset, None, str]): Geographical location of region. Example: RDU.
+        location (Union[Any, RhubApiLabRegionListRegionsResponse200DataItemLocationType0, Unset]):
+        location_id (Union[Any, Unset, int]):
         name (Union[Unset, str]):  Example: rdu2-a.
         openstack (Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemOpenstack]):  Example: {'credentials':
             'kv/region/rdu2-a/openstack', 'domain_id': 'default', 'domain_name': 'Default', 'keyname': 'rhub', 'networks':
@@ -53,7 +61,6 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
         users_group (Union[Unset, None, str]):
         users_group_name (Union[Unset, None, str]):
         vault_server (Union[Unset, str]):  Example: https://vault.example.com.
-        id (Union[Unset, int]):
     """
 
     banner: Union[Unset, str] = UNSET
@@ -61,8 +68,10 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
     dns_server: Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemDnsServer] = UNSET
     download_server: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
+    id: Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemId] = UNSET
     lifespan_length: Union[Unset, None, int] = UNSET
-    location: Union[Unset, None, str] = UNSET
+    location: Union[Any, RhubApiLabRegionListRegionsResponse200DataItemLocationType0, Unset] = UNSET
+    location_id: Union[Any, Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
     openstack: Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemOpenstack] = UNSET
     owner_group: Union[Unset, str] = UNSET
@@ -76,7 +85,6 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
     users_group: Union[Unset, None, str] = UNSET
     users_group_name: Union[Unset, None, str] = UNSET
     vault_server: Union[Unset, str] = UNSET
-    id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -88,8 +96,30 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
 
         download_server = self.download_server
         enabled = self.enabled
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
+
         lifespan_length = self.lifespan_length
-        location = self.location
+        location: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.location, Unset):
+            location = UNSET
+
+        elif isinstance(self.location, RhubApiLabRegionListRegionsResponse200DataItemLocationType0):
+            location = UNSET
+            if not isinstance(self.location, Unset):
+                location = self.location.to_dict()
+
+        else:
+            location = self.location
+
+        location_id: Union[Any, Unset, int]
+        if isinstance(self.location_id, Unset):
+            location_id = UNSET
+
+        else:
+            location_id = self.location_id
+
         name = self.name
         openstack: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.openstack, Unset):
@@ -131,7 +161,6 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
         users_group = self.users_group
         users_group_name = self.users_group_name
         vault_server = self.vault_server
-        id = self.id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -146,10 +175,14 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
             field_dict["download_server"] = download_server
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
+        if id is not UNSET:
+            field_dict["id"] = id
         if lifespan_length is not UNSET:
             field_dict["lifespan_length"] = lifespan_length
         if location is not UNSET:
             field_dict["location"] = location
+        if location_id is not UNSET:
+            field_dict["location_id"] = location_id
         if name is not UNSET:
             field_dict["name"] = name
         if openstack is not UNSET:
@@ -176,8 +209,6 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
             field_dict["users_group_name"] = users_group_name
         if vault_server is not UNSET:
             field_dict["vault_server"] = vault_server
-        if id is not UNSET:
-            field_dict["id"] = id
 
         return field_dict
 
@@ -199,9 +230,45 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
 
         enabled = d.pop("enabled", UNSET)
 
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiLabRegionListRegionsResponse200DataItemId.from_dict(_id)
+
         lifespan_length = d.pop("lifespan_length", UNSET)
 
-        location = d.pop("location", UNSET)
+        def _parse_location(
+            data: object,
+        ) -> Union[Any, RhubApiLabRegionListRegionsResponse200DataItemLocationType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _location_type_0 = data
+                location_type_0: Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemLocationType0]
+                if isinstance(_location_type_0, Unset):
+                    location_type_0 = UNSET
+                else:
+                    location_type_0 = RhubApiLabRegionListRegionsResponse200DataItemLocationType0.from_dict(
+                        _location_type_0
+                    )
+
+                return location_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Any, RhubApiLabRegionListRegionsResponse200DataItemLocationType0, Unset], data)
+
+        location = _parse_location(d.pop("location", UNSET))
+
+        def _parse_location_id(data: object) -> Union[Any, Unset, int]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Any, Unset, int], data)
+
+        location_id = _parse_location_id(d.pop("location_id", UNSET))
 
         name = d.pop("name", UNSET)
 
@@ -283,16 +350,16 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
 
         vault_server = d.pop("vault_server", UNSET)
 
-        id = d.pop("id", UNSET)
-
         rhub_api_lab_region_list_regions_response_200_data_item = cls(
             banner=banner,
             description=description,
             dns_server=dns_server,
             download_server=download_server,
             enabled=enabled,
+            id=id,
             lifespan_length=lifespan_length,
             location=location,
+            location_id=location_id,
             name=name,
             openstack=openstack,
             owner_group=owner_group,
@@ -306,7 +373,6 @@ class RhubApiLabRegionListRegionsResponse200DataItem:
             users_group=users_group,
             users_group_name=users_group_name,
             vault_server=vault_server,
-            id=id,
         )
 
         rhub_api_lab_region_list_regions_response_200_data_item.additional_properties = d

@@ -4,6 +4,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 import attr
 
 from ..models.rhub_api_auth_role_create_role_json_body_attributes import RhubApiAuthRoleCreateRoleJsonBodyAttributes
+from ..models.rhub_api_auth_role_create_role_json_body_id import RhubApiAuthRoleCreateRoleJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiAuthRoleCreateRoleJsonBody")
@@ -15,12 +16,12 @@ class RhubApiAuthRoleCreateRoleJsonBody:
     Attributes:
         name (str):
         attributes (Union[Unset, RhubApiAuthRoleCreateRoleJsonBodyAttributes]): Role attributes
-        id (Union[Unset, str]):
+        id (Union[Unset, RhubApiAuthRoleCreateRoleJsonBodyId]):
     """
 
     name: str
     attributes: Union[Unset, RhubApiAuthRoleCreateRoleJsonBodyAttributes] = UNSET
-    id: Union[Unset, str] = UNSET
+    id: Union[Unset, RhubApiAuthRoleCreateRoleJsonBodyId] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -29,7 +30,9 @@ class RhubApiAuthRoleCreateRoleJsonBody:
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
-        id = self.id
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -57,7 +60,12 @@ class RhubApiAuthRoleCreateRoleJsonBody:
         else:
             attributes = RhubApiAuthRoleCreateRoleJsonBodyAttributes.from_dict(_attributes)
 
-        id = d.pop("id", UNSET)
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiAuthRoleCreateRoleJsonBodyId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiAuthRoleCreateRoleJsonBodyId.from_dict(_id)
 
         rhub_api_auth_role_create_role_json_body = cls(
             name=name,

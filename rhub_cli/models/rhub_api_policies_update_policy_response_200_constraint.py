@@ -8,6 +8,9 @@ from dateutil.parser import isoparse
 from ..models.rhub_api_policies_update_policy_response_200_constraint_limit import (
     RhubApiPoliciesUpdatePolicyResponse200ConstraintLimit,
 )
+from ..models.rhub_api_policies_update_policy_response_200_constraint_location_type_0 import (
+    RhubApiPoliciesUpdatePolicyResponse200ConstraintLocationType0,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiPoliciesUpdatePolicyResponse200Constraint")
@@ -20,7 +23,8 @@ class RhubApiPoliciesUpdatePolicyResponse200Constraint:
         cost (Union[Unset, None, float]):
         density (Union[Unset, None, str]):
         limit (Union[Unset, None, RhubApiPoliciesUpdatePolicyResponse200ConstraintLimit]):
-        location (Union[Unset, None, str]):
+        location (Union[Any, RhubApiPoliciesUpdatePolicyResponse200ConstraintLocationType0, Unset]):
+        location_id (Union[Any, Unset, int]):
         sched_avail (Union[Unset, None, List[datetime.datetime]]):
         serv_avail (Union[Unset, None, float]):
         tag (Union[Unset, None, List[str]]):
@@ -29,7 +33,8 @@ class RhubApiPoliciesUpdatePolicyResponse200Constraint:
     cost: Union[Unset, None, float] = UNSET
     density: Union[Unset, None, str] = UNSET
     limit: Union[Unset, None, RhubApiPoliciesUpdatePolicyResponse200ConstraintLimit] = UNSET
-    location: Union[Unset, None, str] = UNSET
+    location: Union[Any, RhubApiPoliciesUpdatePolicyResponse200ConstraintLocationType0, Unset] = UNSET
+    location_id: Union[Any, Unset, int] = UNSET
     sched_avail: Union[Unset, None, List[datetime.datetime]] = UNSET
     serv_avail: Union[Unset, None, float] = UNSET
     tag: Union[Unset, None, List[str]] = UNSET
@@ -42,7 +47,25 @@ class RhubApiPoliciesUpdatePolicyResponse200Constraint:
         if not isinstance(self.limit, Unset):
             limit = self.limit.to_dict() if self.limit else None
 
-        location = self.location
+        location: Union[Any, Dict[str, Any], Unset]
+        if isinstance(self.location, Unset):
+            location = UNSET
+
+        elif isinstance(self.location, RhubApiPoliciesUpdatePolicyResponse200ConstraintLocationType0):
+            location = UNSET
+            if not isinstance(self.location, Unset):
+                location = self.location.to_dict()
+
+        else:
+            location = self.location
+
+        location_id: Union[Any, Unset, int]
+        if isinstance(self.location_id, Unset):
+            location_id = UNSET
+
+        else:
+            location_id = self.location_id
+
         sched_avail: Union[Unset, None, List[str]] = UNSET
         if not isinstance(self.sched_avail, Unset):
             if self.sched_avail is None:
@@ -73,6 +96,8 @@ class RhubApiPoliciesUpdatePolicyResponse200Constraint:
             field_dict["limit"] = limit
         if location is not UNSET:
             field_dict["location"] = location
+        if location_id is not UNSET:
+            field_dict["location_id"] = location_id
         if sched_avail is not UNSET:
             field_dict["sched_avail"] = sched_avail
         if serv_avail is not UNSET:
@@ -98,7 +123,36 @@ class RhubApiPoliciesUpdatePolicyResponse200Constraint:
         else:
             limit = RhubApiPoliciesUpdatePolicyResponse200ConstraintLimit.from_dict(_limit)
 
-        location = d.pop("location", UNSET)
+        def _parse_location(
+            data: object,
+        ) -> Union[Any, RhubApiPoliciesUpdatePolicyResponse200ConstraintLocationType0, Unset]:
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, dict):
+                    raise TypeError()
+                _location_type_0 = data
+                location_type_0: Union[Unset, RhubApiPoliciesUpdatePolicyResponse200ConstraintLocationType0]
+                if isinstance(_location_type_0, Unset):
+                    location_type_0 = UNSET
+                else:
+                    location_type_0 = RhubApiPoliciesUpdatePolicyResponse200ConstraintLocationType0.from_dict(
+                        _location_type_0
+                    )
+
+                return location_type_0
+            except:  # noqa: E722
+                pass
+            return cast(Union[Any, RhubApiPoliciesUpdatePolicyResponse200ConstraintLocationType0, Unset], data)
+
+        location = _parse_location(d.pop("location", UNSET))
+
+        def _parse_location_id(data: object) -> Union[Any, Unset, int]:
+            if isinstance(data, Unset):
+                return data
+            return cast(Union[Any, Unset, int], data)
+
+        location_id = _parse_location_id(d.pop("location_id", UNSET))
 
         sched_avail = []
         _sched_avail = d.pop("sched_avail", UNSET)
@@ -116,6 +170,7 @@ class RhubApiPoliciesUpdatePolicyResponse200Constraint:
             density=density,
             limit=limit,
             location=location,
+            location_id=location_id,
             sched_avail=sched_avail,
             serv_avail=serv_avail,
             tag=tag,

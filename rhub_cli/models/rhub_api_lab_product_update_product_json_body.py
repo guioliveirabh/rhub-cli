@@ -4,6 +4,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 import attr
 
 from ..models.rhub_api_lab_product_update_product_json_body_flavors import RhubApiLabProductUpdateProductJsonBodyFlavors
+from ..models.rhub_api_lab_product_update_product_json_body_id import RhubApiLabProductUpdateProductJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiLabProductUpdateProductJsonBody")
@@ -16,6 +17,7 @@ class RhubApiLabProductUpdateProductJsonBody:
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
         flavors (Union[Unset, None, RhubApiLabProductUpdateProductJsonBodyFlavors]):
+        id (Union[Unset, RhubApiLabProductUpdateProductJsonBodyId]):
         name (Union[Unset, str]):  Example: OpenShift.
         parameters (Union[Unset, List[Any]]):
         tower_template_name_create (Union[Unset, str]):  Example: rhub-openshift-create.
@@ -25,6 +27,7 @@ class RhubApiLabProductUpdateProductJsonBody:
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
     flavors: Union[Unset, None, RhubApiLabProductUpdateProductJsonBodyFlavors] = UNSET
+    id: Union[Unset, RhubApiLabProductUpdateProductJsonBodyId] = UNSET
     name: Union[Unset, str] = UNSET
     parameters: Union[Unset, List[Any]] = UNSET
     tower_template_name_create: Union[Unset, str] = UNSET
@@ -37,6 +40,10 @@ class RhubApiLabProductUpdateProductJsonBody:
         flavors: Union[Unset, None, Dict[str, Any]] = UNSET
         if not isinstance(self.flavors, Unset):
             flavors = self.flavors.to_dict() if self.flavors else None
+
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
 
         name = self.name
         parameters: Union[Unset, List[Any]] = UNSET
@@ -60,6 +67,8 @@ class RhubApiLabProductUpdateProductJsonBody:
             field_dict["enabled"] = enabled
         if flavors is not UNSET:
             field_dict["flavors"] = flavors
+        if id is not UNSET:
+            field_dict["id"] = id
         if name is not UNSET:
             field_dict["name"] = name
         if parameters is not UNSET:
@@ -87,6 +96,13 @@ class RhubApiLabProductUpdateProductJsonBody:
         else:
             flavors = RhubApiLabProductUpdateProductJsonBodyFlavors.from_dict(_flavors)
 
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiLabProductUpdateProductJsonBodyId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiLabProductUpdateProductJsonBodyId.from_dict(_id)
+
         name = d.pop("name", UNSET)
 
         parameters = []
@@ -108,6 +124,7 @@ class RhubApiLabProductUpdateProductJsonBody:
             description=description,
             enabled=enabled,
             flavors=flavors,
+            id=id,
             name=name,
             parameters=parameters,
             tower_template_name_create=tower_template_name_create,

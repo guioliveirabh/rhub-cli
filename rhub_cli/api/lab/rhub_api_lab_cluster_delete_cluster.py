@@ -55,6 +55,15 @@ def sync_detailed(
 ) -> Response[Union[Any, RhubApiLabClusterDeleteClusterResponseDefault]]:
     """Delete cluster
 
+     Clusters are not deleted immediately after calling this endpoint. Instead,
+    Tower job will be launched (`Product.tower_template_name_delete`) and the
+    cluster is marked as deleted from the job by changing status to \"Deleted\".
+    If deletion fails status should be changed to \"Deletion Failed\" and
+    cluster won't be deleted.
+
+    Clusters that are in a creating state cannot be deleted. Before deleting,
+    the cluster must be in the `Active` state or in any of failed states.
+
     Args:
         cluster_id (int):
 
@@ -82,6 +91,15 @@ def sync(
 ) -> Optional[Union[Any, RhubApiLabClusterDeleteClusterResponseDefault]]:
     """Delete cluster
 
+     Clusters are not deleted immediately after calling this endpoint. Instead,
+    Tower job will be launched (`Product.tower_template_name_delete`) and the
+    cluster is marked as deleted from the job by changing status to \"Deleted\".
+    If deletion fails status should be changed to \"Deletion Failed\" and
+    cluster won't be deleted.
+
+    Clusters that are in a creating state cannot be deleted. Before deleting,
+    the cluster must be in the `Active` state or in any of failed states.
+
     Args:
         cluster_id (int):
 
@@ -101,6 +119,15 @@ async def asyncio_detailed(
     client: AuthenticatedClient,
 ) -> Response[Union[Any, RhubApiLabClusterDeleteClusterResponseDefault]]:
     """Delete cluster
+
+     Clusters are not deleted immediately after calling this endpoint. Instead,
+    Tower job will be launched (`Product.tower_template_name_delete`) and the
+    cluster is marked as deleted from the job by changing status to \"Deleted\".
+    If deletion fails status should be changed to \"Deletion Failed\" and
+    cluster won't be deleted.
+
+    Clusters that are in a creating state cannot be deleted. Before deleting,
+    the cluster must be in the `Active` state or in any of failed states.
 
     Args:
         cluster_id (int):
@@ -126,6 +153,15 @@ async def asyncio(
     client: AuthenticatedClient,
 ) -> Optional[Union[Any, RhubApiLabClusterDeleteClusterResponseDefault]]:
     """Delete cluster
+
+     Clusters are not deleted immediately after calling this endpoint. Instead,
+    Tower job will be launched (`Product.tower_template_name_delete`) and the
+    cluster is marked as deleted from the job by changing status to \"Deleted\".
+    If deletion fails status should be changed to \"Deletion Failed\" and
+    cluster won't be deleted.
+
+    Clusters that are in a creating state cannot be deleted. Before deleting,
+    the cluster must be in the `Active` state or in any of failed states.
 
     Args:
         cluster_id (int):

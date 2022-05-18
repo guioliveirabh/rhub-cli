@@ -1,3 +1,5 @@
+import json
+
 import click
 
 from rhub_cli.api.auth.rhub_api_auth_group_create_group import sync_detailed as group_create
@@ -10,10 +12,13 @@ from rhub_cli.models.rhub_api_auth_group_create_group_json_body import RhubApiAu
 from rhub_cli.models.rhub_api_auth_group_create_group_json_body_attributes import (
     RhubApiAuthGroupCreateGroupJsonBodyAttributes,
 )
+from rhub_cli.models.rhub_api_auth_group_create_group_json_body_id import RhubApiAuthGroupCreateGroupJsonBodyId
 from rhub_cli.models.rhub_api_auth_group_update_group_json_body import RhubApiAuthGroupUpdateGroupJsonBody
 from rhub_cli.models.rhub_api_auth_group_update_group_json_body_attributes import (
     RhubApiAuthGroupUpdateGroupJsonBodyAttributes,
 )
+from rhub_cli.models.rhub_api_auth_group_update_group_json_body_id import RhubApiAuthGroupUpdateGroupJsonBodyId
+from rhub_cli.types import UNSET
 
 from .roles import roles
 from .users import users
@@ -39,7 +44,7 @@ def get_list(
 
 @group.command()
 @click.option("--name", required=True, type=str)
-@click.option("--id", type=str)
+@click.option("--id")
 @click.option("--attributes-additional-property-item", type=str)
 @pass_api
 def create(
@@ -53,6 +58,13 @@ def create(
     attributes_additional_property = []
     if attributes_additional_property_item is not None:
         attributes_additional_property.append(attributes_additional_property_item)
+
+    if id is None:
+        id = UNSET
+    else:
+        _tmp = RhubApiAuthGroupCreateGroupJsonBodyId()
+        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
+        id = _tmp
 
     attributes = RhubApiAuthGroupCreateGroupJsonBodyAttributes()
     attributes.additional_properties = {"attributes": attributes_additional_property}
@@ -104,7 +116,7 @@ def remove(
 
 @group.command()
 @click.argument("group_id", type=str)
-@click.option("--id", type=str)
+@click.option("--id")
 @click.option("--name", type=str)
 @click.option("--attributes-additional-property-item", type=str)
 @pass_api
@@ -120,6 +132,13 @@ def update(
     attributes_additional_property = []
     if attributes_additional_property_item is not None:
         attributes_additional_property.append(attributes_additional_property_item)
+
+    if id is None:
+        id = UNSET
+    else:
+        _tmp = RhubApiAuthGroupUpdateGroupJsonBodyId()
+        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
+        id = _tmp
 
     attributes = RhubApiAuthGroupUpdateGroupJsonBodyAttributes()
     attributes.additional_properties = {"attributes": attributes_additional_property}

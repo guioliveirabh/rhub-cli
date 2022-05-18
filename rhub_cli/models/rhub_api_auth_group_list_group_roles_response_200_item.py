@@ -6,6 +6,9 @@ import attr
 from ..models.rhub_api_auth_group_list_group_roles_response_200_item_attributes import (
     RhubApiAuthGroupListGroupRolesResponse200ItemAttributes,
 )
+from ..models.rhub_api_auth_group_list_group_roles_response_200_item_id import (
+    RhubApiAuthGroupListGroupRolesResponse200ItemId,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiAuthGroupListGroupRolesResponse200Item")
@@ -22,12 +25,12 @@ class RhubApiAuthGroupListGroupRolesResponse200Item:
 
         Attributes:
             attributes (Union[Unset, RhubApiAuthGroupListGroupRolesResponse200ItemAttributes]): Role attributes
-            id (Union[Unset, str]):
+            id (Union[Unset, RhubApiAuthGroupListGroupRolesResponse200ItemId]):
             name (Union[Unset, str]):
     """
 
     attributes: Union[Unset, RhubApiAuthGroupListGroupRolesResponse200ItemAttributes] = UNSET
-    id: Union[Unset, str] = UNSET
+    id: Union[Unset, RhubApiAuthGroupListGroupRolesResponse200ItemId] = UNSET
     name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -36,7 +39,10 @@ class RhubApiAuthGroupListGroupRolesResponse200Item:
         if not isinstance(self.attributes, Unset):
             attributes = self.attributes.to_dict()
 
-        id = self.id
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
+
         name = self.name
 
         field_dict: Dict[str, Any] = {}
@@ -61,7 +67,12 @@ class RhubApiAuthGroupListGroupRolesResponse200Item:
         else:
             attributes = RhubApiAuthGroupListGroupRolesResponse200ItemAttributes.from_dict(_attributes)
 
-        id = d.pop("id", UNSET)
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiAuthGroupListGroupRolesResponse200ItemId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiAuthGroupListGroupRolesResponse200ItemId.from_dict(_id)
 
         name = d.pop("name", UNSET)
 

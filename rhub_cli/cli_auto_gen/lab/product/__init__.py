@@ -1,3 +1,5 @@
+import json
+
 import click
 
 from rhub_cli.api.lab.rhub_api_lab_product_create_product import sync_detailed as product_create
@@ -13,6 +15,7 @@ from rhub_cli.models.rhub_api_lab_product_create_product_json_body_flavors impor
 from rhub_cli.models.rhub_api_lab_product_create_product_json_body_flavors_additional_property import (
     RhubApiLabProductCreateProductJsonBodyFlavorsAdditionalProperty,
 )
+from rhub_cli.models.rhub_api_lab_product_create_product_json_body_id import RhubApiLabProductCreateProductJsonBodyId
 from rhub_cli.models.rhub_api_lab_product_list_products_filter import RhubApiLabProductListProductsFilter
 from rhub_cli.models.rhub_api_lab_product_list_products_sort import RhubApiLabProductListProductsSort
 from rhub_cli.models.rhub_api_lab_product_update_product_json_body import RhubApiLabProductUpdateProductJsonBody
@@ -22,6 +25,8 @@ from rhub_cli.models.rhub_api_lab_product_update_product_json_body_flavors impor
 from rhub_cli.models.rhub_api_lab_product_update_product_json_body_flavors_additional_property import (
     RhubApiLabProductUpdateProductJsonBodyFlavorsAdditionalProperty,
 )
+from rhub_cli.models.rhub_api_lab_product_update_product_json_body_id import RhubApiLabProductUpdateProductJsonBodyId
+from rhub_cli.types import UNSET
 
 from .regions import regions
 
@@ -77,6 +82,7 @@ def get_list(
 @click.option("--tower-template-name-delete", required=True, type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
+@click.option("--id")
 @click.option("--flavors-additional-property-num-vcpus", type=int)
 @click.option("--flavors-additional-property-num-volumes", type=int)
 @click.option("--flavors-additional-property-ram-mb", type=int)
@@ -90,6 +96,7 @@ def create(
     tower_template_name_delete,
     description,
     enabled,
+    id,
     flavors_additional_property_num_vcpus,
     flavors_additional_property_num_volumes,
     flavors_additional_property_ram_mb,
@@ -103,6 +110,13 @@ def create(
         ram_mb=flavors_additional_property_ram_mb,
         volumes_gb=flavors_additional_property_volumes_gb,
     )
+
+    if id is None:
+        id = UNSET
+    else:
+        _tmp = RhubApiLabProductCreateProductJsonBodyId()
+        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
+        id = _tmp
 
     flavors = RhubApiLabProductCreateProductJsonBodyFlavors()
     flavors.additional_properties = {"flavors": flavors_additional_property}
@@ -119,6 +133,7 @@ def create(
         description=description,
         enabled=enabled,
         flavors=flavors,
+        id=id,
     )
 
     response = product_create(
@@ -164,6 +179,7 @@ def remove(
 @click.argument("product_id", type=int)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
+@click.option("--id")
 @click.option("--name", type=str)
 @click.option("--parameters-item")
 @click.option("--tower-template-name-create", type=str)
@@ -178,6 +194,7 @@ def update(
     product_id,
     description,
     enabled,
+    id,
     name,
     parameters_item,
     tower_template_name_create,
@@ -200,6 +217,13 @@ def update(
     if parameters_item is not None:
         parameters.append(parameters_item)
 
+    if id is None:
+        id = UNSET
+    else:
+        _tmp = RhubApiLabProductUpdateProductJsonBodyId()
+        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
+        id = _tmp
+
     flavors = RhubApiLabProductUpdateProductJsonBodyFlavors()
     flavors.additional_properties = {"flavors": flavors_additional_property}
 
@@ -207,6 +231,7 @@ def update(
         description=description,
         enabled=enabled,
         flavors=flavors,
+        id=id,
         name=name,
         parameters=parameters,
         tower_template_name_create=tower_template_name_create,

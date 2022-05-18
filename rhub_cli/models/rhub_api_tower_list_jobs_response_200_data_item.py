@@ -5,6 +5,7 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 import attr
 from dateutil.parser import isoparse
 
+from ..models.rhub_api_tower_list_jobs_response_200_data_item_id import RhubApiTowerListJobsResponse200DataItemId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiTowerListJobsResponse200DataItem")
@@ -18,7 +19,7 @@ class RhubApiTowerListJobsResponse200DataItem:
         failed (Union[Unset, bool]):
         finished (Union[Unset, bool]):
         finished_at (Union[Unset, None, datetime.datetime]):
-        id (Union[Unset, int]):
+        id (Union[Unset, RhubApiTowerListJobsResponse200DataItemId]): Internal ID
         launched_by (Union[Unset, str]):
         started (Union[Unset, bool]):
         started_at (Union[Unset, None, datetime.datetime]):
@@ -31,7 +32,7 @@ class RhubApiTowerListJobsResponse200DataItem:
     failed: Union[Unset, bool] = UNSET
     finished: Union[Unset, bool] = UNSET
     finished_at: Union[Unset, None, datetime.datetime] = UNSET
-    id: Union[Unset, int] = UNSET
+    id: Union[Unset, RhubApiTowerListJobsResponse200DataItemId] = UNSET
     launched_by: Union[Unset, str] = UNSET
     started: Union[Unset, bool] = UNSET
     started_at: Union[Unset, None, datetime.datetime] = UNSET
@@ -51,7 +52,10 @@ class RhubApiTowerListJobsResponse200DataItem:
         if not isinstance(self.finished_at, Unset):
             finished_at = self.finished_at.isoformat() if self.finished_at else None
 
-        id = self.id
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
+
         launched_by = self.launched_by
         started = self.started
         started_at: Union[Unset, None, str] = UNSET
@@ -113,7 +117,12 @@ class RhubApiTowerListJobsResponse200DataItem:
         else:
             finished_at = isoparse(_finished_at)
 
-        id = d.pop("id", UNSET)
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiTowerListJobsResponse200DataItemId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiTowerListJobsResponse200DataItemId.from_dict(_id)
 
         launched_by = d.pop("launched_by", UNSET)
 

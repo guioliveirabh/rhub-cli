@@ -16,31 +16,37 @@ class RhubApiLabRegionListRegionProductsResponse200Item:
     """
     Attributes:
         enabled (Union[Unset, bool]):
-        id (Union[Unset, int]):
         product (Union[Unset, RhubApiLabRegionListRegionProductsResponse200ItemProduct]):
+        product_id (Union[Unset, int]):
+        region_id (Union[Unset, int]):
     """
 
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, int] = UNSET
     product: Union[Unset, RhubApiLabRegionListRegionProductsResponse200ItemProduct] = UNSET
+    product_id: Union[Unset, int] = UNSET
+    region_id: Union[Unset, int] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         enabled = self.enabled
-        id = self.id
         product: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.product, Unset):
             product = self.product.to_dict()
+
+        product_id = self.product_id
+        region_id = self.region_id
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
         if enabled is not UNSET:
             field_dict["enabled"] = enabled
-        if id is not UNSET:
-            field_dict["id"] = id
         if product is not UNSET:
             field_dict["product"] = product
+        if product_id is not UNSET:
+            field_dict["product_id"] = product_id
+        if region_id is not UNSET:
+            field_dict["region_id"] = region_id
 
         return field_dict
 
@@ -49,8 +55,6 @@ class RhubApiLabRegionListRegionProductsResponse200Item:
         d = copy(src_dict)
         enabled = d.pop("enabled", UNSET)
 
-        id = d.pop("id", UNSET)
-
         _product = d.pop("product", UNSET)
         product: Union[Unset, RhubApiLabRegionListRegionProductsResponse200ItemProduct]
         if isinstance(_product, Unset):
@@ -58,10 +62,15 @@ class RhubApiLabRegionListRegionProductsResponse200Item:
         else:
             product = RhubApiLabRegionListRegionProductsResponse200ItemProduct.from_dict(_product)
 
+        product_id = d.pop("product_id", UNSET)
+
+        region_id = d.pop("region_id", UNSET)
+
         rhub_api_lab_region_list_region_products_response_200_item = cls(
             enabled=enabled,
-            id=id,
             product=product,
+            product_id=product_id,
+            region_id=region_id,
         )
 
         rhub_api_lab_region_list_region_products_response_200_item.additional_properties = d

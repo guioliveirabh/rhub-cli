@@ -13,8 +13,8 @@ class RhubApiLabRegionListRegionsFilter:
     """
     Attributes:
         enabled (Union[Unset, bool]):
-        location (Union[Unset, str]): Location of a region. Wildcard ``%`` can be used to match zero, one, or multiple
-            characters
+        location (Union[Unset, str]): Location of a region, value is location name. Wildcard ``%`` can be used to match
+            zero, one, or multiple characters
         name (Union[Unset, str]): Name of a region. Wildcard ``%`` can be used to match zero, one, or multiple
             characters
         reservations_enabled (Union[Unset, bool]):

@@ -8,6 +8,7 @@ from dateutil.parser import isoparse
 from ..models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item import (
     RhubApiLabClusterCreateClusterJsonBodyHostsItem,
 )
+from ..models.rhub_api_lab_cluster_create_cluster_json_body_id import RhubApiLabClusterCreateClusterJsonBodyId
 from ..models.rhub_api_lab_cluster_create_cluster_json_body_product_params import (
     RhubApiLabClusterCreateClusterJsonBodyProductParams,
 )
@@ -18,6 +19,9 @@ from ..models.rhub_api_lab_cluster_create_cluster_json_body_quota_usage_type_0 i
     RhubApiLabClusterCreateClusterJsonBodyQuotaUsageType0,
 )
 from ..models.rhub_api_lab_cluster_create_cluster_json_body_status import RhubApiLabClusterCreateClusterJsonBodyStatus
+from ..models.rhub_api_lab_cluster_create_cluster_json_body_status_flag import (
+    RhubApiLabClusterCreateClusterJsonBodyStatusFlag,
+)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiLabClusterCreateClusterJsonBody")
@@ -36,6 +40,7 @@ class RhubApiLabClusterCreateClusterJsonBody:
         group_id (Union[Unset, None, str]):
         group_name (Union[Unset, None, str]):
         hosts (Union[Unset, List[RhubApiLabClusterCreateClusterJsonBodyHostsItem]]):
+        id (Union[Unset, RhubApiLabClusterCreateClusterJsonBodyId]):
         lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
         product_name (Union[Unset, str]):
         quota (Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaType0, Unset]):  Example: {'num_vcpus': 40,
@@ -46,6 +51,7 @@ class RhubApiLabClusterCreateClusterJsonBody:
         reservation_expiration (Union[Unset, None, datetime.datetime]): Soft-limit expiration.
         shared (Union[Unset, bool]):
         status (Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyStatus]):
+        status_flag (Union[Unset, RhubApiLabClusterCreateClusterJsonBodyStatusFlag]):
         user_id (Union[Unset, str]):
         user_name (Union[Unset, str]):
     """
@@ -59,6 +65,7 @@ class RhubApiLabClusterCreateClusterJsonBody:
     group_id: Union[Unset, None, str] = UNSET
     group_name: Union[Unset, None, str] = UNSET
     hosts: Union[Unset, List[RhubApiLabClusterCreateClusterJsonBodyHostsItem]] = UNSET
+    id: Union[Unset, RhubApiLabClusterCreateClusterJsonBodyId] = UNSET
     lifespan_expiration: Union[Unset, None, datetime.datetime] = UNSET
     product_name: Union[Unset, str] = UNSET
     quota: Union[Any, RhubApiLabClusterCreateClusterJsonBodyQuotaType0, Unset] = UNSET
@@ -67,6 +74,7 @@ class RhubApiLabClusterCreateClusterJsonBody:
     reservation_expiration: Union[Unset, None, datetime.datetime] = UNSET
     shared: Union[Unset, bool] = UNSET
     status: Union[Unset, None, RhubApiLabClusterCreateClusterJsonBodyStatus] = UNSET
+    status_flag: Union[Unset, RhubApiLabClusterCreateClusterJsonBodyStatusFlag] = UNSET
     user_id: Union[Unset, str] = UNSET
     user_name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
@@ -91,6 +99,10 @@ class RhubApiLabClusterCreateClusterJsonBody:
                 hosts_item = hosts_item_data.to_dict()
 
                 hosts.append(hosts_item)
+
+        id: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.id, Unset):
+            id = self.id.to_dict()
 
         lifespan_expiration: Union[Unset, None, str] = UNSET
         if not isinstance(self.lifespan_expiration, Unset):
@@ -131,6 +143,10 @@ class RhubApiLabClusterCreateClusterJsonBody:
         if not isinstance(self.status, Unset):
             status = self.status.value if self.status else None
 
+        status_flag: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.status_flag, Unset):
+            status_flag = self.status_flag.to_dict()
+
         user_id = self.user_id
         user_name = self.user_name
 
@@ -154,6 +170,8 @@ class RhubApiLabClusterCreateClusterJsonBody:
             field_dict["group_name"] = group_name
         if hosts is not UNSET:
             field_dict["hosts"] = hosts
+        if id is not UNSET:
+            field_dict["id"] = id
         if lifespan_expiration is not UNSET:
             field_dict["lifespan_expiration"] = lifespan_expiration
         if product_name is not UNSET:
@@ -170,6 +188,8 @@ class RhubApiLabClusterCreateClusterJsonBody:
             field_dict["shared"] = shared
         if status is not UNSET:
             field_dict["status"] = status
+        if status_flag is not UNSET:
+            field_dict["status_flag"] = status_flag
         if user_id is not UNSET:
             field_dict["user_id"] = user_id
         if user_name is not UNSET:
@@ -207,6 +227,13 @@ class RhubApiLabClusterCreateClusterJsonBody:
             hosts_item = RhubApiLabClusterCreateClusterJsonBodyHostsItem.from_dict(hosts_item_data)
 
             hosts.append(hosts_item)
+
+        _id = d.pop("id", UNSET)
+        id: Union[Unset, RhubApiLabClusterCreateClusterJsonBodyId]
+        if isinstance(_id, Unset):
+            id = UNSET
+        else:
+            id = RhubApiLabClusterCreateClusterJsonBodyId.from_dict(_id)
 
         _lifespan_expiration = d.pop("lifespan_expiration", UNSET)
         lifespan_expiration: Union[Unset, None, datetime.datetime]
@@ -285,6 +312,13 @@ class RhubApiLabClusterCreateClusterJsonBody:
         else:
             status = RhubApiLabClusterCreateClusterJsonBodyStatus(_status)
 
+        _status_flag = d.pop("status_flag", UNSET)
+        status_flag: Union[Unset, RhubApiLabClusterCreateClusterJsonBodyStatusFlag]
+        if isinstance(_status_flag, Unset):
+            status_flag = UNSET
+        else:
+            status_flag = RhubApiLabClusterCreateClusterJsonBodyStatusFlag.from_dict(_status_flag)
+
         user_id = d.pop("user_id", UNSET)
 
         user_name = d.pop("user_name", UNSET)
@@ -299,6 +333,7 @@ class RhubApiLabClusterCreateClusterJsonBody:
             group_id=group_id,
             group_name=group_name,
             hosts=hosts,
+            id=id,
             lifespan_expiration=lifespan_expiration,
             product_name=product_name,
             quota=quota,
@@ -307,6 +342,7 @@ class RhubApiLabClusterCreateClusterJsonBody:
             reservation_expiration=reservation_expiration,
             shared=shared,
             status=status,
+            status_flag=status_flag,
             user_id=user_id,
             user_name=user_name,
         )
