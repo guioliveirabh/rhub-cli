@@ -39,9 +39,13 @@ class RhubApiLabClusterGetClusterResponse200:
         id (Union[Unset, RhubApiLabClusterGetClusterResponse200Id]):
         lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
         name (Union[Unset, str]):
+        owner_id (Union[Unset, str]):
+        owner_name (Union[Unset, str]):
         product_id (Union[Unset, int]):
         product_name (Union[Unset, str]):
         product_params (Union[Unset, RhubApiLabClusterGetClusterResponse200ProductParams]):
+        project_id (Union[Unset, int]):
+        project_name (Union[Unset, str]):
         quota (Union[Any, RhubApiLabClusterGetClusterResponse200QuotaType0, Unset]):  Example: {'num_vcpus': 40,
             'num_volumes': 40, 'ram_mb': 200000, 'volumes_gb': 540}.
         quota_usage (Union[Any, RhubApiLabClusterGetClusterResponse200QuotaUsageType0, Unset]):  Example: {'num_vcpus':
@@ -52,8 +56,6 @@ class RhubApiLabClusterGetClusterResponse200:
         shared (Union[Unset, bool]):
         status (Union[Unset, None, RhubApiLabClusterGetClusterResponse200Status]):
         status_flag (Union[Unset, RhubApiLabClusterGetClusterResponse200StatusFlag]):
-        user_id (Union[Unset, str]):
-        user_name (Union[Unset, str]):
     """
 
     created: Union[Unset, datetime.datetime] = UNSET
@@ -64,9 +66,13 @@ class RhubApiLabClusterGetClusterResponse200:
     id: Union[Unset, RhubApiLabClusterGetClusterResponse200Id] = UNSET
     lifespan_expiration: Union[Unset, None, datetime.datetime] = UNSET
     name: Union[Unset, str] = UNSET
+    owner_id: Union[Unset, str] = UNSET
+    owner_name: Union[Unset, str] = UNSET
     product_id: Union[Unset, int] = UNSET
     product_name: Union[Unset, str] = UNSET
     product_params: Union[Unset, RhubApiLabClusterGetClusterResponse200ProductParams] = UNSET
+    project_id: Union[Unset, int] = UNSET
+    project_name: Union[Unset, str] = UNSET
     quota: Union[Any, RhubApiLabClusterGetClusterResponse200QuotaType0, Unset] = UNSET
     quota_usage: Union[Any, RhubApiLabClusterGetClusterResponse200QuotaUsageType0, Unset] = UNSET
     region_id: Union[Unset, int] = UNSET
@@ -75,8 +81,6 @@ class RhubApiLabClusterGetClusterResponse200:
     shared: Union[Unset, bool] = UNSET
     status: Union[Unset, None, RhubApiLabClusterGetClusterResponse200Status] = UNSET
     status_flag: Union[Unset, RhubApiLabClusterGetClusterResponse200StatusFlag] = UNSET
-    user_id: Union[Unset, str] = UNSET
-    user_name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -104,12 +108,16 @@ class RhubApiLabClusterGetClusterResponse200:
             lifespan_expiration = self.lifespan_expiration.isoformat() if self.lifespan_expiration else None
 
         name = self.name
+        owner_id = self.owner_id
+        owner_name = self.owner_name
         product_id = self.product_id
         product_name = self.product_name
         product_params: Union[Unset, Dict[str, Any]] = UNSET
         if not isinstance(self.product_params, Unset):
             product_params = self.product_params.to_dict()
 
+        project_id = self.project_id
+        project_name = self.project_name
         quota: Union[Any, Dict[str, Any], Unset]
         if isinstance(self.quota, Unset):
             quota = UNSET
@@ -149,9 +157,6 @@ class RhubApiLabClusterGetClusterResponse200:
         if not isinstance(self.status_flag, Unset):
             status_flag = self.status_flag.to_dict()
 
-        user_id = self.user_id
-        user_name = self.user_name
-
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -171,12 +176,20 @@ class RhubApiLabClusterGetClusterResponse200:
             field_dict["lifespan_expiration"] = lifespan_expiration
         if name is not UNSET:
             field_dict["name"] = name
+        if owner_id is not UNSET:
+            field_dict["owner_id"] = owner_id
+        if owner_name is not UNSET:
+            field_dict["owner_name"] = owner_name
         if product_id is not UNSET:
             field_dict["product_id"] = product_id
         if product_name is not UNSET:
             field_dict["product_name"] = product_name
         if product_params is not UNSET:
             field_dict["product_params"] = product_params
+        if project_id is not UNSET:
+            field_dict["project_id"] = project_id
+        if project_name is not UNSET:
+            field_dict["project_name"] = project_name
         if quota is not UNSET:
             field_dict["quota"] = quota
         if quota_usage is not UNSET:
@@ -193,10 +206,6 @@ class RhubApiLabClusterGetClusterResponse200:
             field_dict["status"] = status
         if status_flag is not UNSET:
             field_dict["status_flag"] = status_flag
-        if user_id is not UNSET:
-            field_dict["user_id"] = user_id
-        if user_name is not UNSET:
-            field_dict["user_name"] = user_name
 
         return field_dict
 
@@ -241,6 +250,10 @@ class RhubApiLabClusterGetClusterResponse200:
 
         name = d.pop("name", UNSET)
 
+        owner_id = d.pop("owner_id", UNSET)
+
+        owner_name = d.pop("owner_name", UNSET)
+
         product_id = d.pop("product_id", UNSET)
 
         product_name = d.pop("product_name", UNSET)
@@ -251,6 +264,10 @@ class RhubApiLabClusterGetClusterResponse200:
             product_params = UNSET
         else:
             product_params = RhubApiLabClusterGetClusterResponse200ProductParams.from_dict(_product_params)
+
+        project_id = d.pop("project_id", UNSET)
+
+        project_name = d.pop("project_name", UNSET)
 
         def _parse_quota(data: object) -> Union[Any, RhubApiLabClusterGetClusterResponse200QuotaType0, Unset]:
             if isinstance(data, Unset):
@@ -327,10 +344,6 @@ class RhubApiLabClusterGetClusterResponse200:
         else:
             status_flag = RhubApiLabClusterGetClusterResponse200StatusFlag.from_dict(_status_flag)
 
-        user_id = d.pop("user_id", UNSET)
-
-        user_name = d.pop("user_name", UNSET)
-
         rhub_api_lab_cluster_get_cluster_response_200 = cls(
             created=created,
             description=description,
@@ -340,9 +353,13 @@ class RhubApiLabClusterGetClusterResponse200:
             id=id,
             lifespan_expiration=lifespan_expiration,
             name=name,
+            owner_id=owner_id,
+            owner_name=owner_name,
             product_id=product_id,
             product_name=product_name,
             product_params=product_params,
+            project_id=project_id,
+            project_name=project_name,
             quota=quota,
             quota_usage=quota_usage,
             region_id=region_id,
@@ -351,8 +368,6 @@ class RhubApiLabClusterGetClusterResponse200:
             shared=shared,
             status=status,
             status_flag=status_flag,
-            user_id=user_id,
-            user_name=user_name,
         )
 
         rhub_api_lab_cluster_get_cluster_response_200.additional_properties = d

@@ -100,7 +100,9 @@ def cluster():
     type=click.Choice(
         [
             "Active",
+            "Create Failed",
             "Deleted",
+            "Delete Failed",
             "Deleting",
             "Deletion Failed",
             "Deletion Queued",
@@ -192,7 +194,11 @@ def get_list(
 @click.option("--group-name", type=str)
 @click.option("--id")
 @click.option("--lifespan-expiration", type=click.DateTime(), help="Hard-limit expiration.")
+@click.option("--owner-id", type=str)
+@click.option("--owner-name", type=str)
 @click.option("--product-name", type=str)
+@click.option("--project-id", type=int)
+@click.option("--project-name", type=str)
 @click.option("--quota")
 @click.option("--quota-usage")
 @click.option("--region-name", type=str)
@@ -203,7 +209,9 @@ def get_list(
     type=click.Choice(
         [
             "Active",
+            "Create Failed",
             "Deleted",
+            "Delete Failed",
             "Deleting",
             "Deletion Failed",
             "Deletion Queued",
@@ -236,8 +244,6 @@ def get_list(
     ),
 )
 @click.option("--status-flag")
-@click.option("--user-id", type=str)
-@click.option("--user-name", type=str)
 @click.option("--hosts-item-cluster-id")
 @click.option("--hosts-item-fqdn", type=str)
 @click.option("--hosts-item-id")
@@ -259,7 +265,11 @@ def create(
     group_name,
     id,
     lifespan_expiration,
+    owner_id,
+    owner_name,
     product_name,
+    project_id,
+    project_name,
     quota,
     quota_usage,
     region_name,
@@ -267,8 +277,6 @@ def create(
     shared,
     status,
     status_flag,
-    user_id,
-    user_name,
     hosts_item_cluster_id,
     hosts_item_fqdn,
     hosts_item_id,
@@ -349,7 +357,11 @@ def create(
         hosts=hosts,
         id=id,
         lifespan_expiration=lifespan_expiration,
+        owner_id=owner_id,
+        owner_name=owner_name,
         product_name=product_name,
+        project_id=project_id,
+        project_name=project_name,
         quota=quota,
         quota_usage=quota_usage,
         region_name=region_name,
@@ -357,8 +369,6 @@ def create(
         shared=shared,
         status=status,
         status_flag=status_flag,
-        user_id=user_id,
-        user_name=user_name,
     )
 
     response = cluster_create(
@@ -409,9 +419,13 @@ def remove(
 @click.option("--id")
 @click.option("--lifespan-expiration", type=click.DateTime(), help="Hard-limit expiration.")
 @click.option("--name", type=str)
+@click.option("--owner-id", type=str)
+@click.option("--owner-name", type=str)
 @click.option("--product-id", type=int)
 @click.option("--product-name", type=str)
 @click.option("--product-params")
+@click.option("--project-id", type=int)
+@click.option("--project-name", type=str)
 @click.option("--quota")
 @click.option("--quota-usage")
 @click.option("--region-id", type=int)
@@ -423,7 +437,9 @@ def remove(
     type=click.Choice(
         [
             "Active",
+            "Create Failed",
             "Deleted",
+            "Delete Failed",
             "Deleting",
             "Deletion Failed",
             "Deletion Queued",
@@ -456,8 +472,6 @@ def remove(
     ),
 )
 @click.option("--status-flag")
-@click.option("--user-id", type=str)
-@click.option("--user-name", type=str)
 @click.option("--hosts-item-cluster-id")
 @click.option("--hosts-item-fqdn", type=str)
 @click.option("--hosts-item-id")
@@ -477,9 +491,13 @@ def update(
     id,
     lifespan_expiration,
     name,
+    owner_id,
+    owner_name,
     product_id,
     product_name,
     product_params,
+    project_id,
+    project_name,
     quota,
     quota_usage,
     region_id,
@@ -488,8 +506,6 @@ def update(
     shared,
     status,
     status_flag,
-    user_id,
-    user_name,
     hosts_item_cluster_id,
     hosts_item_fqdn,
     hosts_item_id,
@@ -567,9 +583,13 @@ def update(
         id=id,
         lifespan_expiration=lifespan_expiration,
         name=name,
+        owner_id=owner_id,
+        owner_name=owner_name,
         product_id=product_id,
         product_name=product_name,
         product_params=product_params,
+        project_id=project_id,
+        project_name=project_name,
         quota=quota,
         quota_usage=quota_usage,
         region_id=region_id,
@@ -578,8 +598,6 @@ def update(
         shared=shared,
         status=status,
         status_flag=status_flag,
-        user_id=user_id,
-        user_name=user_name,
     )
 
     response = cluster_update(
