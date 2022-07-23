@@ -64,38 +64,26 @@ def get_list(
 @project.command()
 @click.option("--cloud-id", required=True, type=int)
 @click.option("--name", required=True, type=str)
-@click.option("--cloud-name", type=str)
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
-@click.option("--group-name", type=str)
-@click.option("--id", type=int)
 @click.option("--owner-id", type=str, help="Defaults to user who created a project.")
-@click.option("--owner-name", type=str)
 @pass_api
 def create(
     api: APIRequest,
     cloud_id,
     name,
-    cloud_name,
     description,
     group_id,
-    group_name,
-    id,
     owner_id,
-    owner_name,
 ):
     """Create OpenStack project"""
 
     json_body = RhubApiOpenstackProjectCreateJsonBody(
         cloud_id=cloud_id,
         name=name,
-        cloud_name=cloud_name,
         description=description,
         group_id=group_id,
-        group_name=group_name,
-        id=id,
         owner_id=owner_id,
-        owner_name=owner_name,
     )
 
     response = project_create(
@@ -140,40 +128,28 @@ def remove(
 @project.command()
 @click.argument("project_id", type=int)
 @click.option("--cloud-id", type=int)
-@click.option("--cloud-name", type=str)
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
-@click.option("--group-name", type=str)
-@click.option("--id", type=int)
 @click.option("--name", type=str)
 @click.option("--owner-id", type=str, help="Defaults to user who created a project.")
-@click.option("--owner-name", type=str)
 @pass_api
 def update(
     api: APIRequest,
     project_id,
     cloud_id,
-    cloud_name,
     description,
     group_id,
-    group_name,
-    id,
     name,
     owner_id,
-    owner_name,
 ):
     """Update OpenStack project"""
 
     json_body = RhubApiOpenstackProjectUpdateJsonBody(
         cloud_id=cloud_id,
-        cloud_name=cloud_name,
         description=description,
         group_id=group_id,
-        group_name=group_name,
-        id=id,
         name=name,
         owner_id=owner_id,
-        owner_name=owner_name,
     )
 
     response = project_update(

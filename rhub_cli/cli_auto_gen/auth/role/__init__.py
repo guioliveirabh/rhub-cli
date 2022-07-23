@@ -36,13 +36,11 @@ def get_list(
 
 @role.command()
 @click.option("--name", required=True, type=str)
-@click.option("--id", type=str)
 @click.option("--attributes-additional-property-item", type=str)
 @pass_api
 def create(
     api: APIRequest,
     name,
-    id,
     attributes_additional_property_item,
 ):
     """Create role"""
@@ -57,7 +55,6 @@ def create(
     json_body = RhubApiAuthRoleCreateRoleJsonBody(
         name=name,
         attributes=attributes,
-        id=id,
     )
 
     response = role_create(
@@ -101,14 +98,12 @@ def remove(
 
 @role.command()
 @click.argument("role_id", type=str)
-@click.option("--id", type=str)
 @click.option("--name", type=str)
 @click.option("--attributes-additional-property-item", type=str)
 @pass_api
 def update(
     api: APIRequest,
     role_id,
-    id,
     name,
     attributes_additional_property_item,
 ):
@@ -123,7 +118,6 @@ def update(
 
     json_body = RhubApiAuthRoleUpdateRoleJsonBody(
         attributes=attributes,
-        id=id,
         name=name,
     )
 

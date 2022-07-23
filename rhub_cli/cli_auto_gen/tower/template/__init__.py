@@ -65,7 +65,6 @@ def get_list(
 @click.option("--tower-template-id", required=True, type=int)
 @click.option("--tower-template-is-workflow", required=True, is_flag=True, help="Is template workflow?")
 @click.option("--description", type=str)
-@click.option("--id", type=int, help="Internal ID")
 @pass_api
 def create(
     api: APIRequest,
@@ -74,7 +73,6 @@ def create(
     tower_template_id,
     tower_template_is_workflow,
     description,
-    id,
 ):
     """Create Tower template"""
 
@@ -84,7 +82,6 @@ def create(
         tower_template_id=tower_template_id,
         tower_template_is_workflow=tower_template_is_workflow,
         description=description,
-        id=id,
     )
 
     response = template_create(
@@ -129,7 +126,6 @@ def remove(
 @template.command()
 @click.argument("template_id", type=int)
 @click.option("--description", type=str)
-@click.option("--id", type=int, help="Internal ID")
 @click.option("--name", type=str)
 @click.option("--server-id", type=int)
 @click.option("--tower-template-id", type=int)
@@ -139,7 +135,6 @@ def update(
     api: APIRequest,
     template_id,
     description,
-    id,
     name,
     server_id,
     tower_template_id,
@@ -149,7 +144,6 @@ def update(
 
     json_body = RhubApiTowerUpdateTemplateJsonBody(
         description=description,
-        id=id,
         name=name,
         server_id=server_id,
         tower_template_id=tower_template_id,

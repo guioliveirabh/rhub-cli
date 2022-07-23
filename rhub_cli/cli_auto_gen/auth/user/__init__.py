@@ -59,7 +59,6 @@ def get_list(
 @click.option("--username", required=True, type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--first-name", type=str)
-@click.option("--id", type=str)
 @click.option("--last-name", type=str)
 @click.option("--password", type=str)
 @pass_api
@@ -69,7 +68,6 @@ def create(
     username,
     enabled,
     first_name,
-    id,
     last_name,
     password,
 ):
@@ -80,7 +78,6 @@ def create(
         username=username,
         enabled=enabled,
         first_name=first_name,
-        id=id,
         last_name=last_name,
         password=password,
     )
@@ -129,7 +126,6 @@ def remove(
 @click.option("--email", type=str)
 @click.option("--enabled", is_flag=True)
 @click.option("--first-name", type=str)
-@click.option("--id", type=str)
 @click.option("--last-name", type=str)
 @click.option("--password", type=str)
 @click.option("--username", type=str)
@@ -140,7 +136,6 @@ def update(
     email,
     enabled,
     first_name,
-    id,
     last_name,
     password,
     username,
@@ -151,7 +146,6 @@ def update(
         email=email,
         enabled=enabled,
         first_name=first_name,
-        id=id,
         last_name=last_name,
         password=password,
         username=username,

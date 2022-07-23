@@ -46,20 +46,17 @@ def get_list(
 @location.command()
 @click.option("--name", required=True, type=str, help="Short name of location / IATA identifier / ...")
 @click.option("--description", type=str, help="Long description of location, address, ...")
-@click.option("--id", type=int)
 @pass_api
 def create(
     api: APIRequest,
     name,
     description,
-    id,
 ):
     """Create location"""
 
     json_body = RhubApiLabLocationLocationCreateJsonBody(
         name=name,
         description=description,
-        id=id,
     )
 
     response = location_create(
@@ -104,21 +101,18 @@ def remove(
 @location.command()
 @click.argument("location_id", type=int)
 @click.option("--description", type=str, help="Long description of location, address, ...")
-@click.option("--id", type=int)
 @click.option("--name", type=str, help="Short name of location / IATA identifier / ...")
 @pass_api
 def update(
     api: APIRequest,
     location_id,
     description,
-    id,
     name,
 ):
     """Update location"""
 
     json_body = RhubApiLabLocationLocationUpdateJsonBody(
         description=description,
-        id=id,
         name=name,
     )
 

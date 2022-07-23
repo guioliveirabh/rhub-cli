@@ -77,9 +77,7 @@ def get_list(
 @click.option("--time-expr", required=True, type=str, help="cron time expression")
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--id", type=int)
 @click.option("--job-params")
-@click.option("--last-run", type=click.DateTime())
 @pass_api
 def create(
     api: APIRequest,
@@ -88,9 +86,7 @@ def create(
     time_expr,
     description,
     enabled,
-    id,
     job_params,
-    last_run,
 ):
     """Create CronJob"""
 
@@ -110,9 +106,7 @@ def create(
         time_expr=time_expr,
         description=description,
         enabled=enabled,
-        id=id,
         job_params=job_params,
-        last_run=last_run,
     )
 
     response = cron_create(
@@ -158,10 +152,8 @@ def remove(
 @click.argument("cron_job_id", type=int)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--id", type=int)
 @click.option("--job-name", type=click.Choice(["example", "tower_launch", "delete_expired_clusters"]))
 @click.option("--job-params")
-@click.option("--last-run", type=click.DateTime())
 @click.option("--name", type=str)
 @click.option("--time-expr", type=str, help="cron time expression")
 @pass_api
@@ -170,10 +162,8 @@ def update(
     cron_job_id,
     description,
     enabled,
-    id,
     job_name,
     job_params,
-    last_run,
     name,
     time_expr,
 ):
@@ -192,10 +182,8 @@ def update(
     json_body = RhubApiSchedulerCronUpdateJobJsonBody(
         description=description,
         enabled=enabled,
-        id=id,
         job_name=job_name,
         job_params=job_params,
-        last_run=last_run,
         name=name,
         time_expr=time_expr,
     )

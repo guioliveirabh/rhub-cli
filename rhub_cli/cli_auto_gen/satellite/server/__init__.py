@@ -61,10 +61,8 @@ def get_list(
 @click.option("--hostname", required=True, type=str)
 @click.option("--name", required=True, type=str)
 @click.option("--description", type=str)
-@click.option("--id", type=int)
 @click.option("--insecure", is_flag=True)
 @click.option("--owner-group-id", type=str)
-@click.option("--owner-group-name", type=str)
 @pass_api
 def create(
     api: APIRequest,
@@ -72,10 +70,8 @@ def create(
     hostname,
     name,
     description,
-    id,
     insecure,
     owner_group_id,
-    owner_group_name,
 ):
     """Create Satellite server"""
 
@@ -84,10 +80,8 @@ def create(
         hostname=hostname,
         name=name,
         description=description,
-        id=id,
         insecure=insecure,
         owner_group_id=owner_group_id,
-        owner_group_name=owner_group_name,
     )
 
     response = server_create(
@@ -134,11 +128,9 @@ def remove(
 @click.option("--credentials")
 @click.option("--description", type=str)
 @click.option("--hostname", type=str)
-@click.option("--id", type=int)
 @click.option("--insecure", is_flag=True)
 @click.option("--name", type=str)
 @click.option("--owner-group-id", type=str)
-@click.option("--owner-group-name", type=str)
 @pass_api
 def update(
     api: APIRequest,
@@ -146,11 +138,9 @@ def update(
     credentials,
     description,
     hostname,
-    id,
     insecure,
     name,
     owner_group_id,
-    owner_group_name,
 ):
     """Update Satellite server"""
 
@@ -158,11 +148,9 @@ def update(
         credentials=credentials,
         description=description,
         hostname=hostname,
-        id=id,
         insecure=insecure,
         name=name,
         owner_group_id=owner_group_id,
-        owner_group_name=owner_group_name,
     )
 
     response = server_update(

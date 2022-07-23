@@ -34,8 +34,6 @@ def get_list(
 @click.argument("cluster_id", type=int)
 @click.option("--json-body-item-fqdn", required=True, type=str)
 @click.option("--json-body-item-ipaddr-item", required=True, type=str)
-@click.option("--json-body-item-cluster-id", type=int)
-@click.option("--json-body-item-id", type=int)
 @click.option("--json-body-item-num-vcpus", type=int)
 @click.option("--json-body-item-num-volumes", type=int)
 @click.option("--json-body-item-ram-mb", type=int)
@@ -46,8 +44,6 @@ def create(
     cluster_id,
     json_body_item_fqdn,
     json_body_item_ipaddr_item,
-    json_body_item_cluster_id,
-    json_body_item_id,
     json_body_item_num_vcpus,
     json_body_item_num_volumes,
     json_body_item_ram_mb,
@@ -62,8 +58,6 @@ def create(
     json_body_item = RhubApiLabClusterCreateClusterHostsJsonBodyItem(
         fqdn=json_body_item_fqdn,
         ipaddr=json_body_item_ipaddr,
-        cluster_id=json_body_item_cluster_id,
-        id=json_body_item_id,
         num_vcpus=json_body_item_num_vcpus,
         num_volumes=json_body_item_num_volumes,
         ram_mb=json_body_item_ram_mb,

@@ -65,8 +65,6 @@ def get_list(
 @click.option("--owner-group-id", required=True, type=str)
 @click.option("--url", required=True, type=str)
 @click.option("--description", type=str)
-@click.option("--id", type=int)
-@click.option("--owner-group-name", type=str)
 @pass_api
 def create(
     api: APIRequest,
@@ -78,8 +76,6 @@ def create(
     owner_group_id,
     url,
     description,
-    id,
-    owner_group_name,
 ):
     """Create OpenStack cloud"""
 
@@ -96,8 +92,6 @@ def create(
         owner_group_id=owner_group_id,
         url=url,
         description=description,
-        id=id,
-        owner_group_name=owner_group_name,
     )
 
     response = cloud_create(
@@ -145,11 +139,9 @@ def remove(
 @click.option("--description", type=str)
 @click.option("--domain-id", type=str)
 @click.option("--domain-name", type=str)
-@click.option("--id", type=int)
 @click.option("--name", type=str)
 @click.option("--networks-item", type=str)
 @click.option("--owner-group-id", type=str)
-@click.option("--owner-group-name", type=str)
 @click.option("--url", type=str)
 @pass_api
 def update(
@@ -159,11 +151,9 @@ def update(
     description,
     domain_id,
     domain_name,
-    id,
     name,
     networks_item,
     owner_group_id,
-    owner_group_name,
     url,
 ):
     """Update OpenStack cloud"""
@@ -177,11 +167,9 @@ def update(
         description=description,
         domain_id=domain_id,
         domain_name=domain_name,
-        id=id,
         name=name,
         networks=networks,
         owner_group_id=owner_group_id,
-        owner_group_name=owner_group_name,
         url=url,
     )
 

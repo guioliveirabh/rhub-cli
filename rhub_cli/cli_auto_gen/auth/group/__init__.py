@@ -39,13 +39,11 @@ def get_list(
 
 @group.command()
 @click.option("--name", required=True, type=str)
-@click.option("--id", type=str)
 @click.option("--attributes-additional-property-item", type=str)
 @pass_api
 def create(
     api: APIRequest,
     name,
-    id,
     attributes_additional_property_item,
 ):
     """Create group"""
@@ -60,7 +58,6 @@ def create(
     json_body = RhubApiAuthGroupCreateGroupJsonBody(
         name=name,
         attributes=attributes,
-        id=id,
     )
 
     response = group_create(
@@ -104,14 +101,12 @@ def remove(
 
 @group.command()
 @click.argument("group_id", type=str)
-@click.option("--id", type=str)
 @click.option("--name", type=str)
 @click.option("--attributes-additional-property-item", type=str)
 @pass_api
 def update(
     api: APIRequest,
     group_id,
-    id,
     name,
     attributes_additional_property_item,
 ):
@@ -126,7 +121,6 @@ def update(
 
     json_body = RhubApiAuthGroupUpdateGroupJsonBody(
         attributes=attributes,
-        id=id,
         name=name,
     )
 

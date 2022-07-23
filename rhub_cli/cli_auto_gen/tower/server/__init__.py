@@ -62,7 +62,6 @@ def get_list(
 @click.option("--url", required=True, type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--id", type=int)
 @click.option("--verify-ssl", is_flag=True, help="Option to disable SSL certificate verification.")
 @pass_api
 def create(
@@ -72,7 +71,6 @@ def create(
     url,
     description,
     enabled,
-    id,
     verify_ssl,
 ):
     """Create Tower server"""
@@ -83,7 +81,6 @@ def create(
         url=url,
         description=description,
         enabled=enabled,
-        id=id,
         verify_ssl=verify_ssl,
     )
 
@@ -131,7 +128,6 @@ def remove(
 @click.option("--credentials", type=str, help="Tower credentials path (Vault mount/path)")
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--id", type=int)
 @click.option("--name", type=str)
 @click.option("--url", type=str)
 @click.option("--verify-ssl", is_flag=True, help="Option to disable SSL certificate verification.")
@@ -142,7 +138,6 @@ def update(
     credentials,
     description,
     enabled,
-    id,
     name,
     url,
     verify_ssl,
@@ -153,7 +148,6 @@ def update(
         credentials=credentials,
         description=description,
         enabled=enabled,
-        id=id,
         name=name,
         url=url,
         verify_ssl=verify_ssl,
