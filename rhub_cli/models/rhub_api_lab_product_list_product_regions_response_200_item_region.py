@@ -3,9 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
-from ..models.rhub_api_lab_product_list_product_regions_response_200_item_region_id import (
-    RhubApiLabProductListProductRegionsResponse200ItemRegionId,
-)
 from ..models.rhub_api_lab_product_list_product_regions_response_200_item_region_location_type_0 import (
     RhubApiLabProductListProductRegionsResponse200ItemRegionLocationType0,
 )
@@ -33,7 +30,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
         banner (Union[Unset, str]):
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionId]):
+        id (Union[Unset, int]):
         lifespan_length (Union[Unset, None, int]):
         location (Union[Any, RhubApiLabProductListProductRegionsResponse200ItemRegionLocationType0, Unset]):
         location_id (Union[Any, Unset, int]):
@@ -59,7 +56,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
     banner: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionId] = UNSET
+    id: Union[Unset, int] = UNSET
     lifespan_length: Union[Unset, None, int] = UNSET
     location: Union[Any, RhubApiLabProductListProductRegionsResponse200ItemRegionLocationType0, Unset] = UNSET
     location_id: Union[Any, Unset, int] = UNSET
@@ -84,10 +81,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
         banner = self.banner
         description = self.description
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         lifespan_length = self.lifespan_length
         location: Union[Any, Dict[str, Any], Unset]
         if isinstance(self.location, Unset):
@@ -225,12 +219,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegion:
 
         enabled = d.pop("enabled", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabProductListProductRegionsResponse200ItemRegionId.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 

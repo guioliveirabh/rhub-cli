@@ -1,5 +1,3 @@
-import json
-
 import click
 
 from rhub_cli.api.lab.rhub_api_lab_region_create_region import sync_detailed as region_create
@@ -9,24 +7,15 @@ from rhub_cli.api.lab.rhub_api_lab_region_list_regions import sync_detailed as r
 from rhub_cli.api.lab.rhub_api_lab_region_update_region import sync_detailed as region_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_lab_region_create_region_json_body import RhubApiLabRegionCreateRegionJsonBody
-from rhub_cli.models.rhub_api_lab_region_create_region_json_body_id import RhubApiLabRegionCreateRegionJsonBodyId
 from rhub_cli.models.rhub_api_lab_region_create_region_json_body_openstack import (
     RhubApiLabRegionCreateRegionJsonBodyOpenstack,
-)
-from rhub_cli.models.rhub_api_lab_region_create_region_json_body_openstack_id import (
-    RhubApiLabRegionCreateRegionJsonBodyOpenstackId,
 )
 from rhub_cli.models.rhub_api_lab_region_list_regions_filter import RhubApiLabRegionListRegionsFilter
 from rhub_cli.models.rhub_api_lab_region_list_regions_sort import RhubApiLabRegionListRegionsSort
 from rhub_cli.models.rhub_api_lab_region_update_region_json_body import RhubApiLabRegionUpdateRegionJsonBody
-from rhub_cli.models.rhub_api_lab_region_update_region_json_body_id import RhubApiLabRegionUpdateRegionJsonBodyId
 from rhub_cli.models.rhub_api_lab_region_update_region_json_body_openstack import (
     RhubApiLabRegionUpdateRegionJsonBodyOpenstack,
 )
-from rhub_cli.models.rhub_api_lab_region_update_region_json_body_openstack_id import (
-    RhubApiLabRegionUpdateRegionJsonBodyOpenstackId,
-)
-from rhub_cli.types import UNSET
 
 from .all import all
 from .products import products
@@ -100,7 +89,7 @@ def get_list(
 @click.option("--banner", type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--lifespan-length", type=int)
 @click.option("--location")
 @click.option("--location-id")
@@ -118,7 +107,7 @@ def get_list(
 @click.option("--openstack-description", type=str)
 @click.option("--openstack-domain-id", type=str)
 @click.option("--openstack-domain-name", type=str)
-@click.option("--openstack-id")
+@click.option("--openstack-id", type=int)
 @click.option("--openstack-name", type=str)
 @click.option("--openstack-networks-item", type=str)
 @click.option("--openstack-owner-group-id", type=str)
@@ -165,13 +154,6 @@ def create(
     if openstack_networks_item is not None:
         openstack_networks.append(openstack_networks_item)
 
-    if openstack_id is None:
-        openstack_id = UNSET
-    else:
-        _tmp = RhubApiLabRegionCreateRegionJsonBodyOpenstackId()
-        _tmp.additional_properties = json.loads(openstack_id)  # TODO: check if dict
-        openstack_id = _tmp
-
     openstack = RhubApiLabRegionCreateRegionJsonBodyOpenstack(
         credentials=openstack_credentials,
         description=openstack_description,
@@ -184,13 +166,6 @@ def create(
         owner_group_name=openstack_owner_group_name,
         url=openstack_url,
     )
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiLabRegionCreateRegionJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiLabRegionCreateRegionJsonBody(
         name=name,
@@ -261,7 +236,7 @@ def remove(
 @click.option("--banner", type=str)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--lifespan-length", type=int)
 @click.option("--location")
 @click.option("--location-id")
@@ -283,7 +258,7 @@ def remove(
 @click.option("--openstack-description", type=str)
 @click.option("--openstack-domain-id", type=str)
 @click.option("--openstack-domain-name", type=str)
-@click.option("--openstack-id")
+@click.option("--openstack-id", type=int)
 @click.option("--openstack-name", type=str)
 @click.option("--openstack-networks-item", type=str)
 @click.option("--openstack-owner-group-id", type=str)
@@ -331,13 +306,6 @@ def update(
     if openstack_networks_item is not None:
         openstack_networks.append(openstack_networks_item)
 
-    if openstack_id is None:
-        openstack_id = UNSET
-    else:
-        _tmp = RhubApiLabRegionUpdateRegionJsonBodyOpenstackId()
-        _tmp.additional_properties = json.loads(openstack_id)  # TODO: check if dict
-        openstack_id = _tmp
-
     openstack = RhubApiLabRegionUpdateRegionJsonBodyOpenstack(
         credentials=openstack_credentials,
         description=openstack_description,
@@ -350,13 +318,6 @@ def update(
         owner_group_name=openstack_owner_group_name,
         url=openstack_url,
     )
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiLabRegionUpdateRegionJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiLabRegionUpdateRegionJsonBody(
         banner=banner,

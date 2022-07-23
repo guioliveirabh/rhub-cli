@@ -6,9 +6,6 @@ import attr
 from ..models.rhub_api_lab_region_list_regions_response_200_data_item_satellite_type_0_credentials_type_0 import (
     RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0CredentialsType0,
 )
-from ..models.rhub_api_lab_region_list_regions_response_200_data_item_satellite_type_0_id import (
-    RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0Id,
-)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0")
@@ -21,7 +18,7 @@ class RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0:
         credentials (Union[RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0CredentialsType0, Unset, str]):
         description (Union[Unset, None, str]):  Example: Satellite server for RDU site..
         hostname (Union[Unset, str]):
-        id (Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0Id]):
+        id (Union[Unset, int]):
         insecure (Union[Unset, bool]):
         name (Union[Unset, str]):  Example: satellite-rdu.
         owner_group_id (Union[Unset, str]):
@@ -31,7 +28,7 @@ class RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0:
     credentials: Union[RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0CredentialsType0, Unset, str] = UNSET
     description: Union[Unset, None, str] = UNSET
     hostname: Union[Unset, str] = UNSET
-    id: Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0Id] = UNSET
+    id: Union[Unset, int] = UNSET
     insecure: Union[Unset, bool] = UNSET
     name: Union[Unset, str] = UNSET
     owner_group_id: Union[Unset, str] = UNSET
@@ -53,10 +50,7 @@ class RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0:
 
         description = self.description
         hostname = self.hostname
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         insecure = self.insecure
         name = self.name
         owner_group_id = self.owner_group_id
@@ -122,12 +116,7 @@ class RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0:
 
         hostname = d.pop("hostname", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0Id]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabRegionListRegionsResponse200DataItemSatelliteType0Id.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         insecure = d.pop("insecure", UNSET)
 

@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_openstack_project_create_json_body_id import RhubApiOpenstackProjectCreateJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiOpenstackProjectCreateJsonBody")
@@ -19,7 +18,7 @@ class RhubApiOpenstackProjectCreateJsonBody:
         description (Union[Unset, None, str]):
         group_id (Union[Unset, None, str]):
         group_name (Union[Unset, None, str]):
-        id (Union[Unset, RhubApiOpenstackProjectCreateJsonBodyId]):
+        id (Union[Unset, int]):
         owner_id (Union[Unset, str]): Defaults to user who created a project.
         owner_name (Union[Unset, str]):
     """
@@ -30,7 +29,7 @@ class RhubApiOpenstackProjectCreateJsonBody:
     description: Union[Unset, None, str] = UNSET
     group_id: Union[Unset, None, str] = UNSET
     group_name: Union[Unset, None, str] = UNSET
-    id: Union[Unset, RhubApiOpenstackProjectCreateJsonBodyId] = UNSET
+    id: Union[Unset, int] = UNSET
     owner_id: Union[Unset, str] = UNSET
     owner_name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
@@ -42,10 +41,7 @@ class RhubApiOpenstackProjectCreateJsonBody:
         description = self.description
         group_id = self.group_id
         group_name = self.group_name
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         owner_id = self.owner_id
         owner_name = self.owner_name
 
@@ -89,12 +85,7 @@ class RhubApiOpenstackProjectCreateJsonBody:
 
         group_name = d.pop("group_name", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiOpenstackProjectCreateJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiOpenstackProjectCreateJsonBodyId.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         owner_id = d.pop("owner_id", UNSET)
 

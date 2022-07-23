@@ -1,5 +1,3 @@
-import json
-
 import click
 
 from rhub_cli.api.openstack.rhub_api_openstack_project_create import sync_detailed as project_create
@@ -9,12 +7,9 @@ from rhub_cli.api.openstack.rhub_api_openstack_project_list import sync_detailed
 from rhub_cli.api.openstack.rhub_api_openstack_project_update import sync_detailed as project_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_openstack_project_create_json_body import RhubApiOpenstackProjectCreateJsonBody
-from rhub_cli.models.rhub_api_openstack_project_create_json_body_id import RhubApiOpenstackProjectCreateJsonBodyId
 from rhub_cli.models.rhub_api_openstack_project_list_filter import RhubApiOpenstackProjectListFilter
 from rhub_cli.models.rhub_api_openstack_project_list_sort import RhubApiOpenstackProjectListSort
 from rhub_cli.models.rhub_api_openstack_project_update_json_body import RhubApiOpenstackProjectUpdateJsonBody
-from rhub_cli.models.rhub_api_openstack_project_update_json_body_id import RhubApiOpenstackProjectUpdateJsonBodyId
-from rhub_cli.types import UNSET
 
 from .limits import limits
 
@@ -73,7 +68,7 @@ def get_list(
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--owner-id", type=str, help="Defaults to user who created a project.")
 @click.option("--owner-name", type=str)
 @pass_api
@@ -90,13 +85,6 @@ def create(
     owner_name,
 ):
     """Create OpenStack project"""
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiOpenstackProjectCreateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiOpenstackProjectCreateJsonBody(
         cloud_id=cloud_id,
@@ -156,7 +144,7 @@ def remove(
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--name", type=str)
 @click.option("--owner-id", type=str, help="Defaults to user who created a project.")
 @click.option("--owner-name", type=str)
@@ -175,13 +163,6 @@ def update(
     owner_name,
 ):
     """Update OpenStack project"""
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiOpenstackProjectUpdateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiOpenstackProjectUpdateJsonBody(
         cloud_id=cloud_id,

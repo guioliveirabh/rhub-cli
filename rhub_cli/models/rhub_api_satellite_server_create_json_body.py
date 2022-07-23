@@ -6,7 +6,6 @@ import attr
 from ..models.rhub_api_satellite_server_create_json_body_credentials_type_0 import (
     RhubApiSatelliteServerCreateJsonBodyCredentialsType0,
 )
-from ..models.rhub_api_satellite_server_create_json_body_id import RhubApiSatelliteServerCreateJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiSatelliteServerCreateJsonBody")
@@ -20,7 +19,7 @@ class RhubApiSatelliteServerCreateJsonBody:
         hostname (str):
         name (str):  Example: satellite-rdu.
         description (Union[Unset, None, str]):  Example: Satellite server for RDU site..
-        id (Union[Unset, RhubApiSatelliteServerCreateJsonBodyId]):
+        id (Union[Unset, int]):
         insecure (Union[Unset, bool]):
         owner_group_id (Union[Unset, str]):
         owner_group_name (Union[Unset, str]):
@@ -30,7 +29,7 @@ class RhubApiSatelliteServerCreateJsonBody:
     hostname: str
     name: str
     description: Union[Unset, None, str] = UNSET
-    id: Union[Unset, RhubApiSatelliteServerCreateJsonBodyId] = UNSET
+    id: Union[Unset, int] = UNSET
     insecure: Union[Unset, bool] = UNSET
     owner_group_id: Union[Unset, str] = UNSET
     owner_group_name: Union[Unset, str] = UNSET
@@ -47,10 +46,7 @@ class RhubApiSatelliteServerCreateJsonBody:
         hostname = self.hostname
         name = self.name
         description = self.description
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         insecure = self.insecure
         owner_group_id = self.owner_group_id
         owner_group_name = self.owner_group_name
@@ -100,12 +96,7 @@ class RhubApiSatelliteServerCreateJsonBody:
 
         description = d.pop("description", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiSatelliteServerCreateJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiSatelliteServerCreateJsonBodyId.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         insecure = d.pop("insecure", UNSET)
 

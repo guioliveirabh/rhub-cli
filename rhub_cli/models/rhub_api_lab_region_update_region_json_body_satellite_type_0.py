@@ -6,9 +6,6 @@ import attr
 from ..models.rhub_api_lab_region_update_region_json_body_satellite_type_0_credentials_type_0 import (
     RhubApiLabRegionUpdateRegionJsonBodySatelliteType0CredentialsType0,
 )
-from ..models.rhub_api_lab_region_update_region_json_body_satellite_type_0_id import (
-    RhubApiLabRegionUpdateRegionJsonBodySatelliteType0Id,
-)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiLabRegionUpdateRegionJsonBodySatelliteType0")
@@ -21,7 +18,7 @@ class RhubApiLabRegionUpdateRegionJsonBodySatelliteType0:
         credentials (Union[RhubApiLabRegionUpdateRegionJsonBodySatelliteType0CredentialsType0, Unset, str]):
         description (Union[Unset, None, str]):  Example: Satellite server for RDU site..
         hostname (Union[Unset, str]):
-        id (Union[Unset, RhubApiLabRegionUpdateRegionJsonBodySatelliteType0Id]):
+        id (Union[Unset, int]):
         insecure (Union[Unset, bool]):
         name (Union[Unset, str]):  Example: satellite-rdu.
         owner_group_id (Union[Unset, str]):
@@ -31,7 +28,7 @@ class RhubApiLabRegionUpdateRegionJsonBodySatelliteType0:
     credentials: Union[RhubApiLabRegionUpdateRegionJsonBodySatelliteType0CredentialsType0, Unset, str] = UNSET
     description: Union[Unset, None, str] = UNSET
     hostname: Union[Unset, str] = UNSET
-    id: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodySatelliteType0Id] = UNSET
+    id: Union[Unset, int] = UNSET
     insecure: Union[Unset, bool] = UNSET
     name: Union[Unset, str] = UNSET
     owner_group_id: Union[Unset, str] = UNSET
@@ -53,10 +50,7 @@ class RhubApiLabRegionUpdateRegionJsonBodySatelliteType0:
 
         description = self.description
         hostname = self.hostname
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         insecure = self.insecure
         name = self.name
         owner_group_id = self.owner_group_id
@@ -116,12 +110,7 @@ class RhubApiLabRegionUpdateRegionJsonBodySatelliteType0:
 
         hostname = d.pop("hostname", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabRegionUpdateRegionJsonBodySatelliteType0Id]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabRegionUpdateRegionJsonBodySatelliteType0Id.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         insecure = d.pop("insecure", UNSET)
 

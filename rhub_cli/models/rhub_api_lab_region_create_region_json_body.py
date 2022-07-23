@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
-from ..models.rhub_api_lab_region_create_region_json_body_id import RhubApiLabRegionCreateRegionJsonBodyId
 from ..models.rhub_api_lab_region_create_region_json_body_location_type_0 import (
     RhubApiLabRegionCreateRegionJsonBodyLocationType0,
 )
@@ -33,7 +32,7 @@ class RhubApiLabRegionCreateRegionJsonBody:
         banner (Union[Unset, str]):
         description (Union[Unset, str]):
         enabled (Union[Unset, bool]):
-        id (Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId]):
+        id (Union[Unset, int]):
         lifespan_length (Union[Unset, None, int]):
         location (Union[Any, RhubApiLabRegionCreateRegionJsonBodyLocationType0, Unset]):
         location_id (Union[Any, Unset, int]):
@@ -59,7 +58,7 @@ class RhubApiLabRegionCreateRegionJsonBody:
     banner: Union[Unset, str] = UNSET
     description: Union[Unset, str] = UNSET
     enabled: Union[Unset, bool] = UNSET
-    id: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId] = UNSET
+    id: Union[Unset, int] = UNSET
     lifespan_length: Union[Unset, None, int] = UNSET
     location: Union[Any, RhubApiLabRegionCreateRegionJsonBodyLocationType0, Unset] = UNSET
     location_id: Union[Any, Unset, int] = UNSET
@@ -84,10 +83,7 @@ class RhubApiLabRegionCreateRegionJsonBody:
         banner = self.banner
         description = self.description
         enabled = self.enabled
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         lifespan_length = self.lifespan_length
         location: Union[Any, Dict[str, Any], Unset]
         if isinstance(self.location, Unset):
@@ -228,12 +224,7 @@ class RhubApiLabRegionCreateRegionJsonBody:
 
         enabled = d.pop("enabled", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabRegionCreateRegionJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabRegionCreateRegionJsonBodyId.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         lifespan_length = d.pop("lifespan_length", UNSET)
 

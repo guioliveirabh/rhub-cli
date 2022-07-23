@@ -6,7 +6,6 @@ import attr
 from ..models.rhub_api_satellite_server_get_response_200_credentials_type_0 import (
     RhubApiSatelliteServerGetResponse200CredentialsType0,
 )
-from ..models.rhub_api_satellite_server_get_response_200_id import RhubApiSatelliteServerGetResponse200Id
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiSatelliteServerGetResponse200")
@@ -19,7 +18,7 @@ class RhubApiSatelliteServerGetResponse200:
         credentials (Union[RhubApiSatelliteServerGetResponse200CredentialsType0, Unset, str]):
         description (Union[Unset, None, str]):  Example: Satellite server for RDU site..
         hostname (Union[Unset, str]):
-        id (Union[Unset, RhubApiSatelliteServerGetResponse200Id]):
+        id (Union[Unset, int]):
         insecure (Union[Unset, bool]):
         name (Union[Unset, str]):  Example: satellite-rdu.
         owner_group_id (Union[Unset, str]):
@@ -29,7 +28,7 @@ class RhubApiSatelliteServerGetResponse200:
     credentials: Union[RhubApiSatelliteServerGetResponse200CredentialsType0, Unset, str] = UNSET
     description: Union[Unset, None, str] = UNSET
     hostname: Union[Unset, str] = UNSET
-    id: Union[Unset, RhubApiSatelliteServerGetResponse200Id] = UNSET
+    id: Union[Unset, int] = UNSET
     insecure: Union[Unset, bool] = UNSET
     name: Union[Unset, str] = UNSET
     owner_group_id: Union[Unset, str] = UNSET
@@ -51,10 +50,7 @@ class RhubApiSatelliteServerGetResponse200:
 
         description = self.description
         hostname = self.hostname
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         insecure = self.insecure
         name = self.name
         owner_group_id = self.owner_group_id
@@ -112,12 +108,7 @@ class RhubApiSatelliteServerGetResponse200:
 
         hostname = d.pop("hostname", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiSatelliteServerGetResponse200Id]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiSatelliteServerGetResponse200Id.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         insecure = d.pop("insecure", UNSET)
 

@@ -6,7 +6,6 @@ import attr
 from ..models.rhub_api_openstack_cloud_update_json_body_credentials_type_0 import (
     RhubApiOpenstackCloudUpdateJsonBodyCredentialsType0,
 )
-from ..models.rhub_api_openstack_cloud_update_json_body_id import RhubApiOpenstackCloudUpdateJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiOpenstackCloudUpdateJsonBody")
@@ -21,7 +20,7 @@ class RhubApiOpenstackCloudUpdateJsonBody:
         description (Union[Unset, None, str]):  Example: Private cloud for RHub located in RDU..
         domain_id (Union[Unset, str]):  Example: default.
         domain_name (Union[Unset, str]):  Example: Default.
-        id (Union[Unset, RhubApiOpenstackCloudUpdateJsonBodyId]):
+        id (Union[Unset, int]):
         name (Union[Unset, str]):  Example: rhub-rdu.
         networks (Union[Unset, List[str]]): Network providers that can be used in the cloud Example:
             ['provider_net_rhub'].
@@ -34,7 +33,7 @@ class RhubApiOpenstackCloudUpdateJsonBody:
     description: Union[Unset, None, str] = UNSET
     domain_id: Union[Unset, str] = UNSET
     domain_name: Union[Unset, str] = UNSET
-    id: Union[Unset, RhubApiOpenstackCloudUpdateJsonBodyId] = UNSET
+    id: Union[Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
     networks: Union[Unset, List[str]] = UNSET
     owner_group_id: Union[Unset, str] = UNSET
@@ -58,10 +57,7 @@ class RhubApiOpenstackCloudUpdateJsonBody:
         description = self.description
         domain_id = self.domain_id
         domain_name = self.domain_name
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         name = self.name
         networks: Union[Unset, List[str]] = UNSET
         if not isinstance(self.networks, Unset):
@@ -129,12 +125,7 @@ class RhubApiOpenstackCloudUpdateJsonBody:
 
         domain_name = d.pop("domain_name", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiOpenstackCloudUpdateJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiOpenstackCloudUpdateJsonBodyId.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)
 

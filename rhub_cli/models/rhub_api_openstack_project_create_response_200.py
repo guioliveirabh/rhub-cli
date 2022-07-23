@@ -3,7 +3,6 @@ from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
-from ..models.rhub_api_openstack_project_create_response_200_id import RhubApiOpenstackProjectCreateResponse200Id
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiOpenstackProjectCreateResponse200")
@@ -18,7 +17,7 @@ class RhubApiOpenstackProjectCreateResponse200:
         description (Union[Unset, None, str]):
         group_id (Union[Unset, None, str]):
         group_name (Union[Unset, None, str]):
-        id (Union[Unset, RhubApiOpenstackProjectCreateResponse200Id]):
+        id (Union[Unset, int]):
         name (Union[Unset, str]):  Example: myproject.
         owner_id (Union[Unset, str]): Defaults to user who created a project.
         owner_name (Union[Unset, str]):
@@ -29,7 +28,7 @@ class RhubApiOpenstackProjectCreateResponse200:
     description: Union[Unset, None, str] = UNSET
     group_id: Union[Unset, None, str] = UNSET
     group_name: Union[Unset, None, str] = UNSET
-    id: Union[Unset, RhubApiOpenstackProjectCreateResponse200Id] = UNSET
+    id: Union[Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
     owner_id: Union[Unset, str] = UNSET
     owner_name: Union[Unset, str] = UNSET
@@ -41,10 +40,7 @@ class RhubApiOpenstackProjectCreateResponse200:
         description = self.description
         group_id = self.group_id
         group_name = self.group_name
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         name = self.name
         owner_id = self.owner_id
         owner_name = self.owner_name
@@ -86,12 +82,7 @@ class RhubApiOpenstackProjectCreateResponse200:
 
         group_name = d.pop("group_name", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiOpenstackProjectCreateResponse200Id]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiOpenstackProjectCreateResponse200Id.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)
 

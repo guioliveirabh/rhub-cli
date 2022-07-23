@@ -1,5 +1,3 @@
-import json
-
 import click
 
 from rhub_cli.api.satellite.rhub_api_satellite_server_create import sync_detailed as server_create
@@ -9,12 +7,9 @@ from rhub_cli.api.satellite.rhub_api_satellite_server_list import sync_detailed 
 from rhub_cli.api.satellite.rhub_api_satellite_server_update import sync_detailed as server_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_satellite_server_create_json_body import RhubApiSatelliteServerCreateJsonBody
-from rhub_cli.models.rhub_api_satellite_server_create_json_body_id import RhubApiSatelliteServerCreateJsonBodyId
 from rhub_cli.models.rhub_api_satellite_server_list_filter import RhubApiSatelliteServerListFilter
 from rhub_cli.models.rhub_api_satellite_server_list_sort import RhubApiSatelliteServerListSort
 from rhub_cli.models.rhub_api_satellite_server_update_json_body import RhubApiSatelliteServerUpdateJsonBody
-from rhub_cli.models.rhub_api_satellite_server_update_json_body_id import RhubApiSatelliteServerUpdateJsonBodyId
-from rhub_cli.types import UNSET
 
 
 @click.group()
@@ -66,7 +61,7 @@ def get_list(
 @click.option("--hostname", required=True, type=str)
 @click.option("--name", required=True, type=str)
 @click.option("--description", type=str)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--insecure", is_flag=True)
 @click.option("--owner-group-id", type=str)
 @click.option("--owner-group-name", type=str)
@@ -83,13 +78,6 @@ def create(
     owner_group_name,
 ):
     """Create Satellite server"""
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiSatelliteServerCreateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiSatelliteServerCreateJsonBody(
         credentials=credentials,
@@ -146,7 +134,7 @@ def remove(
 @click.option("--credentials")
 @click.option("--description", type=str)
 @click.option("--hostname", type=str)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--insecure", is_flag=True)
 @click.option("--name", type=str)
 @click.option("--owner-group-id", type=str)
@@ -165,13 +153,6 @@ def update(
     owner_group_name,
 ):
     """Update Satellite server"""
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiSatelliteServerUpdateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiSatelliteServerUpdateJsonBody(
         credentials=credentials,

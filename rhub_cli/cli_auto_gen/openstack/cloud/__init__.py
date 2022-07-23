@@ -1,5 +1,3 @@
-import json
-
 import click
 
 from rhub_cli.api.openstack.rhub_api_openstack_cloud_create import sync_detailed as cloud_create
@@ -9,12 +7,9 @@ from rhub_cli.api.openstack.rhub_api_openstack_cloud_list import sync_detailed a
 from rhub_cli.api.openstack.rhub_api_openstack_cloud_update import sync_detailed as cloud_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_openstack_cloud_create_json_body import RhubApiOpenstackCloudCreateJsonBody
-from rhub_cli.models.rhub_api_openstack_cloud_create_json_body_id import RhubApiOpenstackCloudCreateJsonBodyId
 from rhub_cli.models.rhub_api_openstack_cloud_list_filter import RhubApiOpenstackCloudListFilter
 from rhub_cli.models.rhub_api_openstack_cloud_list_sort import RhubApiOpenstackCloudListSort
 from rhub_cli.models.rhub_api_openstack_cloud_update_json_body import RhubApiOpenstackCloudUpdateJsonBody
-from rhub_cli.models.rhub_api_openstack_cloud_update_json_body_id import RhubApiOpenstackCloudUpdateJsonBodyId
-from rhub_cli.types import UNSET
 
 
 @click.group()
@@ -70,7 +65,7 @@ def get_list(
 @click.option("--owner-group-id", required=True, type=str)
 @click.option("--url", required=True, type=str)
 @click.option("--description", type=str)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--owner-group-name", type=str)
 @pass_api
 def create(
@@ -87,13 +82,6 @@ def create(
     owner_group_name,
 ):
     """Create OpenStack cloud"""
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiOpenstackCloudCreateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     networks = []
     if networks_item is not None:
@@ -157,7 +145,7 @@ def remove(
 @click.option("--description", type=str)
 @click.option("--domain-id", type=str)
 @click.option("--domain-name", type=str)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--name", type=str)
 @click.option("--networks-item", type=str)
 @click.option("--owner-group-id", type=str)
@@ -183,13 +171,6 @@ def update(
     networks = []
     if networks_item is not None:
         networks.append(networks_item)
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiOpenstackCloudUpdateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiOpenstackCloudUpdateJsonBody(
         credentials=credentials,

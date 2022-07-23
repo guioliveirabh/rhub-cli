@@ -6,7 +6,6 @@ import attr
 from ..models.rhub_api_openstack_cloud_create_json_body_credentials_type_0 import (
     RhubApiOpenstackCloudCreateJsonBodyCredentialsType0,
 )
-from ..models.rhub_api_openstack_cloud_create_json_body_id import RhubApiOpenstackCloudCreateJsonBodyId
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiOpenstackCloudCreateJsonBody")
@@ -24,7 +23,7 @@ class RhubApiOpenstackCloudCreateJsonBody:
         owner_group_id (str):
         url (str):  Example: https://rhub-cloud.rdu.example.com:13000.
         description (Union[Unset, None, str]):  Example: Private cloud for RHub located in RDU..
-        id (Union[Unset, RhubApiOpenstackCloudCreateJsonBodyId]):
+        id (Union[Unset, int]):
         owner_group_name (Union[Unset, str]):
     """
 
@@ -36,7 +35,7 @@ class RhubApiOpenstackCloudCreateJsonBody:
     owner_group_id: str
     url: str
     description: Union[Unset, None, str] = UNSET
-    id: Union[Unset, RhubApiOpenstackCloudCreateJsonBodyId] = UNSET
+    id: Union[Unset, int] = UNSET
     owner_group_name: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
@@ -56,10 +55,7 @@ class RhubApiOpenstackCloudCreateJsonBody:
         owner_group_id = self.owner_group_id
         url = self.url
         description = self.description
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         owner_group_name = self.owner_group_name
 
         field_dict: Dict[str, Any] = {}
@@ -115,12 +111,7 @@ class RhubApiOpenstackCloudCreateJsonBody:
 
         description = d.pop("description", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiOpenstackCloudCreateJsonBodyId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiOpenstackCloudCreateJsonBodyId.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         owner_group_name = d.pop("owner_group_name", UNSET)
 

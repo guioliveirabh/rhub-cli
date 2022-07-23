@@ -1,5 +1,3 @@
-import json
-
 import click
 
 from rhub_cli.api.lab.rhub_api_lab_location_location_create import sync_detailed as location_create
@@ -9,15 +7,8 @@ from rhub_cli.api.lab.rhub_api_lab_location_location_list import sync_detailed a
 from rhub_cli.api.lab.rhub_api_lab_location_location_update import sync_detailed as location_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_lab_location_location_create_json_body import RhubApiLabLocationLocationCreateJsonBody
-from rhub_cli.models.rhub_api_lab_location_location_create_json_body_id import (
-    RhubApiLabLocationLocationCreateJsonBodyId,
-)
 from rhub_cli.models.rhub_api_lab_location_location_list_sort import RhubApiLabLocationLocationListSort
 from rhub_cli.models.rhub_api_lab_location_location_update_json_body import RhubApiLabLocationLocationUpdateJsonBody
-from rhub_cli.models.rhub_api_lab_location_location_update_json_body_id import (
-    RhubApiLabLocationLocationUpdateJsonBodyId,
-)
-from rhub_cli.types import UNSET
 
 from .regions import regions
 
@@ -55,7 +46,7 @@ def get_list(
 @location.command()
 @click.option("--name", required=True, type=str, help="Short name of location / IATA identifier / ...")
 @click.option("--description", type=str, help="Long description of location, address, ...")
-@click.option("--id")
+@click.option("--id", type=int)
 @pass_api
 def create(
     api: APIRequest,
@@ -64,13 +55,6 @@ def create(
     id,
 ):
     """Create location"""
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiLabLocationLocationCreateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiLabLocationLocationCreateJsonBody(
         name=name,
@@ -120,7 +104,7 @@ def remove(
 @location.command()
 @click.argument("location_id", type=int)
 @click.option("--description", type=str, help="Long description of location, address, ...")
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--name", type=str, help="Short name of location / IATA identifier / ...")
 @pass_api
 def update(
@@ -131,13 +115,6 @@ def update(
     name,
 ):
     """Update location"""
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiLabLocationLocationUpdateJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiLabLocationLocationUpdateJsonBody(
         description=description,

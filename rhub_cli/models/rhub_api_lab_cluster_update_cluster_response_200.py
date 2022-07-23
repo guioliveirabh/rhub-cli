@@ -8,7 +8,6 @@ from dateutil.parser import isoparse
 from ..models.rhub_api_lab_cluster_update_cluster_response_200_hosts_item import (
     RhubApiLabClusterUpdateClusterResponse200HostsItem,
 )
-from ..models.rhub_api_lab_cluster_update_cluster_response_200_id import RhubApiLabClusterUpdateClusterResponse200Id
 from ..models.rhub_api_lab_cluster_update_cluster_response_200_product_params import (
     RhubApiLabClusterUpdateClusterResponse200ProductParams,
 )
@@ -38,7 +37,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
         group_id (Union[Unset, None, str]):
         group_name (Union[Unset, None, str]):
         hosts (Union[Unset, List[RhubApiLabClusterUpdateClusterResponse200HostsItem]]):
-        id (Union[Unset, RhubApiLabClusterUpdateClusterResponse200Id]):
+        id (Union[Unset, int]):
         lifespan_expiration (Union[Unset, None, datetime.datetime]): Hard-limit expiration.
         name (Union[Unset, str]):
         owner_id (Union[Unset, str]):
@@ -57,7 +56,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
         reservation_expiration (Union[Unset, None, datetime.datetime]): Soft-limit expiration.
         shared (Union[Unset, bool]):
         status (Union[Unset, None, RhubApiLabClusterUpdateClusterResponse200Status]):
-        status_flag (Union[Unset, RhubApiLabClusterUpdateClusterResponse200StatusFlag]):
+        status_flag (Union[Unset, None, RhubApiLabClusterUpdateClusterResponse200StatusFlag]):
     """
 
     created: Union[Unset, datetime.datetime] = UNSET
@@ -65,7 +64,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
     group_id: Union[Unset, None, str] = UNSET
     group_name: Union[Unset, None, str] = UNSET
     hosts: Union[Unset, List[RhubApiLabClusterUpdateClusterResponse200HostsItem]] = UNSET
-    id: Union[Unset, RhubApiLabClusterUpdateClusterResponse200Id] = UNSET
+    id: Union[Unset, int] = UNSET
     lifespan_expiration: Union[Unset, None, datetime.datetime] = UNSET
     name: Union[Unset, str] = UNSET
     owner_id: Union[Unset, str] = UNSET
@@ -82,7 +81,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
     reservation_expiration: Union[Unset, None, datetime.datetime] = UNSET
     shared: Union[Unset, bool] = UNSET
     status: Union[Unset, None, RhubApiLabClusterUpdateClusterResponse200Status] = UNSET
-    status_flag: Union[Unset, RhubApiLabClusterUpdateClusterResponse200StatusFlag] = UNSET
+    status_flag: Union[Unset, None, RhubApiLabClusterUpdateClusterResponse200StatusFlag] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -101,10 +100,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
 
                 hosts.append(hosts_item)
 
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         lifespan_expiration: Union[Unset, None, str] = UNSET
         if not isinstance(self.lifespan_expiration, Unset):
             lifespan_expiration = self.lifespan_expiration.isoformat() if self.lifespan_expiration else None
@@ -155,9 +151,9 @@ class RhubApiLabClusterUpdateClusterResponse200:
         if not isinstance(self.status, Unset):
             status = self.status.value if self.status else None
 
-        status_flag: Union[Unset, Dict[str, Any]] = UNSET
+        status_flag: Union[Unset, None, str] = UNSET
         if not isinstance(self.status_flag, Unset):
-            status_flag = self.status_flag.to_dict()
+            status_flag = self.status_flag.value if self.status_flag else None
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -234,12 +230,7 @@ class RhubApiLabClusterUpdateClusterResponse200:
 
             hosts.append(hosts_item)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabClusterUpdateClusterResponse200Id]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabClusterUpdateClusterResponse200Id.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         _lifespan_expiration = d.pop("lifespan_expiration", UNSET)
         lifespan_expiration: Union[Unset, None, datetime.datetime]
@@ -340,11 +331,13 @@ class RhubApiLabClusterUpdateClusterResponse200:
             status = RhubApiLabClusterUpdateClusterResponse200Status(_status)
 
         _status_flag = d.pop("status_flag", UNSET)
-        status_flag: Union[Unset, RhubApiLabClusterUpdateClusterResponse200StatusFlag]
-        if isinstance(_status_flag, Unset):
+        status_flag: Union[Unset, None, RhubApiLabClusterUpdateClusterResponse200StatusFlag]
+        if _status_flag is None:
+            status_flag = None
+        elif isinstance(_status_flag, Unset):
             status_flag = UNSET
         else:
-            status_flag = RhubApiLabClusterUpdateClusterResponse200StatusFlag.from_dict(_status_flag)
+            status_flag = RhubApiLabClusterUpdateClusterResponse200StatusFlag(_status_flag)
 
         rhub_api_lab_cluster_update_cluster_response_200 = cls(
             created=created,

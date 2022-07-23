@@ -12,13 +12,6 @@ from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body import RhubAp
 from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item import (
     RhubApiLabClusterCreateClusterJsonBodyHostsItem,
 )
-from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item_cluster_id import (
-    RhubApiLabClusterCreateClusterJsonBodyHostsItemClusterId,
-)
-from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_hosts_item_id import (
-    RhubApiLabClusterCreateClusterJsonBodyHostsItemId,
-)
-from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_id import RhubApiLabClusterCreateClusterJsonBodyId
 from rhub_cli.models.rhub_api_lab_cluster_create_cluster_json_body_product_params import (
     RhubApiLabClusterCreateClusterJsonBodyProductParams,
 )
@@ -38,13 +31,6 @@ from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body import RhubAp
 from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_hosts_item import (
     RhubApiLabClusterUpdateClusterJsonBodyHostsItem,
 )
-from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_hosts_item_cluster_id import (
-    RhubApiLabClusterUpdateClusterJsonBodyHostsItemClusterId,
-)
-from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_hosts_item_id import (
-    RhubApiLabClusterUpdateClusterJsonBodyHostsItemId,
-)
-from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_id import RhubApiLabClusterUpdateClusterJsonBodyId
 from rhub_cli.models.rhub_api_lab_cluster_update_cluster_json_body_product_params import (
     RhubApiLabClusterUpdateClusterJsonBodyProductParams,
 )
@@ -192,7 +178,7 @@ def get_list(
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--lifespan-expiration", type=click.DateTime(), help="Hard-limit expiration.")
 @click.option("--owner-id", type=str)
 @click.option("--owner-name", type=str)
@@ -243,10 +229,10 @@ def get_list(
         ]
     ),
 )
-@click.option("--status-flag")
-@click.option("--hosts-item-cluster-id")
+@click.option("--status-flag", type=click.Choice(["active", "creating", "deleted", "deleting", "failed"]))
+@click.option("--hosts-item-cluster-id", type=int)
 @click.option("--hosts-item-fqdn", type=str)
-@click.option("--hosts-item-id")
+@click.option("--hosts-item-id", type=int)
 @click.option("--hosts-item-ipaddr-item", type=str)
 @click.option("--hosts-item-num-vcpus", type=int)
 @click.option("--hosts-item-num-volumes", type=int)
@@ -292,36 +278,11 @@ def create(
     if hosts_item_ipaddr_item is not None:
         hosts_item_ipaddr.append(hosts_item_ipaddr_item)
 
-    if hosts_item_id is None:
-        hosts_item_id = UNSET
-    else:
-        _tmp = RhubApiLabClusterCreateClusterJsonBodyHostsItemId()
-        _tmp.additional_properties = json.loads(hosts_item_id)  # TODO: check if dict
-        hosts_item_id = _tmp
-
-    if hosts_item_cluster_id is None:
-        hosts_item_cluster_id = UNSET
-    else:
-        _tmp = RhubApiLabClusterCreateClusterJsonBodyHostsItemClusterId()
-        _tmp.additional_properties = json.loads(hosts_item_cluster_id)  # TODO: check if dict
-        hosts_item_cluster_id = _tmp
-
-    if status_flag is None:
-        status_flag = UNSET
-    else:
-        _tmp = RhubApiLabClusterCreateClusterJsonBodyStatusFlag()
-        _tmp.additional_properties = json.loads(status_flag)  # TODO: check if dict
-        status_flag = _tmp
+    if status_flag is not None:
+        status_flag = RhubApiLabClusterCreateClusterJsonBodyStatusFlag(status_flag)
 
     if status is not None:
         status = RhubApiLabClusterCreateClusterJsonBodyStatus(status)
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiLabClusterCreateClusterJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     hosts_item = RhubApiLabClusterCreateClusterJsonBodyHostsItem(
         cluster_id=hosts_item_cluster_id,
@@ -416,7 +377,7 @@ def remove(
 @click.option("--description", type=str)
 @click.option("--group-id", type=str)
 @click.option("--group-name", type=str)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--lifespan-expiration", type=click.DateTime(), help="Hard-limit expiration.")
 @click.option("--name", type=str)
 @click.option("--owner-id", type=str)
@@ -471,10 +432,10 @@ def remove(
         ]
     ),
 )
-@click.option("--status-flag")
-@click.option("--hosts-item-cluster-id")
+@click.option("--status-flag", type=click.Choice(["active", "creating", "deleted", "deleting", "failed"]))
+@click.option("--hosts-item-cluster-id", type=int)
 @click.option("--hosts-item-fqdn", type=str)
-@click.option("--hosts-item-id")
+@click.option("--hosts-item-id", type=int)
 @click.option("--hosts-item-ipaddr-item", type=str)
 @click.option("--hosts-item-num-vcpus", type=int)
 @click.option("--hosts-item-num-volumes", type=int)
@@ -521,26 +482,8 @@ def update(
     if hosts_item_ipaddr_item is not None:
         hosts_item_ipaddr.append(hosts_item_ipaddr_item)
 
-    if hosts_item_id is None:
-        hosts_item_id = UNSET
-    else:
-        _tmp = RhubApiLabClusterUpdateClusterJsonBodyHostsItemId()
-        _tmp.additional_properties = json.loads(hosts_item_id)  # TODO: check if dict
-        hosts_item_id = _tmp
-
-    if hosts_item_cluster_id is None:
-        hosts_item_cluster_id = UNSET
-    else:
-        _tmp = RhubApiLabClusterUpdateClusterJsonBodyHostsItemClusterId()
-        _tmp.additional_properties = json.loads(hosts_item_cluster_id)  # TODO: check if dict
-        hosts_item_cluster_id = _tmp
-
-    if status_flag is None:
-        status_flag = UNSET
-    else:
-        _tmp = RhubApiLabClusterUpdateClusterJsonBodyStatusFlag()
-        _tmp.additional_properties = json.loads(status_flag)  # TODO: check if dict
-        status_flag = _tmp
+    if status_flag is not None:
+        status_flag = RhubApiLabClusterUpdateClusterJsonBodyStatusFlag(status_flag)
 
     if status is not None:
         status = RhubApiLabClusterUpdateClusterJsonBodyStatus(status)
@@ -551,13 +494,6 @@ def update(
         _tmp = RhubApiLabClusterUpdateClusterJsonBodyProductParams()
         _tmp.additional_properties = json.loads(product_params)  # TODO: check if dict
         product_params = _tmp
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiLabClusterUpdateClusterJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     hosts_item = RhubApiLabClusterUpdateClusterJsonBodyHostsItem(
         cluster_id=hosts_item_cluster_id,

@@ -6,9 +6,6 @@ import attr
 from ..models.rhub_api_lab_product_list_product_regions_response_200_item_region_openstack_credentials_type_0 import (
     RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstackCredentialsType0,
 )
-from ..models.rhub_api_lab_product_list_product_regions_response_200_item_region_openstack_id import (
-    RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstackId,
-)
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstack")
@@ -23,7 +20,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstack:
         description (Union[Unset, None, str]):  Example: Private cloud for RHub located in RDU..
         domain_id (Union[Unset, str]):  Example: default.
         domain_name (Union[Unset, str]):  Example: Default.
-        id (Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstackId]):
+        id (Union[Unset, int]):
         name (Union[Unset, str]):  Example: rhub-rdu.
         networks (Union[Unset, List[str]]): Network providers that can be used in the cloud Example:
             ['provider_net_rhub'].
@@ -38,7 +35,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstack:
     description: Union[Unset, None, str] = UNSET
     domain_id: Union[Unset, str] = UNSET
     domain_name: Union[Unset, str] = UNSET
-    id: Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstackId] = UNSET
+    id: Union[Unset, int] = UNSET
     name: Union[Unset, str] = UNSET
     networks: Union[Unset, List[str]] = UNSET
     owner_group_id: Union[Unset, str] = UNSET
@@ -64,10 +61,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstack:
         description = self.description
         domain_id = self.domain_id
         domain_name = self.domain_name
-        id: Union[Unset, Dict[str, Any]] = UNSET
-        if not isinstance(self.id, Unset):
-            id = self.id.to_dict()
-
+        id = self.id
         name = self.name
         networks: Union[Unset, List[str]] = UNSET
         if not isinstance(self.networks, Unset):
@@ -144,12 +138,7 @@ class RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstack:
 
         domain_name = d.pop("domain_name", UNSET)
 
-        _id = d.pop("id", UNSET)
-        id: Union[Unset, RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstackId]
-        if isinstance(_id, Unset):
-            id = UNSET
-        else:
-            id = RhubApiLabProductListProductRegionsResponse200ItemRegionOpenstackId.from_dict(_id)
+        id = d.pop("id", UNSET)
 
         name = d.pop("name", UNSET)
 

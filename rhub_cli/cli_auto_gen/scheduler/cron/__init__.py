@@ -9,7 +9,6 @@ from rhub_cli.api.scheduler.rhub_api_scheduler_cron_list_jobs import sync_detail
 from rhub_cli.api.scheduler.rhub_api_scheduler_cron_update_job import sync_detailed as cron_update
 from rhub_cli.api_request import APIRequest, pass_api
 from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body import RhubApiSchedulerCronCreateJobJsonBody
-from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body_id import RhubApiSchedulerCronCreateJobJsonBodyId
 from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body_job_name import (
     RhubApiSchedulerCronCreateJobJsonBodyJobName,
 )
@@ -19,7 +18,6 @@ from rhub_cli.models.rhub_api_scheduler_cron_create_job_json_body_job_params imp
 from rhub_cli.models.rhub_api_scheduler_cron_list_jobs_filter import RhubApiSchedulerCronListJobsFilter
 from rhub_cli.models.rhub_api_scheduler_cron_list_jobs_sort import RhubApiSchedulerCronListJobsSort
 from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body import RhubApiSchedulerCronUpdateJobJsonBody
-from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body_id import RhubApiSchedulerCronUpdateJobJsonBodyId
 from rhub_cli.models.rhub_api_scheduler_cron_update_job_json_body_job_name import (
     RhubApiSchedulerCronUpdateJobJsonBodyJobName,
 )
@@ -79,7 +77,7 @@ def get_list(
 @click.option("--time-expr", required=True, type=str, help="cron time expression")
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--job-params")
 @click.option("--last-run", type=click.DateTime())
 @pass_api
@@ -102,13 +100,6 @@ def create(
         _tmp = RhubApiSchedulerCronCreateJobJsonBodyJobParams()
         _tmp.additional_properties = json.loads(job_params)  # TODO: check if dict
         job_params = _tmp
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiSchedulerCronCreateJobJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     if job_name is not None:
         job_name = RhubApiSchedulerCronCreateJobJsonBodyJobName(job_name)
@@ -167,7 +158,7 @@ def remove(
 @click.argument("cron_job_id", type=int)
 @click.option("--description", type=str)
 @click.option("--enabled", is_flag=True)
-@click.option("--id")
+@click.option("--id", type=int)
 @click.option("--job-name", type=click.Choice(["example", "tower_launch", "delete_expired_clusters"]))
 @click.option("--job-params")
 @click.option("--last-run", type=click.DateTime())
@@ -197,13 +188,6 @@ def update(
 
     if job_name is not None:
         job_name = RhubApiSchedulerCronUpdateJobJsonBodyJobName(job_name)
-
-    if id is None:
-        id = UNSET
-    else:
-        _tmp = RhubApiSchedulerCronUpdateJobJsonBodyId()
-        _tmp.additional_properties = json.loads(id)  # TODO: check if dict
-        id = _tmp
 
     json_body = RhubApiSchedulerCronUpdateJobJsonBody(
         description=description,
